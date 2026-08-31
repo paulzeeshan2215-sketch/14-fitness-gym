@@ -1,2446 +1,2954 @@
-html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>14 FITNESS GYM — Membership</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <style>
 
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root{
-  --bg:#050806;
-  --bg2:#0a100c;
-  --card:#0e1711;
-  --card2:#121d15;
-  --lime:#caff26;
-  --lime2:#9ed900;
-  --white:#f5f8f3;
-  --muted:#7c8980;
-  --muted2:#59645d;
-  --line:rgba(255,255,255,.09);
-  --danger:#ff6262;
-  --orange:#ffbd59;
+    --black:#050706;
+    --black2:#080d09;
+    --panel:#0d1510;
+    --panel2:#111b14;
+
+    --lime:#caff25;
+    --lime-dark:#91b900;
+
+    --white:#f4f7f3;
+    --text:#b9c2bb;
+    --muted:#6d7870;
+    --muted2:#465149;
+
+    --border:rgba(255,255,255,.085);
+
+    --shadow:0 30px 100px rgba(0,0,0,.48);
 }
 
+
+/* =========================================================
+   RESET
+========================================================= */
+
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 html{
-  scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-  min-height:100vh;
-  background:
-    radial-gradient(circle at 10% 10%,rgba(202,255,38,.07),transparent 25%),
-    radial-gradient(circle at 90% 20%,rgba(50,120,70,.12),transparent 30%),
-    radial-gradient(circle at 50% 100%,rgba(202,255,38,.05),transparent 30%),
-    var(--bg);
-  color:var(--white);
-  font-family:Inter,sans-serif;
-  overflow-x:hidden;
+    min-height:100vh;
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(202,255,37,.075),
+            transparent 27%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(48,105,59,.10),
+            transparent 30%
+        ),
+        var(--black);
+
+    color:var(--white);
+    font-family:Inter,sans-serif;
+    overflow-x:hidden;
 }
 
-/* ===================================
-   AMBIENT BACKGROUND
-=================================== */
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
 
 .background{
-  position:fixed;
-  inset:0;
-  z-index:-10;
-  overflow:hidden;
-  pointer-events:none;
+    position:fixed;
+    inset:0;
+    z-index:-5;
+    overflow:hidden;
+    pointer-events:none;
 }
 
 .grid{
-  position:absolute;
-  inset:-20%;
-  background:
-    linear-gradient(rgba(202,255,38,.035) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(202,255,38,.035) 1px,transparent 1px);
-  background-size:70px 70px;
-  transform:perspective(700px) rotateX(65deg) translateY(-150px);
-  transform-origin:center top;
-  animation:gridMove 18s linear infinite;
+    position:absolute;
+    width:150%;
+    height:150%;
+    left:-25%;
+    top:-25%;
+
+    background-image:
+        linear-gradient(
+            rgba(202,255,37,.028) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(202,255,37,.028) 1px,
+            transparent 1px
+        );
+
+    background-size:70px 70px;
+
+    transform:
+        perspective(700px)
+        rotateX(58deg);
+
+    transform-origin:center top;
+
+    animation:gridMove 20s linear infinite;
 }
 
-.orb{
-  position:absolute;
-  border-radius:50%;
-  filter:blur(5px);
+.glow{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(5px);
 }
 
-.orb.one{
-  width:420px;
-  height:420px;
-  left:-180px;
-  top:10%;
-  background:radial-gradient(circle,rgba(202,255,38,.12),transparent 70%);
-  animation:orbOne 9s ease-in-out infinite;
+.glow.one{
+    width:400px;
+    height:400px;
+    left:-180px;
+    top:15%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(202,255,37,.12),
+            transparent 70%
+        );
+
+    animation:floatOne 10s ease-in-out infinite;
 }
 
-.orb.two{
-  width:500px;
-  height:500px;
-  right:-200px;
-  bottom:0;
-  background:radial-gradient(circle,rgba(75,150,90,.12),transparent 70%);
-  animation:orbTwo 11s ease-in-out infinite;
+.glow.two{
+    width:500px;
+    height:500px;
+    right:-220px;
+    bottom:-180px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(68,140,78,.12),
+            transparent 70%
+        );
+
+    animation:floatTwo 12s ease-in-out infinite;
 }
 
-.scanline{
-  position:absolute;
-  left:0;
-  right:0;
-  height:1px;
-  top:-10%;
-  background:linear-gradient(90deg,transparent,var(--lime),transparent);
-  opacity:.15;
-  box-shadow:0 0 20px var(--lime);
-  animation:scan 8s linear infinite;
+.light-line{
+    position:absolute;
+    left:0;
+    width:100%;
+    height:1px;
+    top:-5%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(202,255,37,.5),
+            transparent
+        );
+
+    opacity:.22;
+
+    animation:scan 10s linear infinite;
 }
 
-.noise{
-  position:fixed;
-  inset:0;
-  z-index:100;
-  pointer-events:none;
-  opacity:.025;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
 
-/* ===================================
-   TOP BAR
-=================================== */
+/* =========================================================
+   HEADER
+========================================================= */
 
-.top{
-  width:min(1250px,92%);
-  margin:auto;
-  padding:24px 0;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  position:relative;
-  z-index:20;
+.header{
+    width:min(1180px,92%);
+    margin:auto;
+
+    padding:24px 0;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
 .logo{
-  display:flex;
-  align-items:center;
-  text-decoration:none;
-  color:white;
-  font:900 30px "Barlow Condensed";
-  letter-spacing:.5px;
+    display:flex;
+    align-items:center;
+
+    text-decoration:none;
+    color:white;
+
+    font-family:"Barlow Condensed";
+    font-size:30px;
+    font-weight:900;
+    letter-spacing:.4px;
 }
 
-.logo b{
-  background:var(--lime);
-  color:#070b08;
-  padding:7px 11px;
-  border-radius:7px;
-  margin-right:8px;
-  box-shadow:0 0 30px rgba(202,255,38,.18);
+.logo-box{
+    display:grid;
+    place-items:center;
+
+    width:43px;
+    height:38px;
+
+    margin-right:9px;
+
+    border-radius:8px;
+
+    background:var(--lime);
+    color:#070a07;
+
+    font-size:24px;
+
+    box-shadow:
+        0 0 35px rgba(202,255,37,.10);
 }
 
 .logo span{
-  color:var(--lime);
-  margin-left:5px;
+    color:var(--lime);
+    margin-left:5px;
 }
 
 .back{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  text-decoration:none;
-  color:#8b978f;
-  font-size:9px;
-  font-weight:900;
-  letter-spacing:1.4px;
-  text-transform:uppercase;
-  padding:11px 15px;
-  border:1px solid var(--line);
-  border-radius:7px;
-  background:rgba(255,255,255,.025);
-  backdrop-filter:blur(10px);
-  transition:.3s;
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    padding:10px 14px;
+
+    border:1px solid var(--border);
+    border-radius:8px;
+
+    background:rgba(255,255,255,.025);
+
+    color:#8d9991;
+
+    font-size:8px;
+    font-weight:900;
+
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+
+    text-decoration:none;
+
+    transition:.3s;
 }
 
 .back:hover{
-  color:var(--lime);
-  border-color:rgba(202,255,38,.4);
-  transform:translateX(-3px);
+    color:var(--lime);
+    border-color:rgba(202,255,37,.35);
+    transform:translateX(-3px);
 }
 
-/* ===================================
+
+/* =========================================================
    MAIN
-=================================== */
+========================================================= */
 
 .page{
-  width:min(1180px,92%);
-  margin:25px auto 90px;
-  display:grid;
-  grid-template-columns:.82fr 1.18fr;
-  gap:18px;
-  align-items:start;
+    width:min(1180px,92%);
+    margin:25px auto 80px;
+
+    display:grid;
+    grid-template-columns:.82fr 1.18fr;
+
+    gap:18px;
 }
 
-/* ===================================
-   LEFT SUMMARY
-=================================== */
 
-.summary{
-  min-height:710px;
-  position:sticky;
-  top:25px;
-  overflow:hidden;
-  padding:35px;
-  border-radius:25px;
-  border:1px solid rgba(202,255,38,.16);
+/* =========================================================
+   LEFT MEMBERSHIP PANEL
+========================================================= */
 
-  background:
-    radial-gradient(circle at 80% 15%,rgba(202,255,38,.13),transparent 30%),
-    linear-gradient(145deg,#142119,#09100c 65%,#060a07);
+.membership{
+    position:relative;
 
-  box-shadow:
-    0 40px 100px rgba(0,0,0,.45),
-    inset 0 1px rgba(255,255,255,.06);
+    min-height:720px;
+
+    padding:38px;
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #142219,
+            #09100c 65%,
+            #060a07
+        );
+
+    border:1px solid rgba(202,255,37,.13);
+
+    box-shadow:var(--shadow);
 }
 
-.summary:before{
-  content:"14";
-  position:absolute;
-  right:-55px;
-  bottom:-105px;
-  color:rgba(202,255,38,.035);
-  font:900 370px/.7 "Barlow Condensed";
-  pointer-events:none;
+.membership:before{
+    content:"14";
+
+    position:absolute;
+
+    right:-45px;
+    bottom:-100px;
+
+    font-family:"Barlow Condensed";
+    font-size:390px;
+    font-weight:900;
+
+    line-height:.7;
+
+    color:rgba(202,255,37,.025);
 }
 
-.summary:after{
-  content:"";
-  position:absolute;
-  width:350px;
-  height:350px;
-  border:1px solid rgba(202,255,38,.09);
-  border-radius:50%;
-  right:-170px;
-  top:110px;
-  box-shadow:
-    0 0 0 35px rgba(202,255,38,.018),
-    0 0 0 70px rgba(202,255,38,.012);
-  animation:rotateRing 18s linear infinite;
+.membership:after{
+    content:"";
+
+    position:absolute;
+
+    width:330px;
+    height:330px;
+
+    right:-180px;
+    top:80px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(202,255,37,.08);
+
+    box-shadow:
+        0 0 0 35px rgba(202,255,37,.015),
+        0 0 0 70px rgba(202,255,37,.01);
+
+    animation:ring 18s linear infinite;
 }
 
-.kicker{
-  color:var(--lime);
-  font-size:8px;
-  font-weight:900;
-  letter-spacing:3px;
-  text-transform:uppercase;
+.eyebrow{
+    position:relative;
+    z-index:2;
+
+    color:var(--lime);
+
+    font-size:8px;
+    font-weight:900;
+
+    letter-spacing:2.8px;
+    text-transform:uppercase;
 }
 
-.summary h1{
-  position:relative;
-  z-index:2;
-  font:900 clamp(70px,7vw,105px)/.78 "Barlow Condensed";
-  text-transform:uppercase;
-  letter-spacing:-2px;
-  margin:22px 0 27px;
+.membership h1{
+    position:relative;
+    z-index:2;
+
+    margin-top:20px;
+
+    font-family:"Barlow Condensed";
+    font-size:clamp(72px,7vw,105px);
+    font-weight:900;
+
+    line-height:.78;
+
+    text-transform:uppercase;
+
+    letter-spacing:-2px;
 }
 
-.summary h1 span{
-  color:var(--lime);
-  text-shadow:5px 5px 0 rgba(72,105,0,.45);
+.membership h1 span{
+    color:var(--lime);
+
+    text-shadow:
+        4px 4px 0 rgba(82,108,0,.35);
 }
 
-.summary-text{
-  position:relative;
-  z-index:2;
-  max-width:370px;
-  color:#a5b0a8;
-  font-size:11px;
-  line-height:1.8;
+.description{
+    position:relative;
+    z-index:2;
+
+    max-width:380px;
+
+    margin-top:27px;
+
+    color:#9ca89f;
+
+    font-size:10px;
+    line-height:1.9;
 }
 
-.selected{
-  position:relative;
-  z-index:2;
-  margin-top:55px;
+
+/* =========================================================
+   PLAN DISPLAY
+========================================================= */
+
+.plan-display{
+    position:relative;
+    z-index:2;
+
+    margin-top:55px;
 }
 
-.selected-label{
-  color:#627067;
-  font-size:8px;
-  font-weight:900;
-  letter-spacing:2px;
-  text-transform:uppercase;
+.plan-label{
+    color:#68756c;
+
+    font-size:8px;
+    font-weight:900;
+
+    letter-spacing:2px;
+    text-transform:uppercase;
 }
 
-#summaryPlan{
-  font:900 38px/.9 "Barlow Condensed";
-  text-transform:uppercase;
-  margin:10px 0 20px;
+.plan-name{
+    margin-top:9px;
+
+    font-family:"Barlow Condensed";
+    font-size:38px;
+    font-weight:900;
+
+    line-height:.9;
+
+    text-transform:uppercase;
 }
 
-.amount{
-  font:900 75px/.8 "Barlow Condensed";
-  color:white;
+.plan-price{
+    margin-top:17px;
+
+    font-family:"Barlow Condensed";
+    font-size:72px;
+    font-weight:900;
+
+    line-height:.8;
 }
 
-.amount small{
-  font:600 9px Inter;
-  color:#758078;
+.plan-price small{
+    font-family:Inter;
+    font-size:9px;
+    font-weight:600;
+
+    color:#78847b;
 }
 
 .benefits{
-  position:relative;
-  z-index:2;
-  list-style:none;
-  margin-top:28px;
-  padding-top:22px;
-  border-top:1px solid rgba(255,255,255,.1);
-  display:grid;
-  gap:13px;
+    list-style:none;
+
+    margin-top:30px;
+    padding-top:21px;
+
+    border-top:1px solid rgba(255,255,255,.10);
+
+    display:grid;
+    gap:13px;
 }
 
 .benefits li{
-  color:#a4afa7;
-  font-size:10px;
+    color:#a0aaa3;
+
+    font-size:9px;
 }
 
 .benefits li:before{
-  content:"✓";
-  color:var(--lime);
-  font-weight:900;
-  margin-right:10px;
+    content:"✓";
+
+    margin-right:10px;
+
+    color:var(--lime);
+
+    font-weight:900;
 }
 
-/* floating mini badge */
 
-.live-badge{
-  position:absolute;
-  left:30px;
-  bottom:30px;
-  z-index:4;
-  display:flex;
-  align-items:center;
-  gap:9px;
-  padding:10px 12px;
-  border:1px solid rgba(202,255,38,.18);
-  border-radius:8px;
-  background:rgba(0,0,0,.22);
-  backdrop-filter:blur(12px);
-  color:#89958d;
-  font-size:7px;
-  font-weight:900;
-  letter-spacing:1px;
-  text-transform:uppercase;
+/* =========================================================
+   LIVE LABEL
+========================================================= */
+
+.live{
+    position:absolute;
+
+    left:38px;
+    bottom:35px;
+
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    color:#718077;
+
+    font-size:7px;
+    font-weight:900;
+
+    letter-spacing:1.3px;
+    text-transform:uppercase;
 }
 
 .live-dot{
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:var(--lime);
-  box-shadow:0 0 15px var(--lime);
-  animation:blink 1.5s infinite;
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:var(--lime);
+
+    box-shadow:
+        0 0 14px rgba(202,255,37,.7);
+
+    animation:pulse 1.5s infinite;
 }
 
-/* ===================================
-   RIGHT CARD
-=================================== */
 
-.form-card{
-  min-height:710px;
-  padding:36px;
-  border-radius:25px;
-  border:1px solid var(--line);
-  background:
-    linear-gradient(145deg,rgba(20,29,23,.97),rgba(10,15,12,.98));
-  box-shadow:0 40px 100px rgba(0,0,0,.35);
-  position:relative;
-  overflow:hidden;
+/* =========================================================
+   RIGHT PANEL
+========================================================= */
+
+.card{
+    min-height:720px;
+
+    padding:36px;
+
+    border-radius:24px;
+
+    border:1px solid var(--border);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(17,27,20,.98),
+            rgba(8,13,10,.98)
+        );
+
+    box-shadow:var(--shadow);
+
+    position:relative;
+
+    overflow:hidden;
 }
 
-.form-card:before{
-  content:"";
-  position:absolute;
-  width:280px;
-  height:280px;
-  right:-140px;
-  top:-140px;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(202,255,38,.1),transparent 70%);
+.card:before{
+    content:"";
+
+    position:absolute;
+
+    width:260px;
+    height:260px;
+
+    right:-150px;
+    top:-150px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(202,255,37,.10),
+            transparent 70%
+        );
 }
 
-/* ===================================
+
+/* =========================================================
    PROGRESS
-=================================== */
+========================================================= */
 
 .steps{
-  display:flex;
-  align-items:center;
-  margin-bottom:35px;
+    position:relative;
+    z-index:2;
+
+    display:flex;
+    align-items:center;
+
+    margin-bottom:37px;
 }
 
 .step{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  color:#536058;
-  font-size:8px;
-  font-weight:900;
-  text-transform:uppercase;
-  letter-spacing:1.2px;
-  white-space:nowrap;
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    color:#4f5b53;
+
+    font-size:7px;
+    font-weight:900;
+
+    letter-spacing:1px;
+    text-transform:uppercase;
+
+    white-space:nowrap;
 }
 
 .step-number{
-  width:29px;
-  height:29px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  border:1px solid var(--line);
-  background:#0b110d;
-  color:#68736c;
-  transition:.4s;
+    width:30px;
+    height:30px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:50%;
+
+    border:1px solid var(--border);
+
+    background:#0a100c;
+
+    color:#68736b;
+
+    transition:.35s;
 }
 
 .step.active{
-  color:var(--lime);
+    color:var(--lime);
 }
 
 .step.active .step-number{
-  color:#080b08;
-  background:var(--lime);
-  border-color:var(--lime);
-  box-shadow:0 0 25px rgba(202,255,38,.2);
+    background:var(--lime);
+
+    color:#080b08;
+
+    border-color:var(--lime);
+
+    box-shadow:
+        0 0 25px rgba(202,255,37,.18);
+}
+
+.step.completed .step-number{
+    border-color:var(--lime);
+    color:var(--lime);
 }
 
 .step-line{
-  width:50px;
-  height:1px;
-  background:var(--line);
-  margin:0 12px;
+    width:55px;
+    height:1px;
+
+    margin:0 11px;
+
+    background:var(--border);
 }
 
-.form-heading{
-  position:relative;
-  z-index:2;
+
+/* =========================================================
+   HEADINGS
+========================================================= */
+
+.content{
+    position:relative;
+    z-index:2;
 }
 
-.form-heading .kicker{
-  margin-bottom:12px;
+.form-eyebrow{
+    color:var(--lime);
+
+    font-size:8px;
+    font-weight:900;
+
+    letter-spacing:2.5px;
+    text-transform:uppercase;
 }
 
-.form-heading h2{
-  font:900 67px/.8 "Barlow Condensed";
-  text-transform:uppercase;
-  letter-spacing:-1px;
+.form-title{
+    margin-top:12px;
+
+    font-family:"Barlow Condensed";
+    font-size:67px;
+    font-weight:900;
+
+    line-height:.78;
+
+    text-transform:uppercase;
 }
 
-.form-heading p{
-  margin-top:17px;
-  max-width:500px;
-  color:#69756d;
-  font-size:10px;
-  line-height:1.7;
+.form-subtitle{
+    max-width:510px;
+
+    margin-top:17px;
+
+    color:#69756d;
+
+    font-size:10px;
+    line-height:1.8;
 }
 
-/* ===================================
-   SECURITY
-=================================== */
 
-.secure{
-  display:flex;
-  gap:12px;
-  align-items:flex-start;
-  margin:25px 0;
-  padding:14px;
-  background:rgba(202,255,38,.035);
-  border:1px solid rgba(202,255,38,.12);
-  border-radius:10px;
-  color:#7d8981;
-  font-size:8px;
-  line-height:1.7;
+/* =========================================================
+   SECURITY NOTICE
+========================================================= */
+
+.security{
+    display:flex;
+    gap:12px;
+
+    margin:24px 0;
+
+    padding:13px 14px;
+
+    border:1px solid rgba(202,255,37,.11);
+    border-radius:10px;
+
+    background:rgba(202,255,37,.025);
+
+    color:#7d8981;
+
+    font-size:8px;
+    line-height:1.7;
 }
 
-.secure-icon{
-  width:28px;
-  height:28px;
-  flex:0 0 28px;
-  display:grid;
-  place-items:center;
-  border-radius:7px;
-  background:rgba(202,255,38,.1);
-  color:var(--lime);
+.security-icon{
+    flex:0 0 27px;
+
+    width:27px;
+    height:27px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:7px;
+
+    background:rgba(202,255,37,.08);
+
+    color:var(--lime);
 }
 
-.secure b{
-  color:#b4c2b7;
+.security b{
+    color:#b4beb7;
 }
 
-/* ===================================
+
+/* =========================================================
    PLAN PICKER
-=================================== */
+========================================================= */
 
-.planTitle{
-  color:#606c64;
-  font-size:8px;
-  font-weight:900;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  margin-bottom:9px;
+.plan-title{
+    margin-bottom:8px;
+
+    color:#657169;
+
+    font-size:8px;
+    font-weight:900;
+
+    letter-spacing:1.8px;
+    text-transform:uppercase;
 }
 
-.planPicker{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
-  margin-bottom:28px;
+.plans{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:8px;
+
+    margin-bottom:25px;
 }
 
-.pick{
-  position:relative;
-  border:1px solid var(--line);
-  background:#0b120e;
-  color:white;
-  border-radius:11px;
-  padding:14px 11px;
-  text-align:left;
-  cursor:pointer;
-  transition:.35s;
-  overflow:hidden;
+.plan{
+    position:relative;
+
+    min-height:75px;
+
+    padding:12px;
+
+    border:1px solid var(--border);
+    border-radius:10px;
+
+    background:#0a110d;
+
+    color:white;
+
+    text-align:left;
+
+    cursor:pointer;
+
+    overflow:hidden;
+
+    transition:
+        transform .25s,
+        border-color .25s,
+        background .25s;
 }
 
-.pick:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(120deg,transparent,rgba(202,255,38,.08),transparent);
-  transform:translateX(-100%);
-  transition:.5s;
+.plan:hover{
+    transform:translateY(-3px);
+
+    border-color:
+        rgba(202,255,37,.3);
 }
 
-.pick:hover:before{
-  transform:translateX(100%);
+.plan.active{
+    background:var(--lime);
+
+    border-color:var(--lime);
+
+    color:#080b08;
+
+    box-shadow:
+        0 15px 35px rgba(202,255,37,.10);
 }
 
-.pick:hover{
-  border-color:rgba(202,255,38,.3);
-  transform:translateY(-2px);
+.plan-price-small{
+    display:block;
+
+    font-family:"Barlow Condensed";
+    font-size:25px;
+    font-weight:900;
+
+    line-height:.8;
 }
 
-.pick.active{
-  color:#070b08;
-  background:var(--lime);
-  border-color:var(--lime);
-  box-shadow:0 10px 35px rgba(202,255,38,.13);
+.plan-text{
+    display:block;
+
+    margin-top:8px;
+
+    font-size:7px;
+    font-weight:900;
+
+    letter-spacing:.4px;
+    text-transform:uppercase;
+
+    opacity:.72;
 }
 
-.pick strong{
-  display:block;
-  position:relative;
-  z-index:2;
-  font:900 25px/.9 "Barlow Condensed";
-}
 
-.pick span{
-  display:block;
-  position:relative;
-  z-index:2;
-  margin-top:7px;
-  font-size:7px;
-  font-weight:900;
-  text-transform:uppercase;
-  letter-spacing:.5px;
-  opacity:.75;
-}
-
-/* ===================================
+/* =========================================================
    FORM
-=================================== */
+========================================================= */
 
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    gap:14px;
 }
 
 .field{
-  position:relative;
+    display:grid;
+    gap:7px;
 }
 
-.full{
-  grid-column:1/-1;
+.field.full{
+    grid-column:1/-1;
 }
 
 .field label{
-  display:block;
-  margin-bottom:7px;
-  color:#78847c;
-  font-size:8px;
-  font-weight:900;
-  letter-spacing:1.3px;
-  text-transform:uppercase;
+    color:#77827a;
+
+    font-size:8px;
+    font-weight:900;
+
+    letter-spacing:1.2px;
+    text-transform:uppercase;
 }
 
 .field input,
 .field select{
-  width:100%;
-  height:49px;
-  padding:0 14px;
-  border:1px solid var(--line);
-  border-radius:9px;
-  outline:0;
-  background:#0a110d;
-  color:#e9eee9;
-  font:500 11px Inter;
-  transition:.3s;
+    width:100%;
+    height:49px;
+
+    padding:0 14px;
+
+    border:1px solid var(--border);
+    border-radius:9px;
+
+    outline:none;
+
+    background:#090f0b;
+
+    color:#eaf0eb;
+
+    font-family:Inter;
+    font-size:10px;
+
+    transition:.3s;
 }
 
 .field input::placeholder{
-  color:#465149;
-}
-
-.field input:hover,
-.field select:hover{
-  border-color:rgba(255,255,255,.15);
+    color:#465149;
 }
 
 .field input:focus,
 .field select:focus{
-  border-color:rgba(202,255,38,.6);
-  background:#0d160f;
-  box-shadow:
-    0 0 0 3px rgba(202,255,38,.05),
-    0 0 30px rgba(202,255,38,.04);
+    border-color:rgba(202,255,37,.55);
+
+    box-shadow:
+        0 0 0 3px rgba(202,255,37,.045);
 }
 
 .field select{
-  cursor:pointer;
+    cursor:pointer;
 }
 
 .field select option{
-  background:#0b110d;
-  color:white;
+    background:#0b110d;
 }
 
-/* ===================================
-   BUTTON
-=================================== */
 
-.next{
-  width:100%;
-  position:relative;
-  overflow:hidden;
-  margin-top:22px;
-  padding:17px;
-  border:0;
-  border-radius:9px;
-  background:var(--lime);
-  color:#080b08;
-  font-size:9px;
-  font-weight:900;
-  letter-spacing:1px;
-  text-transform:uppercase;
-  cursor:pointer;
-  transition:.35s;
-  box-shadow:0 15px 40px rgba(202,255,38,.1);
+/* =========================================================
+   PRIMARY BUTTON
+========================================================= */
+
+.primary{
+    position:relative;
+
+    width:100%;
+
+    margin-top:20px;
+
+    padding:16px;
+
+    border:0;
+    border-radius:9px;
+
+    background:var(--lime);
+
+    color:#070a07;
+
+    font-size:8px;
+    font-weight:900;
+
+    letter-spacing:1px;
+    text-transform:uppercase;
+
+    cursor:pointer;
+
+    overflow:hidden;
+
+    transition:.3s;
 }
 
-.next:before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:-130%;
-  width:80%;
-  height:100%;
-  transform:skewX(-20deg);
-  background:linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,.6),
-    transparent
-  );
-  transition:.65s;
+.primary:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 18px 45px rgba(202,255,37,.15);
 }
 
-.next:hover:before{
-  left:150%;
+.primary:active{
+    transform:translateY(-1px);
 }
 
-.next:hover{
-  transform:translateY(-3px);
-  box-shadow:0 20px 50px rgba(202,255,38,.2);
+.primary:after{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-120%;
+
+    width:70%;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.55),
+            transparent
+        );
+
+    transform:skewX(-20deg);
+
+    transition:.6s;
 }
 
-.note{
-  text-align:center;
-  margin-top:11px;
-  color:#4e5a52;
-  font-size:7px;
-  line-height:1.6;
+.primary:hover:after{
+    left:150%;
 }
 
-/* ===================================
-   PAYMENT
-=================================== */
+.form-note{
+    margin-top:10px;
 
-.payment,
-.success{
-  display:none;
+    color:#465149;
+
+    font-size:7px;
+
+    line-height:1.7;
+
+    text-align:center;
 }
 
-.payment.show,
-.success.show{
-  display:block;
-  animation:pageIn .6s ease both;
+
+/* =========================================================
+   PAYMENT SCREEN
+========================================================= */
+
+.panel{
+    display:none;
 }
 
-.paymentHead{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:25px;
+.panel.show{
+    display:block;
+
+    animation:appear .45s ease both;
 }
 
-.paymentHead h2{
-  font:900 64px/.8 "Barlow Condensed";
-  text-transform:uppercase;
+.payment-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+
+    margin-bottom:24px;
 }
 
-.close{
-  width:39px;
-  height:39px;
-  border:1px solid var(--line);
-  border-radius:50%;
-  background:#0b120e;
-  color:#89948d;
-  font-size:22px;
-  cursor:pointer;
-  transition:.3s;
+.payment-title{
+    margin-top:10px;
+
+    font-family:"Barlow Condensed";
+    font-size:65px;
+    font-weight:900;
+
+    line-height:.8;
+
+    text-transform:uppercase;
 }
 
-.close:hover{
-  color:var(--lime);
-  border-color:rgba(202,255,38,.4);
-  transform:rotate(90deg);
+.close-button{
+    width:38px;
+    height:38px;
+
+    border:1px solid var(--border);
+    border-radius:50%;
+
+    background:#0b120e;
+
+    color:#87928b;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    transition:.3s;
 }
 
-.payment-total{
-  margin-bottom:20px;
-  padding:16px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border:1px solid var(--line);
-  border-radius:10px;
-  background:#0a110d;
+.close-button:hover{
+    color:var(--lime);
+
+    border-color:
+        rgba(202,255,37,.35);
+
+    transform:rotate(90deg);
 }
 
-.payment-total span{
-  color:#66736a;
-  font-size:8px;
-  font-weight:900;
-  letter-spacing:1px;
-  text-transform:uppercase;
+
+/* =========================================================
+   PAYMENT SUMMARY
+========================================================= */
+
+.payment-summary{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:15px;
+
+    padding:15px;
+
+    border:1px solid var(--border);
+    border-radius:10px;
+
+    background:#090f0b;
 }
 
-.payment-total strong{
-  color:var(--lime);
-  font:900 28px "Barlow Condensed";
+.payment-summary span{
+    color:#657169;
+
+    font-size:7px;
+    font-weight:900;
+
+    letter-spacing:1.5px;
+    text-transform:uppercase;
 }
 
-/* ===================================
+.payment-summary strong{
+    color:var(--lime);
+
+    font-family:"Barlow Condensed";
+    font-size:29px;
+}
+
+
+/* =========================================================
    QR
-=================================== */
+========================================================= */
 
-.qrWrap{
-  position:relative;
-  padding:25px;
-  text-align:center;
-  border:1px solid rgba(202,255,38,.15);
-  border-radius:18px;
-  background:
-    radial-gradient(circle at center,rgba(202,255,38,.05),transparent 55%),
-    #09100c;
-  overflow:hidden;
+.qr-box{
+    padding:22px;
+
+    text-align:center;
+
+    border:1px solid rgba(202,255,37,.12);
+    border-radius:16px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(202,255,37,.04),
+            transparent 55%
+        ),
+        #080e0a;
 }
 
-.qrWrap:before,
-.qrWrap:after{
-  content:"";
-  position:absolute;
-  width:25px;
-  height:25px;
-  border-color:var(--lime);
-  border-style:solid;
-  opacity:.7;
-}
+.qr-title{
+    color:#68746c;
 
-.qrWrap:before{
-  left:15px;
-  top:15px;
-  border-width:2px 0 0 2px;
-}
+    font-size:7px;
+    font-weight:900;
 
-.qrWrap:after{
-  right:15px;
-  bottom:15px;
-  border-width:0 2px 2px 0;
-}
-
-.qr-label{
-  color:#69766d;
-  font-size:7px;
-  font-weight:900;
-  letter-spacing:2px;
-  text-transform:uppercase;
+    letter-spacing:2px;
+    text-transform:uppercase;
 }
 
 .qr{
-  width:235px;
-  height:235px;
-  margin:20px auto;
-  padding:12px;
-  display:grid;
-  place-items:center;
-  border-radius:14px;
-  background:white;
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,.2),
-    0 20px 60px rgba(0,0,0,.4);
+    width:220px;
+    height:220px;
+
+    margin:18px auto;
+
+    padding:9px;
+
+    display:grid;
+    place-items:center;
+
+    background:white;
+
+    border-radius:12px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.35);
 }
 
-.upi{
-  color:var(--lime);
-  font-size:18px;
-  font-weight:900;
-  word-break:break-all;
+.upi-id{
+    color:var(--lime);
+
+    font-size:15px;
+    font-weight:900;
+
+    word-break:break-all;
 }
 
-.scanText{
-  margin-top:6px;
-  color:#59655d;
-  font-size:7px;
-  text-transform:uppercase;
-  letter-spacing:1px;
+.qr-note{
+    margin-top:6px;
+
+    color:#566159;
+
+    font-size:7px;
+    text-transform:uppercase;
 }
 
-/* ===================================
+
+/* =========================================================
    PAYMENT BUTTONS
-=================================== */
+========================================================= */
 
-.payBtns{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-top:14px;
+.payment-buttons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    gap:9px;
+
+    margin-top:12px;
 }
 
-.payBtn{
-  min-height:51px;
-  border:1px solid rgba(202,255,38,.25);
-  border-radius:9px;
-  background:var(--lime);
-  color:#080b08;
-  font-size:8px;
-  font-weight:900;
-  letter-spacing:.7px;
-  text-transform:uppercase;
-  cursor:pointer;
-  transition:.3s;
+.payment-button{
+    min-height:49px;
+
+    border:1px solid rgba(202,255,37,.2);
+    border-radius:9px;
+
+    background:var(--lime);
+
+    color:#070a07;
+
+    font-size:7px;
+    font-weight:900;
+
+    letter-spacing:.8px;
+    text-transform:uppercase;
+
+    cursor:pointer;
+
+    transition:.3s;
 }
 
-.payBtn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 15px 35px rgba(202,255,38,.15);
+.payment-button:hover{
+    transform:translateY(-2px);
 }
 
-.payBtn.secondary{
-  background:#101812;
-  color:#b9c3bc;
-  border-color:var(--line);
+.payment-button.secondary{
+    background:#0d1510;
+
+    border-color:var(--border);
+
+    color:#a8b1aa;
 }
 
-.payBtn.secondary:hover{
-  color:var(--lime);
-  border-color:rgba(202,255,38,.35);
+.payment-button.secondary:hover{
+    color:var(--lime);
+
+    border-color:
+        rgba(202,255,37,.3);
 }
 
-.warning{
-  margin-top:13px;
-  padding:13px;
-  border-radius:9px;
-  background:rgba(255,189,89,.045);
-  border:1px solid rgba(255,189,89,.12);
-  color:#8b8063;
-  font-size:8px;
-  line-height:1.7;
+
+/* =========================================================
+   PAYMENT INFO
+========================================================= */
+
+.payment-info{
+    margin-top:12px;
+
+    padding:12px;
+
+    border:1px solid var(--border);
+    border-radius:9px;
+
+    color:#657169;
+
+    font-size:7px;
+    line-height:1.7;
 }
 
-.warning b{
-  color:#c5a866;
+.payment-info b{
+    color:#9aa69e;
 }
 
-/* ===================================
-   SUCCESS
-=================================== */
 
-.success{
-  text-align:center;
-  padding:45px 10px 20px;
+/* =========================================================
+   VERIFICATION SCREEN
+========================================================= */
+
+.verify{
+    display:none;
+
+    text-align:center;
+
+    padding:35px 10px;
 }
 
-.success-glow{
-  position:relative;
-  width:105px;
-  height:105px;
-  margin:0 auto 28px;
+.verify.show{
+    display:block;
+
+    animation:appear .45s ease both;
 }
 
-.check{
-  width:105px;
-  height:105px;
-  display:grid;
-  place-items:center;
-  border-radius:50%;
-  background:var(--lime);
-  color:#080b08;
-  font-size:52px;
-  font-weight:900;
-  position:relative;
-  z-index:2;
-  box-shadow:
-    0 0 0 10px rgba(202,255,38,.07),
-    0 0 0 20px rgba(202,255,38,.035),
-    0 0 60px rgba(202,255,38,.18);
-  animation:successPop .8s cubic-bezier(.2,.8,.2,1);
+.verify-icon{
+    width:88px;
+    height:88px;
+
+    display:grid;
+    place-items:center;
+
+    margin:0 auto 25px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(202,255,37,.3);
+
+    background:rgba(202,255,37,.06);
+
+    color:var(--lime);
+
+    font-size:37px;
+
+    box-shadow:
+        0 0 0 10px rgba(202,255,37,.025),
+        0 0 45px rgba(202,255,37,.08);
+
+    animation:softPulse 2s infinite;
 }
 
-.success-glow:after{
-  content:"";
-  position:absolute;
-  inset:-20px;
-  border:1px solid rgba(202,255,38,.25);
-  border-radius:50%;
-  animation:successRing 2s ease-out infinite;
+.verify h2{
+    font-family:"Barlow Condensed";
+    font-size:67px;
+    font-weight:900;
+
+    line-height:.8;
+
+    text-transform:uppercase;
 }
 
-.success .kicker{
-  margin-bottom:12px;
+.verify h2 span{
+    color:var(--lime);
 }
 
-.success h2{
-  font:900 75px/.78 "Barlow Condensed";
-  text-transform:uppercase;
+.verify p{
+    max-width:430px;
+
+    margin:22px auto;
+
+    color:#718078;
+
+    font-size:9px;
+
+    line-height:1.8;
 }
 
-.success h2 span{
-  color:var(--lime);
+.member-id{
+    display:inline-block;
+
+    padding:12px 17px;
+
+    border:1px solid rgba(202,255,37,.25);
+    border-radius:8px;
+
+    background:rgba(202,255,37,.045);
+
+    color:var(--lime);
+
+    font-size:8px;
+    font-weight:900;
+
+    letter-spacing:1px;
 }
 
-.success p{
-  max-width:440px;
-  margin:23px auto;
-  color:#748078;
-  font-size:10px;
-  line-height:1.8;
-}
 
-.memberId{
-  display:inline-block;
-  margin:8px 0 8px;
-  padding:13px 17px;
-  border:1px solid rgba(202,255,38,.25);
-  border-radius:8px;
-  background:rgba(202,255,38,.06);
-  color:var(--lime);
-  font-size:9px;
-  font-weight:900;
-  letter-spacing:1px;
-}
-
-/* ===================================
-   FOOTER
-=================================== */
-
-.bottom-note{
-  width:min(1180px,92%);
-  margin:0 auto 40px;
-  padding-top:18px;
-  border-top:1px solid var(--line);
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  color:#465149;
-  font-size:7px;
-  font-weight:900;
-  letter-spacing:1px;
-  text-transform:uppercase;
-}
-
-.bottom-note b{
-  color:#6c7a70;
-}
-
-/* ===================================
+/* =========================================================
    ANIMATIONS
-=================================== */
+========================================================= */
 
 @keyframes gridMove{
-  from{transform:perspective(700px) rotateX(65deg) translateY(-150px)}
-  to{transform:perspective(700px) rotateX(65deg) translateY(0)}
+    from{
+        transform:
+            perspective(700px)
+            rotateX(58deg)
+            translateY(-30px);
+    }
+
+    to{
+        transform:
+            perspective(700px)
+            rotateX(58deg)
+            translateY(80px);
+    }
 }
 
-@keyframes orbOne{
-  0%,100%{transform:translate(0,0) scale(1)}
-  50%{transform:translate(80px,50px) scale(1.15)}
+@keyframes floatOne{
+    0%,100%{
+        transform:translate(0,0);
+    }
+
+    50%{
+        transform:translate(80px,40px) scale(1.1);
+    }
 }
 
-@keyframes orbTwo{
-  0%,100%{transform:translate(0,0)}
-  50%{transform:translate(-70px,-40px) scale(1.1)}
+@keyframes floatTwo{
+    0%,100%{
+        transform:translate(0,0);
+    }
+
+    50%{
+        transform:translate(-70px,-45px) scale(1.08);
+    }
 }
 
 @keyframes scan{
-  0%{top:-10%}
-  100%{top:110%}
+    from{
+        top:-5%;
+    }
+
+    to{
+        top:105%;
+    }
 }
 
-@keyframes rotateRing{
-  from{transform:rotate(0)}
-  to{transform:rotate(360deg)}
+@keyframes ring{
+    from{
+        transform:rotate(0);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
 }
 
-@keyframes blink{
-  0%,100%{opacity:1}
-  50%{opacity:.3}
+@keyframes pulse{
+    0%,100%{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    50%{
+        opacity:.35;
+        transform:scale(.75);
+    }
 }
 
-@keyframes pageIn{
-  from{
-    opacity:0;
-    transform:translateY(20px) scale(.98);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0) scale(1);
-  }
+@keyframes softPulse{
+    0%,100%{
+        box-shadow:
+            0 0 0 10px rgba(202,255,37,.025),
+            0 0 45px rgba(202,255,37,.08);
+    }
+
+    50%{
+        box-shadow:
+            0 0 0 16px rgba(202,255,37,.015),
+            0 0 65px rgba(202,255,37,.15);
+    }
 }
 
-@keyframes successPop{
-  0%{
-    transform:scale(.3);
-    opacity:0;
-  }
-  70%{
-    transform:scale(1.08);
-  }
-  100%{
-    transform:scale(1);
-    opacity:1;
-  }
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:translateY(14px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
-@keyframes successRing{
-  0%{
-    transform:scale(.7);
-    opacity:.8;
-  }
-  100%{
-    transform:scale(1.5);
-    opacity:0;
-  }
-}
 
-/* ===================================
+/* =========================================================
    RESPONSIVE
-=================================== */
+========================================================= */
 
 @media(max-width:900px){
 
-  .page{
-    grid-template-columns:1fr;
-  }
+    .page{
+        grid-template-columns:1fr;
+    }
 
-  .summary{
-    min-height:auto;
-    position:relative;
-    top:auto;
-  }
+    .membership{
+        min-height:540px;
+    }
 
-  .form-card{
-    min-height:auto;
-  }
-
-  .summary:before{
-    font-size:280px;
-  }
+    .card{
+        min-height:auto;
+    }
 
 }
 
 @media(max-width:650px){
 
-  .top{
-    width:90%;
-    padding:17px 0;
-  }
+    .header{
+        width:92%;
+        padding:17px 0;
+    }
 
-  .logo{
-    font-size:24px;
-  }
+    .logo{
+        font-size:24px;
+    }
 
-  .back{
-    padding:9px 10px;
-    font-size:7px;
-  }
+    .logo-box{
+        width:35px;
+        height:32px;
 
-  .page{
-    width:92%;
-    margin-top:10px;
-  }
+        font-size:20px;
+    }
 
-  .summary,
-  .form-card{
-    padding:24px;
-    border-radius:18px;
-  }
+    .back{
+        padding:9px 10px;
+        font-size:7px;
+    }
 
-  .summary h1{
-    font-size:72px;
-  }
+    .page{
+        width:92%;
+        margin-top:10px;
+    }
 
-  .form-heading h2{
-    font-size:57px;
-  }
+    .membership,
+    .card{
+        padding:24px;
 
-  .steps{
-    margin-bottom:28px;
-  }
+        border-radius:18px;
+    }
 
-  .step-line{
-    width:20px;
-    margin:0 7px;
-  }
+    .membership{
+        min-height:500px;
+    }
 
-  .step{
-    font-size:6px;
-    letter-spacing:.5px;
-    gap:5px;
-  }
+    .membership h1{
+        font-size:70px;
+    }
 
-  .step-number{
-    width:25px;
-    height:25px;
-    font-size:8px;
-  }
+    .plan-price{
+        font-size:63px;
+    }
 
-  .grid{
-    grid-template-columns:1fr;
-  }
+    .form-title{
+        font-size:56px;
+    }
 
-  .full{
-    grid-column:auto;
-  }
+    .payment-title{
+        font-size:55px;
+    }
 
-  .planPicker{
-    grid-template-columns:1fr;
-  }
+    .form-grid{
+        grid-template-columns:1fr;
+    }
 
-  .pick{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:13px;
-  }
+    .field.full{
+        grid-column:auto;
+    }
 
-  .pick strong{
-    font-size:24px;
-  }
+    .plans{
+        grid-template-columns:1fr;
+    }
 
-  .pick span{
-    margin:0;
-  }
+    .plan{
+        min-height:65px;
 
-  .payBtns{
-    grid-template-columns:1fr;
-  }
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+    }
 
-  .qr{
-    width:215px;
-    height:215px;
-  }
+    .plan-text{
+        margin-top:0;
+    }
 
-  .paymentHead h2{
-    font-size:55px;
-  }
+    .step{
+        font-size:6px;
+    }
 
-  .success h2{
-    font-size:63px;
-  }
+    .step-number{
+        width:26px;
+        height:26px;
+    }
 
-  .bottom-note{
-    display:block;
-    text-align:center;
-    line-height:2;
-  }
+    .step-line{
+        width:22px;
+        margin:0 6px;
+    }
 
-}
+    .payment-buttons{
+        grid-template-columns:1fr;
+    }
 
-@media(max-width:390px){
-
-  .summary h1{
-    font-size:64px;
-  }
-
-  .amount{
-    font-size:65px;
-  }
-
-  .form-heading h2{
-    font-size:51px;
-  }
-
-  .steps{
-    transform:scale(.9);
-    transform-origin:left;
-  }
+    .qr{
+        width:205px;
+        height:205px;
+    }
 
 }
 
 </style>
 </head>
 
+
 <body>
 
-<!-- ===================================
+
+<!-- =======================================================
      BACKGROUND
-=================================== -->
+======================================================= -->
 
 <div class="background">
-  <div class="grid"></div>
-  <div class="orb one"></div>
-  <div class="orb two"></div>
-  <div class="scanline"></div>
+
+    <div class="grid"></div>
+
+    <div class="glow one"></div>
+
+    <div class="glow two"></div>
+
+    <div class="light-line"></div>
+
 </div>
 
-<div class="noise"></div>
 
-
-<!-- ===================================
+<!-- =======================================================
      HEADER
-=================================== -->
+======================================================= -->
 
-<header class="top">
+<header class="header">
 
-  <a class="logo" href="index.html">
-    <b>14</b>
-    FITNESS
-    <span>GYM</span>
-  </a>
+    <a href="index.html" class="logo">
 
-  <a class="back" href="index.html">
-    ← Back To Gym
-  </a>
+        <span class="logo-box">14</span>
+
+        FITNESS
+
+        <span>GYM</span>
+
+    </a>
+
+
+    <a href="index.html" class="back">
+
+        ← BACK TO GYM
+
+    </a>
 
 </header>
 
 
-<!-- ===================================
-     MAIN
-=================================== -->
+<!-- =======================================================
+     PAGE
+======================================================= -->
 
 <main class="page">
 
 
-  <!-- ===================================
-       SUMMARY
-  =================================== -->
+<!-- =======================================================
+     LEFT
+======================================================= -->
 
-  <section class="summary">
+<section class="membership">
 
-    <div class="kicker">
-      Membership Registration
+    <div class="eyebrow">
+        14 FITNESS GYM
     </div>
 
+
     <h1>
-      Own<br>
-      Your<br>
-      <span>Progress.</span>
+
+        Own<br>
+
+        Your<br>
+
+        <span>Progress.</span>
+
     </h1>
 
-    <p class="summary-text">
-      One decision can change the way you train.
-      Choose your membership, enter your details and
-      take the next step toward your strongest self.
+
+    <p class="description">
+
+        Choose your membership, enter your details
+        and continue to the payment screen.
+        Your membership is created only after
+        the registration process is completed.
+
     </p>
 
 
-    <div class="selected">
+    <div class="plan-display">
 
-      <div class="selected-label">
-        Selected Membership
-      </div>
-
-      <h2 id="summaryPlan">
-        6 MONTHS
-      </h2>
-
-      <div class="amount" id="summaryAmount">
-        ₹7,560
-        <small>total</small>
-      </div>
+        <div class="plan-label">
+            SELECTED MEMBERSHIP
+        </div>
 
 
-      <ul class="benefits" id="summaryBenefits">
+        <div
+            class="plan-name"
+            id="displayPlan">
 
-        <li>
-          6 Months membership
-        </li>
+            6 MONTHS
 
-        <li>
-          FREE admission
-        </li>
+        </div>
 
-        <li>
-          10% long-term discount
-        </li>
 
-      </ul>
+        <div
+            class="plan-price"
+            id="displayPrice">
+
+            ₹7,560
+
+            <small>
+                total
+            </small>
+
+        </div>
+
+
+        <ul
+            class="benefits"
+            id="displayBenefits">
+
+            <li>
+                6 Months membership
+            </li>
+
+            <li>
+                FREE admission
+            </li>
+
+            <li>
+                Long-term discount
+            </li>
+
+        </ul>
 
     </div>
 
 
-    <div class="live-badge">
-      <span class="live-dot"></span>
-      14 Fitness • Member Registration
-    </div>
+    <div class="live">
 
-  </section>
+        <span class="live-dot"></span>
 
-
-  <!-- ===================================
-       FORM CARD
-  =================================== -->
-
-  <section class="form-card">
-
-
-    <!-- ===================================
-         STEPS
-    =================================== -->
-
-    <div class="steps">
-
-      <div class="step active" id="stepOne">
-
-        <div class="step-number">
-          01
-        </div>
-
-        Your Details
-
-      </div>
-
-
-      <div class="step-line"></div>
-
-
-      <div class="step" id="stepTwo">
-
-        <div class="step-number">
-          02
-        </div>
-
-        Payment
-
-      </div>
-
-
-      <div class="step-line"></div>
-
-
-      <div class="step" id="stepThree">
-
-        <div class="step-number">
-          03
-        </div>
-
-        Complete
-
-      </div>
+        MEMBERSHIP REGISTRATION
 
     </div>
 
+</section>
 
-    <!-- ===================================
-         FORM PANEL
-    =================================== -->
 
-    <div id="formPanel">
 
+<!-- =======================================================
+     RIGHT
+======================================================= -->
 
-      <div class="form-heading">
+<section class="card">
 
-        <div class="kicker">
-          Step 01 / Personal Information
-        </div>
 
-        <h2>
-          Become A<br>
-          Member.
-        </h2>
+<!-- =======================================================
+     STEPS
+======================================================= -->
 
-        <p>
-          Enter your real details below. These details are
-          used to create your membership record.
-        </p>
-
-      </div>
-
-
-      <div class="secure">
-
-        <div class="secure-icon">
-          🔒
-        </div>
-
-        <div>
-          <b>Secure Registration</b><br>
-          Your information is used for your membership
-          record. Never enter your UPI PIN, ATM PIN,
-          password or banking credentials here.
-        </div>
-
-      </div>
-
-
-      <!-- PLAN PICKER -->
-
-      <div class="planTitle">
-        Select Membership
-      </div>
-
-      <div class="planPicker">
-
-        <button
-          class="pick"
-          data-plan="1400"
-          type="button">
-
-          <strong>₹1,400</strong>
-          <span>1 MONTH + FREE</span>
-
-        </button>
-
-
-        <button
-          class="pick active"
-          data-plan="7560"
-          type="button">
-
-          <strong>₹7,560</strong>
-          <span>6 MONTHS • BEST</span>
-
-        </button>
-
-
-        <button
-          class="pick"
-          data-plan="14280"
-          type="button">
-
-          <strong>₹14,280</strong>
-          <span>1 YEAR • ELITE</span>
-
-        </button>
-
-      </div>
-
-
-      <!-- FORM -->
-
-      <form id="memberForm">
-
-        <div class="grid">
-
-
-          <div class="field full">
-
-            <label>
-              Full Name *
-            </label>
-
-            <input
-              id="name"
-              required
-              autocomplete="name"
-              pattern="[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ .'-]{2,59}"
-              title="Enter your real full name"
-              placeholder="Enter your full name">
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Mobile Number *
-            </label>
-
-            <input
-              id="phone"
-              required
-              inputmode="numeric"
-              maxlength="10"
-              pattern="[6-9][0-9]{9}"
-              title="Enter a valid 10-digit Indian mobile number"
-              placeholder="10-digit mobile">
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Age *
-            </label>
-
-            <input
-              id="age"
-              required
-              type="number"
-              min="12"
-              max="90"
-              placeholder="Your age">
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Gender *
-            </label>
-
-            <select id="gender" required>
-
-              <option value="">
-                Select gender
-              </option>
-
-              <option>
-                Male
-              </option>
-
-              <option>
-                Female
-              </option>
-
-              <option>
-                Prefer not to say
-              </option>
-
-            </select>
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Fitness Goal *
-            </label>
-
-            <select id="goal" required>
-
-              <option value="">
-                Select goal
-              </option>
-
-              <option>
-                Muscle Gain
-              </option>
-
-              <option>
-                Fat Loss
-              </option>
-
-              <option>
-                Strength
-              </option>
-
-              <option>
-                General Fitness
-              </option>
-
-              <option>
-                Bodybuilding
-              </option>
-
-            </select>
-
-          </div>
-
-
-        </div>
-
-
-        <button
-          class="next"
-          type="submit">
-
-          Continue To Secure Payment →
-
-        </button>
-
-        <div class="note">
-          By continuing, you confirm that the details entered are accurate.
-        </div>
-
-      </form>
-
-    </div>
-
-
-    <!-- ===================================
-         PAYMENT PANEL
-    =================================== -->
+<div class="steps">
 
     <div
-      class="payment"
-      id="paymentPanel">
+        class="step active"
+        id="step1">
 
-
-      <div class="paymentHead">
-
-        <div>
-
-          <div class="kicker">
-            Step 02 / Secure Payment
-          </div>
-
-          <h2>
-            Scan & Pay.
-          </h2>
-
-        </div>
-
-
-        <button
-          class="close"
-          type="button"
-          onclick="backToForm()">
-
-          ×
-
-        </button>
-
-      </div>
-
-
-      <div class="payment-total">
-
-        <span>
-          Amount To Pay
+        <span class="step-number">
+            01
         </span>
 
-        <strong id="paymentAmount">
-          ₹7,560
-        </strong>
-
-      </div>
-
-
-      <!-- QR -->
-
-      <div class="qrWrap">
-
-        <div class="qr-label">
-          UPI QR • 14 FITNESS GYM
-        </div>
-
-        <div
-          class="qr"
-          id="qr">
-        </div>
-
-        <div
-          class="upi"
-          id="upiText">
-          7889777143@fam
-        </div>
-
-        <div class="scanText">
-          Scan with any supported UPI application
-        </div>
-
-      </div>
-
-
-      <div class="payBtns">
-
-        <button
-          class="payBtn"
-          type="button"
-          onclick="payWithUPI()">
-
-          Pay With UPI App →
-
-        </button>
-
-
-        <button
-          class="payBtn secondary"
-          type="button"
-          onclick="showPaidConfirmation()">
-
-          I Have Completed Payment
-
-        </button>
-
-      </div>
-
-
-      <div class="warning">
-
-        <b>Payment verification:</b>
-        A UPI deep-link can open the installed UPI app,
-        but a normal website cannot reliably receive an
-        automatic payment-success callback from every
-        UPI app/browser. Final payment verification should
-        be completed by the backend before activating a
-        paid membership.
-
-      </div>
+        DETAILS
 
     </div>
 
 
-    <!-- ===================================
-         SUCCESS PANEL
-    =================================== -->
+    <div class="step-line"></div>
+
 
     <div
-      class="success"
-      id="successPanel">
+        class="step"
+        id="step2">
 
+        <span class="step-number">
+            02
+        </span>
 
-      <div class="success-glow">
-
-        <div class="check">
-          ✓
-        </div>
-
-      </div>
-
-
-      <div class="kicker">
-        Registration Received
-      </div>
-
-
-      <h2>
-        You're<br>
-        A <span>Member.</span>
-      </h2>
-
-
-      <p id="successMessage"></p>
-
-
-      <div
-        class="memberId"
-        id="memberId">
-      </div>
-
-
-      <p>
-
-        Your membership record has been saved from
-        your joining date.<br>
-
-        <b>
-          Membership countdown will appear in the
-          Members section of the gym website.
-        </b>
-
-      </p>
-
-
-      <button
-        class="next"
-        onclick="location.href='index.html#members'">
-
-        View Members →
-
-      </button>
+        PAYMENT
 
     </div>
 
 
-  </section>
-
-</main>
+    <div class="step-line"></div>
 
 
-<!-- ===================================
-     FOOTER
-=================================== -->
+    <div
+        class="step"
+        id="step3">
 
-<div class="bottom-note">
+        <span class="step-number">
+            03
+        </span>
 
-  <div>
-    © 2026 <b>14 FITNESS GYM</b>
-  </div>
+        VERIFICATION
 
-  <div>
-    Train Hard • Stay Consistent • Keep Moving
-  </div>
+    </div>
 
 </div>
 
 
+
+<!-- =======================================================
+     STEP 1
+======================================================= -->
+
+<div
+    class="content panel show"
+    id="detailsPanel">
+
+
+    <div class="form-eyebrow">
+        STEP 01 / YOUR DETAILS
+    </div>
+
+
+    <h2 class="form-title">
+
+        Become A<br>
+
+        Member.
+
+    </h2>
+
+
+    <p class="form-subtitle">
+
+        Enter your membership information below.
+        Make sure your name and mobile number are correct.
+
+    </p>
+
+
+    <div class="security">
+
+        <div class="security-icon">
+            🔒
+        </div>
+
+        <div>
+
+            <b>Private Registration</b><br>
+
+            We only need the information required
+            for your gym membership. Never enter
+            your UPI PIN, ATM PIN or password.
+
+        </div>
+
+    </div>
+
+
+    <!-- PLAN -->
+
+    <div class="plan-title">
+        Choose Membership
+    </div>
+
+
+    <div class="plans">
+
+
+        <button
+            type="button"
+            class="plan"
+            data-plan="1400">
+
+            <span class="plan-price-small">
+                ₹1,400
+            </span>
+
+            <span class="plan-text">
+                1 MONTH + FREE
+            </span>
+
+        </button>
+
+
+        <button
+            type="button"
+            class="plan active"
+            data-plan="7560">
+
+            <span class="plan-price-small">
+                ₹7,560
+            </span>
+
+            <span class="plan-text">
+                6 MONTHS • BEST
+            </span>
+
+        </button>
+
+
+        <button
+            type="button"
+            class="plan"
+            data-plan="14280">
+
+            <span class="plan-price-small">
+                ₹14,280
+            </span>
+
+            <span class="plan-text">
+                1 YEAR • ELITE
+            </span>
+
+        </button>
+
+    </div>
+
+
+
+    <!-- FORM -->
+
+    <form id="memberForm">
+
+
+        <div class="form-grid">
+
+
+            <div class="field full">
+
+                <label>
+                    Full Name *
+                </label>
+
+                <input
+                    id="name"
+                    required
+                    autocomplete="name"
+                    placeholder="Enter your full name">
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Mobile Number *
+                </label>
+
+                <input
+                    id="phone"
+                    required
+                    inputmode="numeric"
+                    maxlength="10"
+                    placeholder="10-digit mobile number">
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Age *
+                </label>
+
+                <input
+                    id="age"
+                    required
+                    type="number"
+                    min="12"
+                    max="90"
+                    placeholder="Your age">
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Gender *
+                </label>
+
+                <select
+                    id="gender"
+                    required>
+
+                    <option value="">
+                        Select gender
+                    </option>
+
+                    <option>
+                        Male
+                    </option>
+
+                    <option>
+                        Female
+                    </option>
+
+                    <option>
+                        Prefer not to say
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Fitness Goal *
+                </label>
+
+                <select
+                    id="goal"
+                    required>
+
+                    <option value="">
+                        Select goal
+                    </option>
+
+                    <option>
+                        Muscle Gain
+                    </option>
+
+                    <option>
+                        Fat Loss
+                    </option>
+
+                    <option>
+                        Strength
+                    </option>
+
+                    <option>
+                        General Fitness
+                    </option>
+
+                    <option>
+                        Bodybuilding
+                    </option>
+
+                </select>
+
+            </div>
+
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="primary">
+
+            Continue To Payment →
+
+        </button>
+
+
+        <div class="form-note">
+
+            Nothing is paid when you press this button.
+            It only takes you to the payment screen.
+
+        </div>
+
+    </form>
+
+</div>
+
+
+
+<!-- =======================================================
+     STEP 2 PAYMENT
+======================================================= -->
+
+<div
+    class="panel"
+    id="paymentPanel">
+
+
+    <div class="payment-top">
+
+        <div>
+
+            <div class="form-eyebrow">
+                STEP 02 / PAYMENT
+            </div>
+
+            <h2 class="payment-title">
+                Pay Securely.
+            </h2>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="close-button"
+            onclick="backToDetails()">
+
+            ×
+
+        </button>
+
+    </div>
+
+
+    <div class="payment-summary">
+
+        <span>
+            Amount To Pay
+        </span>
+
+        <strong id="paymentAmount">
+            ₹7,560
+        </strong>
+
+    </div>
+
+
+    <div class="qr-box">
+
+        <div class="qr-title">
+            SCAN UPI QR
+        </div>
+
+
+        <div
+            class="qr"
+            id="qr">
+
+        </div>
+
+
+        <div
+            class="upi-id"
+            id="upiId">
+
+            7889777143@fam
+
+        </div>
+
+
+        <div class="qr-note">
+
+            Scan using your supported UPI application
+
+        </div>
+
+    </div>
+
+
+    <div class="payment-buttons">
+
+
+        <button
+            type="button"
+            class="payment-button"
+            onclick="openUPI()">
+
+            Open UPI App →
+
+        </button>
+
+
+        <button
+            type="button"
+            class="payment-button secondary"
+            onclick="continueVerification()">
+
+            I Have Paid
+
+        </button>
+
+    </div>
+
+
+    <div class="payment-info">
+
+        <b>Important:</b>
+
+        Clicking “Open UPI App” is the only action
+        that can attempt to open a UPI application.
+        Nothing opens automatically when this page loads.
+
+        After payment, use “I Have Paid” to continue
+        to the verification stage.
+
+    </div>
+
+</div>
+
+
+
+<!-- =======================================================
+     STEP 3 VERIFICATION
+======================================================= -->
+
+<div
+    class="verify"
+    id="verificationPanel">
+
+
+    <div class="verify-icon">
+
+        ✓
+
+    </div>
+
+
+    <div class="form-eyebrow">
+
+        STEP 03 / VERIFICATION
+
+    </div>
+
+
+    <h2>
+
+        Payment<br>
+
+        <span>Submitted.</span>
+
+    </h2>
+
+
+    <p id="verificationMessage">
+
+        Your membership information has been received.
+        Your payment is now waiting for verification.
+
+    </p>
+
+
+    <div
+        class="member-id"
+        id="memberId">
+
+    </div>
+
+
+    <button
+        type="button"
+        class="primary"
+        onclick="location.href='index.html'">
+
+        Back To 14 FITNESS
+
+    </button>
+
+
+</div>
+
+
+</section>
+
+</main>
+
+
+
 <script>
 
-/* ===================================
-   PAYMENT CONFIGURATION
-=================================== */
+/* =========================================================
+   CONFIG
+========================================================= */
 
 const UPI_ID = "7889777143@fam";
 
 const UPI_NAME = "14 FITNESS GYM";
 
 
-/* ===================================
+/*
+    IMPORTANT:
+
+    This file DOES NOT automatically open UPI.
+
+    The UPI deep-link is created only inside
+    openUPI(), which is called by the user.
+*/
+
+
+/* =========================================================
    PLANS
-=================================== */
+========================================================= */
 
 const plans = {
 
-  "1400": {
+    "1400": {
 
-    name:"1 MONTH + FREE ADMISSION",
+        name:"1 MONTH + FREE ADMISSION",
 
-    short:"1 MONTH + FREE",
+        display:"1 MONTH",
 
-    amount:1400,
+        amount:1400,
 
-    benefits:[
-      "Admission fee ₹1,400",
-      "1 Month FREE membership",
-      "Full gym access"
-    ]
+        benefits:[
+            "1 Month membership",
+            "FREE admission",
+            "Full gym access"
+        ]
 
-  },
-
-
-  "7560": {
-
-    name:"6 MONTHS + FREE ADMISSION",
-
-    short:"6 MONTHS • BEST VALUE",
-
-    amount:7560,
-
-    benefits:[
-      "6 Months membership",
-      "FREE admission",
-      "10% long-term discount"
-    ]
-
-  },
+    },
 
 
-  "14280": {
+    "7560": {
 
-    name:"1 YEAR + FREE ADMISSION",
+        name:"6 MONTHS + FREE ADMISSION",
 
-    short:"1 YEAR • ELITE",
+        display:"6 MONTHS",
 
-    amount:14280,
+        amount:7560,
 
-    benefits:[
-      "12 Months membership",
-      "FREE admission",
-      "15% annual discount"
-    ]
+        benefits:[
+            "6 Months membership",
+            "FREE admission",
+            "Long-term discount"
+        ]
 
-  }
+    },
+
+
+    "14280": {
+
+        name:"1 YEAR + FREE ADMISSION",
+
+        display:"1 YEAR",
+
+        amount:14280,
+
+        benefits:[
+            "12 Months membership",
+            "FREE admission",
+            "Annual membership"
+        ]
+
+    }
 
 };
 
 
-/* ===================================
-   INITIAL PLAN
-=================================== */
+/* =========================================================
+   STATE
+========================================================= */
 
-let selectedKey =
-  new URLSearchParams(location.search).get("plan") || "7560";
-
-
-if(!plans[selectedKey]){
-
-  selectedKey = "7560";
-
-}
-
+let selectedPlan = "7560";
 
 let memberData = null;
 
 
-/* ===================================
+/* =========================================================
+   SAFE HTML
+========================================================= */
+
+function escapeHtml(value){
+
+    return String(value).replace(
+        /[&<>"']/g,
+
+        character => ({
+
+            "&":"&amp;",
+            "<":"&lt;",
+            ">":"&gt;",
+            '"':"&quot;",
+            "'":"&#039;"
+
+        })[character]
+    );
+
+}
+
+
+/* =========================================================
    PLAN SELECTION
-=================================== */
+========================================================= */
 
-function setPlan(key){
+function selectPlan(key){
 
-  selectedKey = key;
+    if(!plans[key]){
+        return;
+    }
 
-  const p = plans[key];
+
+    selectedPlan = key;
 
 
-  document
-    .querySelectorAll(".pick")
+    const plan = plans[key];
+
+
+    document
+        .querySelectorAll(".plan")
+        .forEach(button => {
+
+            button.classList.toggle(
+                "active",
+                button.dataset.plan === key
+            );
+
+        });
+
+
+    document
+        .getElementById("displayPlan")
+        .textContent = plan.display;
+
+
+    document
+        .getElementById("displayPrice")
+        .innerHTML =
+            "₹" +
+            plan.amount.toLocaleString("en-IN") +
+            " <small>total</small>";
+
+
+    document
+        .getElementById("displayBenefits")
+        .innerHTML =
+            plan.benefits
+                .map(
+                    item =>
+                        `<li>${escapeHtml(item)}</li>`
+                )
+                .join("");
+
+
+    document
+        .getElementById("paymentAmount")
+        .textContent =
+            "₹" +
+            plan.amount.toLocaleString("en-IN");
+
+}
+
+
+/* =========================================================
+   PLAN BUTTONS
+========================================================= */
+
+document
+    .querySelectorAll(".plan")
     .forEach(button => {
 
-      button.classList.toggle(
-        "active",
-        button.dataset.plan === key
-      );
+        button.addEventListener(
+            "click",
+            () => {
+
+                selectPlan(
+                    button.dataset.plan
+                );
+
+            }
+        );
 
     });
 
 
-  document.getElementById(
-    "summaryPlan"
-  ).textContent = p.name;
+/*
+    ONLY initializes the visual selected plan.
+
+    No payment.
+    No redirect.
+    No UPI.
+*/
+
+selectPlan("7560");
 
 
-  document.getElementById(
-    "summaryAmount"
-  ).innerHTML =
-    "₹" +
-    p.amount.toLocaleString("en-IN") +
-    ' <small>total</small>';
-
-
-  document.getElementById(
-    "paymentAmount"
-  ).textContent =
-    "₹" +
-    p.amount.toLocaleString("en-IN");
-
-
-  document.getElementById(
-    "summaryBenefits"
-  ).innerHTML =
-    p.benefits
-      .map(item => `<li>${escapeHtml(item)}</li>`)
-      .join("");
-
-}
-
-
-/* ===================================
-   PLAN BUTTONS
-=================================== */
+/* =========================================================
+   PHONE INPUT
+========================================================= */
 
 document
-  .querySelectorAll(".pick")
-  .forEach(button => {
+    .getElementById("phone")
+    .addEventListener(
+        "input",
+        function(){
 
-    button.addEventListener(
-      "click",
-      () => setPlan(button.dataset.plan)
+            this.value =
+                this.value
+                    .replace(/\D/g,"")
+                    .slice(0,10);
+
+        }
     );
 
-  });
 
-
-setPlan(selectedKey);
-
-
-/* ===================================
-   PHONE INPUT
-=================================== */
+/* =========================================================
+   STEP 1 → STEP 2
+========================================================= */
 
 document
-  .getElementById("phone")
-  .addEventListener(
-    "input",
-    function(){
+    .getElementById("memberForm")
+    .addEventListener(
+        "submit",
+        function(event){
 
-      this.value =
-        this.value
-          .replace(/\D/g,"")
-          .slice(0,10);
-
-    }
-  );
+            event.preventDefault();
 
 
-/* ===================================
-   FORM SUBMISSION
-=================================== */
+            if(!event.target.reportValidity()){
 
-document
-  .getElementById("memberForm")
-  .addEventListener(
-    "submit",
-    function(event){
+                return;
 
-      event.preventDefault();
+            }
 
 
-      if(!event.target.reportValidity()){
-
-        return;
-
-      }
-
-
-      const phone =
-        document
-          .getElementById("phone")
-          .value
-          .trim();
+            const name =
+                document
+                    .getElementById("name")
+                    .value
+                    .trim();
 
 
-      const name =
-        document
-          .getElementById("name")
-          .value
-          .trim();
+            const phone =
+                document
+                    .getElementById("phone")
+                    .value
+                    .trim();
 
 
-      if(
-        !/^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ .'-]{2,59}$/.test(name)
-      ){
-
-        alert(
-          "Please enter your real full name."
-        );
-
-        return;
-
-      }
+            const age =
+                document
+                    .getElementById("age")
+                    .value;
 
 
-      if(
-        !/^[6-9][0-9]{9}$/.test(phone)
-      ){
-
-        alert(
-          "Please enter a valid 10-digit mobile number."
-        );
-
-        return;
-
-      }
+            const gender =
+                document
+                    .getElementById("gender")
+                    .value;
 
 
-      memberData = {
-
-        name:name,
-
-        phone:phone,
-
-        age:
-          document
-            .getElementById("age")
-            .value,
-
-        gender:
-          document
-            .getElementById("gender")
-            .value,
-
-        goal:
-          document
-            .getElementById("goal")
-            .value,
-
-        plan:selectedKey,
-
-        amount:
-          plans[selectedKey].amount,
-
-        createdAt:
-          new Date().toISOString()
-
-      };
+            const goal =
+                document
+                    .getElementById("goal")
+                    .value;
 
 
-      localStorage.setItem(
-        "14fitness_pending",
-        JSON.stringify(memberData)
-      );
+            /* NAME */
+
+            if(
+                !/^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ .'-]{2,59}$/
+                    .test(name)
+            ){
+
+                alert(
+                    "Please enter your real full name."
+                );
+
+                return;
+
+            }
 
 
-      /* switch progress */
+            /* PHONE */
 
-      document
-        .getElementById("stepOne")
-        .classList.remove("active");
+            if(
+                !/^[6-9][0-9]{9}$/.test(phone)
+            ){
 
+                alert(
+                    "Please enter a valid 10-digit Indian mobile number."
+                );
 
-      document
-        .getElementById("stepTwo")
-        .classList.add("active");
+                return;
 
-
-      document
-        .getElementById("formPanel")
-        .style.display = "none";
+            }
 
 
-      document
+            /*
+                Keep data pending.
+
+                IMPORTANT:
+                We do NOT create a member yet.
+            */
+
+            memberData = {
+
+                name,
+
+                phone,
+
+                age,
+
+                gender,
+
+                goal,
+
+                plan:selectedPlan,
+
+                amount:
+                    plans[selectedPlan].amount,
+
+                createdAt:
+                    new Date().toISOString(),
+
+                status:
+                    "Payment Pending Verification"
+
+            };
+
+
+            localStorage.setItem(
+                "14fitness_pending",
+                JSON.stringify(memberData)
+            );
+
+
+            showPayment();
+
+        }
+    );
+
+
+/* =========================================================
+   SHOW PAYMENT
+========================================================= */
+
+function showPayment(){
+
+    document
+        .getElementById("detailsPanel")
+        .classList.remove("show");
+
+
+    document
         .getElementById("paymentPanel")
         .classList.add("show");
 
 
-      makeQR();
+    document
+        .getElementById("verificationPanel")
+        .classList.remove("show");
 
 
-      window.scrollTo({
-        top:0,
-        behavior:"smooth"
-      });
+    setStep(2);
 
-    }
-  );
-
-
-/* ===================================
-   CREATE QR
-=================================== */
-
-function makeQR(){
-
-  const box =
-    document.getElementById("qr");
-
-
-  box.innerHTML = "";
-
-
-  const p =
-    plans[selectedKey];
-
-
-  const uri =
-    `upi://pay?pa=${encodeURIComponent(UPI_ID)}` +
-    `&pn=${encodeURIComponent(UPI_NAME)}` +
-    `&am=${p.amount}` +
-    `&cu=INR` +
-    `&tn=${encodeURIComponent(p.name)}`;
-
-
-  new QRCode(
-    box,
-    {
-
-      text:uri,
-
-      width:211,
-
-      height:211,
-
-      colorDark:"#101512",
-
-      colorLight:"#ffffff"
-
-    }
-  );
-
-
-  document
-    .getElementById("upiText")
-    .textContent = UPI_ID;
-
-
-  document
-    .getElementById("paymentAmount")
-    .textContent =
-      "₹" +
-      p.amount.toLocaleString("en-IN");
-
-}
-
-
-/* ===================================
-   UPI PAYMENT
-=================================== */
-
-function payWithUPI(){
-
-  const p =
-    plans[selectedKey];
-
-
-  const uri =
-    `upi://pay?pa=${encodeURIComponent(UPI_ID)}` +
-    `&pn=${encodeURIComponent(UPI_NAME)}` +
-    `&am=${p.amount}` +
-    `&cu=INR` +
-    `&tn=${encodeURIComponent(p.name)}`;
-
-
-  location.href = uri;
-
-}
-
-
-/* ===================================
-   BACK TO FORM
-=================================== */
-
-function backToForm(){
-
-  document
-    .getElementById("paymentPanel")
-    .classList.remove("show");
-
-
-  document
-    .getElementById("formPanel")
-    .style.display = "block";
-
-
-  document
-    .getElementById("stepTwo")
-    .classList.remove("active");
-
-
-  document
-    .getElementById("stepOne")
-    .classList.add("active");
-
-}
-
-
-/* ===================================
-   PAYMENT COMPLETED
-=================================== */
-
-function showPaidConfirmation(){
-
-  const data =
-    JSON.parse(
-      localStorage.getItem(
-        "14fitness_pending"
-      ) || "null"
-    );
-
-
-  if(!data){
-
-    alert(
-      "Please complete the registration first."
-    );
-
-    return;
-
-  }
-
-
-  /*
-    Existing membership ID system preserved.
-  */
-
-  const id =
-    "14F-" +
-    Date.now()
-      .toString()
-      .slice(-8);
-
-
-  data.memberId = id;
-
-
-  /*
-    Payment is intentionally marked pending
-    because frontend alone cannot verify UPI payment.
-  */
-
-  data.status =
-    "Payment Pending Verification";
-
-
-  const existing =
-    JSON.parse(
-      localStorage.getItem(
-        "14fitness_members"
-      ) || "[]"
-    );
-
-
-  existing.push(data);
-
-
-  localStorage.setItem(
-    "14fitness_members",
-    JSON.stringify(existing)
-  );
-
-
-  localStorage.removeItem(
-    "14fitness_pending"
-  );
-
-
-  /* progress */
-
-  document
-    .getElementById("stepTwo")
-    .classList.remove("active");
-
-
-  document
-    .getElementById("stepThree")
-    .classList.add("active");
-
-
-  document
-    .getElementById("paymentPanel")
-    .classList.remove("show");
-
-
-  document
-    .getElementById("successPanel")
-    .classList.add("show");
-
-
-  document
-    .getElementById("memberId")
-    .textContent =
-      "MEMBER ID • " + id;
-
-
-  document
-    .getElementById("successMessage")
-    .innerHTML =
-      `Welcome <b>${escapeHtml(data.name)}</b>! ` +
-      `Your ${escapeHtml(plans[data.plan].name)} ` +
-      `registration has been recorded.`;
-
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-
-/* ===================================
-   HTML ESCAPE
-=================================== */
-
-function escapeHtml(value){
-
-  return String(value)
-    .replace(
-      /[&<>"']/g,
-      function(match){
-
-        return {
-
-          "&":"&amp;",
-          "<":"&lt;",
-          ">":"&gt;",
-          '"':"&quot;",
-          "'":"&#039;"
-
-        }[match];
-
-      }
-    );
-
-}
-
-
-/* ===================================
-   MOUSE PARALLAX
-=================================== */
-
-if(window.matchMedia("(pointer:fine)").matches){
-
-  const summary =
-    document.querySelector(".summary");
-
-
-  document.addEventListener(
-    "mousemove",
-    event => {
-
-      const x =
-        (event.clientX /
-          window.innerWidth -
-          .5) * 8;
-
-
-      const y =
-        (event.clientY /
-          window.innerHeight -
-          .5) * 8;
-
-
-      summary.style.transform =
-        `perspective(1000px)
-         rotateY(${x * .18}deg)
-         rotateX(${-y * .12}deg)`;
-
-    }
-  );
-
-
-  document.addEventListener(
-    "mouseleave",
-    () => {
-
-      summary.style.transform =
-        "perspective(1000px) rotateY(0) rotateX(0)";
-
-    }
-  );
-
-}
-
-
-/* ===================================
-   SAVE DATA SAFETY CHECK
-=================================== */
-
-window.addEventListener(
-  "beforeunload",
-  () => {
 
     /*
-      pending registration remains in localStorage
-      intentionally so accidental refresh does not
-      erase the user's form/payment state.
+        QR is generated HERE.
+
+        Not when order.html opens.
     */
 
-  }
-);
+    createQR();
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================================
+   QR GENERATION
+========================================================= */
+
+function createQR(){
+
+    const qrBox =
+        document.getElementById("qr");
+
+
+    qrBox.innerHTML = "";
+
+
+    const plan =
+        plans[selectedPlan];
+
+
+    const uri =
+        "upi://pay" +
+        "?pa=" +
+        encodeURIComponent(UPI_ID) +
+
+        "&pn=" +
+        encodeURIComponent(UPI_NAME) +
+
+        "&am=" +
+        plan.amount +
+
+        "&cu=INR" +
+
+        "&tn=" +
+        encodeURIComponent(
+            "14 FITNESS " +
+            plan.display +
+            " MEMBERSHIP"
+        );
+
+
+    new QRCode(
+        qrBox,
+        {
+
+            text:uri,
+
+            width:202,
+
+            height:202,
+
+            colorDark:"#101512",
+
+            colorLight:"#ffffff"
+
+        }
+    );
+
+
+    document
+        .getElementById("upiId")
+        .textContent = UPI_ID;
+
+}
+
+
+/* =========================================================
+   OPEN UPI
+
+   THIS FUNCTION ONLY RUNS AFTER BUTTON CLICK.
+========================================================= */
+
+function openUPI(){
+
+    if(!memberData){
+
+        alert(
+            "Please enter your membership details first."
+        );
+
+        return;
+
+    }
+
+
+    const plan =
+        plans[selectedPlan];
+
+
+    const uri =
+        "upi://pay" +
+
+        "?pa=" +
+        encodeURIComponent(UPI_ID) +
+
+        "&pn=" +
+        encodeURIComponent(UPI_NAME) +
+
+        "&am=" +
+        plan.amount +
+
+        "&cu=INR" +
+
+        "&tn=" +
+        encodeURIComponent(
+            "14 FITNESS " +
+            plan.display +
+            " MEMBERSHIP"
+        );
+
+
+    /*
+        USER CLICK ONLY.
+
+        No automatic redirect exists elsewhere
+        in this file.
+    */
+
+    window.location.href = uri;
+
+}
+
+
+/* =========================================================
+   BACK TO DETAILS
+========================================================= */
+
+function backToDetails(){
+
+    document
+        .getElementById("paymentPanel")
+        .classList.remove("show");
+
+
+    document
+        .getElementById("verificationPanel")
+        .classList.remove("show");
+
+
+    document
+        .getElementById("detailsPanel")
+        .classList.add("show");
+
+
+    setStep(1);
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================================
+   STEP 2 → STEP 3
+========================================================= */
+
+function continueVerification(){
+
+    const saved =
+        localStorage.getItem(
+            "14fitness_pending"
+        );
+
+
+    if(!saved){
+
+        alert(
+            "Your registration session was not found."
+        );
+
+        return;
+
+    }
+
+
+    memberData =
+        JSON.parse(saved);
+
+
+    /*
+        IMPORTANT:
+
+        This is NOT claiming that payment
+        has been automatically verified.
+
+        It only submits the user's declaration
+        that they completed payment.
+    */
+
+
+    const memberId =
+        "14F-" +
+        Date.now()
+            .toString()
+            .slice(-8);
+
+
+    memberData.memberId =
+        memberId;
+
+
+    memberData.status =
+        "Payment Pending Verification";
+
+
+    /*
+        Compatibility with the current
+        localStorage member system.
+
+        This keeps the existing website
+        working until server.js is connected.
+    */
+
+    let members = [];
+
+
+    try{
+
+        members =
+            JSON.parse(
+                localStorage.getItem(
+                    "14fitness_members"
+                ) || "[]"
+            );
+
+        if(!Array.isArray(members)){
+
+            members = [];
+
+        }
+
+    }catch(error){
+
+        members = [];
+
+    }
+
+
+    members.push(memberData);
+
+
+    localStorage.setItem(
+        "14fitness_members",
+        JSON.stringify(members)
+    );
+
+
+    localStorage.removeItem(
+        "14fitness_pending"
+    );
+
+
+    showVerification(
+        memberData
+    );
+
+}
+
+
+/* =========================================================
+   SHOW VERIFICATION
+========================================================= */
+
+function showVerification(data){
+
+    document
+        .getElementById("detailsPanel")
+        .classList.remove("show");
+
+
+    document
+        .getElementById("paymentPanel")
+        .classList.remove("show");
+
+
+    document
+        .getElementById("verificationPanel")
+        .classList.add("show");
+
+
+    setStep(3);
+
+
+    document
+        .getElementById("memberId")
+        .textContent =
+            "MEMBER ID • " +
+            data.memberId;
+
+
+    document
+        .getElementById("verificationMessage")
+        .innerHTML =
+            "Welcome <b>" +
+            escapeHtml(data.name) +
+            "</b>.<br><br>" +
+
+            "Your membership registration has been received. " +
+
+            "Payment status is currently " +
+
+            "<b>Pending Verification</b>.";
+
+}
+
+
+/* =========================================================
+   PROGRESS STEPS
+========================================================= */
+
+function setStep(number){
+
+    const steps = [
+        document.getElementById("step1"),
+        document.getElementById("step2"),
+        document.getElementById("step3")
+    ];
+
+
+    steps.forEach(
+        (step,index) => {
+
+            const current =
+                index + 1;
+
+
+            step.classList.toggle(
+                "active",
+                current === number
+            );
+
+
+            step.classList.toggle(
+                "completed",
+                current < number
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   IMPORTANT:
+
+   THERE IS NO:
+
+   window.onload = openUPI
+   location.href = upi://...
+   automatic payment
+   automatic member creation
+
+   Everything happens only after user interaction.
+========================================================= */
 
 </script>
 
