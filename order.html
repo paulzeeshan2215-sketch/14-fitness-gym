@@ -10,10 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link
-    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet"
->
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
@@ -28,22 +25,25 @@
     --black:#050706;
     --black2:#080d09;
 
-    --panel:#0b120e;
-    --panel2:#101a13;
+    --panel:#0d1510;
+    --panel2:#111b14;
 
     --lime:#caff25;
-    --lime2:#a8e900;
+    --lime-dark:#91b900;
 
     --white:#f4f7f3;
-
-    --text:#aeb8b0;
-    --muted:#68746c;
+    --text:#b9c2bb;
+    --muted:#6d7870;
     --muted2:#465149;
 
-    --border:rgba(255,255,255,.09);
+    --border:rgba(255,255,255,.085);
 
-    --shadow:
-        0 35px 100px rgba(0,0,0,.50);
+    /* STEP COLORS */
+    --details:#caff25;
+    --payment:#53d8ff;
+    --verification:#b7ff35;
+
+    --shadow:0 30px 100px rgba(0,0,0,.48);
 
 }
 
@@ -67,16 +67,19 @@ body{
     min-height:100vh;
 
     background:
+
         radial-gradient(
             circle at 15% 10%,
             rgba(202,255,37,.075),
-            transparent 27%
+            transparent 28%
         ),
+
         radial-gradient(
-            circle at 90% 90%,
-            rgba(50,110,60,.11),
-            transparent 30%
+            circle at 88% 82%,
+            rgba(49,110,63,.10),
+            transparent 32%
         ),
+
         var(--black);
 
     color:var(--white);
@@ -84,7 +87,6 @@ body{
     font-family:Inter,sans-serif;
 
     overflow-x:hidden;
-
 }
 
 
@@ -95,41 +97,39 @@ body{
 .background{
 
     position:fixed;
-
     inset:0;
 
-    z-index:-10;
+    z-index:-5;
 
     overflow:hidden;
 
     pointer-events:none;
-
 }
 
 .grid{
 
     position:absolute;
 
-    width:160%;
+    width:150%;
+    height:150%;
 
-    height:160%;
-
-    left:-30%;
-
-    top:-30%;
+    left:-25%;
+    top:-25%;
 
     background-image:
+
         linear-gradient(
-            rgba(202,255,37,.025) 1px,
+            rgba(202,255,37,.028) 1px,
             transparent 1px
         ),
+
         linear-gradient(
             90deg,
-            rgba(202,255,37,.025) 1px,
+            rgba(202,255,37,.028) 1px,
             transparent 1px
         );
 
-    background-size:65px 65px;
+    background-size:70px 70px;
 
     transform:
         perspective(700px)
@@ -138,7 +138,6 @@ body{
     transform-origin:center top;
 
     animation:gridMove 20s linear infinite;
-
 }
 
 .glow{
@@ -147,27 +146,25 @@ body{
 
     border-radius:50%;
 
-    filter:blur(8px);
-
+    filter:blur(5px);
 }
 
 .glow.one{
 
-    width:500px;
-    height:500px;
+    width:430px;
+    height:430px;
 
-    left:-230px;
-    top:5%;
+    left:-170px;
+    top:12%;
 
     background:
         radial-gradient(
             circle,
-            rgba(202,255,37,.13),
+            rgba(202,255,37,.12),
             transparent 70%
         );
 
     animation:floatOne 10s ease-in-out infinite;
-
 }
 
 .glow.two{
@@ -175,44 +172,41 @@ body{
     width:520px;
     height:520px;
 
-    right:-250px;
-    bottom:-220px;
+    right:-230px;
+    bottom:-190px;
 
     background:
         radial-gradient(
             circle,
-            rgba(75,145,82,.12),
+            rgba(68,140,78,.12),
             transparent 70%
         );
 
     animation:floatTwo 12s ease-in-out infinite;
-
 }
 
-.scan-line{
+.light-line{
 
     position:absolute;
 
-    width:100%;
-
-    height:1px;
-
     left:0;
 
-    top:-10%;
+    width:100%;
+    height:1px;
+
+    top:-5%;
 
     background:
         linear-gradient(
             90deg,
             transparent,
-            rgba(202,255,37,.45),
+            rgba(202,255,37,.5),
             transparent
         );
 
-    opacity:.20;
+    opacity:.22;
 
     animation:scan 10s linear infinite;
-
 }
 
 
@@ -233,7 +227,6 @@ body{
     justify-content:space-between;
 
     align-items:center;
-
 }
 
 .logo{
@@ -252,43 +245,46 @@ body{
 
     font-weight:900;
 
-    letter-spacing:.5px;
-
+    letter-spacing:.4px;
 }
 
 .logo-box{
+
+    display:grid;
+
+    place-items:center;
 
     width:43px;
     height:38px;
 
     margin-right:9px;
 
-    display:grid;
-
-    place-items:center;
-
     border-radius:8px;
 
     background:var(--lime);
 
-    color:#080b08;
+    color:#070a07;
 
     font-size:24px;
 
     box-shadow:
-        0 0 35px rgba(202,255,37,.12);
-
+        0 0 35px rgba(202,255,37,.10);
 }
 
-.logo span:last-child{
+.logo span{
 
     color:var(--lime);
 
     margin-left:5px;
-
 }
 
 .back{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
 
     padding:10px 14px;
 
@@ -298,9 +294,7 @@ body{
 
     background:rgba(255,255,255,.025);
 
-    color:#87928b;
-
-    text-decoration:none;
+    color:#8d9991;
 
     font-size:8px;
 
@@ -310,8 +304,9 @@ body{
 
     text-transform:uppercase;
 
-    transition:.3s;
+    text-decoration:none;
 
+    transition:.3s;
 }
 
 .back:hover{
@@ -321,12 +316,11 @@ body{
     border-color:rgba(202,255,37,.35);
 
     transform:translateX(-3px);
-
 }
 
 
 /* =========================================================
-   MAIN
+   PAGE
 ========================================================= */
 
 .page{
@@ -335,333 +329,12 @@ body{
 
     margin:25px auto 80px;
 
-    display:grid;
-
-    grid-template-columns:.82fr 1.18fr;
-
-    gap:18px;
-
+    position:relative;
 }
 
 
 /* =========================================================
-   MEMBERSHIP CARD
-========================================================= */
-
-.membership{
-
-    position:relative;
-
-    min-height:720px;
-
-    padding:38px;
-
-    border-radius:24px;
-
-    overflow:hidden;
-
-    background:
-        linear-gradient(
-            145deg,
-            #142219,
-            #09100c 65%,
-            #060a07
-        );
-
-    border:1px solid rgba(202,255,37,.13);
-
-    box-shadow:var(--shadow);
-
-}
-
-.membership::before{
-
-    content:"14";
-
-    position:absolute;
-
-    right:-45px;
-
-    bottom:-100px;
-
-    font-family:"Barlow Condensed";
-
-    font-size:390px;
-
-    font-weight:900;
-
-    line-height:.7;
-
-    color:rgba(202,255,37,.025);
-
-}
-
-.membership::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:330px;
-    height:330px;
-
-    right:-180px;
-    top:80px;
-
-    border-radius:50%;
-
-    border:1px solid rgba(202,255,37,.08);
-
-    box-shadow:
-        0 0 0 35px rgba(202,255,37,.015),
-        0 0 0 70px rgba(202,255,37,.01);
-
-    animation:ring 18s linear infinite;
-
-}
-
-.eyebrow{
-
-    position:relative;
-
-    z-index:2;
-
-    color:var(--lime);
-
-    font-size:8px;
-
-    font-weight:900;
-
-    letter-spacing:2.8px;
-
-    text-transform:uppercase;
-
-}
-
-.membership h1{
-
-    position:relative;
-
-    z-index:2;
-
-    margin-top:20px;
-
-    font-family:"Barlow Condensed";
-
-    font-size:clamp(72px,7vw,105px);
-
-    font-weight:900;
-
-    line-height:.78;
-
-    text-transform:uppercase;
-
-    letter-spacing:-2px;
-
-}
-
-.membership h1 span{
-
-    color:var(--lime);
-
-    text-shadow:
-        4px 4px 0 rgba(82,108,0,.35);
-
-}
-
-.description{
-
-    position:relative;
-
-    z-index:2;
-
-    max-width:390px;
-
-    margin-top:27px;
-
-    color:#9ca89f;
-
-    font-size:10px;
-
-    line-height:1.9;
-
-}
-
-
-/* =========================================================
-   SELECTED MEMBERSHIP ONLY
-========================================================= */
-
-.plan-display{
-
-    position:relative;
-
-    z-index:2;
-
-    margin-top:48px;
-
-    padding:20px;
-
-    border:1px solid rgba(202,255,37,.13);
-
-    border-radius:15px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(202,255,37,.045),
-            rgba(255,255,255,.015)
-        );
-
-}
-
-.plan-label{
-
-    color:#68756c;
-
-    font-size:8px;
-
-    font-weight:900;
-
-    letter-spacing:2px;
-
-    text-transform:uppercase;
-
-}
-
-.plan-name{
-
-    margin-top:8px;
-
-    font-family:"Barlow Condensed";
-
-    font-size:34px;
-
-    font-weight:900;
-
-    line-height:.9;
-
-    text-transform:uppercase;
-
-}
-
-.plan-price{
-
-    margin-top:16px;
-
-    font-family:"Barlow Condensed";
-
-    font-size:68px;
-
-    font-weight:900;
-
-    line-height:.8;
-
-    color:var(--lime);
-
-}
-
-.plan-price small{
-
-    font-family:Inter;
-
-    font-size:9px;
-
-    font-weight:600;
-
-    color:#78847b;
-
-}
-
-.benefits{
-
-    list-style:none;
-
-    margin-top:25px;
-
-    padding-top:19px;
-
-    border-top:1px solid rgba(255,255,255,.10);
-
-    display:grid;
-
-    gap:12px;
-
-}
-
-.benefits li{
-
-    color:#b0bab2;
-
-    font-size:9px;
-
-    line-height:1.5;
-
-}
-
-.benefits li::before{
-
-    content:"✓";
-
-    margin-right:10px;
-
-    color:var(--lime);
-
-    font-weight:900;
-
-}
-
-
-/* =========================================================
-   LIVE
-========================================================= */
-
-.live{
-
-    position:absolute;
-
-    left:38px;
-
-    bottom:35px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:9px;
-
-    color:#718077;
-
-    font-size:7px;
-
-    font-weight:900;
-
-    letter-spacing:1.3px;
-
-    text-transform:uppercase;
-
-}
-
-.live-dot{
-
-    width:7px;
-
-    height:7px;
-
-    border-radius:50%;
-
-    background:var(--lime);
-
-    box-shadow:
-        0 0 14px rgba(202,255,37,.7);
-
-    animation:pulse 1.5s infinite;
-
-}
-
-
-/* =========================================================
-   RIGHT CARD
+   MAIN CARD
 ========================================================= */
 
 .card{
@@ -675,6 +348,7 @@ body{
     border:1px solid var(--border);
 
     background:
+
         linear-gradient(
             145deg,
             rgba(17,27,20,.98),
@@ -686,49 +360,63 @@ body{
     position:relative;
 
     overflow:hidden;
-
 }
 
-.card::before{
+.card:before{
 
     content:"";
 
     position:absolute;
 
-    width:300px;
-    height:300px;
+    width:330px;
+    height:330px;
 
-    right:-150px;
-    top:-150px;
+    right:-180px;
+    top:-180px;
 
     border-radius:50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(202,255,37,.10),
+            rgba(202,255,37,.11),
             transparent 70%
         );
+}
 
+.card:after{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    left:-350px;
+    bottom:-350px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(202,255,37,.035);
 }
 
 
 /* =========================================================
-   STEPS
+   STEP NAVIGATION
 ========================================================= */
 
 .steps{
 
     position:relative;
 
-    z-index:2;
+    z-index:5;
 
     display:flex;
 
     align-items:center;
 
-    margin-bottom:37px;
-
+    margin-bottom:42px;
 }
 
 .step{
@@ -737,26 +425,27 @@ body{
 
     align-items:center;
 
-    gap:8px;
+    gap:9px;
 
-    color:#4f5b53;
+    color:#505b54;
 
     font-size:7px;
 
     font-weight:900;
 
-    letter-spacing:1px;
+    letter-spacing:1.2px;
 
     text-transform:uppercase;
 
     white-space:nowrap;
 
+    transition:.3s;
 }
 
 .step-number{
 
-    width:30px;
-    height:30px;
+    width:31px;
+    height:31px;
 
     display:grid;
 
@@ -764,85 +453,164 @@ body{
 
     border-radius:50%;
 
-    border:1px solid var(--border);
+    border:1px solid rgba(255,255,255,.12);
 
-    background:#0a100c;
+    background:#09100c;
 
     color:#68736b;
 
     transition:.35s;
-
 }
 
-.step.active{
+/* DETAILS */
 
-    color:var(--lime);
+.step.details.active{
 
+    color:var(--details);
 }
 
-.step.active .step-number{
+.step.details.active .step-number{
 
-    background:var(--lime);
+    background:var(--details);
 
     color:#080b08;
 
-    border-color:var(--lime);
+    border-color:var(--details);
 
     box-shadow:
-        0 0 25px rgba(202,255,37,.18);
-
+        0 0 28px rgba(202,255,37,.25);
 }
 
-.step.completed .step-number{
+.step.details.completed .step-number{
 
-    border-color:var(--lime);
+    border-color:var(--details);
 
-    color:var(--lime);
-
+    color:var(--details);
 }
+
+
+/* PAYMENT */
+
+.step.payment.active{
+
+    color:var(--payment);
+}
+
+.step.payment.active .step-number{
+
+    background:var(--payment);
+
+    color:#061015;
+
+    border-color:var(--payment);
+
+    box-shadow:
+        0 0 28px rgba(83,216,255,.22);
+}
+
+.step.payment.completed .step-number{
+
+    border-color:var(--payment);
+
+    color:var(--payment);
+}
+
+
+/* VERIFICATION */
+
+.step.verification.active{
+
+    color:var(--verification);
+}
+
+.step.verification.active .step-number{
+
+    background:var(--verification);
+
+    color:#080b08;
+
+    border-color:var(--verification);
+
+    box-shadow:
+        0 0 28px rgba(183,255,53,.24);
+}
+
+.step.verification.completed .step-number{
+
+    border-color:var(--verification);
+
+    color:var(--verification);
+}
+
 
 .step-line{
 
-    width:55px;
+    width:70px;
 
     height:1px;
 
-    margin:0 11px;
+    margin:0 12px;
 
     background:var(--border);
 
+    position:relative;
+
+    overflow:hidden;
+}
+
+.step-line:after{
+
+    content:"";
+
+    position:absolute;
+
+    left:-100%;
+
+    top:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(202,255,37,.5),
+        transparent
+    );
+
+    transition:.5s;
 }
 
 
 /* =========================================================
-   CONTENT
+   PANELS
 ========================================================= */
-
-.content{
-
-    position:relative;
-
-    z-index:2;
-
-}
 
 .panel{
 
+    position:relative;
+
+    z-index:3;
+
     display:none;
 
+    animation:panelIn .45s ease both;
 }
 
 .panel.show{
 
     display:block;
-
-    animation:appear .45s ease both;
-
 }
+
+
+/* =========================================================
+   DETAILS HEADER
+========================================================= */
 
 .form-eyebrow{
 
-    color:var(--lime);
+    color:var(--details);
 
     font-size:8px;
 
@@ -851,7 +619,6 @@ body{
     letter-spacing:2.5px;
 
     text-transform:uppercase;
-
 }
 
 .form-title{
@@ -860,7 +627,7 @@ body{
 
     font-family:"Barlow Condensed";
 
-    font-size:67px;
+    font-size:74px;
 
     font-weight:900;
 
@@ -868,74 +635,365 @@ body{
 
     text-transform:uppercase;
 
+    letter-spacing:-1px;
 }
 
 .form-subtitle{
 
-    max-width:510px;
+    max-width:600px;
 
-    margin-top:17px;
+    margin-top:19px;
 
     color:#69756d;
 
     font-size:10px;
 
     line-height:1.8;
-
 }
 
 
 /* =========================================================
-   SECURITY
+   SELECT MEMBERSHIP
 ========================================================= */
 
-.security{
+.plan-section{
 
-    display:flex;
+    margin-top:38px;
+}
 
-    gap:12px;
+.plan-title{
 
-    margin:24px 0;
+    margin-bottom:12px;
 
-    padding:13px 14px;
-
-    border:1px solid rgba(202,255,37,.11);
-
-    border-radius:10px;
-
-    background:rgba(202,255,37,.025);
-
-    color:#7d8981;
+    color:#66736a;
 
     font-size:8px;
 
-    line-height:1.7;
+    font-weight:900;
 
+    letter-spacing:2px;
+
+    text-transform:uppercase;
 }
 
-.security-icon{
 
-    flex:0 0 27px;
+/*
+   IMPORTANT:
+   ALL THREE PLANS ARE SHOWN HERE.
+*/
 
-    width:27px;
-    height:27px;
+.plans{
 
     display:grid;
 
-    place-items:center;
+    grid-template-columns:repeat(3,1fr);
 
-    border-radius:7px;
+    gap:12px;
+}
 
-    background:rgba(202,255,37,.08);
+.plan{
+
+    position:relative;
+
+    min-height:145px;
+
+    padding:20px;
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #101a13,
+            #090f0b
+        );
+
+    color:white;
+
+    text-align:left;
+
+    cursor:pointer;
+
+    overflow:hidden;
+
+    transition:
+        transform .25s,
+        border-color .25s,
+        box-shadow .25s,
+        background .25s;
+}
+
+.plan:hover{
+
+    transform:translateY(-4px);
+
+    border-color:rgba(202,255,37,.35);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.25);
+}
+
+.plan.active{
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(202,255,37,.13),
+            rgba(202,255,37,.035)
+        );
+
+    border-color:var(--lime);
+
+    box-shadow:
+        0 15px 45px rgba(202,255,37,.08);
+}
+
+.plan.active:before{
+
+    content:"SELECTED";
+
+    position:absolute;
+
+    right:12px;
+    top:12px;
+
+    padding:5px 7px;
+
+    border-radius:5px;
+
+    background:var(--lime);
+
+    color:#070a07;
+
+    font-size:6px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+}
+
+.plan-duration{
+
+    display:block;
+
+    color:#657169;
+
+    font-size:7px;
+
+    font-weight:900;
+
+    letter-spacing:1.5px;
+
+    text-transform:uppercase;
+}
+
+.plan.active .plan-duration{
+
+    color:var(--lime);
+}
+
+.plan-price-small{
+
+    display:block;
+
+    margin-top:11px;
+
+    font-family:"Barlow Condensed";
+
+    font-size:42px;
+
+    font-weight:900;
+
+    line-height:.8;
+}
+
+.plan-price-small small{
+
+    font-family:Inter;
+
+    font-size:8px;
+
+    color:#66736a;
+
+    font-weight:700;
+}
+
+.plan-name-small{
+
+    display:block;
+
+    margin-top:13px;
+
+    color:#aab4ad;
+
+    font-size:8px;
+
+    font-weight:900;
+
+    letter-spacing:.7px;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   SELECTED PLAN DETAILS
+========================================================= */
+
+.selected-box{
+
+    margin-top:22px;
+
+    padding:20px;
+
+    border:1px solid rgba(202,255,37,.13);
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(202,255,37,.045),
+            rgba(255,255,255,.012)
+        );
+}
+
+.selected-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:20px;
+}
+
+.selected-label{
+
+    color:#657169;
+
+    font-size:7px;
+
+    font-weight:900;
+
+    letter-spacing:1.8px;
+
+    text-transform:uppercase;
+}
+
+.selected-plan-name{
+
+    margin-top:7px;
+
+    color:white;
+
+    font-family:"Barlow Condensed";
+
+    font-size:34px;
+
+    font-weight:900;
+
+    text-transform:uppercase;
+}
+
+.selected-price{
 
     color:var(--lime);
 
+    font-family:"Barlow Condensed";
+
+    font-size:43px;
+
+    font-weight:900;
+
+    line-height:.8;
+
+    white-space:nowrap;
+}
+
+.selected-price small{
+
+    color:#68746c;
+
+    font-family:Inter;
+
+    font-size:7px;
+
+    font-weight:700;
+}
+
+.benefit-title{
+
+    margin-top:19px;
+
+    padding-top:17px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    color:#657169;
+
+    font-size:7px;
+
+    font-weight:900;
+
+    letter-spacing:1.7px;
+
+    text-transform:uppercase;
+}
+
+.benefits{
+
+    list-style:none;
+
+    margin-top:12px;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:8px;
+}
+
+.benefits li{
+
+    padding:10px 12px;
+
+    border:1px solid rgba(202,255,37,.10);
+
+    border-radius:8px;
+
+    background:rgba(202,255,37,.035);
+
+    color:#aab4ad;
+
+    font-size:8px;
+
+    line-height:1.5;
+}
+
+.benefits li:before{
+
+    content:"✓";
+
+    margin-right:8px;
+
+    color:var(--lime);
+
+    font-weight:900;
 }
 
 
 /* =========================================================
    FORM
 ========================================================= */
+
+.form-area{
+
+    margin-top:25px;
+}
 
 .form-grid{
 
@@ -944,7 +1002,6 @@ body{
     grid-template-columns:1fr 1fr;
 
     gap:14px;
-
 }
 
 .field{
@@ -952,13 +1009,11 @@ body{
     display:grid;
 
     gap:7px;
-
 }
 
 .field.full{
 
     grid-column:1/-1;
-
 }
 
 .field label{
@@ -972,7 +1027,6 @@ body{
     letter-spacing:1.2px;
 
     text-transform:uppercase;
-
 }
 
 .field input,
@@ -999,13 +1053,11 @@ body{
     font-size:10px;
 
     transition:.3s;
-
 }
 
 .field input::placeholder{
 
     color:#465149;
-
 }
 
 .field input:focus,
@@ -1015,24 +1067,21 @@ body{
 
     box-shadow:
         0 0 0 3px rgba(202,255,37,.045);
-
 }
 
 .field select{
 
     cursor:pointer;
-
 }
 
 .field select option{
 
     background:#0b110d;
-
 }
 
 
 /* =========================================================
-   BUTTON
+   PRIMARY BUTTON
 ========================================================= */
 
 .primary{
@@ -1066,7 +1115,6 @@ body{
     overflow:hidden;
 
     transition:.3s;
-
 }
 
 .primary:hover{
@@ -1075,21 +1123,23 @@ body{
 
     box-shadow:
         0 18px 45px rgba(202,255,37,.15);
-
 }
 
-.primary::after{
+.primary:active{
+
+    transform:translateY(-1px);
+}
+
+.primary:after{
 
     content:"";
 
     position:absolute;
 
     top:0;
-
     left:-120%;
 
     width:70%;
-
     height:100%;
 
     background:
@@ -1103,13 +1153,11 @@ body{
     transform:skewX(-20deg);
 
     transition:.6s;
-
 }
 
-.primary:hover::after{
+.primary:hover:after{
 
     left:150%;
-
 }
 
 .form-note{
@@ -1123,7 +1171,6 @@ body{
     line-height:1.7;
 
     text-align:center;
-
 }
 
 
@@ -1139,24 +1186,35 @@ body{
 
     align-items:flex-start;
 
-    margin-bottom:24px;
+    margin-bottom:25px;
+}
 
+.payment-eyebrow{
+
+    color:var(--payment);
+
+    font-size:8px;
+
+    font-weight:900;
+
+    letter-spacing:2.5px;
+
+    text-transform:uppercase;
 }
 
 .payment-title{
 
-    margin-top:10px;
+    margin-top:12px;
 
     font-family:"Barlow Condensed";
 
-    font-size:65px;
+    font-size:72px;
 
     font-weight:900;
 
-    line-height:.8;
+    line-height:.78;
 
     text-transform:uppercase;
-
 }
 
 .close-button{
@@ -1177,25 +1235,23 @@ body{
     cursor:pointer;
 
     transition:.3s;
-
 }
 
 .close-button:hover{
 
-    color:var(--lime);
+    color:var(--payment);
 
-    border-color:rgba(202,255,37,.35);
+    border-color:rgba(83,216,255,.35);
 
     transform:rotate(90deg);
-
 }
 
 
 /* =========================================================
-   PAYMENT SUMMARY
+   PAYMENT SELECTED PLAN
 ========================================================= */
 
-.payment-summary{
+.payment-plan{
 
     display:flex;
 
@@ -1203,125 +1259,82 @@ body{
 
     align-items:center;
 
-    margin-bottom:15px;
+    gap:20px;
 
-    padding:15px;
+    padding:17px;
 
-    border:1px solid rgba(202,255,37,.14);
+    border:1px solid rgba(83,216,255,.16);
 
-    border-radius:10px;
+    border-radius:11px;
 
-    background:
-        linear-gradient(
-            90deg,
-            rgba(202,255,37,.035),
-            #090f0b
-        );
-
+    background:rgba(83,216,255,.025);
 }
 
-.payment-summary span{
+.payment-plan-label{
 
-    color:#657169;
+    color:#64716a;
 
     font-size:7px;
 
     font-weight:900;
 
-    letter-spacing:1.5px;
+    letter-spacing:1.6px;
 
     text-transform:uppercase;
-
 }
 
-.payment-summary strong{
+.payment-plan-name{
 
-    color:var(--lime);
+    margin-top:6px;
+
+    color:#dce4de;
 
     font-family:"Barlow Condensed";
 
-    font-size:32px;
+    font-size:30px;
 
+    font-weight:900;
+
+    text-transform:uppercase;
+}
+
+.payment-amount{
+
+    color:var(--payment);
+
+    font-family:"Barlow Condensed";
+
+    font-size:44px;
+
+    font-weight:900;
+
+    white-space:nowrap;
 }
 
 
 /* =========================================================
-   QR / SCANNER
+   QR AREA
 ========================================================= */
 
 .qr-box{
 
-    width:100%;
+    margin-top:14px;
 
-    padding:22px;
+    padding:25px;
 
     text-align:center;
 
-    border:1px solid rgba(202,255,37,.12);
+    border:1px solid rgba(83,216,255,.13);
 
     border-radius:16px;
 
     background:
         radial-gradient(
             circle at center,
-            rgba(202,255,37,.045),
+            rgba(83,216,255,.045),
             transparent 55%
         ),
         #080e0a;
-
-}
-
-
-/*
-    IMPORTANT:
-    No rotate / transform is applied to the QR.
-    This keeps the scanner perfectly straight on mobile.
-*/
-
-.qr{
-
-    width:220px;
-
-    height:220px;
-
-    margin:18px auto;
-
-    padding:9px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    aspect-ratio:1 / 1;
-
-    background:#fff;
-
-    border-radius:12px;
-
-    overflow:hidden;
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.35);
-
-}
-
-.qr canvas,
-.qr img{
-
-    display:block;
-
-    width:100% !important;
-
-    height:100% !important;
-
-    max-width:100%;
-
-    max-height:100%;
-
-    object-fit:contain;
-
 }
 
 .qr-title{
@@ -1335,19 +1348,58 @@ body{
     letter-spacing:2px;
 
     text-transform:uppercase;
+}
 
+.qr{
+
+    width:230px;
+    height:230px;
+
+    margin:18px auto;
+
+    padding:10px;
+
+    display:grid;
+
+    place-items:center;
+
+    background:white;
+
+    border-radius:12px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.35);
+
+    /*
+       IMPORTANT:
+       QR IS STRAIGHT.
+       NO ROTATION.
+    */
+
+    transform:none;
+}
+
+.qr img,
+.qr canvas{
+
+    display:block;
+
+    max-width:100%;
+
+    max-height:100%;
+
+    transform:none !important;
 }
 
 .upi-id{
 
-    color:var(--lime);
+    color:var(--payment);
 
     font-size:15px;
 
     font-weight:900;
 
     word-break:break-all;
-
 }
 
 .qr-note{
@@ -1359,7 +1411,6 @@ body{
     font-size:7px;
 
     text-transform:uppercase;
-
 }
 
 
@@ -1376,20 +1427,19 @@ body{
     gap:9px;
 
     margin-top:12px;
-
 }
 
 .payment-button{
 
-    min-height:49px;
+    min-height:50px;
 
-    border:1px solid rgba(202,255,37,.2);
+    border:1px solid rgba(83,216,255,.25);
 
     border-radius:9px;
 
-    background:var(--lime);
+    background:var(--payment);
 
-    color:#070a07;
+    color:#061015;
 
     font-size:7px;
 
@@ -1402,13 +1452,14 @@ body{
     cursor:pointer;
 
     transition:.3s;
-
 }
 
 .payment-button:hover{
 
     transform:translateY(-2px);
 
+    box-shadow:
+        0 12px 30px rgba(83,216,255,.12);
 }
 
 .payment-button.secondary{
@@ -1418,21 +1469,14 @@ body{
     border-color:var(--border);
 
     color:#a8b1aa;
-
 }
 
 .payment-button.secondary:hover{
 
-    color:var(--lime);
+    color:var(--payment);
 
-    border-color:rgba(202,255,37,.3);
-
+    border-color:rgba(83,216,255,.3);
 }
-
-
-/* =========================================================
-   PAYMENT INFO
-========================================================= */
 
 .payment-info{
 
@@ -1449,228 +1493,142 @@ body{
     font-size:7px;
 
     line-height:1.7;
-
 }
 
 .payment-info b{
 
     color:#9aa69e;
-
 }
 
 
 /* =========================================================
-   VERIFICATION SCREEN
+   VERIFICATION
 ========================================================= */
 
 .verify{
 
-    display:none;
+    text-align:center;
+
+    padding:30px 10px;
+
+    animation:panelIn .5s ease both;
+}
+
+.verify-icon-wrap{
 
     position:relative;
 
-    z-index:2;
+    width:112px;
+    height:112px;
 
-    text-align:center;
+    margin:0 auto 28px;
 
-    padding:20px 10px 35px;
+    display:grid;
 
+    place-items:center;
 }
 
-.verify.show{
+.verify-ring{
 
-    display:block;
+    position:absolute;
 
-    animation:appear .5s ease both;
+    inset:0;
 
+    border-radius:50%;
+
+    border:1px solid rgba(183,255,53,.25);
+
+    animation:ringPulse 2s ease-in-out infinite;
 }
 
+.verify-ring:nth-child(2){
 
-/* =========================================================
-   ANIMATED SUCCESS TICK
-========================================================= */
+    inset:10px;
+
+    border-color:rgba(183,255,53,.17);
+
+    animation-delay:.25s;
+}
 
 .verify-icon{
 
     position:relative;
 
-    width:96px;
-    height:96px;
+    z-index:2;
+
+    width:82px;
+    height:82px;
 
     display:grid;
 
     place-items:center;
 
-    margin:5px auto 28px;
-
     border-radius:50%;
 
-    border:1px solid rgba(202,255,37,.35);
+    border:1px solid var(--verification);
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(202,255,37,.10),
-            rgba(202,255,37,.025) 60%,
-            transparent 70%
-        );
+    background:rgba(183,255,53,.08);
+
+    color:var(--verification);
+
+    font-size:42px;
+
+    font-weight:400;
 
     box-shadow:
-        0 0 0 10px rgba(202,255,37,.018),
-        0 0 55px rgba(202,255,37,.10);
-
-    overflow:visible;
-
-    animation:
-        iconPulse 2.4s ease-in-out infinite;
-
+        0 0 45px rgba(183,255,53,.12);
 }
 
+.verify-check{
 
-/* outer animated ring */
-
-.verify-icon::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:-11px;
-
-    border-radius:50%;
-
-    border:1px solid rgba(202,255,37,.20);
-
-    animation:
-        ringPulse 2.2s ease-out infinite;
-
-}
-
-
-/* second ring */
-
-.verify-icon::after{
-
-    content:"";
-
-    position:absolute;
-
-    inset:-20px;
-
-    border-radius:50%;
-
-    border:1px solid rgba(202,255,37,.07);
-
-    animation:
-        ringPulse 2.2s ease-out infinite .5s;
-
-}
-
-
-/* actual check */
-
-.check-mark{
-
-    position:relative;
-
-    width:34px;
-    height:58px;
-
-    border-right:6px solid var(--lime);
-
-    border-bottom:6px solid var(--lime);
-
-    transform:
-        rotate(45deg)
-        scale(.15);
+    display:block;
 
     opacity:0;
 
-    filter:
-        drop-shadow(
-            0 0 10px rgba(202,255,37,.55)
-        );
+    transform:scale(.4) rotate(-25deg);
 
-    animation:
-        checkDraw .65s cubic-bezier(.2,.8,.2,1) .15s forwards;
-
+    animation:checkIn .7s .35s cubic-bezier(.2,.9,.25,1.2) forwards;
 }
 
+.verify-eyebrow{
 
-/* little particles */
+    color:var(--verification);
 
-.particle{
-
-    position:absolute;
-
-    width:4px;
-    height:4px;
-
-    border-radius:50%;
-
-    background:var(--lime);
-
-    opacity:0;
-
-}
-
-.particle.p1{
-    top:5px;
-    left:12px;
-    animation:particle1 1.4s ease-out .45s forwards;
-}
-
-.particle.p2{
-    top:18px;
-    right:0;
-    animation:particle2 1.4s ease-out .55s forwards;
-}
-
-.particle.p3{
-    bottom:4px;
-    left:0;
-    animation:particle3 1.4s ease-out .65s forwards;
-}
-
-.particle.p4{
-    bottom:15px;
-    right:7px;
-    animation:particle4 1.4s ease-out .75s forwards;
-}
-
-
-/* =========================================================
-   VERIFICATION TEXT
-========================================================= */
-
-.verify h2{
-
-    margin-top:10px;
-
-    font-family:"Barlow Condensed";
-
-    font-size:67px;
+    font-size:8px;
 
     font-weight:900;
 
-    line-height:.8;
+    letter-spacing:2.5px;
 
     text-transform:uppercase;
+}
 
+.verify h2{
+
+    margin-top:12px;
+
+    font-family:"Barlow Condensed";
+
+    font-size:72px;
+
+    font-weight:900;
+
+    line-height:.78;
+
+    text-transform:uppercase;
 }
 
 .verify h2 span{
 
-    color:var(--lime);
+    color:var(--verification);
 
     text-shadow:
-        0 0 25px rgba(202,255,37,.10);
-
+        0 0 25px rgba(183,255,53,.15);
 }
 
 .verify p{
 
-    max-width:460px;
+    max-width:500px;
 
     margin:22px auto;
 
@@ -1679,7 +1637,6 @@ body{
     font-size:9px;
 
     line-height:1.8;
-
 }
 
 .member-id{
@@ -1688,20 +1645,81 @@ body{
 
     padding:12px 17px;
 
-    border:1px solid rgba(202,255,37,.25);
+    border:1px solid rgba(183,255,53,.25);
 
     border-radius:8px;
 
-    background:rgba(202,255,37,.045);
+    background:rgba(183,255,53,.045);
 
-    color:var(--lime);
+    color:var(--verification);
 
     font-size:8px;
 
     font-weight:900;
 
     letter-spacing:1px;
+}
 
+.verify .primary{
+
+    margin-top:25px;
+
+    background:var(--verification);
+}
+
+
+/* =========================================================
+   SUCCESS DETAILS
+========================================================= */
+
+.success-details{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:9px;
+
+    max-width:650px;
+
+    margin:25px auto 0;
+}
+
+.success-item{
+
+    padding:12px;
+
+    border:1px solid rgba(255,255,255,.07);
+
+    border-radius:8px;
+
+    background:rgba(255,255,255,.015);
+}
+
+.success-item span{
+
+    display:block;
+
+    color:#58645c;
+
+    font-size:6px;
+
+    font-weight:900;
+
+    letter-spacing:1.3px;
+
+    text-transform:uppercase;
+}
+
+.success-item strong{
+
+    display:block;
+
+    margin-top:6px;
+
+    color:#b9c3bc;
+
+    font-size:8px;
 }
 
 
@@ -1717,7 +1735,6 @@ body{
             perspective(700px)
             rotateX(58deg)
             translateY(-30px);
-
     }
 
     to{
@@ -1726,9 +1743,7 @@ body{
             perspective(700px)
             rotateX(58deg)
             translateY(80px);
-
     }
-
 }
 
 @keyframes floatOne{
@@ -1740,7 +1755,6 @@ body{
     50%{
         transform:translate(80px,40px) scale(1.1);
     }
-
 }
 
 @keyframes floatTwo{
@@ -1752,7 +1766,6 @@ body{
     50%{
         transform:translate(-70px,-45px) scale(1.08);
     }
-
 }
 
 @keyframes scan{
@@ -1764,204 +1777,85 @@ body{
     to{
         top:105%;
     }
-
-}
-
-@keyframes ring{
-
-    from{
-        transform:rotate(0);
-    }
-
-    to{
-        transform:rotate(360deg);
-    }
-
 }
 
 @keyframes pulse{
 
     0%,100%{
         opacity:1;
-        transform:scale(1);
     }
 
     50%{
         opacity:.35;
-        transform:scale(.75);
     }
-
 }
 
-@keyframes appear{
+@keyframes panelIn{
 
     from{
+
         opacity:0;
-        transform:translateY(15px);
+
+        transform:
+            translateY(18px)
+            scale(.99);
     }
 
     to{
-        opacity:1;
-        transform:translateY(0);
-    }
-
-}
-
-
-/* =========================================================
-   SUCCESS ANIMATION
-========================================================= */
-
-@keyframes checkDraw{
-
-    0%{
-
-        opacity:0;
-
-        transform:
-            rotate(45deg)
-            scale(.15);
-
-    }
-
-    55%{
 
         opacity:1;
 
         transform:
-            rotate(45deg)
-            scale(1.08);
-
-    }
-
-    75%{
-
-        opacity:1;
-
-        transform:
-            rotate(45deg)
-            scale(.94);
-
-    }
-
-    100%{
-
-        opacity:1;
-
-        transform:
-            rotate(45deg)
+            translateY(0)
             scale(1);
-
     }
-
-}
-
-@keyframes iconPulse{
-
-    0%,100%{
-
-        box-shadow:
-            0 0 0 10px rgba(202,255,37,.018),
-            0 0 45px rgba(202,255,37,.08);
-
-    }
-
-    50%{
-
-        box-shadow:
-            0 0 0 17px rgba(202,255,37,.012),
-            0 0 70px rgba(202,255,37,.18);
-
-    }
-
 }
 
 @keyframes ringPulse{
 
-    0%{
+    0%,100%{
 
-        opacity:.65;
+        transform:scale(1);
 
-        transform:scale(.72);
-
+        opacity:.8;
     }
 
-    100%{
+    50%{
 
-        opacity:0;
+        transform:scale(1.08);
 
-        transform:scale(1.15);
-
+        opacity:.25;
     }
-
 }
 
-@keyframes particle1{
+@keyframes checkIn{
 
     0%{
+
         opacity:0;
-        transform:translate(0,0);
+
+        transform:
+            scale(.4)
+            rotate(-25deg);
     }
 
-    100%{
-        opacity:0;
-        transform:translate(-24px,-20px);
-    }
+    65%{
 
-}
-
-@keyframes particle2{
-
-    0%{
-        opacity:0;
-        transform:translate(0,0);
-    }
-
-    30%{
         opacity:1;
+
+        transform:
+            scale(1.18)
+            rotate(5deg);
     }
 
     100%{
-        opacity:0;
-        transform:translate(24px,-15px);
-    }
 
-}
-
-@keyframes particle3{
-
-    0%{
-        opacity:0;
-        transform:translate(0,0);
-    }
-
-    30%{
         opacity:1;
+
+        transform:
+            scale(1)
+            rotate(0);
     }
-
-    100%{
-        opacity:0;
-        transform:translate(-20px,20px);
-    }
-
-}
-
-@keyframes particle4{
-
-    0%{
-        opacity:0;
-        transform:translate(0,0);
-    }
-
-    30%{
-        opacity:1;
-    }
-
-    100%{
-        opacity:0;
-        transform:translate(22px,18px);
-    }
-
 }
 
 
@@ -1971,22 +1865,26 @@ body{
 
 @media(max-width:900px){
 
-    .page{
+    .plans{
 
         grid-template-columns:1fr;
-
     }
 
-    .membership{
+    .plan{
 
-        min-height:570px;
+        min-height:105px;
+    }
 
+    .benefits{
+
+        grid-template-columns:1fr;
     }
 
     .card{
 
         min-height:auto;
 
+        padding:28px;
     }
 
 }
@@ -1998,13 +1896,11 @@ body{
         width:92%;
 
         padding:17px 0;
-
     }
 
     .logo{
 
         font-size:24px;
-
     }
 
     .logo-box{
@@ -2013,7 +1909,6 @@ body{
         height:32px;
 
         font-size:20px;
-
     }
 
     .back{
@@ -2021,7 +1916,6 @@ body{
         padding:9px 10px;
 
         font-size:7px;
-
     }
 
     .page{
@@ -2029,153 +1923,127 @@ body{
         width:92%;
 
         margin-top:10px;
-
     }
 
-    .membership,
     .card{
 
-        padding:24px;
+        padding:22px;
 
         border-radius:18px;
-
     }
 
-    .membership{
+    .steps{
 
-        min-height:540px;
-
+        margin-bottom:30px;
     }
 
-    .membership h1{
+    .step{
 
-        font-size:70px;
+        font-size:5.5px;
 
+        gap:5px;
     }
 
-    .plan-display{
+    .step-number{
 
-        margin-top:38px;
-
-        padding:17px;
-
+        width:27px;
+        height:27px;
     }
 
-    .plan-price{
+    .step-line{
 
-        font-size:60px;
+        width:20px;
 
-    }
-
-    .plan-name{
-
-        font-size:31px;
-
+        margin:0 5px;
     }
 
     .form-title{
 
-        font-size:56px;
-
+        font-size:58px;
     }
 
     .payment-title{
 
-        font-size:55px;
+        font-size:57px;
+    }
 
+    .verify h2{
+
+        font-size:58px;
     }
 
     .form-grid{
 
         grid-template-columns:1fr;
-
     }
 
     .field.full{
 
         grid-column:auto;
-
     }
 
-    .step{
+    .selected-top{
 
-        font-size:6px;
-
+        flex-direction:column;
     }
 
-    .step-number{
+    .selected-price{
 
-        width:26px;
-        height:26px;
-
+        font-size:38px;
     }
 
-    .step-line{
+    .payment-plan{
 
-        width:22px;
+        align-items:flex-start;
 
-        margin:0 6px;
+        flex-direction:column;
+    }
 
+    .payment-amount{
+
+        font-size:40px;
     }
 
     .payment-buttons{
 
         grid-template-columns:1fr;
-
-    }
-
-    /*
-        Mobile QR fix:
-        Always square, straight and centered.
-    */
-
-    .qr-box{
-
-        padding:18px 12px;
-
     }
 
     .qr{
 
-        width:min(205px,72vw);
-
-        height:min(205px,72vw);
-
-        margin:17px auto;
-
-        padding:8px;
-
-        transform:none !important;
-
-        rotate:none !important;
-
+        width:205px;
+        height:205px;
     }
 
-    .verify{
+    .success-details{
 
-        padding-top:10px;
-
-    }
-
-    .verify-icon{
-
-        width:88px;
-        height:88px;
-
-        margin-bottom:25px;
-
-    }
-
-    .verify h2{
-
-        font-size:55px;
-
+        grid-template-columns:1fr;
     }
 
 }
 
-</style>
 
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *:before,
+    *:after{
+
+        animation-duration:.01ms !important;
+
+        animation-iteration-count:1 !important;
+
+        scroll-behavior:auto !important;
+
+        transition:none !important;
+    }
+}
+
+</style>
 </head>
 
 
@@ -2194,7 +2062,7 @@ body{
 
     <div class="glow two"></div>
 
-    <div class="scan-line"></div>
+    <div class="light-line"></div>
 
 </div>
 
@@ -2226,125 +2094,27 @@ body{
 
 
 <!-- =======================================================
-     MAIN
+     PAGE
 ======================================================= -->
 
 <main class="page">
-
-
-<!-- =======================================================
-     MEMBERSHIP LEFT
-======================================================= -->
-
-<section class="membership">
-
-    <div class="eyebrow">
-
-        14 FITNESS GYM
-
-    </div>
-
-
-    <h1>
-
-        Own<br>
-
-        Your<br>
-
-        <span>Progress.</span>
-
-    </h1>
-
-
-    <p class="description">
-
-        Your selected membership is shown below.
-        Review the duration, benefits and amount
-        before continuing to payment.
-
-    </p>
-
-
-    <!--
-        ONLY THE SELECTED PLAN IS SHOWN HERE.
-        NO THREE-PLAN GRID.
-    -->
-
-    <div class="plan-display">
-
-        <div class="plan-label">
-
-            YOUR SELECTED MEMBERSHIP
-
-        </div>
-
-
-        <div
-            class="plan-name"
-            id="displayPlan">
-
-            1 MONTH
-
-        </div>
-
-
-        <div
-            class="plan-price"
-            id="displayPrice">
-
-            ₹1,400
-
-            <small>
-
-                total
-
-            </small>
-
-        </div>
-
-
-        <ul
-            class="benefits"
-            id="displayBenefits">
-
-        </ul>
-
-    </div>
-
-
-    <div class="live">
-
-        <span class="live-dot"></span>
-
-        MEMBERSHIP REGISTRATION
-
-    </div>
-
-</section>
-
-
-
-<!-- =======================================================
-     RIGHT CARD
-======================================================= -->
 
 <section class="card">
 
 
 <!-- =======================================================
-     STEPS
+     STEP NAVIGATION
 ======================================================= -->
 
 <div class="steps">
 
+
     <div
-        class="step active"
+        class="step details active"
         id="step1">
 
         <span class="step-number">
-
             01
-
         </span>
 
         DETAILS
@@ -2356,13 +2126,11 @@ body{
 
 
     <div
-        class="step"
+        class="step payment"
         id="step2">
 
         <span class="step-number">
-
             02
-
         </span>
 
         PAYMENT
@@ -2374,13 +2142,11 @@ body{
 
 
     <div
-        class="step"
+        class="step verification"
         id="step3">
 
         <span class="step-number">
-
             03
-
         </span>
 
         VERIFICATION
@@ -2392,245 +2158,401 @@ body{
 
 
 <!-- =======================================================
-     STEP 1
+     STEP 01 — DETAILS
 ======================================================= -->
 
 <div
-    class="content panel show"
+    class="panel show"
     id="detailsPanel">
 
 
     <div class="form-eyebrow">
 
-        STEP 01 / YOUR DETAILS
+        STEP 01 / CHOOSE YOUR MEMBERSHIP
 
     </div>
 
 
-    <h2 class="form-title">
+    <h1 class="form-title">
 
-        Become A<br>
+        Start Your<br>
 
-        Member.
+        Journey.
 
-    </h2>
+    </h1>
 
 
     <p class="form-subtitle">
 
-        Enter your membership information below.
-        Your selected membership is already locked
-        for this registration.
+        Choose the membership that fits your journey.
+        Once selected, only your chosen membership
+        will continue through registration and payment.
 
     </p>
 
 
-    <div class="security">
 
-        <div class="security-icon">
+    <!-- ===================================================
+         THREE MEMBERSHIPS
+    =================================================== -->
 
-            🔒
+    <div class="plan-section">
+
+        <div class="plan-title">
+
+            SELECT YOUR MEMBERSHIP
 
         </div>
 
-        <div>
 
-            <b>Private Registration</b><br>
+        <div class="plans">
 
-            We only need the information required
-            for your gym membership. Never enter
-            your UPI PIN, ATM PIN or password.
+
+            <!-- 1 MONTH -->
+
+            <button
+                type="button"
+                class="plan"
+                data-plan="1400">
+
+                <span class="plan-duration">
+
+                    01 MONTH
+
+                </span>
+
+                <span class="plan-price-small">
+
+                    ₹1,400
+
+                </span>
+
+                <span class="plan-name-small">
+
+                    STARTER MEMBERSHIP
+
+                </span>
+
+            </button>
+
+
+
+            <!-- 6 MONTHS -->
+
+            <button
+                type="button"
+                class="plan"
+                data-plan="7560">
+
+                <span class="plan-duration">
+
+                    06 MONTHS
+
+                </span>
+
+                <span class="plan-price-small">
+
+                    ₹7,560
+
+                </span>
+
+                <span class="plan-name-small">
+
+                    BEST VALUE
+
+                </span>
+
+            </button>
+
+
+
+            <!-- 1 YEAR -->
+
+            <button
+                type="button"
+                class="plan"
+                data-plan="14280">
+
+                <span class="plan-duration">
+
+                    01 YEAR
+
+                </span>
+
+                <span class="plan-price-small">
+
+                    ₹14,280
+
+                </span>
+
+                <span class="plan-name-small">
+
+                    ELITE MEMBERSHIP
+
+                </span>
+
+            </button>
+
 
         </div>
 
     </div>
 
 
+
     <!-- ===================================================
-         FORM
+         SELECTED PLAN
     =================================================== -->
 
-    <form id="memberForm">
+    <div class="selected-box">
+
+        <div class="selected-top">
+
+            <div>
+
+                <div class="selected-label">
+
+                    YOUR SELECTED MEMBERSHIP
+
+                </div>
 
 
-        <div class="form-grid">
+                <div
+                    class="selected-plan-name"
+                    id="selectedPlanName">
 
+                    SELECT A PLAN
 
-            <div class="field full">
-
-                <label>
-
-                    Full Name *
-
-                </label>
-
-                <input
-                    id="name"
-                    required
-                    autocomplete="name"
-                    placeholder="Enter your full name">
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-
-                    Mobile Number *
-
-                </label>
-
-                <input
-                    id="phone"
-                    required
-                    inputmode="numeric"
-                    maxlength="10"
-                    placeholder="10-digit mobile number">
+                </div>
 
             </div>
 
 
-            <div class="field">
+            <div
+                class="selected-price"
+                id="selectedPlanPrice">
 
-                <label>
-
-                    Age *
-
-                </label>
-
-                <input
-                    id="age"
-                    required
-                    type="number"
-                    min="12"
-                    max="90"
-                    placeholder="Your age">
+                —
 
             </div>
-
-
-            <div class="field">
-
-                <label>
-
-                    Gender *
-
-                </label>
-
-                <select
-                    id="gender"
-                    required>
-
-                    <option value="">
-
-                        Select gender
-
-                    </option>
-
-                    <option>
-
-                        Male
-
-                    </option>
-
-                    <option>
-
-                        Female
-
-                    </option>
-
-                    <option>
-
-                        Prefer not to say
-
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-
-                    Fitness Goal *
-
-                </label>
-
-                <select
-                    id="goal"
-                    required>
-
-                    <option value="">
-
-                        Select goal
-
-                    </option>
-
-                    <option>
-
-                        Muscle Gain
-
-                    </option>
-
-                    <option>
-
-                        Fat Loss
-
-                    </option>
-
-                    <option>
-
-                        Strength
-
-                    </option>
-
-                    <option>
-
-                        General Fitness
-
-                    </option>
-
-                    <option>
-
-                        Bodybuilding
-
-                    </option>
-
-                </select>
-
-            </div>
-
 
         </div>
 
 
-        <button
-            type="submit"
-            class="primary">
+        <div class="benefit-title">
 
-            Continue To Payment →
-
-        </button>
-
-
-        <div class="form-note">
-
-            Nothing is paid when you press this button.
-            It only takes you to the payment screen.
+            WHAT YOU GET WITH THIS MEMBERSHIP
 
         </div>
 
-    </form>
+
+        <ul
+            class="benefits"
+            id="selectedBenefits">
+
+            <li>
+
+                Select a membership above
+
+            </li>
+
+        </ul>
+
+    </div>
+
+
+
+    <!-- ===================================================
+         MEMBER FORM
+    =================================================== -->
+
+    <div class="form-area">
+
+        <form id="memberForm">
+
+
+            <div class="form-grid">
+
+
+                <div class="field full">
+
+                    <label>
+
+                        Full Name *
+
+                    </label>
+
+                    <input
+                        id="name"
+                        required
+                        autocomplete="name"
+                        placeholder="Enter your full name">
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+
+                        Mobile Number *
+
+                    </label>
+
+                    <input
+                        id="phone"
+                        required
+                        inputmode="numeric"
+                        maxlength="10"
+                        placeholder="10-digit mobile number">
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+
+                        Age *
+
+                    </label>
+
+                    <input
+                        id="age"
+                        required
+                        type="number"
+                        min="12"
+                        max="90"
+                        placeholder="Your age">
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+
+                        Gender *
+
+                    </label>
+
+                    <select
+                        id="gender"
+                        required>
+
+                        <option value="">
+
+                            Select gender
+
+                        </option>
+
+                        <option>
+
+                            Male
+
+                        </option>
+
+                        <option>
+
+                            Female
+
+                        </option>
+
+                        <option>
+
+                            Prefer not to say
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+
+                        Fitness Goal *
+
+                    </label>
+
+                    <select
+                        id="goal"
+                        required>
+
+                        <option value="">
+
+                            Select goal
+
+                        </option>
+
+                        <option>
+
+                            Muscle Gain
+
+                        </option>
+
+                        <option>
+
+                            Fat Loss
+
+                        </option>
+
+                        <option>
+
+                            Strength
+
+                        </option>
+
+                        <option>
+
+                            General Fitness
+
+                        </option>
+
+                        <option>
+
+                            Bodybuilding
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="primary">
+
+                Continue To Payment →
+
+            </button>
+
+
+            <div class="form-note">
+
+                Nothing is paid on this screen.
+                Your selected membership will be carried
+                to the payment screen.
+
+            </div>
+
+
+        </form>
+
+    </div>
 
 </div>
 
 
 
 <!-- =======================================================
-     STEP 2 PAYMENT
+     STEP 02 — PAYMENT
 ======================================================= -->
 
 <div
@@ -2642,7 +2564,7 @@ body{
 
         <div>
 
-            <div class="form-eyebrow">
+            <div class="payment-eyebrow">
 
                 STEP 02 / PAYMENT
 
@@ -2669,36 +2591,49 @@ body{
     </div>
 
 
-    <!--
-        ONLY SELECTED PLAN AMOUNT
-    -->
 
-    <div class="payment-summary">
+    <!-- SELECTED PLAN ONLY -->
 
-        <span>
+    <div class="payment-plan">
 
-            Amount To Pay
+        <div>
 
-        </span>
+            <div class="payment-plan-label">
 
-        <strong id="paymentAmount">
+                SELECTED MEMBERSHIP
 
-            ₹1,400
+            </div>
 
-        </strong>
+            <div
+                class="payment-plan-name"
+                id="paymentPlanName">
+
+                —
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="payment-amount"
+            id="paymentAmount">
+
+            —
+
+        </div>
 
     </div>
 
 
-    <!-- ===================================================
-         QR
-    =================================================== -->
+
+    <!-- QR -->
 
     <div class="qr-box">
 
         <div class="qr-title">
 
-            SCAN UPI QR
+            SCAN UPI QR TO PAY
 
         </div>
 
@@ -2728,6 +2663,9 @@ body{
     </div>
 
 
+
+    <!-- BUTTONS -->
+
     <div class="payment-buttons">
 
 
@@ -2750,6 +2688,7 @@ body{
 
         </button>
 
+
     </div>
 
 
@@ -2757,10 +2696,10 @@ body{
 
         <b>Important:</b>
 
-        The UPI application opens only when you
-        press “Open UPI App”. After completing your
-        payment, press “I Have Paid” to submit the
-        registration for verification.
+        Open UPI App only attempts to open your
+        installed UPI application after you press
+        the button. This page never opens UPI
+        automatically.
 
     </div>
 
@@ -2769,70 +2708,140 @@ body{
 
 
 <!-- =======================================================
-     STEP 3 VERIFICATION
+     STEP 03 — VERIFICATION
 ======================================================= -->
 
 <div
-    class="verify"
+    class="panel"
     id="verificationPanel">
 
 
-    <!-- ===================================================
-         ANIMATED CHECK
-    =================================================== -->
+    <div class="verify">
 
-    <div class="verify-icon">
 
-        <div class="check-mark"></div>
+        <!-- ANIMATED CHECK -->
 
-        <span class="particle p1"></span>
-        <span class="particle p2"></span>
-        <span class="particle p3"></span>
-        <span class="particle p4"></span>
+        <div class="verify-icon-wrap">
+
+            <div class="verify-ring"></div>
+
+            <div class="verify-ring"></div>
+
+            <div class="verify-icon">
+
+                <span class="verify-check">
+
+                    ✓
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="verify-eyebrow">
+
+            STEP 03 / VERIFICATION
+
+        </div>
+
+
+        <h2>
+
+            Payment<br>
+
+            <span>Submitted.</span>
+
+        </h2>
+
+
+        <p id="verificationMessage">
+
+            Your membership registration has been received.
+            Payment status is currently pending verification.
+
+        </p>
+
+
+        <div
+            class="member-id"
+            id="memberId">
+
+        </div>
+
+
+
+        <div class="success-details">
+
+
+            <div class="success-item">
+
+                <span>
+
+                    Membership
+
+                </span>
+
+                <strong id="successPlan">
+
+                    —
+
+                </strong>
+
+            </div>
+
+
+            <div class="success-item">
+
+                <span>
+
+                    Amount
+
+                </span>
+
+                <strong id="successAmount">
+
+                    —
+
+                </strong>
+
+            </div>
+
+
+            <div class="success-item">
+
+                <span>
+
+                    Status
+
+                </span>
+
+                <strong>
+
+                    Pending Verification
+
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+        <button
+            type="button"
+            class="primary"
+            onclick="location.href='index.html'">
+
+            Back To 14 FITNESS
+
+        </button>
+
 
     </div>
-
-
-    <div class="form-eyebrow">
-
-        STEP 03 / VERIFICATION
-
-    </div>
-
-
-    <h2>
-
-        Payment<br>
-
-        <span>Submitted.</span>
-
-    </h2>
-
-
-    <p id="verificationMessage">
-
-        Your membership information has been received.
-        Your payment is now waiting for verification.
-
-    </p>
-
-
-    <div
-        class="member-id"
-        id="memberId">
-
-    </div>
-
-
-    <button
-        type="button"
-        class="primary"
-        onclick="location.href='index.html'">
-
-        Back To 14 FITNESS
-
-    </button>
-
 
 </div>
 
@@ -2855,7 +2864,7 @@ const UPI_NAME = "14 FITNESS GYM";
 
 
 /* =========================================================
-   MEMBERSHIP DATA
+   MEMBERSHIP PLANS
 ========================================================= */
 
 const plans = {
@@ -2864,15 +2873,15 @@ const plans = {
 
         name:"1 MONTH",
 
-        display:"1 MONTH",
+        fullName:"1 MONTH MEMBERSHIP",
 
         amount:1400,
 
-        duration:"1 Month",
+        duration:"01 MONTH",
 
         benefits:[
 
-            "1 Month membership",
+            "1 Month gym membership",
 
             "FREE admission",
 
@@ -2883,46 +2892,46 @@ const plans = {
     },
 
 
-    "7500": {
+    "7560": {
 
         name:"6 MONTHS",
 
-        display:"6 MONTHS",
+        fullName:"6 MONTHS MEMBERSHIP",
 
-        amount:7500,
+        amount:7560,
 
-        duration:"6 Months",
+        duration:"06 MONTHS",
 
         benefits:[
 
-            "6 Months membership",
+            "6 Months gym membership",
 
             "FREE admission",
 
-            "Long-term membership discount"
+            "Long-term membership value"
 
         ]
 
     },
 
 
-    "14200": {
+    "14280": {
 
         name:"1 YEAR",
 
-        display:"1 YEAR",
+        fullName:"1 YEAR MEMBERSHIP",
 
-        amount:14200,
+        amount:14280,
 
-        duration:"12 Months",
+        duration:"01 YEAR",
 
         benefits:[
 
-            "12 Months membership",
+            "12 Months gym membership",
 
             "FREE admission",
 
-            "Annual membership benefits"
+            "Annual membership access"
 
         ]
 
@@ -2948,6 +2957,7 @@ function escapeHtml(value){
 
     return String(value).replace(
         /[&<>"']/g,
+
         character => ({
 
             "&":"&amp;",
@@ -2963,123 +2973,148 @@ function escapeHtml(value){
 
 
 /* =========================================================
-   GET SELECTED PLAN
+   PLAN SELECTION
 ========================================================= */
 
-function getSelectedPlan(){
+function selectPlan(key){
 
-    const params = new URLSearchParams(
-        window.location.search
-    );
+    if(!plans[key]){
 
-    let planKey = params.get("plan");
-
-
-    /*
-        Also support old links that may use:
-        membership=
-        amount=
-    */
-
-    if(!planKey){
-
-        planKey = params.get("membership");
-
-    }
-
-    if(!planKey){
-
-        planKey = params.get("amount");
-
+        return;
     }
 
 
-    /*
-        Remove commas and ₹ if somebody
-        passes the amount in another format.
-    */
-
-    if(planKey){
-
-        planKey = String(planKey)
-            .replace(/₹/g,"")
-            .replace(/,/g,"")
-            .trim();
-
-    }
+    selectedPlan = key;
 
 
-    /*
-        Fallback:
-        If order.html is opened directly without
-        a plan, use 1400 as the default.
-    */
-
-    if(!plans[planKey]){
-
-        planKey = "1400";
-
-    }
+    const plan = plans[key];
 
 
-    return planKey;
-
-}
-
-
-/* =========================================================
-   DISPLAY ONLY SELECTED PLAN
-========================================================= */
-
-function loadSelectedPlan(){
-
-    selectedPlan = getSelectedPlan();
-
-    const plan = plans[selectedPlan];
-
+    /* BUTTON STATES */
 
     document
-        .getElementById("displayPlan")
-        .textContent = plan.display;
+        .querySelectorAll(".plan")
+        .forEach(button => {
 
+            button.classList.toggle(
+                "active",
+                button.dataset.plan === key
+            );
+
+        });
+
+
+    /* SELECTED PLAN NAME */
 
     document
-        .getElementById("displayPrice")
+        .getElementById("selectedPlanName")
+        .textContent = plan.fullName;
+
+
+    /* SELECTED PRICE */
+
+    document
+        .getElementById("selectedPlanPrice")
         .innerHTML =
-            "₹" +
-            plan.amount.toLocaleString("en-IN") +
-            " <small>total</small>";
 
+            "₹" +
+
+            plan.amount.toLocaleString("en-IN") +
+
+            ' <small>total</small>';
+
+
+    /* BENEFITS */
 
     document
-        .getElementById("displayBenefits")
-        .innerHTML = plan.benefits
-            .map(
-                benefit =>
-                    `<li>${escapeHtml(benefit)}</li>`
-            )
-            .join("");
+        .getElementById("selectedBenefits")
+        .innerHTML =
+
+            plan.benefits
+                .map(
+                    item =>
+                        `<li>${escapeHtml(item)}</li>`
+                )
+                .join("");
+
+
+    /* PAYMENT SCREEN DATA */
+
+    document
+        .getElementById("paymentPlanName")
+        .textContent = plan.fullName;
 
 
     document
         .getElementById("paymentAmount")
         .textContent =
+
             "₹" +
+
             plan.amount.toLocaleString("en-IN");
-
-
-    document
-        .getElementById("upiId")
-        .textContent = UPI_ID;
 
 }
 
 
 /* =========================================================
-   INITIALIZE
+   PLAN BUTTONS
 ========================================================= */
 
-loadSelectedPlan();
+document
+    .querySelectorAll(".plan")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                selectPlan(
+                    button.dataset.plan
+                );
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   URL PLAN SUPPORT
+========================================================= */
+
+/*
+   This allows index.html to send a selected
+   membership using:
+
+   order.html?plan=1400
+   order.html?plan=7560
+   order.html?plan=14280
+
+   If no plan is supplied, ALL THREE are shown
+   and the user chooses one manually.
+*/
+
+function loadPlanFromURL(){
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const planFromURL =
+        params.get("plan");
+
+
+    if(
+        planFromURL &&
+        plans[planFromURL]
+    ){
+
+        selectPlan(planFromURL);
+
+    }
+
+}
 
 
 /* =========================================================
@@ -3112,6 +3147,17 @@ document
         function(event){
 
             event.preventDefault();
+
+
+            if(!selectedPlan){
+
+                alert(
+                    "Please select a membership first."
+                );
+
+                return;
+
+            }
 
 
             if(!event.target.reportValidity()){
@@ -3153,7 +3199,7 @@ document
                     .value;
 
 
-            /* NAME */
+            /* NAME VALIDATION */
 
             if(
                 !/^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ .'-]{2,59}$/
@@ -3169,7 +3215,7 @@ document
             }
 
 
-            /* PHONE */
+            /* PHONE VALIDATION */
 
             if(
                 !/^[6-9][0-9]{9}$/.test(phone)
@@ -3184,33 +3230,27 @@ document
             }
 
 
-            /*
-                Selected plan is taken from the URL.
-                User cannot accidentally select another
-                plan on this page.
-            */
-
             const plan =
                 plans[selectedPlan];
 
 
+            /* SAVE PENDING REGISTRATION */
+
             memberData = {
 
-                name:name,
+                name,
 
-                phone:phone,
+                phone,
 
-                age:age,
+                age,
 
-                gender:gender,
+                gender,
 
-                goal:goal,
+                goal,
 
                 plan:selectedPlan,
 
-                planName:plan.display,
-
-                duration:plan.duration,
+                planName:plan.fullName,
 
                 amount:plan.amount,
 
@@ -3240,6 +3280,17 @@ document
 ========================================================= */
 
 function showPayment(){
+
+    if(!selectedPlan){
+
+        alert(
+            "Please select a membership first."
+        );
+
+        return;
+
+    }
+
 
     document
         .getElementById("detailsPanel")
@@ -3274,23 +3325,24 @@ function showPayment(){
 
 
 /* =========================================================
-   CREATE QR
+   CREATE UPI URI
 ========================================================= */
 
-function createQR(){
-
-    const qrBox =
-        document.getElementById("qr");
-
-
-    qrBox.innerHTML = "";
-
+function createUPIUri(){
 
     const plan =
         plans[selectedPlan];
 
 
-    const uri =
+    if(!plan){
+
+        return "";
+
+    }
+
+
+    return (
+
         "upi://pay" +
 
         "?pa=" +
@@ -3307,9 +3359,37 @@ function createQR(){
         "&tn=" +
         encodeURIComponent(
             "14 FITNESS " +
-            plan.display +
+            plan.name +
             " MEMBERSHIP"
-        );
+        )
+
+    );
+
+}
+
+
+/* =========================================================
+   QR GENERATION
+========================================================= */
+
+function createQR(){
+
+    const qrBox =
+        document.getElementById("qr");
+
+
+    qrBox.innerHTML = "";
+
+
+    const uri =
+        createUPIUri();
+
+
+    if(!uri){
+
+        return;
+
+    }
 
 
     new QRCode(
@@ -3320,24 +3400,31 @@ function createQR(){
 
             text:uri,
 
-            width:202,
+            width:210,
 
-            height:202,
+            height:210,
 
             colorDark:"#101512",
 
-            colorLight:"#ffffff"
+            colorLight:"#ffffff",
+
+            correctLevel:
+                QRCode.CorrectLevel.H
 
         }
 
     );
+
+
+    document
+        .getElementById("upiId")
+        .textContent = UPI_ID;
 
 }
 
 
 /* =========================================================
    OPEN UPI
-   ONLY AFTER USER CLICK
 ========================================================= */
 
 function openUPI(){
@@ -3353,34 +3440,24 @@ function openUPI(){
     }
 
 
-    const plan =
-        plans[selectedPlan];
-
-
     const uri =
-        "upi://pay" +
+        createUPIUri();
 
-        "?pa=" +
-        encodeURIComponent(UPI_ID) +
 
-        "&pn=" +
-        encodeURIComponent(UPI_NAME) +
+    if(!uri){
 
-        "&am=" +
-        plan.amount +
-
-        "&cu=INR" +
-
-        "&tn=" +
-        encodeURIComponent(
-            "14 FITNESS " +
-            plan.display +
-            " MEMBERSHIP"
+        alert(
+            "Membership information is missing."
         );
+
+        return;
+
+    }
 
 
     /*
-        User-click only.
+       UPI OPENS ONLY AFTER USER CLICKS
+       THIS BUTTON.
     */
 
     window.location.href = uri;
@@ -3462,13 +3539,24 @@ function continueVerification(){
     }
 
 
-    /*
-        Generate membership ID only after
-        the user submits the payment declaration.
-    */
+    if(
+        !memberData.plan ||
+        !plans[memberData.plan]
+    ){
+
+        alert(
+            "Membership information is incomplete."
+        );
+
+        return;
+
+    }
+
 
     const memberId =
+
         "14F-" +
+
         Date.now()
             .toString()
             .slice(-8);
@@ -3483,7 +3571,8 @@ function continueVerification(){
 
 
     /*
-        Existing localStorage compatibility.
+       Compatibility with existing
+       localStorage member system.
     */
 
     let members = [];
@@ -3516,8 +3605,11 @@ function continueVerification(){
 
 
     localStorage.setItem(
+
         "14fitness_members",
+
         JSON.stringify(members)
+
     );
 
 
@@ -3536,6 +3628,10 @@ function continueVerification(){
 ========================================================= */
 
 function showVerification(data){
+
+    const plan =
+        plans[data.plan];
+
 
     document
         .getElementById("detailsPanel")
@@ -3558,7 +3654,9 @@ function showVerification(data){
     document
         .getElementById("memberId")
         .textContent =
+
             "MEMBER ID • " +
+
             data.memberId;
 
 
@@ -3567,41 +3665,44 @@ function showVerification(data){
         .innerHTML =
 
             "Welcome <b>" +
+
             escapeHtml(data.name) +
+
             "</b>.<br><br>" +
 
             "Your " +
-            escapeHtml(data.duration) +
-            " membership registration has been received. " +
+
+            escapeHtml(plan.fullName) +
+
+            " registration has been received. " +
 
             "Payment status is currently " +
 
             "<b>Pending Verification</b>.";
 
-    
-    /*
-        Restart the check animation every time
-        verification screen is shown.
-    */
 
-    const icon =
-        document.querySelector(".verify-icon");
+    document
+        .getElementById("successPlan")
+        .textContent =
+            plan.fullName;
 
 
-    const check =
-        document.querySelector(".check-mark");
+    document
+        .getElementById("successAmount")
+        .textContent =
+
+            "₹" +
+
+            plan.amount.toLocaleString("en-IN");
 
 
-    if(icon && check){
+    window.scrollTo({
 
-        check.style.animation = "none";
+        top:0,
 
-        void check.offsetWidth;
+        behavior:"smooth"
 
-        check.style.animation =
-            "checkDraw .65s cubic-bezier(.2,.8,.2,1) .15s forwards";
-
-    }
+    });
 
 }
 
@@ -3624,7 +3725,6 @@ function setStep(number){
 
 
     steps.forEach(
-
         (step,index) => {
 
             const current =
@@ -3632,37 +3732,47 @@ function setStep(number){
 
 
             step.classList.toggle(
+
                 "active",
+
                 current === number
+
             );
 
 
             step.classList.toggle(
+
                 "completed",
+
                 current < number
+
             );
 
         }
-
     );
 
 }
 
 
 /* =========================================================
-   IMPORTANT SECURITY / BEHAVIOUR NOTES
-=========================================================
-
-   1. No UPI app opens automatically.
-   2. QR is generated only on payment screen.
-   3. Only selected membership amount is used.
-   4. User must press "Open UPI App".
-   5. User must press "I Have Paid".
-   6. Verification says Pending Verification.
-   7. No automatic payment verification exists here.
-   8. No three-plan selector exists on this page.
-
+   INITIALIZATION
 ========================================================= */
+
+loadPlanFromURL();
+
+
+/*
+   IMPORTANT:
+
+   1. No automatic UPI opening.
+   2. No automatic payment.
+   3. No automatic verification.
+   4. No automatic selection of ₹1,400.
+   5. All three memberships appear when order.html
+      opens without a plan parameter.
+   6. Once selected, ONLY that membership is carried
+      into the payment and verification screens.
+*/
 
 </script>
 
