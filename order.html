@@ -1,146 +1,2449 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>14 FITNESS GYM — Secure Membership</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>14 FITNESS GYM — Membership</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
 <style>
-:root{--bg:#f2f6ef;--ink:#101512;--green:#173a21;--lime:#caff26;--muted:#707970;--line:#dce5d9;--white:#fff}
-*{box-sizing:border-box}body{margin:0;font-family:Inter,sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
-.top{padding:18px 6%;display:flex;justify-content:space-between;align-items:center}.logo{font:900 29px "Barlow Condensed"}.logo b{background:var(--ink);color:var(--lime);padding:6px 10px;border-radius:7px;margin-right:8px}.logo span{color:#718d00}.back{font-size:11px;font-weight:900;text-decoration:none;color:var(--green)}
-.page{width:min(1100px,92%);margin:25px auto 70px;display:grid;grid-template-columns:.82fr 1.18fr;gap:20px}
-.card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 25px 70px #173a2114;padding:30px}
-.summary{background:linear-gradient(145deg,#173a21,#285632);color:#fff;position:relative;overflow:hidden}.summary:after{content:"14";position:absolute;right:-30px;bottom:-70px;font:900 250px "Barlow Condensed";color:#ffffff0a}
-.kicker{font-size:9px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;color:#739000}.summary .kicker{color:var(--lime)}
-h1,h2,h3{font-family:"Barlow Condensed";text-transform:uppercase;margin:0}h1{font-size:62px;line-height:.82}.summary h1{margin:18px 0 30px}.summary p{font-size:11px;color:#bdc9bf;line-height:1.7;position:relative;z-index:2}
-.amount{font:900 68px "Barlow Condensed";line-height:.8;position:relative;z-index:2}.amount small{font:600 10px Inter;color:#b6c4ba}.benefits{list-style:none;padding:20px 0 0;border-top:1px solid #ffffff25;display:grid;gap:12px;font-size:11px;position:relative;z-index:2}.benefits li:before{content:"✓";color:var(--lime);font-weight:900;margin-right:9px}
-.formTitle{font-size:50px;line-height:.85}.secure{margin:15px 0 24px;padding:12px 14px;background:#eff7e7;border:1px solid #d6e6cd;border-radius:9px;font-size:10px;color:#536057;line-height:1.6}.secure b{color:#315a1e}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:grid;gap:6px}.full{grid-column:1/-1}.field label{font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:1.3px;color:#737c75}.field input,.field select{width:100%;padding:14px;border:1px solid var(--line);background:#f7f9f5;border-radius:8px;outline:0}.field input:focus,.field select:focus{border-color:#91b51a;box-shadow:0 0 0 3px #caff2638}
-.planPicker{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:18px 0}.pick{border:1px solid var(--line);background:#f7f9f5;border-radius:8px;padding:10px;font-size:9px;font-weight:900;cursor:pointer}.pick.active{background:var(--lime);border-color:#9ec900}.pick strong{display:block;font-size:16px;font-family:"Barlow Condensed"}
-.next{width:100%;border:0;background:var(--ink);color:#fff;padding:16px;border-radius:8px;font-weight:900;text-transform:uppercase;cursor:pointer;margin-top:18px}.note{font-size:8px;color:#89918b;line-height:1.6;margin-top:10px}
-.payment{display:none}.payment.show{display:block}.form.hide{display:none}
-.paymentHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.paymentHead h2{font-size:47px}.close{border:0;background:#eef2ed;width:35px;height:35px;border-radius:50%;font-size:20px}
-.qrWrap{background:#f7faf5;border:1px solid var(--line);border-radius:14px;padding:18px;text-align:center}.qr{width:230px;height:230px;margin:12px auto;background:#fff;display:grid;place-items:center}.upi{font-weight:900;font-size:21px;color:var(--green);word-break:break-all}.scanText{font-size:9px;color:#7b847c;margin-top:7px}
-.payBtns{display:grid;gap:10px;margin-top:15px}.payBtn{border:0;padding:16px;border-radius:8px;background:var(--lime);font-weight:900;cursor:pointer}.secondary{background:#edf2eb;color:#111}
-.warning{padding:12px;background:#fff8db;border:1px solid #eee0a6;color:#665b20;font-size:9px;line-height:1.6;border-radius:8px;margin-top:12px}
-.success{display:none;text-align:center;padding:30px 10px}.success.show{display:block}.check{width:85px;height:85px;border-radius:50%;background:var(--lime);display:grid;place-items:center;font-size:44px;margin:0 auto 18px;box-shadow:0 0 0 10px #caff2633}.success h2{font-size:65px}.success p{color:var(--muted);font-size:11px;line-height:1.7}.memberId{display:inline-block;background:var(--green);color:var(--lime);padding:12px 16px;border-radius:7px;font-weight:900;margin:10px 0}
-@media(max-width:800px){.page{grid-template-columns:1fr}.summary{order:0}.card{padding:23px}.grid{grid-template-columns:1fr}.full{grid-column:auto}.planPicker{grid-template-columns:1fr}.top{padding-inline:4%}}
+
+:root{
+  --bg:#050806;
+  --bg2:#0a100c;
+  --card:#0e1711;
+  --card2:#121d15;
+  --lime:#caff26;
+  --lime2:#9ed900;
+  --white:#f5f8f3;
+  --muted:#7c8980;
+  --muted2:#59645d;
+  --line:rgba(255,255,255,.09);
+  --danger:#ff6262;
+  --orange:#ffbd59;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(202,255,38,.07),transparent 25%),
+    radial-gradient(circle at 90% 20%,rgba(50,120,70,.12),transparent 30%),
+    radial-gradient(circle at 50% 100%,rgba(202,255,38,.05),transparent 30%),
+    var(--bg);
+  color:var(--white);
+  font-family:Inter,sans-serif;
+  overflow-x:hidden;
+}
+
+/* ===================================
+   AMBIENT BACKGROUND
+=================================== */
+
+.background{
+  position:fixed;
+  inset:0;
+  z-index:-10;
+  overflow:hidden;
+  pointer-events:none;
+}
+
+.grid{
+  position:absolute;
+  inset:-20%;
+  background:
+    linear-gradient(rgba(202,255,38,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(202,255,38,.035) 1px,transparent 1px);
+  background-size:70px 70px;
+  transform:perspective(700px) rotateX(65deg) translateY(-150px);
+  transform-origin:center top;
+  animation:gridMove 18s linear infinite;
+}
+
+.orb{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(5px);
+}
+
+.orb.one{
+  width:420px;
+  height:420px;
+  left:-180px;
+  top:10%;
+  background:radial-gradient(circle,rgba(202,255,38,.12),transparent 70%);
+  animation:orbOne 9s ease-in-out infinite;
+}
+
+.orb.two{
+  width:500px;
+  height:500px;
+  right:-200px;
+  bottom:0;
+  background:radial-gradient(circle,rgba(75,150,90,.12),transparent 70%);
+  animation:orbTwo 11s ease-in-out infinite;
+}
+
+.scanline{
+  position:absolute;
+  left:0;
+  right:0;
+  height:1px;
+  top:-10%;
+  background:linear-gradient(90deg,transparent,var(--lime),transparent);
+  opacity:.15;
+  box-shadow:0 0 20px var(--lime);
+  animation:scan 8s linear infinite;
+}
+
+.noise{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  pointer-events:none;
+  opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ===================================
+   TOP BAR
+=================================== */
+
+.top{
+  width:min(1250px,92%);
+  margin:auto;
+  padding:24px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:relative;
+  z-index:20;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  text-decoration:none;
+  color:white;
+  font:900 30px "Barlow Condensed";
+  letter-spacing:.5px;
+}
+
+.logo b{
+  background:var(--lime);
+  color:#070b08;
+  padding:7px 11px;
+  border-radius:7px;
+  margin-right:8px;
+  box-shadow:0 0 30px rgba(202,255,38,.18);
+}
+
+.logo span{
+  color:var(--lime);
+  margin-left:5px;
+}
+
+.back{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+  color:#8b978f;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+  padding:11px 15px;
+  border:1px solid var(--line);
+  border-radius:7px;
+  background:rgba(255,255,255,.025);
+  backdrop-filter:blur(10px);
+  transition:.3s;
+}
+
+.back:hover{
+  color:var(--lime);
+  border-color:rgba(202,255,38,.4);
+  transform:translateX(-3px);
+}
+
+/* ===================================
+   MAIN
+=================================== */
+
+.page{
+  width:min(1180px,92%);
+  margin:25px auto 90px;
+  display:grid;
+  grid-template-columns:.82fr 1.18fr;
+  gap:18px;
+  align-items:start;
+}
+
+/* ===================================
+   LEFT SUMMARY
+=================================== */
+
+.summary{
+  min-height:710px;
+  position:sticky;
+  top:25px;
+  overflow:hidden;
+  padding:35px;
+  border-radius:25px;
+  border:1px solid rgba(202,255,38,.16);
+
+  background:
+    radial-gradient(circle at 80% 15%,rgba(202,255,38,.13),transparent 30%),
+    linear-gradient(145deg,#142119,#09100c 65%,#060a07);
+
+  box-shadow:
+    0 40px 100px rgba(0,0,0,.45),
+    inset 0 1px rgba(255,255,255,.06);
+}
+
+.summary:before{
+  content:"14";
+  position:absolute;
+  right:-55px;
+  bottom:-105px;
+  color:rgba(202,255,38,.035);
+  font:900 370px/.7 "Barlow Condensed";
+  pointer-events:none;
+}
+
+.summary:after{
+  content:"";
+  position:absolute;
+  width:350px;
+  height:350px;
+  border:1px solid rgba(202,255,38,.09);
+  border-radius:50%;
+  right:-170px;
+  top:110px;
+  box-shadow:
+    0 0 0 35px rgba(202,255,38,.018),
+    0 0 0 70px rgba(202,255,38,.012);
+  animation:rotateRing 18s linear infinite;
+}
+
+.kicker{
+  color:var(--lime);
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+
+.summary h1{
+  position:relative;
+  z-index:2;
+  font:900 clamp(70px,7vw,105px)/.78 "Barlow Condensed";
+  text-transform:uppercase;
+  letter-spacing:-2px;
+  margin:22px 0 27px;
+}
+
+.summary h1 span{
+  color:var(--lime);
+  text-shadow:5px 5px 0 rgba(72,105,0,.45);
+}
+
+.summary-text{
+  position:relative;
+  z-index:2;
+  max-width:370px;
+  color:#a5b0a8;
+  font-size:11px;
+  line-height:1.8;
+}
+
+.selected{
+  position:relative;
+  z-index:2;
+  margin-top:55px;
+}
+
+.selected-label{
+  color:#627067;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+#summaryPlan{
+  font:900 38px/.9 "Barlow Condensed";
+  text-transform:uppercase;
+  margin:10px 0 20px;
+}
+
+.amount{
+  font:900 75px/.8 "Barlow Condensed";
+  color:white;
+}
+
+.amount small{
+  font:600 9px Inter;
+  color:#758078;
+}
+
+.benefits{
+  position:relative;
+  z-index:2;
+  list-style:none;
+  margin-top:28px;
+  padding-top:22px;
+  border-top:1px solid rgba(255,255,255,.1);
+  display:grid;
+  gap:13px;
+}
+
+.benefits li{
+  color:#a4afa7;
+  font-size:10px;
+}
+
+.benefits li:before{
+  content:"✓";
+  color:var(--lime);
+  font-weight:900;
+  margin-right:10px;
+}
+
+/* floating mini badge */
+
+.live-badge{
+  position:absolute;
+  left:30px;
+  bottom:30px;
+  z-index:4;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:10px 12px;
+  border:1px solid rgba(202,255,38,.18);
+  border-radius:8px;
+  background:rgba(0,0,0,.22);
+  backdrop-filter:blur(12px);
+  color:#89958d;
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.live-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--lime);
+  box-shadow:0 0 15px var(--lime);
+  animation:blink 1.5s infinite;
+}
+
+/* ===================================
+   RIGHT CARD
+=================================== */
+
+.form-card{
+  min-height:710px;
+  padding:36px;
+  border-radius:25px;
+  border:1px solid var(--line);
+  background:
+    linear-gradient(145deg,rgba(20,29,23,.97),rgba(10,15,12,.98));
+  box-shadow:0 40px 100px rgba(0,0,0,.35);
+  position:relative;
+  overflow:hidden;
+}
+
+.form-card:before{
+  content:"";
+  position:absolute;
+  width:280px;
+  height:280px;
+  right:-140px;
+  top:-140px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(202,255,38,.1),transparent 70%);
+}
+
+/* ===================================
+   PROGRESS
+=================================== */
+
+.steps{
+  display:flex;
+  align-items:center;
+  margin-bottom:35px;
+}
+
+.step{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  color:#536058;
+  font-size:8px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:1.2px;
+  white-space:nowrap;
+}
+
+.step-number{
+  width:29px;
+  height:29px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--line);
+  background:#0b110d;
+  color:#68736c;
+  transition:.4s;
+}
+
+.step.active{
+  color:var(--lime);
+}
+
+.step.active .step-number{
+  color:#080b08;
+  background:var(--lime);
+  border-color:var(--lime);
+  box-shadow:0 0 25px rgba(202,255,38,.2);
+}
+
+.step-line{
+  width:50px;
+  height:1px;
+  background:var(--line);
+  margin:0 12px;
+}
+
+.form-heading{
+  position:relative;
+  z-index:2;
+}
+
+.form-heading .kicker{
+  margin-bottom:12px;
+}
+
+.form-heading h2{
+  font:900 67px/.8 "Barlow Condensed";
+  text-transform:uppercase;
+  letter-spacing:-1px;
+}
+
+.form-heading p{
+  margin-top:17px;
+  max-width:500px;
+  color:#69756d;
+  font-size:10px;
+  line-height:1.7;
+}
+
+/* ===================================
+   SECURITY
+=================================== */
+
+.secure{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  margin:25px 0;
+  padding:14px;
+  background:rgba(202,255,38,.035);
+  border:1px solid rgba(202,255,38,.12);
+  border-radius:10px;
+  color:#7d8981;
+  font-size:8px;
+  line-height:1.7;
+}
+
+.secure-icon{
+  width:28px;
+  height:28px;
+  flex:0 0 28px;
+  display:grid;
+  place-items:center;
+  border-radius:7px;
+  background:rgba(202,255,38,.1);
+  color:var(--lime);
+}
+
+.secure b{
+  color:#b4c2b7;
+}
+
+/* ===================================
+   PLAN PICKER
+=================================== */
+
+.planTitle{
+  color:#606c64;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:9px;
+}
+
+.planPicker{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-bottom:28px;
+}
+
+.pick{
+  position:relative;
+  border:1px solid var(--line);
+  background:#0b120e;
+  color:white;
+  border-radius:11px;
+  padding:14px 11px;
+  text-align:left;
+  cursor:pointer;
+  transition:.35s;
+  overflow:hidden;
+}
+
+.pick:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent,rgba(202,255,38,.08),transparent);
+  transform:translateX(-100%);
+  transition:.5s;
+}
+
+.pick:hover:before{
+  transform:translateX(100%);
+}
+
+.pick:hover{
+  border-color:rgba(202,255,38,.3);
+  transform:translateY(-2px);
+}
+
+.pick.active{
+  color:#070b08;
+  background:var(--lime);
+  border-color:var(--lime);
+  box-shadow:0 10px 35px rgba(202,255,38,.13);
+}
+
+.pick strong{
+  display:block;
+  position:relative;
+  z-index:2;
+  font:900 25px/.9 "Barlow Condensed";
+}
+
+.pick span{
+  display:block;
+  position:relative;
+  z-index:2;
+  margin-top:7px;
+  font-size:7px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+  opacity:.75;
+}
+
+/* ===================================
+   FORM
+=================================== */
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.field{
+  position:relative;
+}
+
+.full{
+  grid-column:1/-1;
+}
+
+.field label{
+  display:block;
+  margin-bottom:7px;
+  color:#78847c;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:1.3px;
+  text-transform:uppercase;
+}
+
+.field input,
+.field select{
+  width:100%;
+  height:49px;
+  padding:0 14px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  outline:0;
+  background:#0a110d;
+  color:#e9eee9;
+  font:500 11px Inter;
+  transition:.3s;
+}
+
+.field input::placeholder{
+  color:#465149;
+}
+
+.field input:hover,
+.field select:hover{
+  border-color:rgba(255,255,255,.15);
+}
+
+.field input:focus,
+.field select:focus{
+  border-color:rgba(202,255,38,.6);
+  background:#0d160f;
+  box-shadow:
+    0 0 0 3px rgba(202,255,38,.05),
+    0 0 30px rgba(202,255,38,.04);
+}
+
+.field select{
+  cursor:pointer;
+}
+
+.field select option{
+  background:#0b110d;
+  color:white;
+}
+
+/* ===================================
+   BUTTON
+=================================== */
+
+.next{
+  width:100%;
+  position:relative;
+  overflow:hidden;
+  margin-top:22px;
+  padding:17px;
+  border:0;
+  border-radius:9px;
+  background:var(--lime);
+  color:#080b08;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:.35s;
+  box-shadow:0 15px 40px rgba(202,255,38,.1);
+}
+
+.next:before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-130%;
+  width:80%;
+  height:100%;
+  transform:skewX(-20deg);
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.6),
+    transparent
+  );
+  transition:.65s;
+}
+
+.next:hover:before{
+  left:150%;
+}
+
+.next:hover{
+  transform:translateY(-3px);
+  box-shadow:0 20px 50px rgba(202,255,38,.2);
+}
+
+.note{
+  text-align:center;
+  margin-top:11px;
+  color:#4e5a52;
+  font-size:7px;
+  line-height:1.6;
+}
+
+/* ===================================
+   PAYMENT
+=================================== */
+
+.payment,
+.success{
+  display:none;
+}
+
+.payment.show,
+.success.show{
+  display:block;
+  animation:pageIn .6s ease both;
+}
+
+.paymentHead{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
+}
+
+.paymentHead h2{
+  font:900 64px/.8 "Barlow Condensed";
+  text-transform:uppercase;
+}
+
+.close{
+  width:39px;
+  height:39px;
+  border:1px solid var(--line);
+  border-radius:50%;
+  background:#0b120e;
+  color:#89948d;
+  font-size:22px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.close:hover{
+  color:var(--lime);
+  border-color:rgba(202,255,38,.4);
+  transform:rotate(90deg);
+}
+
+.payment-total{
+  margin-bottom:20px;
+  padding:16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#0a110d;
+}
+
+.payment-total span{
+  color:#66736a;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.payment-total strong{
+  color:var(--lime);
+  font:900 28px "Barlow Condensed";
+}
+
+/* ===================================
+   QR
+=================================== */
+
+.qrWrap{
+  position:relative;
+  padding:25px;
+  text-align:center;
+  border:1px solid rgba(202,255,38,.15);
+  border-radius:18px;
+  background:
+    radial-gradient(circle at center,rgba(202,255,38,.05),transparent 55%),
+    #09100c;
+  overflow:hidden;
+}
+
+.qrWrap:before,
+.qrWrap:after{
+  content:"";
+  position:absolute;
+  width:25px;
+  height:25px;
+  border-color:var(--lime);
+  border-style:solid;
+  opacity:.7;
+}
+
+.qrWrap:before{
+  left:15px;
+  top:15px;
+  border-width:2px 0 0 2px;
+}
+
+.qrWrap:after{
+  right:15px;
+  bottom:15px;
+  border-width:0 2px 2px 0;
+}
+
+.qr-label{
+  color:#69766d;
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.qr{
+  width:235px;
+  height:235px;
+  margin:20px auto;
+  padding:12px;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  background:white;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.2),
+    0 20px 60px rgba(0,0,0,.4);
+}
+
+.upi{
+  color:var(--lime);
+  font-size:18px;
+  font-weight:900;
+  word-break:break-all;
+}
+
+.scanText{
+  margin-top:6px;
+  color:#59655d;
+  font-size:7px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+/* ===================================
+   PAYMENT BUTTONS
+=================================== */
+
+.payBtns{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:14px;
+}
+
+.payBtn{
+  min-height:51px;
+  border:1px solid rgba(202,255,38,.25);
+  border-radius:9px;
+  background:var(--lime);
+  color:#080b08;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.7px;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.payBtn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 15px 35px rgba(202,255,38,.15);
+}
+
+.payBtn.secondary{
+  background:#101812;
+  color:#b9c3bc;
+  border-color:var(--line);
+}
+
+.payBtn.secondary:hover{
+  color:var(--lime);
+  border-color:rgba(202,255,38,.35);
+}
+
+.warning{
+  margin-top:13px;
+  padding:13px;
+  border-radius:9px;
+  background:rgba(255,189,89,.045);
+  border:1px solid rgba(255,189,89,.12);
+  color:#8b8063;
+  font-size:8px;
+  line-height:1.7;
+}
+
+.warning b{
+  color:#c5a866;
+}
+
+/* ===================================
+   SUCCESS
+=================================== */
+
+.success{
+  text-align:center;
+  padding:45px 10px 20px;
+}
+
+.success-glow{
+  position:relative;
+  width:105px;
+  height:105px;
+  margin:0 auto 28px;
+}
+
+.check{
+  width:105px;
+  height:105px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:var(--lime);
+  color:#080b08;
+  font-size:52px;
+  font-weight:900;
+  position:relative;
+  z-index:2;
+  box-shadow:
+    0 0 0 10px rgba(202,255,38,.07),
+    0 0 0 20px rgba(202,255,38,.035),
+    0 0 60px rgba(202,255,38,.18);
+  animation:successPop .8s cubic-bezier(.2,.8,.2,1);
+}
+
+.success-glow:after{
+  content:"";
+  position:absolute;
+  inset:-20px;
+  border:1px solid rgba(202,255,38,.25);
+  border-radius:50%;
+  animation:successRing 2s ease-out infinite;
+}
+
+.success .kicker{
+  margin-bottom:12px;
+}
+
+.success h2{
+  font:900 75px/.78 "Barlow Condensed";
+  text-transform:uppercase;
+}
+
+.success h2 span{
+  color:var(--lime);
+}
+
+.success p{
+  max-width:440px;
+  margin:23px auto;
+  color:#748078;
+  font-size:10px;
+  line-height:1.8;
+}
+
+.memberId{
+  display:inline-block;
+  margin:8px 0 8px;
+  padding:13px 17px;
+  border:1px solid rgba(202,255,38,.25);
+  border-radius:8px;
+  background:rgba(202,255,38,.06);
+  color:var(--lime);
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+/* ===================================
+   FOOTER
+=================================== */
+
+.bottom-note{
+  width:min(1180px,92%);
+  margin:0 auto 40px;
+  padding-top:18px;
+  border-top:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  color:#465149;
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.bottom-note b{
+  color:#6c7a70;
+}
+
+/* ===================================
+   ANIMATIONS
+=================================== */
+
+@keyframes gridMove{
+  from{transform:perspective(700px) rotateX(65deg) translateY(-150px)}
+  to{transform:perspective(700px) rotateX(65deg) translateY(0)}
+}
+
+@keyframes orbOne{
+  0%,100%{transform:translate(0,0) scale(1)}
+  50%{transform:translate(80px,50px) scale(1.15)}
+}
+
+@keyframes orbTwo{
+  0%,100%{transform:translate(0,0)}
+  50%{transform:translate(-70px,-40px) scale(1.1)}
+}
+
+@keyframes scan{
+  0%{top:-10%}
+  100%{top:110%}
+}
+
+@keyframes rotateRing{
+  from{transform:rotate(0)}
+  to{transform:rotate(360deg)}
+}
+
+@keyframes blink{
+  0%,100%{opacity:1}
+  50%{opacity:.3}
+}
+
+@keyframes pageIn{
+  from{
+    opacity:0;
+    transform:translateY(20px) scale(.98);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+@keyframes successPop{
+  0%{
+    transform:scale(.3);
+    opacity:0;
+  }
+  70%{
+    transform:scale(1.08);
+  }
+  100%{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+@keyframes successRing{
+  0%{
+    transform:scale(.7);
+    opacity:.8;
+  }
+  100%{
+    transform:scale(1.5);
+    opacity:0;
+  }
+}
+
+/* ===================================
+   RESPONSIVE
+=================================== */
+
+@media(max-width:900px){
+
+  .page{
+    grid-template-columns:1fr;
+  }
+
+  .summary{
+    min-height:auto;
+    position:relative;
+    top:auto;
+  }
+
+  .form-card{
+    min-height:auto;
+  }
+
+  .summary:before{
+    font-size:280px;
+  }
+
+}
+
+@media(max-width:650px){
+
+  .top{
+    width:90%;
+    padding:17px 0;
+  }
+
+  .logo{
+    font-size:24px;
+  }
+
+  .back{
+    padding:9px 10px;
+    font-size:7px;
+  }
+
+  .page{
+    width:92%;
+    margin-top:10px;
+  }
+
+  .summary,
+  .form-card{
+    padding:24px;
+    border-radius:18px;
+  }
+
+  .summary h1{
+    font-size:72px;
+  }
+
+  .form-heading h2{
+    font-size:57px;
+  }
+
+  .steps{
+    margin-bottom:28px;
+  }
+
+  .step-line{
+    width:20px;
+    margin:0 7px;
+  }
+
+  .step{
+    font-size:6px;
+    letter-spacing:.5px;
+    gap:5px;
+  }
+
+  .step-number{
+    width:25px;
+    height:25px;
+    font-size:8px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .full{
+    grid-column:auto;
+  }
+
+  .planPicker{
+    grid-template-columns:1fr;
+  }
+
+  .pick{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:13px;
+  }
+
+  .pick strong{
+    font-size:24px;
+  }
+
+  .pick span{
+    margin:0;
+  }
+
+  .payBtns{
+    grid-template-columns:1fr;
+  }
+
+  .qr{
+    width:215px;
+    height:215px;
+  }
+
+  .paymentHead h2{
+    font-size:55px;
+  }
+
+  .success h2{
+    font-size:63px;
+  }
+
+  .bottom-note{
+    display:block;
+    text-align:center;
+    line-height:2;
+  }
+
+}
+
+@media(max-width:390px){
+
+  .summary h1{
+    font-size:64px;
+  }
+
+  .amount{
+    font-size:65px;
+  }
+
+  .form-heading h2{
+    font-size:51px;
+  }
+
+  .steps{
+    transform:scale(.9);
+    transform-origin:left;
+  }
+
+}
+
 </style>
 </head>
+
 <body>
-<div class="top"><a class="logo" href="index.html"><b>14</b> FITNESS <span>GYM</span></a><a class="back" href="index.html">← BACK TO GYM</a></div>
+
+<!-- ===================================
+     BACKGROUND
+=================================== -->
+
+<div class="background">
+  <div class="grid"></div>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="scanline"></div>
+</div>
+
+<div class="noise"></div>
+
+
+<!-- ===================================
+     HEADER
+=================================== -->
+
+<header class="top">
+
+  <a class="logo" href="index.html">
+    <b>14</b>
+    FITNESS
+    <span>GYM</span>
+  </a>
+
+  <a class="back" href="index.html">
+    ← Back To Gym
+  </a>
+
+</header>
+
+
+<!-- ===================================
+     MAIN
+=================================== -->
 
 <main class="page">
-<section class="card summary">
-<div class="kicker">Secure Membership</div><h1>Own Your<br>Progress.</h1>
-<p>One simple registration. Your membership details are recorded securely and your selected plan is shown before payment.</p>
-<div style="height:25px"></div><div class="kicker">Selected Plan</div><h2 id="summaryPlan" style="font-size:37px;margin:8px 0">6 MONTHS</h2><div class="amount" id="summaryAmount">₹7,560 <small>total</small></div>
-<ul class="benefits" id="summaryBenefits"><li>6 Months membership</li><li>FREE admission</li><li>10% discount</li></ul>
-</section>
 
-<section class="card">
-<div id="formPanel">
-<div class="kicker">Step 01 / Your Details</div><h2 class="formTitle">Become A<br>Member.</h2>
-<div class="secure">🔒 <b>Secure Registration</b> — Your information is used for your membership record. Never enter your UPI PIN, ATM PIN, password or banking credentials here.</div>
 
-<div class="planPicker">
-<button class="pick" data-plan="1400"><strong>₹1,400</strong>1 MONTH + FREE</button>
-<button class="pick active" data-plan="7560"><strong>₹7,560</strong>6 MONTHS • BEST</button>
-<button class="pick" data-plan="14280"><strong>₹14,280</strong>1 YEAR</button>
-</div>
+  <!-- ===================================
+       SUMMARY
+  =================================== -->
 
-<form id="memberForm">
-<div class="grid">
-<div class="field full"><label>Full Name *</label><input id="name" required autocomplete="name" pattern="[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ .'-]{2,59}" title="Enter your real full name" placeholder="Your full name"></div>
-<div class="field"><label>Mobile Number *</label><input id="phone" required inputmode="numeric" maxlength="10" pattern="[6-9][0-9]{9}" title="Enter a valid 10-digit Indian mobile number" placeholder="10-digit mobile"></div>
-<div class="field"><label>Age *</label><input id="age" required type="number" min="12" max="90" placeholder="Age"></div>
-<div class="field"><label>Gender *</label><select id="gender" required><option value="">Select</option><option>Male</option><option>Female</option><option>Prefer not to say</option></select></div>
-<div class="field"><label>Fitness Goal *</label><select id="goal" required><option value="">Select goal</option><option>Muscle Gain</option><option>Fat Loss</option><option>Strength</option><option>General Fitness</option><option>Bodybuilding</option></select></div>
-</div>
-<button class="next" type="submit">Continue To Payment →</button>
-<div class="note">By continuing, you confirm that the details entered are accurate.</div>
-</form>
-</div>
+  <section class="summary">
 
-<div class="payment" id="paymentPanel">
-<div class="paymentHead"><div><div class="kicker">Step 02 / Payment</div><h2>Scan & Pay.</h2></div><button class="close" onclick="backToForm()">×</button></div>
-<div class="qrWrap"><div class="kicker">UPI QR • 14 FITNESS GYM</div><div class="qr" id="qr"></div><div class="upi" id="upiText">7889777143@fam</div><div class="scanText">Scan with any supported UPI app</div></div>
-<div class="payBtns"><button class="payBtn" onclick="payWithUPI()">Pay With UPI App →</button><button class="payBtn secondary" onclick="showPaidConfirmation()">I Have Completed Payment</button></div>
-<div class="warning">Important: a UPI deep-link can open the installed UPI app, but a normal website cannot reliably receive an automatic “payment successful” callback from every UPI app/browser. Final payment verification should be done by the backend before activating a paid membership.</div>
-</div>
+    <div class="kicker">
+      Membership Registration
+    </div>
 
-<div class="success" id="successPanel">
-<div class="check">✓</div><div class="kicker">Registration Received</div><h2>You're A<br>Member.</h2>
-<p id="successMessage"></p><div class="memberId" id="memberId"></div>
-<p><b>Your membership countdown is saved from your joining date.</b><br>The backend version will calculate exact expiry and send reminders automatically.</p>
-<button class="next" onclick="location.href='index.html#home'">Back To 14 Fitness</button>
-</div>
-</section>
+    <h1>
+      Own<br>
+      Your<br>
+      <span>Progress.</span>
+    </h1>
+
+    <p class="summary-text">
+      One decision can change the way you train.
+      Choose your membership, enter your details and
+      take the next step toward your strongest self.
+    </p>
+
+
+    <div class="selected">
+
+      <div class="selected-label">
+        Selected Membership
+      </div>
+
+      <h2 id="summaryPlan">
+        6 MONTHS
+      </h2>
+
+      <div class="amount" id="summaryAmount">
+        ₹7,560
+        <small>total</small>
+      </div>
+
+
+      <ul class="benefits" id="summaryBenefits">
+
+        <li>
+          6 Months membership
+        </li>
+
+        <li>
+          FREE admission
+        </li>
+
+        <li>
+          10% long-term discount
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <div class="live-badge">
+      <span class="live-dot"></span>
+      14 Fitness • Member Registration
+    </div>
+
+  </section>
+
+
+  <!-- ===================================
+       FORM CARD
+  =================================== -->
+
+  <section class="form-card">
+
+
+    <!-- ===================================
+         STEPS
+    =================================== -->
+
+    <div class="steps">
+
+      <div class="step active" id="stepOne">
+
+        <div class="step-number">
+          01
+        </div>
+
+        Your Details
+
+      </div>
+
+
+      <div class="step-line"></div>
+
+
+      <div class="step" id="stepTwo">
+
+        <div class="step-number">
+          02
+        </div>
+
+        Payment
+
+      </div>
+
+
+      <div class="step-line"></div>
+
+
+      <div class="step" id="stepThree">
+
+        <div class="step-number">
+          03
+        </div>
+
+        Complete
+
+      </div>
+
+    </div>
+
+
+    <!-- ===================================
+         FORM PANEL
+    =================================== -->
+
+    <div id="formPanel">
+
+
+      <div class="form-heading">
+
+        <div class="kicker">
+          Step 01 / Personal Information
+        </div>
+
+        <h2>
+          Become A<br>
+          Member.
+        </h2>
+
+        <p>
+          Enter your real details below. These details are
+          used to create your membership record.
+        </p>
+
+      </div>
+
+
+      <div class="secure">
+
+        <div class="secure-icon">
+          🔒
+        </div>
+
+        <div>
+          <b>Secure Registration</b><br>
+          Your information is used for your membership
+          record. Never enter your UPI PIN, ATM PIN,
+          password or banking credentials here.
+        </div>
+
+      </div>
+
+
+      <!-- PLAN PICKER -->
+
+      <div class="planTitle">
+        Select Membership
+      </div>
+
+      <div class="planPicker">
+
+        <button
+          class="pick"
+          data-plan="1400"
+          type="button">
+
+          <strong>₹1,400</strong>
+          <span>1 MONTH + FREE</span>
+
+        </button>
+
+
+        <button
+          class="pick active"
+          data-plan="7560"
+          type="button">
+
+          <strong>₹7,560</strong>
+          <span>6 MONTHS • BEST</span>
+
+        </button>
+
+
+        <button
+          class="pick"
+          data-plan="14280"
+          type="button">
+
+          <strong>₹14,280</strong>
+          <span>1 YEAR • ELITE</span>
+
+        </button>
+
+      </div>
+
+
+      <!-- FORM -->
+
+      <form id="memberForm">
+
+        <div class="grid">
+
+
+          <div class="field full">
+
+            <label>
+              Full Name *
+            </label>
+
+            <input
+              id="name"
+              required
+              autocomplete="name"
+              pattern="[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ .'-]{2,59}"
+              title="Enter your real full name"
+              placeholder="Enter your full name">
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              Mobile Number *
+            </label>
+
+            <input
+              id="phone"
+              required
+              inputmode="numeric"
+              maxlength="10"
+              pattern="[6-9][0-9]{9}"
+              title="Enter a valid 10-digit Indian mobile number"
+              placeholder="10-digit mobile">
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              Age *
+            </label>
+
+            <input
+              id="age"
+              required
+              type="number"
+              min="12"
+              max="90"
+              placeholder="Your age">
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              Gender *
+            </label>
+
+            <select id="gender" required>
+
+              <option value="">
+                Select gender
+              </option>
+
+              <option>
+                Male
+              </option>
+
+              <option>
+                Female
+              </option>
+
+              <option>
+                Prefer not to say
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              Fitness Goal *
+            </label>
+
+            <select id="goal" required>
+
+              <option value="">
+                Select goal
+              </option>
+
+              <option>
+                Muscle Gain
+              </option>
+
+              <option>
+                Fat Loss
+              </option>
+
+              <option>
+                Strength
+              </option>
+
+              <option>
+                General Fitness
+              </option>
+
+              <option>
+                Bodybuilding
+              </option>
+
+            </select>
+
+          </div>
+
+
+        </div>
+
+
+        <button
+          class="next"
+          type="submit">
+
+          Continue To Secure Payment →
+
+        </button>
+
+        <div class="note">
+          By continuing, you confirm that the details entered are accurate.
+        </div>
+
+      </form>
+
+    </div>
+
+
+    <!-- ===================================
+         PAYMENT PANEL
+    =================================== -->
+
+    <div
+      class="payment"
+      id="paymentPanel">
+
+
+      <div class="paymentHead">
+
+        <div>
+
+          <div class="kicker">
+            Step 02 / Secure Payment
+          </div>
+
+          <h2>
+            Scan & Pay.
+          </h2>
+
+        </div>
+
+
+        <button
+          class="close"
+          type="button"
+          onclick="backToForm()">
+
+          ×
+
+        </button>
+
+      </div>
+
+
+      <div class="payment-total">
+
+        <span>
+          Amount To Pay
+        </span>
+
+        <strong id="paymentAmount">
+          ₹7,560
+        </strong>
+
+      </div>
+
+
+      <!-- QR -->
+
+      <div class="qrWrap">
+
+        <div class="qr-label">
+          UPI QR • 14 FITNESS GYM
+        </div>
+
+        <div
+          class="qr"
+          id="qr">
+        </div>
+
+        <div
+          class="upi"
+          id="upiText">
+          7889777143@fam
+        </div>
+
+        <div class="scanText">
+          Scan with any supported UPI application
+        </div>
+
+      </div>
+
+
+      <div class="payBtns">
+
+        <button
+          class="payBtn"
+          type="button"
+          onclick="payWithUPI()">
+
+          Pay With UPI App →
+
+        </button>
+
+
+        <button
+          class="payBtn secondary"
+          type="button"
+          onclick="showPaidConfirmation()">
+
+          I Have Completed Payment
+
+        </button>
+
+      </div>
+
+
+      <div class="warning">
+
+        <b>Payment verification:</b>
+        A UPI deep-link can open the installed UPI app,
+        but a normal website cannot reliably receive an
+        automatic payment-success callback from every
+        UPI app/browser. Final payment verification should
+        be completed by the backend before activating a
+        paid membership.
+
+      </div>
+
+    </div>
+
+
+    <!-- ===================================
+         SUCCESS PANEL
+    =================================== -->
+
+    <div
+      class="success"
+      id="successPanel">
+
+
+      <div class="success-glow">
+
+        <div class="check">
+          ✓
+        </div>
+
+      </div>
+
+
+      <div class="kicker">
+        Registration Received
+      </div>
+
+
+      <h2>
+        You're<br>
+        A <span>Member.</span>
+      </h2>
+
+
+      <p id="successMessage"></p>
+
+
+      <div
+        class="memberId"
+        id="memberId">
+      </div>
+
+
+      <p>
+
+        Your membership record has been saved from
+        your joining date.<br>
+
+        <b>
+          Membership countdown will appear in the
+          Members section of the gym website.
+        </b>
+
+      </p>
+
+
+      <button
+        class="next"
+        onclick="location.href='index.html#members'">
+
+        View Members →
+
+      </button>
+
+    </div>
+
+
+  </section>
+
 </main>
 
+
+<!-- ===================================
+     FOOTER
+=================================== -->
+
+<div class="bottom-note">
+
+  <div>
+    © 2026 <b>14 FITNESS GYM</b>
+  </div>
+
+  <div>
+    Train Hard • Stay Consistent • Keep Moving
+  </div>
+
+</div>
+
+
 <script>
-const UPI_ID="7889777143@fam";
-const UPI_NAME="14 FITNESS GYM";
-const plans={
- "1400":{name:"1 MONTH + FREE ADMISSION",short:"1 MONTH + FREE",amount:1400,benefits:["Admission fee ₹1,400","1 Month FREE membership","Full gym access"]},
- "7560":{name:"6 MONTHS + FREE ADMISSION",short:"6 MONTHS • BEST VALUE",amount:7560,benefits:["6 Months membership","FREE admission","10% discount"]},
- "14280":{name:"1 YEAR + FREE ADMISSION",short:"1 YEAR • ELITE",amount:14280,benefits:["12 Months membership","FREE admission","15% discount"]}
+
+/* ===================================
+   PAYMENT CONFIGURATION
+=================================== */
+
+const UPI_ID = "7889777143@fam";
+
+const UPI_NAME = "14 FITNESS GYM";
+
+
+/* ===================================
+   PLANS
+=================================== */
+
+const plans = {
+
+  "1400": {
+
+    name:"1 MONTH + FREE ADMISSION",
+
+    short:"1 MONTH + FREE",
+
+    amount:1400,
+
+    benefits:[
+      "Admission fee ₹1,400",
+      "1 Month FREE membership",
+      "Full gym access"
+    ]
+
+  },
+
+
+  "7560": {
+
+    name:"6 MONTHS + FREE ADMISSION",
+
+    short:"6 MONTHS • BEST VALUE",
+
+    amount:7560,
+
+    benefits:[
+      "6 Months membership",
+      "FREE admission",
+      "10% long-term discount"
+    ]
+
+  },
+
+
+  "14280": {
+
+    name:"1 YEAR + FREE ADMISSION",
+
+    short:"1 YEAR • ELITE",
+
+    amount:14280,
+
+    benefits:[
+      "12 Months membership",
+      "FREE admission",
+      "15% annual discount"
+    ]
+
+  }
+
 };
-let selectedKey=new URLSearchParams(location.search).get("plan")||"7560";
-if(!plans[selectedKey])selectedKey="7560";
-let memberData=null;
+
+
+/* ===================================
+   INITIAL PLAN
+=================================== */
+
+let selectedKey =
+  new URLSearchParams(location.search).get("plan") || "7560";
+
+
+if(!plans[selectedKey]){
+
+  selectedKey = "7560";
+
+}
+
+
+let memberData = null;
+
+
+/* ===================================
+   PLAN SELECTION
+=================================== */
 
 function setPlan(key){
- selectedKey=key;const p=plans[key];
- document.querySelectorAll(".pick").forEach(x=>x.classList.toggle("active",x.dataset.plan===key));
- document.getElementById("summaryPlan").textContent=p.name;
- document.getElementById("summaryAmount").innerHTML="₹"+p.amount.toLocaleString("en-IN")+" <small>total</small>";
- document.getElementById("summaryBenefits").innerHTML=p.benefits.map(x=>"<li>"+x+"</li>").join("");
+
+  selectedKey = key;
+
+  const p = plans[key];
+
+
+  document
+    .querySelectorAll(".pick")
+    .forEach(button => {
+
+      button.classList.toggle(
+        "active",
+        button.dataset.plan === key
+      );
+
+    });
+
+
+  document.getElementById(
+    "summaryPlan"
+  ).textContent = p.name;
+
+
+  document.getElementById(
+    "summaryAmount"
+  ).innerHTML =
+    "₹" +
+    p.amount.toLocaleString("en-IN") +
+    ' <small>total</small>';
+
+
+  document.getElementById(
+    "paymentAmount"
+  ).textContent =
+    "₹" +
+    p.amount.toLocaleString("en-IN");
+
+
+  document.getElementById(
+    "summaryBenefits"
+  ).innerHTML =
+    p.benefits
+      .map(item => `<li>${escapeHtml(item)}</li>`)
+      .join("");
+
 }
-document.querySelectorAll(".pick").forEach(b=>b.onclick=()=>setPlan(b.dataset.plan));
+
+
+/* ===================================
+   PLAN BUTTONS
+=================================== */
+
+document
+  .querySelectorAll(".pick")
+  .forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => setPlan(button.dataset.plan)
+    );
+
+  });
+
+
 setPlan(selectedKey);
 
-document.getElementById("memberForm").addEventListener("submit",e=>{
- e.preventDefault();
- if(!e.target.reportValidity())return;
- const phone=document.getElementById("phone").value.trim();
- const name=document.getElementById("name").value.trim();
- if(!/^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ .'-]{2,59}$/.test(name)){alert("Please enter your real full name.");return}
- if(!/^[6-9][0-9]{9}$/.test(phone)){alert("Please enter a valid 10-digit mobile number.");return}
- memberData={name,phone,age:document.getElementById("age").value,gender:document.getElementById("gender").value,goal:document.getElementById("goal").value,plan:selectedKey,amount:plans[selectedKey].amount,createdAt:new Date().toISOString()};
- localStorage.setItem("14fitness_pending",JSON.stringify(memberData));
- document.getElementById("formPanel").classList.add("hide");
- document.getElementById("paymentPanel").classList.add("show");
- makeQR();
-});
+
+/* ===================================
+   PHONE INPUT
+=================================== */
+
+document
+  .getElementById("phone")
+  .addEventListener(
+    "input",
+    function(){
+
+      this.value =
+        this.value
+          .replace(/\D/g,"")
+          .slice(0,10);
+
+    }
+  );
+
+
+/* ===================================
+   FORM SUBMISSION
+=================================== */
+
+document
+  .getElementById("memberForm")
+  .addEventListener(
+    "submit",
+    function(event){
+
+      event.preventDefault();
+
+
+      if(!event.target.reportValidity()){
+
+        return;
+
+      }
+
+
+      const phone =
+        document
+          .getElementById("phone")
+          .value
+          .trim();
+
+
+      const name =
+        document
+          .getElementById("name")
+          .value
+          .trim();
+
+
+      if(
+        !/^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ .'-]{2,59}$/.test(name)
+      ){
+
+        alert(
+          "Please enter your real full name."
+        );
+
+        return;
+
+      }
+
+
+      if(
+        !/^[6-9][0-9]{9}$/.test(phone)
+      ){
+
+        alert(
+          "Please enter a valid 10-digit mobile number."
+        );
+
+        return;
+
+      }
+
+
+      memberData = {
+
+        name:name,
+
+        phone:phone,
+
+        age:
+          document
+            .getElementById("age")
+            .value,
+
+        gender:
+          document
+            .getElementById("gender")
+            .value,
+
+        goal:
+          document
+            .getElementById("goal")
+            .value,
+
+        plan:selectedKey,
+
+        amount:
+          plans[selectedKey].amount,
+
+        createdAt:
+          new Date().toISOString()
+
+      };
+
+
+      localStorage.setItem(
+        "14fitness_pending",
+        JSON.stringify(memberData)
+      );
+
+
+      /* switch progress */
+
+      document
+        .getElementById("stepOne")
+        .classList.remove("active");
+
+
+      document
+        .getElementById("stepTwo")
+        .classList.add("active");
+
+
+      document
+        .getElementById("formPanel")
+        .style.display = "none";
+
+
+      document
+        .getElementById("paymentPanel")
+        .classList.add("show");
+
+
+      makeQR();
+
+
+      window.scrollTo({
+        top:0,
+        behavior:"smooth"
+      });
+
+    }
+  );
+
+
+/* ===================================
+   CREATE QR
+=================================== */
 
 function makeQR(){
- const box=document.getElementById("qr");box.innerHTML="";
- const p=plans[selectedKey];
- new QRCode(box,{text:`upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${p.amount}&cu=INR&tn=${encodeURIComponent(p.name)}`,width:230,height:230,colorDark:"#101512",colorLight:"#ffffff"});
- document.getElementById("upiText").textContent=UPI_ID;
+
+  const box =
+    document.getElementById("qr");
+
+
+  box.innerHTML = "";
+
+
+  const p =
+    plans[selectedKey];
+
+
+  const uri =
+    `upi://pay?pa=${encodeURIComponent(UPI_ID)}` +
+    `&pn=${encodeURIComponent(UPI_NAME)}` +
+    `&am=${p.amount}` +
+    `&cu=INR` +
+    `&tn=${encodeURIComponent(p.name)}`;
+
+
+  new QRCode(
+    box,
+    {
+
+      text:uri,
+
+      width:211,
+
+      height:211,
+
+      colorDark:"#101512",
+
+      colorLight:"#ffffff"
+
+    }
+  );
+
+
+  document
+    .getElementById("upiText")
+    .textContent = UPI_ID;
+
+
+  document
+    .getElementById("paymentAmount")
+    .textContent =
+      "₹" +
+      p.amount.toLocaleString("en-IN");
+
 }
+
+
+/* ===================================
+   UPI PAYMENT
+=================================== */
+
 function payWithUPI(){
- const p=plans[selectedKey];
- const uri=`upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${p.amount}&cu=INR&tn=${encodeURIComponent(p.name)}`;
- location.href=uri;
+
+  const p =
+    plans[selectedKey];
+
+
+  const uri =
+    `upi://pay?pa=${encodeURIComponent(UPI_ID)}` +
+    `&pn=${encodeURIComponent(UPI_NAME)}` +
+    `&am=${p.amount}` +
+    `&cu=INR` +
+    `&tn=${encodeURIComponent(p.name)}`;
+
+
+  location.href = uri;
+
 }
-function backToForm(){document.getElementById("paymentPanel").classList.remove("show");document.getElementById("formPanel").classList.remove("hide")}
+
+
+/* ===================================
+   BACK TO FORM
+=================================== */
+
+function backToForm(){
+
+  document
+    .getElementById("paymentPanel")
+    .classList.remove("show");
+
+
+  document
+    .getElementById("formPanel")
+    .style.display = "block";
+
+
+  document
+    .getElementById("stepTwo")
+    .classList.remove("active");
+
+
+  document
+    .getElementById("stepOne")
+    .classList.add("active");
+
+}
+
+
+/* ===================================
+   PAYMENT COMPLETED
+=================================== */
+
 function showPaidConfirmation(){
- const data=JSON.parse(localStorage.getItem("14fitness_pending")||"null");
- if(!data){alert("Please complete the registration first.");return}
- const id="14F-"+Date.now().toString().slice(-8);
- data.memberId=id;data.status="Payment Pending Verification";
- localStorage.setItem("14fitness_members",JSON.stringify([...JSON.parse(localStorage.getItem("14fitness_members")||"[]"),data]));
- localStorage.removeItem("14fitness_pending");
- document.getElementById("paymentPanel").classList.remove("show");
- document.getElementById("successPanel").classList.add("show");
- document.getElementById("memberId").textContent="MEMBER ID • "+id;
- document.getElementById("successMessage").innerHTML=`Welcome <b>${escapeHtml(data.name)}</b>! Your ${escapeHtml(plans[data.plan].name)} registration has been recorded.`;
+
+  const data =
+    JSON.parse(
+      localStorage.getItem(
+        "14fitness_pending"
+      ) || "null"
+    );
+
+
+  if(!data){
+
+    alert(
+      "Please complete the registration first."
+    );
+
+    return;
+
+  }
+
+
+  /*
+    Existing membership ID system preserved.
+  */
+
+  const id =
+    "14F-" +
+    Date.now()
+      .toString()
+      .slice(-8);
+
+
+  data.memberId = id;
+
+
+  /*
+    Payment is intentionally marked pending
+    because frontend alone cannot verify UPI payment.
+  */
+
+  data.status =
+    "Payment Pending Verification";
+
+
+  const existing =
+    JSON.parse(
+      localStorage.getItem(
+        "14fitness_members"
+      ) || "[]"
+    );
+
+
+  existing.push(data);
+
+
+  localStorage.setItem(
+    "14fitness_members",
+    JSON.stringify(existing)
+  );
+
+
+  localStorage.removeItem(
+    "14fitness_pending"
+  );
+
+
+  /* progress */
+
+  document
+    .getElementById("stepTwo")
+    .classList.remove("active");
+
+
+  document
+    .getElementById("stepThree")
+    .classList.add("active");
+
+
+  document
+    .getElementById("paymentPanel")
+    .classList.remove("show");
+
+
+  document
+    .getElementById("successPanel")
+    .classList.add("show");
+
+
+  document
+    .getElementById("memberId")
+    .textContent =
+      "MEMBER ID • " + id;
+
+
+  document
+    .getElementById("successMessage")
+    .innerHTML =
+      `Welcome <b>${escapeHtml(data.name)}</b>! ` +
+      `Your ${escapeHtml(plans[data.plan].name)} ` +
+      `registration has been recorded.`;
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
 }
-function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+
+
+/* ===================================
+   HTML ESCAPE
+=================================== */
+
+function escapeHtml(value){
+
+  return String(value)
+    .replace(
+      /[&<>"']/g,
+      function(match){
+
+        return {
+
+          "&":"&amp;",
+          "<":"&lt;",
+          ">":"&gt;",
+          '"':"&quot;",
+          "'":"&#039;"
+
+        }[match];
+
+      }
+    );
+
+}
+
+
+/* ===================================
+   MOUSE PARALLAX
+=================================== */
+
+if(window.matchMedia("(pointer:fine)").matches){
+
+  const summary =
+    document.querySelector(".summary");
+
+
+  document.addEventListener(
+    "mousemove",
+    event => {
+
+      const x =
+        (event.clientX /
+          window.innerWidth -
+          .5) * 8;
+
+
+      const y =
+        (event.clientY /
+          window.innerHeight -
+          .5) * 8;
+
+
+      summary.style.transform =
+        `perspective(1000px)
+         rotateY(${x * .18}deg)
+         rotateX(${-y * .12}deg)`;
+
+    }
+  );
+
+
+  document.addEventListener(
+    "mouseleave",
+    () => {
+
+      summary.style.transform =
+        "perspective(1000px) rotateY(0) rotateX(0)";
+
+    }
+  );
+
+}
+
+
+/* ===================================
+   SAVE DATA SAFETY CHECK
+=================================== */
+
+window.addEventListener(
+  "beforeunload",
+  () => {
+
+    /*
+      pending registration remains in localStorage
+      intentionally so accidental refresh does not
+      erase the user's form/payment state.
+    */
+
+  }
+);
+
 </script>
+
 </body>
 </html>
+```
