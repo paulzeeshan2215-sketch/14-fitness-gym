@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +10,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
@@ -22,22 +24,27 @@
 ========================================================= */
 
 :root{
+
     --black:#050706;
     --black2:#080d09;
-    --panel:#0d1510;
-    --panel2:#111b14;
+
+    --panel:#0b120e;
+    --panel2:#101a13;
 
     --lime:#caff25;
-    --lime-dark:#91b900;
+    --lime2:#a8e900;
 
     --white:#f4f7f3;
-    --text:#b9c2bb;
-    --muted:#6d7870;
+
+    --text:#aeb8b0;
+    --muted:#68746c;
     --muted2:#465149;
 
-    --border:rgba(255,255,255,.085);
+    --border:rgba(255,255,255,.09);
 
-    --shadow:0 30px 100px rgba(0,0,0,.48);
+    --shadow:
+        0 35px 100px rgba(0,0,0,.50);
+
 }
 
 
@@ -56,23 +63,28 @@ html{
 }
 
 body{
+
     min-height:100vh;
+
     background:
         radial-gradient(
-            circle at 15% 15%,
+            circle at 15% 10%,
             rgba(202,255,37,.075),
             transparent 27%
         ),
         radial-gradient(
-            circle at 90% 80%,
-            rgba(48,105,59,.10),
+            circle at 90% 90%,
+            rgba(50,110,60,.11),
             transparent 30%
         ),
         var(--black);
 
     color:var(--white);
+
     font-family:Inter,sans-serif;
+
     overflow-x:hidden;
+
 }
 
 
@@ -81,32 +93,43 @@ body{
 ========================================================= */
 
 .background{
+
     position:fixed;
+
     inset:0;
-    z-index:-5;
+
+    z-index:-10;
+
     overflow:hidden;
+
     pointer-events:none;
+
 }
 
 .grid{
+
     position:absolute;
-    width:150%;
-    height:150%;
-    left:-25%;
-    top:-25%;
+
+    width:160%;
+
+    height:160%;
+
+    left:-30%;
+
+    top:-30%;
 
     background-image:
         linear-gradient(
-            rgba(202,255,37,.028) 1px,
+            rgba(202,255,37,.025) 1px,
             transparent 1px
         ),
         linear-gradient(
             90deg,
-            rgba(202,255,37,.028) 1px,
+            rgba(202,255,37,.025) 1px,
             transparent 1px
         );
 
-    background-size:70px 70px;
+    background-size:65px 65px;
 
     transform:
         perspective(700px)
@@ -115,64 +138,81 @@ body{
     transform-origin:center top;
 
     animation:gridMove 20s linear infinite;
+
 }
 
 .glow{
+
     position:absolute;
+
     border-radius:50%;
-    filter:blur(5px);
+
+    filter:blur(8px);
+
 }
 
 .glow.one{
-    width:400px;
-    height:400px;
-    left:-180px;
-    top:15%;
+
+    width:500px;
+    height:500px;
+
+    left:-230px;
+    top:5%;
 
     background:
         radial-gradient(
             circle,
-            rgba(202,255,37,.12),
+            rgba(202,255,37,.13),
             transparent 70%
         );
 
     animation:floatOne 10s ease-in-out infinite;
+
 }
 
 .glow.two{
-    width:500px;
-    height:500px;
-    right:-220px;
-    bottom:-180px;
+
+    width:520px;
+    height:520px;
+
+    right:-250px;
+    bottom:-220px;
 
     background:
         radial-gradient(
             circle,
-            rgba(68,140,78,.12),
+            rgba(75,145,82,.12),
             transparent 70%
         );
 
     animation:floatTwo 12s ease-in-out infinite;
+
 }
 
-.light-line{
+.scan-line{
+
     position:absolute;
-    left:0;
+
     width:100%;
+
     height:1px;
-    top:-5%;
+
+    left:0;
+
+    top:-10%;
 
     background:
         linear-gradient(
             90deg,
             transparent,
-            rgba(202,255,37,.5),
+            rgba(202,255,37,.45),
             transparent
         );
 
-    opacity:.22;
+    opacity:.20;
 
     animation:scan 10s linear infinite;
+
 }
 
 
@@ -181,83 +221,107 @@ body{
 ========================================================= */
 
 .header{
+
     width:min(1180px,92%);
+
     margin:auto;
 
     padding:24px 0;
 
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
+
 }
 
 .logo{
+
     display:flex;
+
     align-items:center;
 
     text-decoration:none;
+
     color:white;
 
     font-family:"Barlow Condensed";
+
     font-size:30px;
+
     font-weight:900;
-    letter-spacing:.4px;
+
+    letter-spacing:.5px;
+
 }
 
 .logo-box{
-    display:grid;
-    place-items:center;
 
     width:43px;
     height:38px;
 
     margin-right:9px;
 
+    display:grid;
+
+    place-items:center;
+
     border-radius:8px;
 
     background:var(--lime);
-    color:#070a07;
+
+    color:#080b08;
 
     font-size:24px;
 
     box-shadow:
-        0 0 35px rgba(202,255,37,.10);
+        0 0 35px rgba(202,255,37,.12);
+
 }
 
-.logo span{
+.logo span:last-child{
+
     color:var(--lime);
+
     margin-left:5px;
+
 }
 
 .back{
-    display:flex;
-    align-items:center;
-    gap:8px;
 
     padding:10px 14px;
 
     border:1px solid var(--border);
+
     border-radius:8px;
 
     background:rgba(255,255,255,.025);
 
-    color:#8d9991;
-
-    font-size:8px;
-    font-weight:900;
-
-    letter-spacing:1.5px;
-    text-transform:uppercase;
+    color:#87928b;
 
     text-decoration:none;
 
+    font-size:8px;
+
+    font-weight:900;
+
+    letter-spacing:1.5px;
+
+    text-transform:uppercase;
+
     transition:.3s;
+
 }
 
 .back:hover{
+
     color:var(--lime);
+
     border-color:rgba(202,255,37,.35);
+
     transform:translateX(-3px);
+
 }
 
 
@@ -266,21 +330,26 @@ body{
 ========================================================= */
 
 .page{
+
     width:min(1180px,92%);
+
     margin:25px auto 80px;
 
     display:grid;
+
     grid-template-columns:.82fr 1.18fr;
 
     gap:18px;
+
 }
 
 
 /* =========================================================
-   LEFT MEMBERSHIP PANEL
+   MEMBERSHIP CARD
 ========================================================= */
 
 .membership{
+
     position:relative;
 
     min-height:720px;
@@ -302,26 +371,33 @@ body{
     border:1px solid rgba(202,255,37,.13);
 
     box-shadow:var(--shadow);
+
 }
 
-.membership:before{
+.membership::before{
+
     content:"14";
 
     position:absolute;
 
     right:-45px;
+
     bottom:-100px;
 
     font-family:"Barlow Condensed";
+
     font-size:390px;
+
     font-weight:900;
 
     line-height:.7;
 
     color:rgba(202,255,37,.025);
+
 }
 
-.membership:after{
+.membership::after{
+
     content:"";
 
     position:absolute;
@@ -341,29 +417,39 @@ body{
         0 0 0 70px rgba(202,255,37,.01);
 
     animation:ring 18s linear infinite;
+
 }
 
 .eyebrow{
+
     position:relative;
+
     z-index:2;
 
     color:var(--lime);
 
     font-size:8px;
+
     font-weight:900;
 
     letter-spacing:2.8px;
+
     text-transform:uppercase;
+
 }
 
 .membership h1{
+
     position:relative;
+
     z-index:2;
 
     margin-top:20px;
 
     font-family:"Barlow Condensed";
+
     font-size:clamp(72px,7vw,105px);
+
     font-weight:900;
 
     line-height:.78;
@@ -371,100 +457,150 @@ body{
     text-transform:uppercase;
 
     letter-spacing:-2px;
+
 }
 
 .membership h1 span{
+
     color:var(--lime);
 
     text-shadow:
         4px 4px 0 rgba(82,108,0,.35);
+
 }
 
 .description{
+
     position:relative;
+
     z-index:2;
 
-    max-width:380px;
+    max-width:390px;
 
     margin-top:27px;
 
     color:#9ca89f;
 
     font-size:10px;
+
     line-height:1.9;
+
 }
 
 
 /* =========================================================
-   PLAN DISPLAY
+   SELECTED MEMBERSHIP ONLY
 ========================================================= */
 
 .plan-display{
+
     position:relative;
+
     z-index:2;
 
-    margin-top:55px;
+    margin-top:48px;
+
+    padding:20px;
+
+    border:1px solid rgba(202,255,37,.13);
+
+    border-radius:15px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(202,255,37,.045),
+            rgba(255,255,255,.015)
+        );
+
 }
 
 .plan-label{
+
     color:#68756c;
 
     font-size:8px;
+
     font-weight:900;
 
     letter-spacing:2px;
+
     text-transform:uppercase;
+
 }
 
 .plan-name{
-    margin-top:9px;
+
+    margin-top:8px;
 
     font-family:"Barlow Condensed";
-    font-size:38px;
+
+    font-size:34px;
+
     font-weight:900;
 
     line-height:.9;
 
     text-transform:uppercase;
+
 }
 
 .plan-price{
-    margin-top:17px;
+
+    margin-top:16px;
 
     font-family:"Barlow Condensed";
-    font-size:72px;
+
+    font-size:68px;
+
     font-weight:900;
 
     line-height:.8;
+
+    color:var(--lime);
+
 }
 
 .plan-price small{
+
     font-family:Inter;
+
     font-size:9px;
+
     font-weight:600;
 
     color:#78847b;
+
 }
 
 .benefits{
+
     list-style:none;
 
-    margin-top:30px;
-    padding-top:21px;
+    margin-top:25px;
+
+    padding-top:19px;
 
     border-top:1px solid rgba(255,255,255,.10);
 
     display:grid;
-    gap:13px;
+
+    gap:12px;
+
 }
 
 .benefits li{
-    color:#a0aaa3;
+
+    color:#b0bab2;
 
     font-size:9px;
+
+    line-height:1.5;
+
 }
 
-.benefits li:before{
+.benefits li::before{
+
     content:"✓";
 
     margin-right:10px;
@@ -472,34 +608,44 @@ body{
     color:var(--lime);
 
     font-weight:900;
+
 }
 
 
 /* =========================================================
-   LIVE LABEL
+   LIVE
 ========================================================= */
 
 .live{
+
     position:absolute;
 
     left:38px;
+
     bottom:35px;
 
     display:flex;
+
     align-items:center;
+
     gap:9px;
 
     color:#718077;
 
     font-size:7px;
+
     font-weight:900;
 
     letter-spacing:1.3px;
+
     text-transform:uppercase;
+
 }
 
 .live-dot{
+
     width:7px;
+
     height:7px;
 
     border-radius:50%;
@@ -510,14 +656,16 @@ body{
         0 0 14px rgba(202,255,37,.7);
 
     animation:pulse 1.5s infinite;
+
 }
 
 
 /* =========================================================
-   RIGHT PANEL
+   RIGHT CARD
 ========================================================= */
 
 .card{
+
     min-height:720px;
 
     padding:36px;
@@ -538,15 +686,17 @@ body{
     position:relative;
 
     overflow:hidden;
+
 }
 
-.card:before{
+.card::before{
+
     content:"";
 
     position:absolute;
 
-    width:260px;
-    height:260px;
+    width:300px;
+    height:300px;
 
     right:-150px;
     top:-150px;
@@ -559,44 +709,57 @@ body{
             rgba(202,255,37,.10),
             transparent 70%
         );
+
 }
 
 
 /* =========================================================
-   PROGRESS
+   STEPS
 ========================================================= */
 
 .steps{
+
     position:relative;
+
     z-index:2;
 
     display:flex;
+
     align-items:center;
 
     margin-bottom:37px;
+
 }
 
 .step{
+
     display:flex;
+
     align-items:center;
+
     gap:8px;
 
     color:#4f5b53;
 
     font-size:7px;
+
     font-weight:900;
 
     letter-spacing:1px;
+
     text-transform:uppercase;
 
     white-space:nowrap;
+
 }
 
 .step-number{
+
     width:30px;
     height:30px;
 
     display:grid;
+
     place-items:center;
 
     border-radius:50%;
@@ -608,13 +771,17 @@ body{
     color:#68736b;
 
     transition:.35s;
+
 }
 
 .step.active{
+
     color:var(--lime);
+
 }
 
 .step.active .step-number{
+
     background:var(--lime);
 
     color:#080b08;
@@ -623,55 +790,88 @@ body{
 
     box-shadow:
         0 0 25px rgba(202,255,37,.18);
+
 }
 
 .step.completed .step-number{
+
     border-color:var(--lime);
+
     color:var(--lime);
+
 }
 
 .step-line{
+
     width:55px;
+
     height:1px;
 
     margin:0 11px;
 
     background:var(--border);
+
 }
 
 
 /* =========================================================
-   HEADINGS
+   CONTENT
 ========================================================= */
 
 .content{
+
     position:relative;
+
     z-index:2;
+
+}
+
+.panel{
+
+    display:none;
+
+}
+
+.panel.show{
+
+    display:block;
+
+    animation:appear .45s ease both;
+
 }
 
 .form-eyebrow{
+
     color:var(--lime);
 
     font-size:8px;
+
     font-weight:900;
 
     letter-spacing:2.5px;
+
     text-transform:uppercase;
+
 }
 
 .form-title{
+
     margin-top:12px;
 
     font-family:"Barlow Condensed";
+
     font-size:67px;
+
     font-weight:900;
 
     line-height:.78;
 
     text-transform:uppercase;
+
 }
 
 .form-subtitle{
+
     max-width:510px;
 
     margin-top:17px;
@@ -679,16 +879,20 @@ body{
     color:#69756d;
 
     font-size:10px;
+
     line-height:1.8;
+
 }
 
 
 /* =========================================================
-   SECURITY NOTICE
+   SECURITY
 ========================================================= */
 
 .security{
+
     display:flex;
+
     gap:12px;
 
     margin:24px 0;
@@ -696,6 +900,7 @@ body{
     padding:13px 14px;
 
     border:1px solid rgba(202,255,37,.11);
+
     border-radius:10px;
 
     background:rgba(202,255,37,.025);
@@ -703,16 +908,20 @@ body{
     color:#7d8981;
 
     font-size:8px;
+
     line-height:1.7;
+
 }
 
 .security-icon{
+
     flex:0 0 27px;
 
     width:27px;
     height:27px;
 
     display:grid;
+
     place-items:center;
 
     border-radius:7px;
@@ -720,104 +929,7 @@ body{
     background:rgba(202,255,37,.08);
 
     color:var(--lime);
-}
 
-.security b{
-    color:#b4beb7;
-}
-
-
-/* =========================================================
-   PLAN PICKER
-========================================================= */
-
-.plan-title{
-    margin-bottom:8px;
-
-    color:#657169;
-
-    font-size:8px;
-    font-weight:900;
-
-    letter-spacing:1.8px;
-    text-transform:uppercase;
-}
-
-.plans{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-
-    gap:8px;
-
-    margin-bottom:25px;
-}
-
-.plan{
-    position:relative;
-
-    min-height:75px;
-
-    padding:12px;
-
-    border:1px solid var(--border);
-    border-radius:10px;
-
-    background:#0a110d;
-
-    color:white;
-
-    text-align:left;
-
-    cursor:pointer;
-
-    overflow:hidden;
-
-    transition:
-        transform .25s,
-        border-color .25s,
-        background .25s;
-}
-
-.plan:hover{
-    transform:translateY(-3px);
-
-    border-color:
-        rgba(202,255,37,.3);
-}
-
-.plan.active{
-    background:var(--lime);
-
-    border-color:var(--lime);
-
-    color:#080b08;
-
-    box-shadow:
-        0 15px 35px rgba(202,255,37,.10);
-}
-
-.plan-price-small{
-    display:block;
-
-    font-family:"Barlow Condensed";
-    font-size:25px;
-    font-weight:900;
-
-    line-height:.8;
-}
-
-.plan-text{
-    display:block;
-
-    margin-top:8px;
-
-    font-size:7px;
-    font-weight:900;
-
-    letter-spacing:.4px;
-    text-transform:uppercase;
-
-    opacity:.72;
 }
 
 
@@ -826,39 +938,54 @@ body{
 ========================================================= */
 
 .form-grid{
+
     display:grid;
+
     grid-template-columns:1fr 1fr;
 
     gap:14px;
+
 }
 
 .field{
+
     display:grid;
+
     gap:7px;
+
 }
 
 .field.full{
+
     grid-column:1/-1;
+
 }
 
 .field label{
+
     color:#77827a;
 
     font-size:8px;
+
     font-weight:900;
 
     letter-spacing:1.2px;
+
     text-transform:uppercase;
+
 }
 
 .field input,
 .field select{
+
     width:100%;
+
     height:49px;
 
     padding:0 14px;
 
     border:1px solid var(--border);
+
     border-radius:9px;
 
     outline:none;
@@ -868,37 +995,48 @@ body{
     color:#eaf0eb;
 
     font-family:Inter;
+
     font-size:10px;
 
     transition:.3s;
+
 }
 
 .field input::placeholder{
+
     color:#465149;
+
 }
 
 .field input:focus,
 .field select:focus{
+
     border-color:rgba(202,255,37,.55);
 
     box-shadow:
         0 0 0 3px rgba(202,255,37,.045);
+
 }
 
 .field select{
+
     cursor:pointer;
+
 }
 
 .field select option{
+
     background:#0b110d;
+
 }
 
 
 /* =========================================================
-   PRIMARY BUTTON
+   BUTTON
 ========================================================= */
 
 .primary{
+
     position:relative;
 
     width:100%;
@@ -908,6 +1046,7 @@ body{
     padding:16px;
 
     border:0;
+
     border-radius:9px;
 
     background:var(--lime);
@@ -915,9 +1054,11 @@ body{
     color:#070a07;
 
     font-size:8px;
+
     font-weight:900;
 
     letter-spacing:1px;
+
     text-transform:uppercase;
 
     cursor:pointer;
@@ -925,28 +1066,30 @@ body{
     overflow:hidden;
 
     transition:.3s;
+
 }
 
 .primary:hover{
+
     transform:translateY(-3px);
 
     box-shadow:
         0 18px 45px rgba(202,255,37,.15);
+
 }
 
-.primary:active{
-    transform:translateY(-1px);
-}
+.primary::after{
 
-.primary:after{
     content:"";
 
     position:absolute;
 
     top:0;
+
     left:-120%;
 
     width:70%;
+
     height:100%;
 
     background:
@@ -960,13 +1103,17 @@ body{
     transform:skewX(-20deg);
 
     transition:.6s;
+
 }
 
-.primary:hover:after{
+.primary:hover::after{
+
     left:150%;
+
 }
 
 .form-note{
+
     margin-top:10px;
 
     color:#465149;
@@ -976,48 +1123,49 @@ body{
     line-height:1.7;
 
     text-align:center;
+
 }
 
 
 /* =========================================================
-   PAYMENT SCREEN
+   PAYMENT
 ========================================================= */
 
-.panel{
-    display:none;
-}
-
-.panel.show{
-    display:block;
-
-    animation:appear .45s ease both;
-}
-
 .payment-top{
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:flex-start;
 
     margin-bottom:24px;
+
 }
 
 .payment-title{
+
     margin-top:10px;
 
     font-family:"Barlow Condensed";
+
     font-size:65px;
+
     font-weight:900;
 
     line-height:.8;
 
     text-transform:uppercase;
+
 }
 
 .close-button{
+
     width:38px;
     height:38px;
 
     border:1px solid var(--border);
+
     border-radius:50%;
 
     background:#0b120e;
@@ -1029,15 +1177,17 @@ body{
     cursor:pointer;
 
     transition:.3s;
+
 }
 
 .close-button:hover{
+
     color:var(--lime);
 
-    border-color:
-        rgba(202,255,37,.35);
+    border-color:rgba(202,255,37,.35);
 
     transform:rotate(90deg);
+
 }
 
 
@@ -1046,104 +1196,170 @@ body{
 ========================================================= */
 
 .payment-summary{
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
 
     margin-bottom:15px;
 
     padding:15px;
 
-    border:1px solid var(--border);
+    border:1px solid rgba(202,255,37,.14);
+
     border-radius:10px;
 
-    background:#090f0b;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(202,255,37,.035),
+            #090f0b
+        );
+
 }
 
 .payment-summary span{
+
     color:#657169;
 
     font-size:7px;
+
     font-weight:900;
 
     letter-spacing:1.5px;
+
     text-transform:uppercase;
+
 }
 
 .payment-summary strong{
+
     color:var(--lime);
 
     font-family:"Barlow Condensed";
-    font-size:29px;
+
+    font-size:32px;
+
 }
 
 
 /* =========================================================
-   QR
+   QR / SCANNER
 ========================================================= */
 
 .qr-box{
+
+    width:100%;
+
     padding:22px;
 
     text-align:center;
 
     border:1px solid rgba(202,255,37,.12);
+
     border-radius:16px;
 
     background:
         radial-gradient(
             circle at center,
-            rgba(202,255,37,.04),
+            rgba(202,255,37,.045),
             transparent 55%
         ),
         #080e0a;
+
 }
 
-.qr-title{
-    color:#68746c;
 
-    font-size:7px;
-    font-weight:900;
-
-    letter-spacing:2px;
-    text-transform:uppercase;
-}
+/*
+    IMPORTANT:
+    No rotate / transform is applied to the QR.
+    This keeps the scanner perfectly straight on mobile.
+*/
 
 .qr{
+
     width:220px;
+
     height:220px;
 
     margin:18px auto;
 
     padding:9px;
 
-    display:grid;
-    place-items:center;
+    display:flex;
 
-    background:white;
+    align-items:center;
+
+    justify-content:center;
+
+    aspect-ratio:1 / 1;
+
+    background:#fff;
 
     border-radius:12px;
 
+    overflow:hidden;
+
     box-shadow:
         0 20px 60px rgba(0,0,0,.35);
+
+}
+
+.qr canvas,
+.qr img{
+
+    display:block;
+
+    width:100% !important;
+
+    height:100% !important;
+
+    max-width:100%;
+
+    max-height:100%;
+
+    object-fit:contain;
+
+}
+
+.qr-title{
+
+    color:#68746c;
+
+    font-size:7px;
+
+    font-weight:900;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
 }
 
 .upi-id{
+
     color:var(--lime);
 
     font-size:15px;
+
     font-weight:900;
 
     word-break:break-all;
+
 }
 
 .qr-note{
+
     margin-top:6px;
 
     color:#566159;
 
     font-size:7px;
+
     text-transform:uppercase;
+
 }
 
 
@@ -1152,18 +1368,23 @@ body{
 ========================================================= */
 
 .payment-buttons{
+
     display:grid;
+
     grid-template-columns:1fr 1fr;
 
     gap:9px;
 
     margin-top:12px;
+
 }
 
 .payment-button{
+
     min-height:49px;
 
     border:1px solid rgba(202,255,37,.2);
+
     border-radius:9px;
 
     background:var(--lime);
@@ -1171,33 +1392,41 @@ body{
     color:#070a07;
 
     font-size:7px;
+
     font-weight:900;
 
     letter-spacing:.8px;
+
     text-transform:uppercase;
 
     cursor:pointer;
 
     transition:.3s;
+
 }
 
 .payment-button:hover{
+
     transform:translateY(-2px);
+
 }
 
 .payment-button.secondary{
+
     background:#0d1510;
 
     border-color:var(--border);
 
     color:#a8b1aa;
+
 }
 
 .payment-button.secondary:hover{
+
     color:var(--lime);
 
-    border-color:
-        rgba(202,255,37,.3);
+    border-color:rgba(202,255,37,.3);
+
 }
 
 
@@ -1206,21 +1435,27 @@ body{
 ========================================================= */
 
 .payment-info{
+
     margin-top:12px;
 
     padding:12px;
 
     border:1px solid var(--border);
+
     border-radius:9px;
 
     color:#657169;
 
     font-size:7px;
+
     line-height:1.7;
+
 }
 
 .payment-info b{
+
     color:#9aa69e;
+
 }
 
 
@@ -1229,61 +1464,213 @@ body{
 ========================================================= */
 
 .verify{
+
     display:none;
+
+    position:relative;
+
+    z-index:2;
 
     text-align:center;
 
-    padding:35px 10px;
+    padding:20px 10px 35px;
+
 }
 
 .verify.show{
+
     display:block;
 
-    animation:appear .45s ease both;
+    animation:appear .5s ease both;
+
 }
 
+
+/* =========================================================
+   ANIMATED SUCCESS TICK
+========================================================= */
+
 .verify-icon{
-    width:88px;
-    height:88px;
+
+    position:relative;
+
+    width:96px;
+    height:96px;
 
     display:grid;
+
     place-items:center;
 
-    margin:0 auto 25px;
+    margin:5px auto 28px;
 
     border-radius:50%;
 
-    border:1px solid rgba(202,255,37,.3);
+    border:1px solid rgba(202,255,37,.35);
 
-    background:rgba(202,255,37,.06);
-
-    color:var(--lime);
-
-    font-size:37px;
+    background:
+        radial-gradient(
+            circle,
+            rgba(202,255,37,.10),
+            rgba(202,255,37,.025) 60%,
+            transparent 70%
+        );
 
     box-shadow:
-        0 0 0 10px rgba(202,255,37,.025),
-        0 0 45px rgba(202,255,37,.08);
+        0 0 0 10px rgba(202,255,37,.018),
+        0 0 55px rgba(202,255,37,.10);
 
-    animation:softPulse 2s infinite;
+    overflow:visible;
+
+    animation:
+        iconPulse 2.4s ease-in-out infinite;
+
 }
 
+
+/* outer animated ring */
+
+.verify-icon::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-11px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(202,255,37,.20);
+
+    animation:
+        ringPulse 2.2s ease-out infinite;
+
+}
+
+
+/* second ring */
+
+.verify-icon::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-20px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(202,255,37,.07);
+
+    animation:
+        ringPulse 2.2s ease-out infinite .5s;
+
+}
+
+
+/* actual check */
+
+.check-mark{
+
+    position:relative;
+
+    width:34px;
+    height:58px;
+
+    border-right:6px solid var(--lime);
+
+    border-bottom:6px solid var(--lime);
+
+    transform:
+        rotate(45deg)
+        scale(.15);
+
+    opacity:0;
+
+    filter:
+        drop-shadow(
+            0 0 10px rgba(202,255,37,.55)
+        );
+
+    animation:
+        checkDraw .65s cubic-bezier(.2,.8,.2,1) .15s forwards;
+
+}
+
+
+/* little particles */
+
+.particle{
+
+    position:absolute;
+
+    width:4px;
+    height:4px;
+
+    border-radius:50%;
+
+    background:var(--lime);
+
+    opacity:0;
+
+}
+
+.particle.p1{
+    top:5px;
+    left:12px;
+    animation:particle1 1.4s ease-out .45s forwards;
+}
+
+.particle.p2{
+    top:18px;
+    right:0;
+    animation:particle2 1.4s ease-out .55s forwards;
+}
+
+.particle.p3{
+    bottom:4px;
+    left:0;
+    animation:particle3 1.4s ease-out .65s forwards;
+}
+
+.particle.p4{
+    bottom:15px;
+    right:7px;
+    animation:particle4 1.4s ease-out .75s forwards;
+}
+
+
+/* =========================================================
+   VERIFICATION TEXT
+========================================================= */
+
 .verify h2{
+
+    margin-top:10px;
+
     font-family:"Barlow Condensed";
+
     font-size:67px;
+
     font-weight:900;
 
     line-height:.8;
 
     text-transform:uppercase;
+
 }
 
 .verify h2 span{
+
     color:var(--lime);
+
+    text-shadow:
+        0 0 25px rgba(202,255,37,.10);
+
 }
 
 .verify p{
-    max-width:430px;
+
+    max-width:460px;
 
     margin:22px auto;
 
@@ -1292,14 +1679,17 @@ body{
     font-size:9px;
 
     line-height:1.8;
+
 }
 
 .member-id{
+
     display:inline-block;
 
     padding:12px 17px;
 
     border:1px solid rgba(202,255,37,.25);
+
     border-radius:8px;
 
     background:rgba(202,255,37,.045);
@@ -1307,9 +1697,11 @@ body{
     color:var(--lime);
 
     font-size:8px;
+
     font-weight:900;
 
     letter-spacing:1px;
+
 }
 
 
@@ -1318,22 +1710,29 @@ body{
 ========================================================= */
 
 @keyframes gridMove{
+
     from{
+
         transform:
             perspective(700px)
             rotateX(58deg)
             translateY(-30px);
+
     }
 
     to{
+
         transform:
             perspective(700px)
             rotateX(58deg)
             translateY(80px);
+
     }
+
 }
 
 @keyframes floatOne{
+
     0%,100%{
         transform:translate(0,0);
     }
@@ -1341,9 +1740,11 @@ body{
     50%{
         transform:translate(80px,40px) scale(1.1);
     }
+
 }
 
 @keyframes floatTwo{
+
     0%,100%{
         transform:translate(0,0);
     }
@@ -1351,9 +1752,11 @@ body{
     50%{
         transform:translate(-70px,-45px) scale(1.08);
     }
+
 }
 
 @keyframes scan{
+
     from{
         top:-5%;
     }
@@ -1361,9 +1764,11 @@ body{
     to{
         top:105%;
     }
+
 }
 
 @keyframes ring{
+
     from{
         transform:rotate(0);
     }
@@ -1371,9 +1776,11 @@ body{
     to{
         transform:rotate(360deg);
     }
+
 }
 
 @keyframes pulse{
+
     0%,100%{
         opacity:1;
         transform:scale(1);
@@ -1383,32 +1790,178 @@ body{
         opacity:.35;
         transform:scale(.75);
     }
-}
 
-@keyframes softPulse{
-    0%,100%{
-        box-shadow:
-            0 0 0 10px rgba(202,255,37,.025),
-            0 0 45px rgba(202,255,37,.08);
-    }
-
-    50%{
-        box-shadow:
-            0 0 0 16px rgba(202,255,37,.015),
-            0 0 65px rgba(202,255,37,.15);
-    }
 }
 
 @keyframes appear{
+
     from{
         opacity:0;
-        transform:translateY(14px);
+        transform:translateY(15px);
     }
 
     to{
         opacity:1;
         transform:translateY(0);
     }
+
+}
+
+
+/* =========================================================
+   SUCCESS ANIMATION
+========================================================= */
+
+@keyframes checkDraw{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+            rotate(45deg)
+            scale(.15);
+
+    }
+
+    55%{
+
+        opacity:1;
+
+        transform:
+            rotate(45deg)
+            scale(1.08);
+
+    }
+
+    75%{
+
+        opacity:1;
+
+        transform:
+            rotate(45deg)
+            scale(.94);
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:
+            rotate(45deg)
+            scale(1);
+
+    }
+
+}
+
+@keyframes iconPulse{
+
+    0%,100%{
+
+        box-shadow:
+            0 0 0 10px rgba(202,255,37,.018),
+            0 0 45px rgba(202,255,37,.08);
+
+    }
+
+    50%{
+
+        box-shadow:
+            0 0 0 17px rgba(202,255,37,.012),
+            0 0 70px rgba(202,255,37,.18);
+
+    }
+
+}
+
+@keyframes ringPulse{
+
+    0%{
+
+        opacity:.65;
+
+        transform:scale(.72);
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:scale(1.15);
+
+    }
+
+}
+
+@keyframes particle1{
+
+    0%{
+        opacity:0;
+        transform:translate(0,0);
+    }
+
+    100%{
+        opacity:0;
+        transform:translate(-24px,-20px);
+    }
+
+}
+
+@keyframes particle2{
+
+    0%{
+        opacity:0;
+        transform:translate(0,0);
+    }
+
+    30%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+        transform:translate(24px,-15px);
+    }
+
+}
+
+@keyframes particle3{
+
+    0%{
+        opacity:0;
+        transform:translate(0,0);
+    }
+
+    30%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+        transform:translate(-20px,20px);
+    }
+
+}
+
+@keyframes particle4{
+
+    0%{
+        opacity:0;
+        transform:translate(0,0);
+    }
+
+    30%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+        transform:translate(22px,18px);
+    }
+
 }
 
 
@@ -1419,15 +1972,21 @@ body{
 @media(max-width:900px){
 
     .page{
+
         grid-template-columns:1fr;
+
     }
 
     .membership{
-        min-height:540px;
+
+        min-height:570px;
+
     }
 
     .card{
+
         min-height:auto;
+
     }
 
 }
@@ -1435,108 +1994,188 @@ body{
 @media(max-width:650px){
 
     .header{
+
         width:92%;
+
         padding:17px 0;
+
     }
 
     .logo{
+
         font-size:24px;
+
     }
 
     .logo-box{
+
         width:35px;
         height:32px;
 
         font-size:20px;
+
     }
 
     .back{
+
         padding:9px 10px;
+
         font-size:7px;
+
     }
 
     .page{
+
         width:92%;
+
         margin-top:10px;
+
     }
 
     .membership,
     .card{
+
         padding:24px;
 
         border-radius:18px;
+
     }
 
     .membership{
-        min-height:500px;
+
+        min-height:540px;
+
     }
 
     .membership h1{
+
         font-size:70px;
+
+    }
+
+    .plan-display{
+
+        margin-top:38px;
+
+        padding:17px;
+
     }
 
     .plan-price{
-        font-size:63px;
+
+        font-size:60px;
+
+    }
+
+    .plan-name{
+
+        font-size:31px;
+
     }
 
     .form-title{
+
         font-size:56px;
+
     }
 
     .payment-title{
+
         font-size:55px;
+
     }
 
     .form-grid{
+
         grid-template-columns:1fr;
+
     }
 
     .field.full{
+
         grid-column:auto;
-    }
 
-    .plans{
-        grid-template-columns:1fr;
-    }
-
-    .plan{
-        min-height:65px;
-
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-    }
-
-    .plan-text{
-        margin-top:0;
     }
 
     .step{
+
         font-size:6px;
+
     }
 
     .step-number{
+
         width:26px;
         height:26px;
+
     }
 
     .step-line{
+
         width:22px;
+
         margin:0 6px;
+
     }
 
     .payment-buttons{
+
         grid-template-columns:1fr;
+
+    }
+
+    /*
+        Mobile QR fix:
+        Always square, straight and centered.
+    */
+
+    .qr-box{
+
+        padding:18px 12px;
+
     }
 
     .qr{
-        width:205px;
-        height:205px;
+
+        width:min(205px,72vw);
+
+        height:min(205px,72vw);
+
+        margin:17px auto;
+
+        padding:8px;
+
+        transform:none !important;
+
+        rotate:none !important;
+
+    }
+
+    .verify{
+
+        padding-top:10px;
+
+    }
+
+    .verify-icon{
+
+        width:88px;
+        height:88px;
+
+        margin-bottom:25px;
+
+    }
+
+    .verify h2{
+
+        font-size:55px;
+
     }
 
 }
 
 </style>
+
 </head>
 
 
@@ -1555,7 +2194,7 @@ body{
 
     <div class="glow two"></div>
 
-    <div class="light-line"></div>
+    <div class="scan-line"></div>
 
 </div>
 
@@ -1587,20 +2226,22 @@ body{
 
 
 <!-- =======================================================
-     PAGE
+     MAIN
 ======================================================= -->
 
 <main class="page">
 
 
 <!-- =======================================================
-     LEFT
+     MEMBERSHIP LEFT
 ======================================================= -->
 
 <section class="membership">
 
     <div class="eyebrow">
+
         14 FITNESS GYM
+
     </div>
 
 
@@ -1617,18 +2258,24 @@ body{
 
     <p class="description">
 
-        Choose your membership, enter your details
-        and continue to the payment screen.
-        Your membership is created only after
-        the registration process is completed.
+        Your selected membership is shown below.
+        Review the duration, benefits and amount
+        before continuing to payment.
 
     </p>
 
 
+    <!--
+        ONLY THE SELECTED PLAN IS SHOWN HERE.
+        NO THREE-PLAN GRID.
+    -->
+
     <div class="plan-display">
 
         <div class="plan-label">
-            SELECTED MEMBERSHIP
+
+            YOUR SELECTED MEMBERSHIP
+
         </div>
 
 
@@ -1636,7 +2283,7 @@ body{
             class="plan-name"
             id="displayPlan">
 
-            6 MONTHS
+            1 MONTH
 
         </div>
 
@@ -1645,10 +2292,12 @@ body{
             class="plan-price"
             id="displayPrice">
 
-            ₹7,560
+            ₹1,400
 
             <small>
+
                 total
+
             </small>
 
         </div>
@@ -1657,18 +2306,6 @@ body{
         <ul
             class="benefits"
             id="displayBenefits">
-
-            <li>
-                6 Months membership
-            </li>
-
-            <li>
-                FREE admission
-            </li>
-
-            <li>
-                Long-term discount
-            </li>
 
         </ul>
 
@@ -1688,7 +2325,7 @@ body{
 
 
 <!-- =======================================================
-     RIGHT
+     RIGHT CARD
 ======================================================= -->
 
 <section class="card">
@@ -1705,7 +2342,9 @@ body{
         id="step1">
 
         <span class="step-number">
+
             01
+
         </span>
 
         DETAILS
@@ -1721,7 +2360,9 @@ body{
         id="step2">
 
         <span class="step-number">
+
             02
+
         </span>
 
         PAYMENT
@@ -1737,7 +2378,9 @@ body{
         id="step3">
 
         <span class="step-number">
+
             03
+
         </span>
 
         VERIFICATION
@@ -1758,7 +2401,9 @@ body{
 
 
     <div class="form-eyebrow">
+
         STEP 01 / YOUR DETAILS
+
     </div>
 
 
@@ -1774,7 +2419,8 @@ body{
     <p class="form-subtitle">
 
         Enter your membership information below.
-        Make sure your name and mobile number are correct.
+        Your selected membership is already locked
+        for this registration.
 
     </p>
 
@@ -1782,7 +2428,9 @@ body{
     <div class="security">
 
         <div class="security-icon">
+
             🔒
+
         </div>
 
         <div>
@@ -1798,68 +2446,9 @@ body{
     </div>
 
 
-    <!-- PLAN -->
-
-    <div class="plan-title">
-        Choose Membership
-    </div>
-
-
-    <div class="plans">
-
-
-        <button
-            type="button"
-            class="plan"
-            data-plan="1400">
-
-            <span class="plan-price-small">
-                ₹1,400
-            </span>
-
-            <span class="plan-text">
-                1 MONTH + FREE
-            </span>
-
-        </button>
-
-
-        <button
-            type="button"
-            class="plan active"
-            data-plan="7560">
-
-            <span class="plan-price-small">
-                ₹7,560
-            </span>
-
-            <span class="plan-text">
-                6 MONTHS • BEST
-            </span>
-
-        </button>
-
-
-        <button
-            type="button"
-            class="plan"
-            data-plan="14280">
-
-            <span class="plan-price-small">
-                ₹14,280
-            </span>
-
-            <span class="plan-text">
-                1 YEAR • ELITE
-            </span>
-
-        </button>
-
-    </div>
-
-
-
-    <!-- FORM -->
+    <!-- ===================================================
+         FORM
+    =================================================== -->
 
     <form id="memberForm">
 
@@ -1870,7 +2459,9 @@ body{
             <div class="field full">
 
                 <label>
+
                     Full Name *
+
                 </label>
 
                 <input
@@ -1885,7 +2476,9 @@ body{
             <div class="field">
 
                 <label>
+
                     Mobile Number *
+
                 </label>
 
                 <input
@@ -1901,7 +2494,9 @@ body{
             <div class="field">
 
                 <label>
+
                     Age *
+
                 </label>
 
                 <input
@@ -1918,7 +2513,9 @@ body{
             <div class="field">
 
                 <label>
+
                     Gender *
+
                 </label>
 
                 <select
@@ -1926,19 +2523,27 @@ body{
                     required>
 
                     <option value="">
+
                         Select gender
+
                     </option>
 
                     <option>
+
                         Male
+
                     </option>
 
                     <option>
+
                         Female
+
                     </option>
 
                     <option>
+
                         Prefer not to say
+
                     </option>
 
                 </select>
@@ -1949,7 +2554,9 @@ body{
             <div class="field">
 
                 <label>
+
                     Fitness Goal *
+
                 </label>
 
                 <select
@@ -1957,27 +2564,39 @@ body{
                     required>
 
                     <option value="">
+
                         Select goal
+
                     </option>
 
                     <option>
+
                         Muscle Gain
+
                     </option>
 
                     <option>
+
                         Fat Loss
+
                     </option>
 
                     <option>
+
                         Strength
+
                     </option>
 
                     <option>
+
                         General Fitness
+
                     </option>
 
                     <option>
+
                         Bodybuilding
+
                     </option>
 
                 </select>
@@ -2024,11 +2643,15 @@ body{
         <div>
 
             <div class="form-eyebrow">
+
                 STEP 02 / PAYMENT
+
             </div>
 
             <h2 class="payment-title">
+
                 Pay Securely.
+
             </h2>
 
         </div>
@@ -2046,23 +2669,37 @@ body{
     </div>
 
 
+    <!--
+        ONLY SELECTED PLAN AMOUNT
+    -->
+
     <div class="payment-summary">
 
         <span>
+
             Amount To Pay
+
         </span>
 
         <strong id="paymentAmount">
-            ₹7,560
+
+            ₹1,400
+
         </strong>
 
     </div>
 
 
+    <!-- ===================================================
+         QR
+    =================================================== -->
+
     <div class="qr-box">
 
         <div class="qr-title">
+
             SCAN UPI QR
+
         </div>
 
 
@@ -2120,12 +2757,10 @@ body{
 
         <b>Important:</b>
 
-        Clicking “Open UPI App” is the only action
-        that can attempt to open a UPI application.
-        Nothing opens automatically when this page loads.
-
-        After payment, use “I Have Paid” to continue
-        to the verification stage.
+        The UPI application opens only when you
+        press “Open UPI App”. After completing your
+        payment, press “I Have Paid” to submit the
+        registration for verification.
 
     </div>
 
@@ -2142,9 +2777,18 @@ body{
     id="verificationPanel">
 
 
+    <!-- ===================================================
+         ANIMATED CHECK
+    =================================================== -->
+
     <div class="verify-icon">
 
-        ✓
+        <div class="check-mark"></div>
+
+        <span class="particle p1"></span>
+        <span class="particle p2"></span>
+        <span class="particle p3"></span>
+        <span class="particle p4"></span>
 
     </div>
 
@@ -2210,68 +2854,76 @@ const UPI_ID = "7889777143@fam";
 const UPI_NAME = "14 FITNESS GYM";
 
 
-/*
-    IMPORTANT:
-
-    This file DOES NOT automatically open UPI.
-
-    The UPI deep-link is created only inside
-    openUPI(), which is called by the user.
-*/
-
-
 /* =========================================================
-   PLANS
+   MEMBERSHIP DATA
 ========================================================= */
 
 const plans = {
 
     "1400": {
 
-        name:"1 MONTH + FREE ADMISSION",
+        name:"1 MONTH",
 
         display:"1 MONTH",
 
         amount:1400,
 
+        duration:"1 Month",
+
         benefits:[
+
             "1 Month membership",
+
             "FREE admission",
+
             "Full gym access"
+
         ]
 
     },
 
 
-    "7560": {
+    "7500": {
 
-        name:"6 MONTHS + FREE ADMISSION",
+        name:"6 MONTHS",
 
         display:"6 MONTHS",
 
-        amount:7560,
+        amount:7500,
+
+        duration:"6 Months",
 
         benefits:[
+
             "6 Months membership",
+
             "FREE admission",
-            "Long-term discount"
+
+            "Long-term membership discount"
+
         ]
 
     },
 
 
-    "14280": {
+    "14200": {
 
-        name:"1 YEAR + FREE ADMISSION",
+        name:"1 YEAR",
 
         display:"1 YEAR",
 
-        amount:14280,
+        amount:14200,
+
+        duration:"12 Months",
 
         benefits:[
+
             "12 Months membership",
+
             "FREE admission",
-            "Annual membership"
+
+            "Annual membership benefits"
+
         ]
 
     }
@@ -2283,7 +2935,7 @@ const plans = {
    STATE
 ========================================================= */
 
-let selectedPlan = "7560";
+let selectedPlan = null;
 
 let memberData = null;
 
@@ -2296,7 +2948,6 @@ function escapeHtml(value){
 
     return String(value).replace(
         /[&<>"']/g,
-
         character => ({
 
             "&":"&amp;",
@@ -2312,32 +2963,79 @@ function escapeHtml(value){
 
 
 /* =========================================================
-   PLAN SELECTION
+   GET SELECTED PLAN
 ========================================================= */
 
-function selectPlan(key){
+function getSelectedPlan(){
 
-    if(!plans[key]){
-        return;
+    const params = new URLSearchParams(
+        window.location.search
+    );
+
+    let planKey = params.get("plan");
+
+
+    /*
+        Also support old links that may use:
+        membership=
+        amount=
+    */
+
+    if(!planKey){
+
+        planKey = params.get("membership");
+
+    }
+
+    if(!planKey){
+
+        planKey = params.get("amount");
+
     }
 
 
-    selectedPlan = key;
+    /*
+        Remove commas and ₹ if somebody
+        passes the amount in another format.
+    */
+
+    if(planKey){
+
+        planKey = String(planKey)
+            .replace(/₹/g,"")
+            .replace(/,/g,"")
+            .trim();
+
+    }
 
 
-    const plan = plans[key];
+    /*
+        Fallback:
+        If order.html is opened directly without
+        a plan, use 1400 as the default.
+    */
+
+    if(!plans[planKey]){
+
+        planKey = "1400";
+
+    }
 
 
-    document
-        .querySelectorAll(".plan")
-        .forEach(button => {
+    return planKey;
 
-            button.classList.toggle(
-                "active",
-                button.dataset.plan === key
-            );
+}
 
-        });
+
+/* =========================================================
+   DISPLAY ONLY SELECTED PLAN
+========================================================= */
+
+function loadSelectedPlan(){
+
+    selectedPlan = getSelectedPlan();
+
+    const plan = plans[selectedPlan];
 
 
     document
@@ -2355,13 +3053,12 @@ function selectPlan(key){
 
     document
         .getElementById("displayBenefits")
-        .innerHTML =
-            plan.benefits
-                .map(
-                    item =>
-                        `<li>${escapeHtml(item)}</li>`
-                )
-                .join("");
+        .innerHTML = plan.benefits
+            .map(
+                benefit =>
+                    `<li>${escapeHtml(benefit)}</li>`
+            )
+            .join("");
 
 
     document
@@ -2370,40 +3067,19 @@ function selectPlan(key){
             "₹" +
             plan.amount.toLocaleString("en-IN");
 
+
+    document
+        .getElementById("upiId")
+        .textContent = UPI_ID;
+
 }
 
 
 /* =========================================================
-   PLAN BUTTONS
+   INITIALIZE
 ========================================================= */
 
-document
-    .querySelectorAll(".plan")
-    .forEach(button => {
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                selectPlan(
-                    button.dataset.plan
-                );
-
-            }
-        );
-
-    });
-
-
-/*
-    ONLY initializes the visual selected plan.
-
-    No payment.
-    No redirect.
-    No UPI.
-*/
-
-selectPlan("7560");
+loadSelectedPlan();
 
 
 /* =========================================================
@@ -2509,28 +3185,34 @@ document
 
 
             /*
-                Keep data pending.
-
-                IMPORTANT:
-                We do NOT create a member yet.
+                Selected plan is taken from the URL.
+                User cannot accidentally select another
+                plan on this page.
             */
+
+            const plan =
+                plans[selectedPlan];
+
 
             memberData = {
 
-                name,
+                name:name,
 
-                phone,
+                phone:phone,
 
-                age,
+                age:age,
 
-                gender,
+                gender:gender,
 
-                goal,
+                goal:goal,
 
                 plan:selectedPlan,
 
-                amount:
-                    plans[selectedPlan].amount,
+                planName:plan.display,
+
+                duration:plan.duration,
+
+                amount:plan.amount,
 
                 createdAt:
                     new Date().toISOString(),
@@ -2577,25 +3259,22 @@ function showPayment(){
     setStep(2);
 
 
-    /*
-        QR is generated HERE.
-
-        Not when order.html opens.
-    */
-
     createQR();
 
 
     window.scrollTo({
+
         top:0,
+
         behavior:"smooth"
+
     });
 
 }
 
 
 /* =========================================================
-   QR GENERATION
+   CREATE QR
 ========================================================= */
 
 function createQR(){
@@ -2613,6 +3292,7 @@ function createQR(){
 
     const uri =
         "upi://pay" +
+
         "?pa=" +
         encodeURIComponent(UPI_ID) +
 
@@ -2633,7 +3313,9 @@ function createQR(){
 
 
     new QRCode(
+
         qrBox,
+
         {
 
             text:uri,
@@ -2647,20 +3329,15 @@ function createQR(){
             colorLight:"#ffffff"
 
         }
+
     );
-
-
-    document
-        .getElementById("upiId")
-        .textContent = UPI_ID;
 
 }
 
 
 /* =========================================================
    OPEN UPI
-
-   THIS FUNCTION ONLY RUNS AFTER BUTTON CLICK.
+   ONLY AFTER USER CLICK
 ========================================================= */
 
 function openUPI(){
@@ -2703,10 +3380,7 @@ function openUPI(){
 
 
     /*
-        USER CLICK ONLY.
-
-        No automatic redirect exists elsewhere
-        in this file.
+        User-click only.
     */
 
     window.location.href = uri;
@@ -2739,8 +3413,11 @@ function backToDetails(){
 
 
     window.scrollTo({
+
         top:0,
+
         behavior:"smooth"
+
     });
 
 }
@@ -2769,20 +3446,26 @@ function continueVerification(){
     }
 
 
-    memberData =
-        JSON.parse(saved);
+    try{
+
+        memberData =
+            JSON.parse(saved);
+
+    }catch(error){
+
+        alert(
+            "Your registration session could not be loaded."
+        );
+
+        return;
+
+    }
 
 
     /*
-        IMPORTANT:
-
-        This is NOT claiming that payment
-        has been automatically verified.
-
-        It only submits the user's declaration
-        that they completed payment.
+        Generate membership ID only after
+        the user submits the payment declaration.
     */
-
 
     const memberId =
         "14F-" +
@@ -2800,11 +3483,7 @@ function continueVerification(){
 
 
     /*
-        Compatibility with the current
-        localStorage member system.
-
-        This keeps the existing website
-        working until server.js is connected.
+        Existing localStorage compatibility.
     */
 
     let members = [];
@@ -2818,6 +3497,7 @@ function continueVerification(){
                     "14fitness_members"
                 ) || "[]"
             );
+
 
         if(!Array.isArray(members)){
 
@@ -2846,9 +3526,7 @@ function continueVerification(){
     );
 
 
-    showVerification(
-        memberData
-    );
+    showVerification(memberData);
 
 }
 
@@ -2887,15 +3565,43 @@ function showVerification(data){
     document
         .getElementById("verificationMessage")
         .innerHTML =
+
             "Welcome <b>" +
             escapeHtml(data.name) +
             "</b>.<br><br>" +
 
-            "Your membership registration has been received. " +
+            "Your " +
+            escapeHtml(data.duration) +
+            " membership registration has been received. " +
 
             "Payment status is currently " +
 
             "<b>Pending Verification</b>.";
+
+    
+    /*
+        Restart the check animation every time
+        verification screen is shown.
+    */
+
+    const icon =
+        document.querySelector(".verify-icon");
+
+
+    const check =
+        document.querySelector(".check-mark");
+
+
+    if(icon && check){
+
+        check.style.animation = "none";
+
+        void check.offsetWidth;
+
+        check.style.animation =
+            "checkDraw .65s cubic-bezier(.2,.8,.2,1) .15s forwards";
+
+    }
 
 }
 
@@ -2907,13 +3613,18 @@ function showVerification(data){
 function setStep(number){
 
     const steps = [
+
         document.getElementById("step1"),
+
         document.getElementById("step2"),
+
         document.getElementById("step3")
+
     ];
 
 
     steps.forEach(
+
         (step,index) => {
 
             const current =
@@ -2932,26 +3643,28 @@ function setStep(number){
             );
 
         }
+
     );
 
 }
 
 
 /* =========================================================
-   IMPORTANT:
+   IMPORTANT SECURITY / BEHAVIOUR NOTES
+=========================================================
 
-   THERE IS NO:
+   1. No UPI app opens automatically.
+   2. QR is generated only on payment screen.
+   3. Only selected membership amount is used.
+   4. User must press "Open UPI App".
+   5. User must press "I Have Paid".
+   6. Verification says Pending Verification.
+   7. No automatic payment verification exists here.
+   8. No three-plan selector exists on this page.
 
-   window.onload = openUPI
-   location.href = upi://...
-   automatic payment
-   automatic member creation
-
-   Everything happens only after user interaction.
 ========================================================= */
 
 </script>
 
 </body>
 </html>
-
