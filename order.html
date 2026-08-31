@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>14 FITNESS GYM — Secure Membership</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{--bg:#f2f6ef;--ink:#101512;--green:#173a21;--lime:#caff26;--muted:#707970;--line:#dce5d9;--white:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
+.top{padding:18px 6%;display:flex;justify-content:space-between;align-items:center}.logo{font:900 29px "Barlow Condensed"}.logo b{background:var(--ink);color:var(--lime);padding:6px 10px;border-radius:7px;margin-right:8px}.logo span{color:#718d00}.back{font-size:11px;font-weight:900;text-decoration:none;color:var(--green)}
+.page{width:min(1100px,92%);margin:25px auto 70px;display:grid;grid-template-columns:.82fr 1.18fr;gap:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 25px 70px #173a2114;padding:30px}
+.summary{background:linear-gradient(145deg,#173a21,#285632);color:#fff;position:relative;overflow:hidden}.summary:after{content:"14";position:absolute;right:-30px;bottom:-70px;font:900 250px "Barlow Condensed";color:#ffffff0a}
+.kicker{font-size:9px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;color:#739000}.summary .kicker{color:var(--lime)}
+h1,h2,h3{font-family:"Barlow Condensed";text-transform:uppercase;margin:0}h1{font-size:62px;line-height:.82}.summary h1{margin:18px 0 30px}.summary p{font-size:11px;color:#bdc9bf;line-height:1.7;position:relative;z-index:2}
+.amount{font:900 68px "Barlow Condensed";line-height:.8;position:relative;z-index:2}.amount small{font:600 10px Inter;color:#b6c4ba}.benefits{list-style:none;padding:20px 0 0;border-top:1px solid #ffffff25;display:grid;gap:12px;font-size:11px;position:relative;z-index:2}.benefits li:before{content:"✓";color:var(--lime);font-weight:900;margin-right:9px}
+.formTitle{font-size:50px;line-height:.85}.secure{margin:15px 0 24px;padding:12px 14px;background:#eff7e7;border:1px solid #d6e6cd;border-radius:9px;font-size:10px;color:#536057;line-height:1.6}.secure b{color:#315a1e}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:grid;gap:6px}.full{grid-column:1/-1}.field label{font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:1.3px;color:#737c75}.field input,.field select{width:100%;padding:14px;border:1px solid var(--line);background:#f7f9f5;border-radius:8px;outline:0}.field input:focus,.field select:focus{border-color:#91b51a;box-shadow:0 0 0 3px #caff2638}
+.planPicker{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:18px 0}.pick{border:1px solid var(--line);background:#f7f9f5;border-radius:8px;padding:10px;font-size:9px;font-weight:900;cursor:pointer}.pick.active{background:var(--lime);border-color:#9ec900}.pick strong{display:block;font-size:16px;font-family:"Barlow Condensed"}
+.next{width:100%;border:0;background:var(--ink);color:#fff;padding:16px;border-radius:8px;font-weight:900;text-transform:uppercase;cursor:pointer;margin-top:18px}.note{font-size:8px;color:#89918b;line-height:1.6;margin-top:10px}
+.payment{display:none}.payment.show{display:block}.form.hide{display:none}
+.paymentHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.paymentHead h2{font-size:47px}.close{border:0;background:#eef2ed;width:35px;height:35px;border-radius:50%;font-size:20px}
+.qrWrap{background:#f7faf5;border:1px solid var(--line);border-radius:14px;padding:18px;text-align:center}.qr{width:230px;height:230px;margin:12px auto;background:#fff;display:grid;place-items:center}.upi{font-weight:900;font-size:21px;color:var(--green);word-break:break-all}.scanText{font-size:9px;color:#7b847c;margin-top:7px}
+.payBtns{display:grid;gap:10px;margin-top:15px}.payBtn{border:0;padding:16px;border-radius:8px;background:var(--lime);font-weight:900;cursor:pointer}.secondary{background:#edf2eb;color:#111}
+.warning{padding:12px;background:#fff8db;border:1px solid #eee0a6;color:#665b20;font-size:9px;line-height:1.6;border-radius:8px;margin-top:12px}
+.success{display:none;text-align:center;padding:30px 10px}.success.show{display:block}.check{width:85px;height:85px;border-radius:50%;background:var(--lime);display:grid;place-items:center;font-size:44px;margin:0 auto 18px;box-shadow:0 0 0 10px #caff2633}.success h2{font-size:65px}.success p{color:var(--muted);font-size:11px;line-height:1.7}.memberId{display:inline-block;background:var(--green);color:var(--lime);padding:12px 16px;border-radius:7px;font-weight:900;margin:10px 0}
+@media(max-width:800px){.page{grid-template-columns:1fr}.summary{order:0}.card{padding:23px}.grid{grid-template-columns:1fr}.full{grid-column:auto}.planPicker{grid-template-columns:1fr}.top{padding-inline:4%}}
+</style>
+</head>
+<body>
+<div class="top"><a class="logo" href="index.html"><b>14</b> FITNESS <span>GYM</span></a><a class="back" href="index.html">← BACK TO GYM</a></div>
+
+<main class="page">
+<section class="card summary">
+<div class="kicker">Secure Membership</div><h1>Own Your<br>Progress.</h1>
+<p>One simple registration. Your membership details are recorded securely and your selected plan is shown before payment.</p>
+<div style="height:25px"></div><div class="kicker">Selected Plan</div><h2 id="summaryPlan" style="font-size:37px;margin:8px 0">6 MONTHS</h2><div class="amount" id="summaryAmount">₹7,560 <small>total</small></div>
+<ul class="benefits" id="summaryBenefits"><li>6 Months membership</li><li>FREE admission</li><li>10% discount</li></ul>
+</section>
+
+<section class="card">
+<div id="formPanel">
+<div class="kicker">Step 01 / Your Details</div><h2 class="formTitle">Become A<br>Member.</h2>
+<div class="secure">🔒 <b>Secure Registration</b> — Your information is used for your membership record. Never enter your UPI PIN, ATM PIN, password or banking credentials here.</div>
+
+<div class="planPicker">
+<button class="pick" data-plan="1400"><strong>₹1,400</strong>1 MONTH + FREE</button>
+<button class="pick active" data-plan="7560"><strong>₹7,560</strong>6 MONTHS • BEST</button>
+<button class="pick" data-plan="14280"><strong>₹14,280</strong>1 YEAR</button>
+</div>
+
+<form id="memberForm">
+<div class="grid">
+<div class="field full"><label>Full Name *</label><input id="name" required autocomplete="name" pattern="[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ .'-]{2,59}" title="Enter your real full name" placeholder="Your full name"></div>
+<div class="field"><label>Mobile Number *</label><input id="phone" required inputmode="numeric" maxlength="10" pattern="[6-9][0-9]{9}" title="Enter a valid 10-digit Indian mobile number" placeholder="10-digit mobile"></div>
+<div class="field"><label>Age *</label><input id="age" required type="number" min="12" max="90" placeholder="Age"></div>
+<div class="field"><label>Gender *</label><select id="gender" required><option value="">Select</option><option>Male</option><option>Female</option><option>Prefer not to say</option></select></div>
+<div class="field"><label>Fitness Goal *</label><select id="goal" required><option value="">Select goal</option><option>Muscle Gain</option><option>Fat Loss</option><option>Strength</option><option>General Fitness</option><option>Bodybuilding</option></select></div>
+</div>
+<button class="next" type="submit">Continue To Payment →</button>
+<div class="note">By continuing, you confirm that the details entered are accurate.</div>
+</form>
+</div>
+
+<div class="payment" id="paymentPanel">
+<div class="paymentHead"><div><div class="kicker">Step 02 / Payment</div><h2>Scan & Pay.</h2></div><button class="close" onclick="backToForm()">×</button></div>
+<div class="qrWrap"><div class="kicker">UPI QR • 14 FITNESS GYM</div><div class="qr" id="qr"></div><div class="upi" id="upiText">7889777143@fam</div><div class="scanText">Scan with any supported UPI app</div></div>
+<div class="payBtns"><button class="payBtn" onclick="payWithUPI()">Pay With UPI App →</button><button class="payBtn secondary" onclick="showPaidConfirmation()">I Have Completed Payment</button></div>
+<div class="warning">Important: a UPI deep-link can open the installed UPI app, but a normal website cannot reliably receive an automatic “payment successful” callback from every UPI app/browser. Final payment verification should be done by the backend before activating a paid membership.</div>
+</div>
+
+<div class="success" id="successPanel">
+<div class="check">✓</div><div class="kicker">Registration Received</div><h2>You're A<br>Member.</h2>
+<p id="successMessage"></p><div class="memberId" id="memberId"></div>
+<p><b>Your membership countdown is saved from your joining date.</b><br>The backend version will calculate exact expiry and send reminders automatically.</p>
+<button class="next" onclick="location.href='index.html#home'">Back To 14 Fitness</button>
+</div>
+</section>
+</main>
+
+<script>
+const UPI_ID="7889777143@fam";
+const UPI_NAME="14 FITNESS GYM";
+const plans={
+ "1400":{name:"1 MONTH + FREE ADMISSION",short:"1 MONTH + FREE",amount:1400,benefits:["Admission fee ₹1,400","1 Month FREE membership","Full gym access"]},
+ "7560":{name:"6 MONTHS + FREE ADMISSION",short:"6 MONTHS • BEST VALUE",amount:7560,benefits:["6 Months membership","FREE admission","10% discount"]},
+ "14280":{name:"1 YEAR + FREE ADMISSION",short:"1 YEAR • ELITE",amount:14280,benefits:["12 Months membership","FREE admission","15% discount"]}
+};
+let selectedKey=new URLSearchParams(location.search).get("plan")||"7560";
+if(!plans[selectedKey])selectedKey="7560";
+let memberData=null;
+
+function setPlan(key){
+ selectedKey=key;const p=plans[key];
+ document.querySelectorAll(".pick").forEach(x=>x.classList.toggle("active",x.dataset.plan===key));
+ document.getElementById("summaryPlan").textContent=p.name;
+ document.getElementById("summaryAmount").innerHTML="₹"+p.amount.toLocaleString("en-IN")+" <small>total</small>";
+ document.getElementById("summaryBenefits").innerHTML=p.benefits.map(x=>"<li>"+x+"</li>").join("");
+}
+document.querySelectorAll(".pick").forEach(b=>b.onclick=()=>setPlan(b.dataset.plan));
+setPlan(selectedKey);
+
+document.getElementById("memberForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ if(!e.target.reportValidity())return;
+ const phone=document.getElementById("phone").value.trim();
+ const name=document.getElementById("name").value.trim();
+ if(!/^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ .'-]{2,59}$/.test(name)){alert("Please enter your real full name.");return}
+ if(!/^[6-9][0-9]{9}$/.test(phone)){alert("Please enter a valid 10-digit mobile number.");return}
+ memberData={name,phone,age:document.getElementById("age").value,gender:document.getElementById("gender").value,goal:document.getElementById("goal").value,plan:selectedKey,amount:plans[selectedKey].amount,createdAt:new Date().toISOString()};
+ localStorage.setItem("14fitness_pending",JSON.stringify(memberData));
+ document.getElementById("formPanel").classList.add("hide");
+ document.getElementById("paymentPanel").classList.add("show");
+ makeQR();
+});
+
+function makeQR(){
+ const box=document.getElementById("qr");box.innerHTML="";
+ const p=plans[selectedKey];
+ new QRCode(box,{text:`upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${p.amount}&cu=INR&tn=${encodeURIComponent(p.name)}`,width:230,height:230,colorDark:"#101512",colorLight:"#ffffff"});
+ document.getElementById("upiText").textContent=UPI_ID;
+}
+function payWithUPI(){
+ const p=plans[selectedKey];
+ const uri=`upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${p.amount}&cu=INR&tn=${encodeURIComponent(p.name)}`;
+ location.href=uri;
+}
+function backToForm(){document.getElementById("paymentPanel").classList.remove("show");document.getElementById("formPanel").classList.remove("hide")}
+function showPaidConfirmation(){
+ const data=JSON.parse(localStorage.getItem("14fitness_pending")||"null");
+ if(!data){alert("Please complete the registration first.");return}
+ const id="14F-"+Date.now().toString().slice(-8);
+ data.memberId=id;data.status="Payment Pending Verification";
+ localStorage.setItem("14fitness_members",JSON.stringify([...JSON.parse(localStorage.getItem("14fitness_members")||"[]"),data]));
+ localStorage.removeItem("14fitness_pending");
+ document.getElementById("paymentPanel").classList.remove("show");
+ document.getElementById("successPanel").classList.add("show");
+ document.getElementById("memberId").textContent="MEMBER ID • "+id;
+ document.getElementById("successMessage").innerHTML=`Welcome <b>${escapeHtml(data.name)}</b>! Your ${escapeHtml(plans[data.plan].name)} registration has been recorded.`;
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+</script>
+</body>
+</html>

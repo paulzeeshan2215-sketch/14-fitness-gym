@@ -1,0 +1,13 @@
+{
+  "name": "14-fitness-gym",
+  "version": "1.0.0",
+  "private": true,
+  "description": "14 FITNESS GYM membership website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
