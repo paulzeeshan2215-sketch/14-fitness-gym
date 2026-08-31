@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#070b09">
-<title>14 FITNESS GYM — Built Different</title>
+<title>14 FITNESS GYM — Train. Transform. Become Stronger.</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,801 +12,373 @@
 
 <style>
 :root{
-  --bg:#050806;
-  --bg2:#0a100c;
+  --bg:#060a08;
   --panel:#0d1510;
   --panel2:#111b14;
-  --lime:#c9ff25;
-  --lime2:#9bdc00;
-  --white:#f5f8f2;
-  --muted:#87928b;
-  --muted2:#5f6b63;
-  --line:rgba(255,255,255,.09);
-  --danger:#ff6565;
-  --orange:#ffb84d;
+  --lime:#caff24;
+  --lime2:#9fd900;
+  --text:#f3f6ef;
+  --muted:#89958d;
+  --line:rgba(255,255,255,.10);
   --shadow:0 30px 90px rgba(0,0,0,.42);
 }
-
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  font-family:Inter,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--white);
+  font-family:Inter,sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 78% 10%,rgba(202,255,36,.09),transparent 25%),
+    radial-gradient(circle at 10% 65%,rgba(30,100,45,.13),transparent 28%),
+    var(--bg);
   overflow-x:hidden;
 }
-button,input{font:inherit}
-button{cursor:pointer}
-a{color:inherit;text-decoration:none}
-::selection{background:var(--lime);color:#061006}
-
 body:before{
   content:"";
-  position:fixed;
-  inset:0;
-  z-index:-10;
-  pointer-events:none;
-  background:
-    radial-gradient(circle at 16% 12%,rgba(201,255,37,.09),transparent 25%),
-    radial-gradient(circle at 84% 22%,rgba(39,112,59,.15),transparent 28%),
-    radial-gradient(circle at 50% 90%,rgba(201,255,37,.055),transparent 35%);
-}
-body:after{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-9;
-  pointer-events:none;
-  opacity:.22;
+  position:fixed;inset:0;pointer-events:none;z-index:-2;opacity:.22;
   background-image:
     linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
     linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
-  background-size:70px 70px;
-  mask-image:linear-gradient(to bottom,black,transparent 92%);
+  background-size:64px 64px;
 }
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+button{cursor:pointer}
 .noise{
-  position:fixed;
-  inset:0;
-  z-index:1000;
-  pointer-events:none;
-  opacity:.025;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+  position:fixed;inset:0;pointer-events:none;z-index:100;
+  opacity:.018;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* HEADER */
 header{
-  position:fixed;
-  top:0;left:0;right:0;
-  z-index:100;
-  height:78px;
-  padding:0 5%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  transition:.35s ease;
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  padding:18px 5%;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:.35s;
 }
 header.scrolled{
-  height:64px;
-  background:rgba(5,8,6,.78);
+  padding:11px 4%;
+  background:rgba(6,10,8,.82);
+  backdrop-filter:blur(20px);
   border-bottom:1px solid var(--line);
-  backdrop-filter:blur(22px);
-  box-shadow:0 18px 55px rgba(0,0,0,.28);
 }
-.logo{
-  display:flex;
-  align-items:center;
-  font:900 29px/1 "Barlow Condensed";
-  letter-spacing:.5px;
-}
+.logo{display:flex;align-items:center;font:900 29px "Barlow Condensed";letter-spacing:.5px}
 .logo b{
-  color:#071006;
-  background:var(--lime);
-  padding:8px 10px;
-  border-radius:7px;
-  margin-right:8px;
-  box-shadow:0 0 30px rgba(201,255,37,.18);
+  background:var(--lime);color:#071006;padding:7px 10px;border-radius:7px;
+  margin-right:8px;box-shadow:0 0 30px rgba(202,255,36,.2)
 }
 .logo span{color:var(--lime);margin-left:5px}
-nav{display:flex;gap:28px;align-items:center}
+nav{display:flex;gap:28px}
 nav a{
-  position:relative;
-  color:#9ca79f;
-  font-size:9px;
-  font-weight:900;
-  letter-spacing:1.6px;
-  text-transform:uppercase;
-  transition:.25s;
+  position:relative;color:#aab4ad;font-size:10px;font-weight:900;
+  letter-spacing:1.5px;text-transform:uppercase;transition:.25s
 }
 nav a:after{
-  content:"";
-  position:absolute;
-  left:0;bottom:-8px;
-  width:0;height:2px;
-  background:var(--lime);
-  transition:.3s;
+  content:"";position:absolute;left:0;bottom:-8px;width:0;height:2px;
+  background:var(--lime);transition:.25s
 }
 nav a:hover,nav a.active{color:#fff}
 nav a:hover:after,nav a.active:after{width:100%}
-.header-btn{
-  border:0;
-  background:var(--lime);
-  color:#071006;
-  padding:12px 18px;
-  border-radius:7px;
-  font-size:9px;
-  font-weight:900;
-  text-transform:uppercase;
-  letter-spacing:.7px;
-  transition:.3s;
-  box-shadow:0 8px 25px rgba(201,255,37,.11);
+.header-btn,.btn{
+  border:0;border-radius:8px;font-weight:900;text-transform:uppercase;
+  letter-spacing:.7px;transition:.3s;position:relative;overflow:hidden
 }
-.header-btn:hover{transform:translateY(-3px);box-shadow:0 15px 35px rgba(201,255,37,.23)}
+.header-btn{padding:12px 19px;background:var(--lime);color:#071006;font-size:10px}
+.header-btn:hover,.btn-primary:hover{transform:translateY(-4px);box-shadow:0 18px 45px rgba(202,255,36,.22)}
 .menu-btn{
-  display:none;
-  width:42px;height:42px;
-  border:1px solid var(--line);
-  border-radius:9px;
-  background:#101711;
-  color:#fff;
+  display:none;width:42px;height:42px;border-radius:8px;
+  border:1px solid var(--line);background:#101711;color:#fff
 }
 
 /* HERO */
 .hero{
-  min-height:100vh;
-  position:relative;
-  display:grid;
-  grid-template-columns:.9fr 1.1fr;
-  align-items:center;
-  gap:20px;
-  padding:135px 6% 80px;
-  overflow:hidden;
+  min-height:100vh;padding:125px 6% 70px;position:relative;
+  display:grid;grid-template-columns:.85fr 1.15fr;align-items:center;
+  gap:25px;overflow:hidden
 }
-.hero-grid{
-  position:absolute;
-  right:-4%;
-  top:0;
-  width:58%;
-  height:100%;
-  opacity:.34;
-  background:
-    linear-gradient(rgba(201,255,37,.07) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(201,255,37,.07) 1px,transparent 1px);
-  background-size:60px 60px;
-  mask-image:linear-gradient(90deg,transparent,black 30%,black);
-  transform:perspective(700px) rotateY(-15deg);
-}
-.hero-orb{
-  position:absolute;
-  width:680px;height:680px;
-  right:-170px;top:70px;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(201,255,37,.20),rgba(201,255,37,.045) 43%,transparent 70%);
-  animation:orb 8s ease-in-out infinite;
-}
-.hero-copy{position:relative;z-index:5}
+.hero-copy{position:relative;z-index:4}
 .eyebrow,.kicker{
-  color:var(--lime);
-  font-size:9px;
-  font-weight:900;
-  letter-spacing:3px;
-  text-transform:uppercase;
+  color:var(--lime);font-size:9px;font-weight:900;
+  letter-spacing:3px;text-transform:uppercase
 }
-.eyebrow{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:24px;
-}
-.eyebrow:before{
-  content:"";
-  width:35px;height:2px;
-  background:var(--lime);
-  box-shadow:0 0 13px var(--lime);
-}
+.eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:24px}
+.eyebrow:before{content:"";width:34px;height:2px;background:var(--lime);box-shadow:0 0 14px var(--lime)}
 .hero h1{
-  font:900 clamp(78px,10vw,154px)/.73 "Barlow Condensed";
-  text-transform:uppercase;
-  letter-spacing:-4px;
+  font:900 clamp(76px,10vw,150px)/.76 "Barlow Condensed";
+  text-transform:uppercase;letter-spacing:-4px
 }
-.hero h1 .lime{
-  color:var(--lime);
-  text-shadow:7px 7px 0 #243800;
-}
-.hero h1 .outline{
-  color:transparent;
-  -webkit-text-stroke:1px rgba(255,255,255,.72);
-}
-.hero-description{
-  max-width:520px;
-  margin:31px 0;
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.9;
-}
-.hero-actions{display:flex;gap:11px;flex-wrap:wrap}
-.btn{
-  position:relative;
-  overflow:hidden;
-  border:0;
-  padding:15px 23px;
-  border-radius:7px;
-  font-size:9px;
-  font-weight:900;
-  letter-spacing:.8px;
-  text-transform:uppercase;
-  transition:.35s;
-}
-.btn:before{
-  content:"";
-  position:absolute;
-  top:0;left:-120%;
-  width:75%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
-  transform:skewX(-20deg);
-  transition:.65s;
-}
-.btn:hover:before{left:145%}
-.btn-primary{
-  background:var(--lime);
-  color:#071006;
-  box-shadow:0 12px 35px rgba(201,255,37,.13);
-}
-.btn-primary:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(201,255,37,.25)}
-.btn-dark{
-  background:#101711;
-  border:1px solid var(--line);
-  color:#fff;
-}
-.btn-dark:hover{transform:translateY(-3px);border-color:rgba(201,255,37,.5)}
+.hero h1 .lime{color:var(--lime);text-shadow:6px 6px 0 #294000}
+.hero h1 .outline{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.75)}
+.hero-description{max-width:520px;margin:30px 0;color:var(--muted);font-size:13px;line-height:1.8}
+.hero-actions{display:flex;flex-wrap:wrap;gap:11px}
+.btn{padding:15px 23px;font-size:10px}
+.btn-primary{background:var(--lime);color:#071006}
+.btn-dark{background:#111914;color:#fff;border:1px solid var(--line)}
+.btn-dark:hover{border-color:rgba(202,255,36,.5);transform:translateY(-3px)}
 .hero-stats{display:flex;gap:30px;margin-top:42px}
-.hero-stat strong{display:block;font:800 31px "Barlow Condensed"}
-.hero-stat span{
-  color:var(--muted2);
-  font-size:7px;
-  font-weight:900;
-  letter-spacing:1.2px;
-  text-transform:uppercase;
-}
+.hero-stat strong{display:block;font:800 32px "Barlow Condensed"}
+.hero-stat span{color:#6e7971;font-size:8px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase}
 
-/* ATHLETE VISUAL — INLINE SVG, NO EXTERNAL IMAGE */
+/* REAL ATHLETE */
 .hero-visual{
-  position:relative;
-  min-height:650px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:4;
+  min-height:650px;position:relative;display:flex;align-items:center;
+  justify-content:center;z-index:2
 }
 .athlete-glow{
-  position:absolute;
-  width:530px;height:530px;
-  border-radius:50%;
-  background:var(--lime);
-  opacity:.11;
-  filter:blur(55px);
-  animation:glow 4s ease-in-out infinite;
+  position:absolute;width:570px;height:570px;border-radius:50%;
+  background:radial-gradient(circle,rgba(202,255,36,.24),transparent 67%);
+  filter:blur(18px);animation:pulse 4s ease-in-out infinite
 }
 .athlete-ring{
-  position:absolute;
-  width:570px;height:570px;
-  border:1px solid rgba(201,255,37,.18);
-  border-radius:50%;
-  animation:spin 24s linear infinite;
+  position:absolute;width:610px;height:610px;border:1px solid rgba(202,255,36,.22);
+  border-radius:50%;animation:spin 24s linear infinite
 }
 .athlete-ring:before,.athlete-ring:after{
-  content:"";
-  position:absolute;
-  border-radius:50%;
+  content:"";position:absolute;border-radius:50%;background:var(--lime);
+  box-shadow:0 0 20px var(--lime)
 }
-.athlete-ring:before{
-  width:9px;height:9px;
-  background:var(--lime);
-  top:34px;left:96px;
-  box-shadow:0 0 20px var(--lime);
+.athlete-ring:before{width:9px;height:9px;top:30px;left:100px}
+.athlete-ring:after{width:6px;height:6px;right:85px;bottom:120px}
+.athlete-frame{
+  position:relative;width:min(520px,88%);height:650px;z-index:3;
+  overflow:hidden;border-radius:28px 28px 0 0;
+  background:#111b14;
+  box-shadow:var(--shadow);
 }
-.athlete-ring:after{
-  width:5px;height:5px;
-  background:#fff;
-  right:72px;bottom:100px;
-  box-shadow:0 0 15px #fff;
+.athlete-frame:before{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(90deg,rgba(4,8,6,.45),transparent 35%,rgba(4,8,6,.12)),
+    linear-gradient(0deg,rgba(4,8,6,.85),transparent 48%);
 }
-.athlete-wrap{
-  position:relative;
-  z-index:4;
-  width:min(510px,88%);
-  height:650px;
-  display:flex;
-  align-items:flex-end;
-  justify-content:center;
-  animation:athleteFloat 5s ease-in-out infinite;
+.athlete-photo{
+  width:100%;height:100%;display:block;object-fit:cover;object-position:center top;
+  filter:saturate(.82) contrast(1.08);
+  transform:scale(1.02);
+  animation:photoFloat 6s ease-in-out infinite
 }
-.athlete-svg{
-  width:100%;
-  height:100%;
-  overflow:visible;
-  filter:drop-shadow(0 25px 30px rgba(0,0,0,.35));
+.athlete-label{
+  position:absolute;left:22px;bottom:24px;z-index:4;
+  padding:11px 13px;border:1px solid rgba(255,255,255,.18);
+  background:rgba(7,11,8,.68);backdrop-filter:blur(14px);border-radius:9px
 }
-.athlete-body{
-  fill:url(#bodyGradient);
-  stroke:rgba(255,255,255,.16);
-  stroke-width:1;
-}
-.athlete-detail{
-  fill:none;
-  stroke:rgba(201,255,37,.72);
-  stroke-width:3;
-  stroke-linecap:round;
-  opacity:.75;
-}
+.athlete-label small{display:block;color:#7c877f;font-size:7px;font-weight:900;letter-spacing:1.6px;text-transform:uppercase}
+.athlete-label strong{display:block;color:var(--lime);font:900 28px "Barlow Condensed";text-transform:uppercase}
 .floating-card{
-  position:absolute;
-  z-index:8;
-  min-width:155px;
-  padding:14px 16px;
-  border-radius:12px;
-  background:rgba(10,16,12,.78);
-  border:1px solid rgba(255,255,255,.12);
-  backdrop-filter:blur(18px);
-  box-shadow:0 25px 65px rgba(0,0,0,.38);
-  animation:cardFloat 5s ease-in-out infinite;
+  position:absolute;z-index:6;padding:15px 17px;border-radius:12px;
+  background:rgba(10,16,12,.84);backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.13);box-shadow:0 25px 70px rgba(0,0,0,.35);
+  animation:float 5s ease-in-out infinite
 }
-.floating-card small{
-  display:block;
-  color:#738078;
-  font-size:7px;
-  font-weight:900;
-  letter-spacing:1.5px;
-  text-transform:uppercase;
-  margin-bottom:5px;
-}
-.floating-card strong{
-  display:block;
-  font:800 25px "Barlow Condensed";
-  text-transform:uppercase;
-}
-.card-one{left:0;top:25%}
-.card-one strong,.card-three strong{color:var(--lime)}
-.card-two{right:0;top:13%;animation-delay:-2s}
-.card-three{right:4%;bottom:14%;animation-delay:-1s}
+.floating-card small{display:block;color:#758078;font-size:7px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px}
+.floating-card strong{display:block;font:800 25px "Barlow Condensed";text-transform:uppercase}
+.card-one{left:-5px;top:24%}.card-one strong{color:var(--lime)}
+.card-two{right:-5px;top:13%;animation-delay:-2s}
+.card-three{right:3%;bottom:12%;animation-delay:-1s}.card-three strong{color:var(--lime)}
 
 /* TICKER */
 .ticker{
-  width:100%;
-  overflow:hidden;
-  position:relative;
-  z-index:20;
-  margin:12px 0;
-  transform:rotate(-1.2deg) scale(1.03);
-  background:var(--lime);
-  color:#071006;
-  border-block:1px solid rgba(0,0,0,.22);
+  width:100%;overflow:hidden;background:var(--lime);color:#071006;
+  transform:rotate(-1.2deg) scale(1.03);margin:12px 0 0;position:relative;z-index:10
 }
-.ticker-track{
-  display:flex;
-  width:max-content;
-  animation:ticker 22s linear infinite;
-}
-.ticker-group{
-  display:flex;
-  align-items:center;
-  gap:25px;
-  padding:14px 0;
-  margin-right:25px;
-  white-space:nowrap;
-}
+.ticker-track{display:flex;width:max-content;animation:ticker 24s linear infinite}
+.ticker-group{display:flex;align-items:center;gap:25px;padding:15px 0;margin-right:25px;white-space:nowrap}
 .ticker-group span{font:900 22px "Barlow Condensed";letter-spacing:2px}
-.ticker-group i{font-style:normal;font-size:17px}
+.ticker-group i{font-style:normal}
 
-/* GENERAL */
-.section{position:relative;padding:130px 6%}
+/* SECTIONS */
+.section{padding:125px 6%;position:relative}
 .section-head{
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:40px;
-  margin-bottom:58px;
+  display:flex;align-items:end;justify-content:space-between;gap:40px;margin-bottom:55px
 }
 .section-head h2{
-  margin-top:12px;
-  font:900 clamp(60px,8vw,106px)/.78 "Barlow Condensed";
-  text-transform:uppercase;
-  letter-spacing:-2px;
+  font:900 clamp(58px,8vw,105px)/.8 "Barlow Condensed";
+  text-transform:uppercase;letter-spacing:-2px;margin-top:12px
 }
-.section-head p{
-  max-width:440px;
-  color:var(--muted);
-  font-size:11px;
-  line-height:1.9;
-}
+.section-head p{max-width:430px;color:var(--muted);font-size:12px;line-height:1.8}
 
-/* MEMBERSHIP */
-.membership{
-  background:radial-gradient(circle at 50% 0,rgba(201,255,37,.07),transparent 30%);
-}
+/* PLANS */
 .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .plan{
-  position:relative;
-  overflow:hidden;
-  padding:30px;
-  border-radius:20px;
-  border:1px solid var(--line);
-  background:linear-gradient(145deg,#101812,#0a100d);
-  transition:.45s;
+  position:relative;background:linear-gradient(145deg,#111a14,#0b110e);
+  border:1px solid var(--line);border-radius:20px;padding:30px;overflow:hidden;transition:.4s
 }
-.plan:after{
-  content:"";
-  position:absolute;
-  width:230px;height:230px;
-  right:-120px;top:-120px;
-  border-radius:50%;
-  background:rgba(201,255,37,.08);
-  filter:blur(3px);
-  transition:.45s;
-}
-.plan:hover{
-  transform:translateY(-12px);
-  border-color:rgba(201,255,37,.34);
-  box-shadow:var(--shadow);
-}
-.plan:hover:after{transform:scale(1.5)}
+.plan:hover{transform:translateY(-10px);border-color:rgba(202,255,36,.35);box-shadow:var(--shadow)}
 .plan.best{
-  border-color:rgba(201,255,37,.65);
-  background:radial-gradient(circle at 90% 5%,rgba(201,255,37,.14),transparent 30%),linear-gradient(145deg,#152319,#0b120d);
-  transform:translateY(-14px);
+  border-color:rgba(202,255,36,.6);
+  background:radial-gradient(circle at 90% 5%,rgba(202,255,36,.14),transparent 35%),linear-gradient(145deg,#16251a,#0b130e);
+  transform:translateY(-12px)
 }
-.plan.best:hover{transform:translateY(-23px)}
+.plan.best:hover{transform:translateY(-21px)}
 .ribbon{
-  position:absolute;
-  right:18px;top:18px;
-  z-index:2;
-  padding:7px 10px;
-  border-radius:5px;
-  background:var(--lime);
-  color:#071006;
-  font-size:7px;
-  font-weight:900;
-  letter-spacing:1px;
+  position:absolute;top:18px;right:18px;background:var(--lime);color:#071006;
+  padding:7px 10px;border-radius:5px;font-size:7px;font-weight:900;letter-spacing:1px
 }
-.plan-number{color:#48544d;font:800 45px "Barlow Condensed"}
-.plan-name{margin:5px 0 28px;font:800 30px "Barlow Condensed";text-transform:uppercase}
-.old{color:#59645d;font-size:11px;text-decoration:line-through}
-.price{margin-top:4px;color:#fff;font:900 68px/.9 "Barlow Condensed"}
-.price small{font:600 9px Inter;color:#68746c}
+.plan-number{color:#4d5a52;font:800 45px "Barlow Condensed"}
+.plan-name{font:800 30px "Barlow Condensed";text-transform:uppercase;margin:5px 0 30px}
+.old{color:#59635d;text-decoration:line-through;font-size:12px}
+.price{font:900 68px/.9 "Barlow Condensed"}
+.price small{font:600 9px Inter;color:#69756d}
 .save{
-  display:inline-block;
-  margin:15px 0 25px;
-  padding:7px 9px;
-  border-radius:4px;
-  background:rgba(201,255,37,.09);
-  color:var(--lime);
-  font-size:7px;
-  font-weight:900;
+  display:inline-block;margin:15px 0 25px;padding:7px 9px;border-radius:4px;
+  background:rgba(202,255,36,.1);color:var(--lime);font-size:8px;font-weight:900
 }
-.plan ul{list-style:none;display:grid;gap:12px;border-top:1px solid var(--line);padding-top:22px}
-.plan li{color:#87928b;font-size:9px}
-.plan li:before{content:"✓";color:var(--lime);font-weight:900;margin-right:9px}
+.plan ul{list-style:none;border-top:1px solid var(--line);padding-top:22px;display:grid;gap:12px}
+.plan li{color:#87928b;font-size:10px}.plan li:before{content:"✓";color:var(--lime);font-weight:900;margin-right:9px}
 .plan .btn{width:100%;margin-top:28px}
 
 /* MEMBERS */
-.members-section{background:#080d0a;border-block:1px solid var(--line)}
-.member-toolbar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-  flex-wrap:wrap;
-  margin-bottom:30px;
-}
-.member-count{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  color:#859188;
-  font-size:8px;
-  font-weight:900;
-  letter-spacing:1.2px;
-  text-transform:uppercase;
-}
+.members-section{background:#090e0b;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.member-toolbar{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:30px;flex-wrap:wrap}
+.member-count{display:flex;align-items:center;gap:10px;color:#859188;font-size:9px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase}
 .member-count b{
-  display:grid;
-  place-items:center;
-  width:35px;height:35px;
-  border-radius:50%;
-  background:var(--lime);
-  color:#071006;
-  font-size:12px;
+  display:grid;place-items:center;width:34px;height:34px;border-radius:50%;
+  background:var(--lime);color:#071006;font-size:12px
 }
 .member-search{
-  width:min(310px,100%);
-  padding:13px 15px;
-  border:1px solid var(--line);
-  outline:none;
-  border-radius:8px;
-  background:#101711;
-  color:#fff;
-  font-size:9px;
-}
-.member-search:focus{
-  border-color:rgba(201,255,37,.5);
-  box-shadow:0 0 0 3px rgba(201,255,37,.05);
+  width:min(300px,100%);padding:13px 15px;border:1px solid var(--line);
+  background:#101712;border-radius:8px;color:white;outline:0;font-size:10px
 }
 .members-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
 .member-card{
-  position:relative;
-  overflow:hidden;
-  padding:22px;
-  border:1px solid var(--line);
-  border-radius:15px;
-  background:linear-gradient(145deg,#111a14,#0b120e);
-  transition:.35s;
+  position:relative;padding:22px;border-radius:15px;background:linear-gradient(145deg,#111a14,#0d130f);
+  border:1px solid var(--line);transition:.35s;overflow:hidden
 }
-.member-card:hover{transform:translateY(-7px);border-color:rgba(201,255,37,.3);box-shadow:0 25px 60px rgba(0,0,0,.3)}
+.member-card:hover{transform:translateY(-7px);border-color:rgba(202,255,36,.28);box-shadow:var(--shadow)}
 .member-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .member-avatar{
-  width:47px;height:47px;
-  display:grid;place-items:center;
-  border-radius:12px;
-  background:rgba(201,255,37,.1);
-  color:var(--lime);
-  font:800 22px "Barlow Condensed";
+  width:47px;height:47px;border-radius:12px;display:grid;place-items:center;
+  background:rgba(202,255,36,.1);color:var(--lime);font:800 22px "Barlow Condensed"
 }
-.member-status{
-  padding:6px 8px;
-  border-radius:5px;
-  font-size:6px;
-  font-weight:900;
-  letter-spacing:1px;
-}
-.status-active{background:rgba(201,255,37,.1);color:var(--lime)}
-.status-pending{background:rgba(255,184,77,.1);color:var(--orange)}
-.status-expired{background:rgba(255,101,101,.1);color:var(--danger)}
-.member-name{margin:17px 0 2px;font:800 29px "Barlow Condensed";text-transform:uppercase}
-.member-plan{color:#748078;font-size:7px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase}
+.member-status{font-size:7px;font-weight:900;letter-spacing:1px;padding:6px 8px;border-radius:5px;text-transform:uppercase}
+.status-active{background:rgba(202,255,36,.1);color:var(--lime)}
+.status-pending{background:rgba(255,184,77,.1);color:#ffb84d}
+.status-expired{background:rgba(255,93,93,.1);color:#ff5d5d}
+.member-name{font:800 29px "Barlow Condensed";text-transform:uppercase;margin:17px 0 2px}
+.member-plan{color:#748078;font-size:8px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase}
 .member-days{
-  margin:20px 0;
-  padding:15px;
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  border:1px solid var(--line);
-  border-radius:10px;
-  background:#080d0a;
+  margin:20px 0;padding:15px;border-radius:10px;background:#080d0a;border:1px solid var(--line);
+  display:flex;align-items:end;justify-content:space-between
 }
 .member-days strong{font:900 45px/.8 "Barlow Condensed";color:var(--lime)}
-.member-days span{color:#59655d;font-size:7px;font-weight:900;letter-spacing:1px;text-transform:uppercase}
+.member-days span{color:#59655d;font-size:7px;font-weight:900;text-transform:uppercase;letter-spacing:1px}
 .member-info{display:grid;gap:8px;border-top:1px solid var(--line);padding-top:15px}
-.info-row{display:flex;justify-content:space-between;gap:15px;font-size:7px}
+.info-row{display:flex;justify-content:space-between;gap:15px;font-size:8px}
 .info-row span:first-child{color:#566159;text-transform:uppercase;letter-spacing:1px}
 .info-row span:last-child{color:#c0c8c3;font-weight:700;text-align:right}
-.empty-members{
-  display:none;
-  padding:70px 20px;
-  text-align:center;
-  border:1px dashed var(--line);
-  border-radius:15px;
-}
-.empty-members.show{display:block}
-.empty-members strong{display:block;margin-bottom:8px;font:800 38px "Barlow Condensed";text-transform:uppercase}
-.empty-members p{color:#68736c;font-size:9px}
+.empty-members{text-align:center;padding:70px 20px;border:1px dashed var(--line);border-radius:15px}
+.empty-members strong{display:block;font:800 38px "Barlow Condensed";text-transform:uppercase;margin-bottom:8px}
+.empty-members p{color:#68736c;font-size:10px}
 
-/* WHY */
+/* FEATURES */
 .features{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:18px;overflow:hidden}
-.feature{
-  min-height:250px;
-  position:relative;
-  overflow:hidden;
-  padding:30px;
-  background:#0d140f;
-  border-right:1px solid var(--line);
-  transition:.4s;
-}
-.feature:last-child{border-right:0}
-.feature:hover{background:#121d15}
-.feature-number{position:absolute;right:18px;top:8px;color:rgba(201,255,37,.045);font:900 100px "Barlow Condensed"}
+.feature{min-height:250px;padding:30px;background:#0d140f;border-right:1px solid var(--line);position:relative;transition:.4s}
+.feature:last-child{border-right:0}.feature:hover{background:#121d15}
+.feature-number{position:absolute;right:18px;top:10px;color:rgba(202,255,38,.05);font:900 100px "Barlow Condensed"}
 .feature-icon{font-size:27px;margin-bottom:35px}
-.feature h3{margin-bottom:13px;font:800 29px "Barlow Condensed";text-transform:uppercase}
-.feature p{color:#707b73;font-size:9px;line-height:1.9}
+.feature h3{font:800 29px "Barlow Condensed";text-transform:uppercase;margin-bottom:13px}
+.feature p{color:#707b73;font-size:10px;line-height:1.8}
 
 /* TIMINGS */
-.timings{
-  background:radial-gradient(circle at 90% 30%,rgba(201,255,37,.09),transparent 30%),#101a13;
-}
+.timings{background:radial-gradient(circle at 90% 30%,rgba(202,255,38,.09),transparent 30%),#101a13}
 .schedule{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .slot{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:25px;
-  border:1px solid var(--line);
-  border-radius:14px;
-  background:rgba(255,255,255,.025);
-  transition:.35s;
+  padding:25px;border:1px solid var(--line);background:rgba(255,255,255,.025);
+  border-radius:14px;display:flex;justify-content:space-between;align-items:center;transition:.35s
 }
-.slot:hover{transform:translateX(6px);border-color:rgba(201,255,37,.3)}
-.slot.women{border-color:rgba(201,255,37,.5);background:rgba(201,255,37,.05)}
-.slot span{display:block;margin-bottom:5px;color:#6d7971;font-size:7px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase}
-.slot strong{font:800 35px "Barlow Condensed";text-transform:uppercase}
-.slot.women strong{color:var(--lime)}
+.slot:hover{border-color:rgba(202,255,36,.3);transform:translateX(5px)}
+.slot.women{border-color:rgba(202,255,36,.5);background:rgba(202,255,36,.05)}
+.slot span{display:block;color:#6d7971;font-size:8px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;margin-bottom:5px}
+.slot strong{font:800 35px "Barlow Condensed";text-transform:uppercase}.slot.women strong{color:var(--lime)}
 .slot>b{color:#3d493f;font:800 28px "Barlow Condensed"}
 
-/* GALLERY */
-.gallery{display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-auto-rows:260px;gap:12px}
-.pic{
-  position:relative;
-  overflow:hidden;
-  display:flex;
-  align-items:flex-end;
-  padding:20px;
-  border:1px solid var(--line);
-  border-radius:15px;
-  background:#0d140f;
+/* GALLERY — REAL GYM PHOTOS */
+.gallery{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-auto-rows:260px;gap:12px
 }
-.pic:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(to top,rgba(0,0,0,.78),transparent 62%),
-    radial-gradient(circle at 50% 35%,rgba(201,255,37,.12),transparent 30%);
+.pic{
+  position:relative;overflow:hidden;border-radius:15px;background:#111;
+  border:1px solid var(--line);min-height:220px
+}
+.pic img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  filter:saturate(.78) contrast(1.08);transition:transform .7s,filter .5s
 }
 .pic:after{
-  content:"14 FITNESS";
-  position:absolute;
-  top:17px;right:17px;
-  padding:6px 8px;
-  border:1px solid rgba(255,255,255,.2);
-  border-radius:5px;
-  color:#fff;
-  font-size:6px;
-  font-weight:900;
-  letter-spacing:1px;
+  content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.72),transparent 60%);
+  pointer-events:none
 }
-.pic label{position:relative;z-index:2;font:800 30px "Barlow Condensed";text-transform:uppercase}
+.pic:hover img{transform:scale(1.07);filter:saturate(1) contrast(1.08)}
+.pic label{
+  position:absolute;z-index:2;left:20px;bottom:18px;color:#fff;
+  font:800 30px "Barlow Condensed";text-transform:uppercase
+}
 .big{grid-row:span 2}
-.g1{background:linear-gradient(135deg,#17261a,#070b08 60%),radial-gradient(circle at 70% 30%,#a8d71933,transparent 25%)}
-.g2{background:linear-gradient(135deg,#121b15,#070a08),radial-gradient(circle at 30% 35%,#c9ff2530,transparent 28%)}
-.g3{background:linear-gradient(135deg,#1b241e,#070a08),radial-gradient(circle at 65% 35%,#c9ff2526,transparent 25%)}
-.g4{background:linear-gradient(135deg,#102117,#070a08),radial-gradient(circle at 40% 25%,#7cff8b20,transparent 30%)}
 
 /* CTA */
 .cta{
-  position:relative;
-  overflow:hidden;
-  padding:145px 6%;
-  text-align:center;
-  background:radial-gradient(circle at center,rgba(201,255,37,.15),transparent 35%),#080d0a;
+  padding:140px 6%;text-align:center;position:relative;overflow:hidden;
+  background:radial-gradient(circle at center,rgba(202,255,36,.15),transparent 35%),#080d0a
 }
 .cta:before{
-  content:"14";
-  position:absolute;
-  left:50%;top:50%;
-  transform:translate(-50%,-50%);
-  color:rgba(255,255,255,.015);
-  font:900 420px "Barlow Condensed";
+  content:"14";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  font:900 420px "Barlow Condensed";color:rgba(255,255,255,.015);pointer-events:none
 }
 .cta-content{position:relative;z-index:2}
-.cta h2{margin-top:12px;font:900 clamp(65px,10vw,140px)/.78 "Barlow Condensed";text-transform:uppercase;letter-spacing:-3px}
+.cta h2{font:900 clamp(65px,10vw,140px)/.78 "Barlow Condensed";text-transform:uppercase;letter-spacing:-3px}
 .cta h2 span{color:var(--lime);text-shadow:5px 5px 0 #294000}
-.cta p{max-width:500px;margin:28px auto;color:#707b73;font-size:11px;line-height:1.9}
+.cta p{max-width:500px;margin:28px auto;color:#707b73;font-size:12px;line-height:1.8}
 
 /* FOOTER */
 footer{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  padding:25px 6%;
-  border-top:1px solid var(--line);
-  background:#050806;
-  color:#657067;
-  font-size:7px;
-  font-weight:700;
-  letter-spacing:1.2px;
-  text-transform:uppercase;
+  padding:25px 6%;display:flex;justify-content:space-between;gap:20px;
+  background:#050806;border-top:1px solid var(--line);color:#657067;
+  font-size:8px;text-transform:uppercase;letter-spacing:1.2px
 }
 footer b{color:var(--lime)}
 
 /* REVEAL */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .8s,transform .8s}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
-/* TOAST */
-.toast{
-  position:fixed;
-  left:50%;bottom:25px;
-  z-index:500;
-  transform:translate(-50%,30px);
-  opacity:0;
-  pointer-events:none;
-  padding:13px 17px;
-  border:1px solid rgba(201,255,37,.3);
-  border-radius:9px;
-  background:rgba(8,13,10,.9);
-  color:#fff;
-  backdrop-filter:blur(18px);
-  font-size:9px;
-  transition:.35s;
-}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-
 /* ANIMATIONS */
-@keyframes orb{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-25px) scale(1.04)}}
-@keyframes glow{0%,100%{transform:scale(.94);opacity:.08}50%{transform:scale(1.06);opacity:.16}}
+@keyframes pulse{0%,100%{transform:scale(.94);opacity:.65}50%{transform:scale(1.06);opacity:1}}
 @keyframes spin{to{transform:rotate(360deg)}}
-@keyframes athleteFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
-@keyframes cardFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-13px) rotate(1deg)}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-13px) rotate(1deg)}}
+@keyframes photoFloat{0%,100%{transform:scale(1.02) translateY(0)}50%{transform:scale(1.045) translateY(-6px)}}
 @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* RESPONSIVE */
+/* MOBILE */
 @media(max-width:1000px){
-  nav{gap:16px}
-  .hero{grid-template-columns:1fr;text-align:center;padding-top:125px}
-  .hero-copy{max-width:800px;margin:auto}
-  .eyebrow{justify-content:center}
-  .hero-description{margin-inline:auto}
-  .hero-actions,.hero-stats{justify-content:center}
-  .hero-visual{min-height:570px}
-  .plans{grid-template-columns:1fr}
-  .plan.best{transform:none}
-  .plan.best:hover{transform:translateY(-12px)}
-  .members-grid{grid-template-columns:1fr 1fr}
-  .features{grid-template-columns:1fr 1fr}
+  nav{gap:17px}
+  .hero{grid-template-columns:1fr;text-align:center;padding-top:140px}
+  .hero-copy{max-width:800px;margin:auto}.eyebrow{justify-content:center}
+  .hero-description{margin-inline:auto}.hero-actions,.hero-stats{justify-content:center}
+  .hero-visual{min-height:590px}
+  .plans{grid-template-columns:1fr}.plan.best{transform:none}.plan.best:hover{transform:translateY(-10px)}
+  .members-grid{grid-template-columns:1fr 1fr}.features{grid-template-columns:1fr 1fr}
   .feature{border-bottom:1px solid var(--line)}
 }
 @media(max-width:700px){
-  header{padding:0 5%;height:68px}
-  header.scrolled{height:60px}
-  nav,header .header-btn{display:none}
-  .menu-btn{display:block}
+  header{padding:14px 5%}nav,header .header-btn{display:none}.menu-btn{display:block}
   nav.mobile-open{
-    display:flex;
-    position:absolute;
-    left:5%;right:5%;top:72px;
-    padding:20px;
-    flex-direction:column;
-    align-items:flex-start;
-    background:rgba(8,13,10,.97);
-    border:1px solid var(--line);
-    border-radius:12px;
-    backdrop-filter:blur(20px);
+    display:flex;position:absolute;top:70px;left:5%;right:5%;padding:20px;flex-direction:column;
+    align-items:flex-start;background:rgba(10,15,12,.96);backdrop-filter:blur(20px);
+    border:1px solid var(--line);border-radius:12px
   }
-  .hero{padding:120px 5% 70px}
-  .hero h1{font-size:76px;letter-spacing:-2px}
-  .hero-visual{min-height:500px}
-  .athlete-wrap{height:500px}
-  .athlete-ring{width:410px;height:410px}
-  .card-one{left:-4px}
-  .card-two{right:-4px}
-  .card-three{right:0;bottom:7%}
-  .section{padding:90px 5%}
-  .section-head{display:block;margin-bottom:40px}
-  .section-head p{margin-top:22px}
-  .features{grid-template-columns:1fr}
-  .feature{border-right:0}
-  .schedule{grid-template-columns:1fr}
-  .members-grid{grid-template-columns:1fr}
-  .gallery{grid-template-columns:1fr;grid-auto-rows:220px}
-  .big{grid-row:span 1}
+  .hero{padding-inline:5%}.hero h1{font-size:76px;letter-spacing:-2px}
+  .hero-visual{min-height:500px}.athlete-frame{height:510px;width:92%}.athlete-ring{width:430px;height:430px}
+  .card-one{left:-5px}.card-two{right:-5px}.card-three{right:0;bottom:8%}
+  .section{padding:90px 5%}.section-head{display:block;margin-bottom:40px}.section-head p{margin-top:22px}
+  .features{grid-template-columns:1fr}.feature{border-right:0}.schedule{grid-template-columns:1fr}
+  .members-grid{grid-template-columns:1fr}.gallery{grid-template-columns:1fr;grid-auto-rows:220px}.big{grid-row:span 1}
   footer{display:block;text-align:center;line-height:2}
 }
 @media(max-width:430px){
-  .logo{font-size:24px}
-  .hero h1{font-size:64px}
-  .hero-stats{gap:17px}
-  .hero-stat strong{font-size:27px}
-  .floating-card{min-width:125px;padding:10px}
-  .floating-card strong{font-size:18px}
-  .athlete-wrap{width:100%;height:460px}
-  .athlete-ring{width:350px;height:350px}
-}
-
-/* REDUCED MOTION */
-@media(prefers-reduced-motion:reduce){
-  *,*:before,*:after{
-    animation-duration:.01ms!important;
-    animation-iteration-count:1!important;
-    scroll-behavior:auto!important;
-    transition-duration:.01ms!important;
-  }
+  .logo{font-size:24px}.hero h1{font-size:65px}.hero-stats{gap:18px}.hero-stat strong{font-size:27px}
+  .floating-card{padding:11px}.floating-card strong{font-size:20px}
+  .member-toolbar{align-items:stretch}.member-search{width:100%}
 }
 </style>
 </head>
@@ -816,7 +388,6 @@ footer b{color:var(--lime)}
 
 <header id="header">
   <a class="logo" href="#home"><b>14</b> FITNESS <span>GYM</span></a>
-
   <nav id="nav">
     <a href="#home">Home</a>
     <a href="#plans">Membership</a>
@@ -825,42 +396,25 @@ footer b{color:var(--lime)}
     <a href="#timings">Timings</a>
     <a href="#gallery">Gym</a>
   </nav>
-
   <button class="header-btn" onclick="location.href='order.html?plan=7560'">Join Now →</button>
-  <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+  <button class="menu-btn" id="menuBtn">☰</button>
 </header>
 
 <section class="hero" id="home">
-  <div class="hero-orb"></div>
-  <div class="hero-grid"></div>
-
   <div class="hero-copy reveal">
     <div class="eyebrow">Premium Unisex Fitness Club</div>
-
-    <h1>
-      Forge<br>
-      Your<br>
-      <span class="lime">Strongest</span><br>
-      <span class="outline">Self.</span>
-    </h1>
-
+    <h1>Forge<br>Your<br><span class="lime">Strongest</span><br><span class="outline">Self.</span></h1>
     <p class="hero-description">
-      Not just a gym. A focused training environment built for strength,
-      discipline, consistency and real progress — one session at a time.
+      A serious training environment for people who want to build strength,
+      improve fitness and stay consistent — one session at a time.
     </p>
-
     <div class="hero-actions">
-      <button class="btn btn-primary" onclick="document.querySelector('#plans').scrollIntoView({behavior:'smooth'})">
-        View Memberships →
-      </button>
-      <button class="btn btn-dark" onclick="location.href='order.html?plan=7560'">
-        Start Your Journey
-      </button>
+      <button class="btn btn-primary" onclick="document.querySelector('#plans').scrollIntoView({behavior:'smooth'})">View Memberships →</button>
+      <button class="btn btn-dark" onclick="location.href='order.html?plan=7560'">Start Your Journey</button>
     </div>
-
     <div class="hero-stats">
       <div class="hero-stat"><strong>01</strong><span>Focused Environment</span></div>
-      <div class="hero-stat"><strong>24/7</strong><span>Discipline Mindset</span></div>
+      <div class="hero-stat"><strong>24/7</strong><span>Mindset</span></div>
       <div class="hero-stat"><strong>100%</strong><span>Commitment</span></div>
     </div>
   </div>
@@ -869,237 +423,61 @@ footer b{color:var(--lime)}
     <div class="athlete-glow"></div>
     <div class="athlete-ring"></div>
 
-    <!--
-      IMPORTANT:
-      This athlete is an INLINE SVG.
-      No Unsplash/image URL is used here, so the broken-image icon
-      from the old version cannot appear.
-    -->
-    <div class="athlete-wrap" aria-label="Fitness athlete illustration">
-      <svg class="athlete-svg" viewBox="0 0 500 700" role="img" aria-label="Fitness athlete">
-        <defs>
-          <linearGradient id="bodyGradient" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#f4f7f2"/>
-            <stop offset=".48" stop-color="#b8c2ba"/>
-            <stop offset="1" stop-color="#68746c"/>
-          </linearGradient>
-          <linearGradient id="limeGradient" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#dfff57"/>
-            <stop offset="1" stop-color="#8ecb00"/>
-          </linearGradient>
-          <filter id="softGlow">
-            <feGaussianBlur stdDeviation="7"/>
-          </filter>
-        </defs>
-
-        <!-- subtle silhouette glow -->
-        <path d="M254 82 C215 91 192 130 190 173 L176 260 L142 325
-                 C132 345 137 360 153 368 L187 351 L204 315
-                 L196 424 L166 563 L204 568 L241 439 L257 569
-                 L300 569 L288 431 L302 312 L327 358 L360 342
-                 C370 333 367 318 357 301 L322 252 L306 169
-                 C304 127 287 92 254 82Z"
-              fill="#c9ff25" opacity=".12" filter="url(#softGlow)"/>
-
-        <!-- head -->
-        <circle cx="250" cy="91" r="43" class="athlete-body"/>
-
-        <!-- neck -->
-        <path d="M226 119 L226 151 Q250 166 274 151 L274 119Z" class="athlete-body"/>
-
-        <!-- torso -->
-        <path d="M222 143
-                 Q205 148 193 169
-                 L180 237
-                 Q176 260 194 278
-                 L216 298
-                 L208 382
-                 L238 421
-                 L262 421
-                 L292 382
-                 L284 298
-                 L306 278
-                 Q324 260 320 237
-                 L307 169
-                 Q295 148 278 143
-                 Q250 161 222 143Z"
-              class="athlete-body"/>
-
-        <!-- left arm -->
-        <path d="M195 168
-                 Q177 175 169 198
-                 L141 273
-                 L104 322
-                 Q97 333 108 342
-                 Q118 350 128 341
-                 L172 301
-                 L205 235
-                 L216 190Z"
-              class="athlete-body"/>
-
-        <!-- right arm -->
-        <path d="M305 168
-                 Q323 175 331 198
-                 L359 273
-                 L396 322
-                 Q403 333 392 342
-                 Q382 350 372 341
-                 L328 301
-                 L295 235
-                 L284 190Z"
-              class="athlete-body"/>
-
-        <!-- left leg -->
-        <path d="M214 373
-                 L239 417
-                 L222 509
-                 L204 603
-                 Q200 620 184 620
-                 L166 620
-                 Q153 615 158 600
-                 L177 502
-                 L183 423Z"
-              class="athlete-body"/>
-
-        <!-- right leg -->
-        <path d="M286 373
-                 L261 417
-                 L278 509
-                 L296 603
-                 Q300 620 316 620
-                 L334 620
-                 Q347 615 342 600
-                 L323 502
-                 L317 423Z"
-              class="athlete-body"/>
-
-        <!-- shoes -->
-        <path d="M158 599 Q178 588 204 602 L213 622
-                 L173 632 Q151 630 147 616Z"
-              fill="#202a23" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
-        <path d="M342 599 Q322 588 296 602 L287 622
-                 L327 632 Q349 630 353 616Z"
-              fill="#202a23" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
-
-        <!-- athletic details -->
-        <path class="athlete-detail" d="M214 181 Q250 204 286 181"/>
-        <path class="athlete-detail" d="M209 238 Q250 257 291 238"/>
-        <path class="athlete-detail" d="M217 296 Q250 312 283 296"/>
-        <path class="athlete-detail" d="M182 272 L154 314"/>
-        <path class="athlete-detail" d="M318 272 L346 314"/>
-        <path class="athlete-detail" d="M214 380 L198 492"/>
-        <path class="athlete-detail" d="M286 380 L302 492"/>
-
-        <!-- lime chest mark -->
-        <path d="M236 183 L250 174 L264 183 L258 202 L250 209 L242 202Z"
-              fill="url(#limeGradient)" opacity=".95"/>
-      </svg>
+    <div class="athlete-frame">
+      <img
+        class="athlete-photo"
+        src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1000&q=90"
+        alt="Fitness athlete training in a gym"
+        loading="eager"
+        onerror="this.style.display='none';this.parentElement.classList.add('image-fallback')"
+      >
+      <div class="athlete-label">
+        <small>14 Fitness Athlete</small>
+        <strong>TRAIN WITH PURPOSE</strong>
+      </div>
     </div>
 
-    <div class="floating-card card-one">
-      <small>Mindset</small>
-      <strong>GET STRONG</strong>
-    </div>
-
-    <div class="floating-card card-two">
-      <small>Daily Standard</small>
-      <strong>NO LIMITS</strong>
-    </div>
-
-    <div class="floating-card card-three">
-      <small>Progress</small>
-      <strong>+1% EVERY DAY</strong>
-    </div>
+    <div class="floating-card card-one"><small>Mindset</small><strong>GET STRONG</strong></div>
+    <div class="floating-card card-two"><small>Daily Standard</small><strong>NO LIMITS</strong></div>
+    <div class="floating-card card-three"><small>Progress</small><strong>+1% EVERY DAY</strong></div>
   </div>
 </section>
 
-<div class="ticker" aria-label="Gym motivation">
+<div class="ticker">
   <div class="ticker-track">
-    <div class="ticker-group">
-      <span>NO EXCUSES</span><i>✦</i>
-      <span>TRAIN HARD</span><i>✦</i>
-      <span>STAY CONSISTENT</span><i>✦</i>
-      <span>GET STRONGER</span><i>✦</i>
-      <span>SHOW UP</span><i>✦</i>
-    </div>
-    <div class="ticker-group">
-      <span>NO EXCUSES</span><i>✦</i>
-      <span>TRAIN HARD</span><i>✦</i>
-      <span>STAY CONSISTENT</span><i>✦</i>
-      <span>GET STRONGER</span><i>✦</i>
-      <span>SHOW UP</span><i>✦</i>
-    </div>
-    <div class="ticker-group">
-      <span>NO EXCUSES</span><i>✦</i>
-      <span>TRAIN HARD</span><i>✦</i>
-      <span>STAY CONSISTENT</span><i>✦</i>
-      <span>GET STRONGER</span><i>✦</i>
-      <span>SHOW UP</span><i>✦</i>
-    </div>
+    <div class="ticker-group"><span>NO EXCUSES</span><i>✦</i><span>TRAIN HARD</span><i>✦</i><span>STAY CONSISTENT</span><i>✦</i><span>GET STRONGER</span><i>✦</i><span>SHOW UP</span><i>✦</i></div>
+    <div class="ticker-group"><span>NO EXCUSES</span><i>✦</i><span>TRAIN HARD</span><i>✦</i><span>STAY CONSISTENT</span><i>✦</i><span>GET STRONGER</span><i>✦</i><span>SHOW UP</span><i>✦</i></div>
+    <div class="ticker-group"><span>NO EXCUSES</span><i>✦</i><span>TRAIN HARD</span><i>✦</i><span>STAY CONSISTENT</span><i>✦</i><span>GET STRONGER</span><i>✦</i><span>SHOW UP</span><i>✦</i></div>
   </div>
 </div>
 
-<section class="section membership" id="plans">
+<section class="section" id="plans">
   <div class="section-head reveal">
-    <div>
-      <div class="kicker">Membership Plans</div>
-      <h2>Choose Your<br>Commitment.</h2>
-    </div>
-    <p>
-      Pick the plan that matches your commitment. Every membership gives
-      you access to the 14 FITNESS training environment.
-    </p>
+    <div><div class="kicker">Membership Plans</div><h2>Choose Your<br>Commitment.</h2></div>
+    <p>Pick the plan that matches your commitment. Every membership gives you access to the 14 FITNESS training environment.</p>
   </div>
-
   <div class="plans">
     <article class="plan reveal">
-      <div class="plan-number">01</div>
-      <div class="plan-name">Starter</div>
-      <div class="old">₹2,000</div>
+      <div class="plan-number">01</div><div class="plan-name">Starter</div><div class="old">₹2,000</div>
       <div class="price">₹1,400 <small>/ admission</small></div>
       <div class="save">🔥 ADMISSION + 1 MONTH FREE</div>
-      <ul>
-        <li>Admission fee ₹1,400</li>
-        <li>1 Month FREE membership</li>
-        <li>Full gym access</li>
-        <li>Strength & cardio zones</li>
-        <li>Member profile</li>
-      </ul>
+      <ul><li>Admission fee ₹1,400</li><li>1 Month FREE membership</li><li>Full gym access</li><li>Strength & cardio zones</li><li>Member profile</li></ul>
       <button class="btn btn-dark" onclick="location.href='order.html?plan=1400'">Join Starter →</button>
     </article>
 
     <article class="plan best reveal">
-      <div class="ribbon">BEST VALUE</div>
-      <div class="plan-number">02</div>
-      <div class="plan-name">Transformation</div>
-      <div class="old">₹8,400</div>
+      <div class="ribbon">BEST VALUE</div><div class="plan-number">02</div><div class="plan-name">Transformation</div><div class="old">₹8,400</div>
       <div class="price">₹7,560 <small>/ 6 months</small></div>
       <div class="save">⚡ 10% OFF + FREE ADMISSION</div>
-      <ul>
-        <li>6 Months membership</li>
-        <li>FREE admission</li>
-        <li>10% long-term discount</li>
-        <li>Full gym access</li>
-        <li>Progress tracking</li>
-        <li>Priority member support</li>
-      </ul>
+      <ul><li>6 Months membership</li><li>FREE admission</li><li>10% long-term discount</li><li>Full gym access</li><li>Progress tracking</li><li>Priority member support</li></ul>
       <button class="btn btn-primary" onclick="location.href='order.html?plan=7560'">Choose Best Value →</button>
     </article>
 
     <article class="plan reveal">
-      <div class="plan-number">03</div>
-      <div class="plan-name">Elite</div>
-      <div class="old">₹16,800</div>
+      <div class="plan-number">03</div><div class="plan-name">Elite</div><div class="old">₹16,800</div>
       <div class="price">₹14,280 <small>/ 1 year</small></div>
       <div class="save">👑 15% OFF + FREE ADMISSION</div>
-      <ul>
-        <li>12 Months membership</li>
-        <li>FREE admission</li>
-        <li>15% annual discount</li>
-        <li>Full gym access</li>
-        <li>Long-term progress profile</li>
-        <li>Priority support</li>
-      </ul>
+      <ul><li>12 Months membership</li><li>FREE admission</li><li>15% annual discount</li><li>Full gym access</li><li>Long-term progress profile</li><li>Priority support</li></ul>
       <button class="btn btn-dark" onclick="location.href='order.html?plan=14280'">Join Elite →</button>
     </article>
   </div>
@@ -1107,74 +485,38 @@ footer b{color:var(--lime)}
 
 <section class="section members-section" id="members">
   <div class="section-head reveal">
-    <div>
-      <div class="kicker">14 Fitness Community</div>
-      <h2>Meet The<br>Members.</h2>
-    </div>
-    <p>
-      Registered members appear here with their selected plan,
-      membership status and remaining membership time.
-    </p>
+    <div><div class="kicker">14 Fitness Community</div><h2>Meet The<br>Members.</h2></div>
+    <p>Registered members are displayed with their selected plan and remaining membership time.</p>
   </div>
-
   <div class="member-toolbar reveal">
     <div class="member-count"><b id="memberCount">0</b> Registered Members</div>
     <input id="memberSearch" class="member-search" type="search" placeholder="Search member..." autocomplete="off">
   </div>
-
   <div id="membersGrid" class="members-grid"></div>
-
   <div id="emptyMembers" class="empty-members">
     <strong>No Members Yet</strong>
-    <p>Once a membership registration is completed on this device, the member will appear here automatically.</p>
+    <p>Completed registrations saved on this device will appear here automatically.</p>
   </div>
 </section>
 
 <section class="section" id="why">
   <div class="section-head reveal">
-    <div>
-      <div class="kicker">The 14 Standard</div>
-      <h2>More Than<br>A Gym.</h2>
-    </div>
-    <p>
-      Everything is designed around one goal: helping you create consistency
-      and make every training session count.
-    </p>
+    <div><div class="kicker">The 14 Standard</div><h2>More Than<br>A Gym.</h2></div>
+    <p>Everything is designed around consistency, focused training and measurable progress.</p>
   </div>
-
   <div class="features">
-    <div class="feature reveal">
-      <div class="feature-number">01</div><div class="feature-icon">🏋️</div>
-      <h3>Modern Equipment</h3>
-      <p>Strength machines, free weights and cardio equipment for complete training sessions.</p>
-    </div>
-    <div class="feature reveal">
-      <div class="feature-number">02</div><div class="feature-icon">⚡</div>
-      <h3>High Energy</h3>
-      <p>A focused atmosphere that helps you push harder and keep your momentum going.</p>
-    </div>
-    <div class="feature reveal">
-      <div class="feature-number">03</div><div class="feature-icon">🎯</div>
-      <h3>Goal Focused</h3>
-      <p>Muscle gain, fat loss, strength or general fitness — train around your goal.</p>
-    </div>
-    <div class="feature reveal">
-      <div class="feature-number">04</div><div class="feature-icon">🤝</div>
-      <h3>Community</h3>
-      <p>Train around people who show up, work hard and keep improving.</p>
-    </div>
+    <div class="feature reveal"><div class="feature-number">01</div><div class="feature-icon">🏋️</div><h3>Modern Equipment</h3><p>Strength machines, free weights and cardio equipment for complete training sessions.</p></div>
+    <div class="feature reveal"><div class="feature-number">02</div><div class="feature-icon">⚡</div><h3>High Energy</h3><p>A focused atmosphere that helps you keep your momentum going.</p></div>
+    <div class="feature reveal"><div class="feature-number">03</div><div class="feature-icon">🎯</div><h3>Goal Focused</h3><p>Strength, fitness or general conditioning — train around your goal.</p></div>
+    <div class="feature reveal"><div class="feature-number">04</div><div class="feature-icon">🤝</div><h3>Community</h3><p>Train around people who show up, work hard and keep improving.</p></div>
   </div>
 </section>
 
 <section class="section timings" id="timings">
   <div class="section-head reveal">
-    <div>
-      <div class="kicker">Gym Timings</div>
-      <h2>Train On<br>Your Time.</h2>
-    </div>
+    <div><div class="kicker">Gym Timings</div><h2>Train On<br>Your Time.</h2></div>
     <p>Dedicated time windows for men and women create a comfortable and organized training environment.</p>
   </div>
-
   <div class="schedule">
     <div class="slot reveal"><div><span>06:00 AM — 10:00 AM</span><strong>MEN</strong></div><b>01</b></div>
     <div class="slot women reveal"><div><span>10:00 AM — 04:30 PM</span><strong>WOMEN</strong></div><b>02</b></div>
@@ -1185,19 +527,31 @@ footer b{color:var(--lime)}
 
 <section class="section" id="gallery">
   <div class="section-head reveal">
-    <div>
-      <div class="kicker">Inside 14 Fitness</div>
-      <h2>Train.<br>Transform.</h2>
-    </div>
-    <p>A training environment built around strength, movement, discipline and progress.</p>
+    <div><div class="kicker">Inside 14 Fitness</div><h2>Real Gym.<br>Real Work.</h2></div>
+    <p>Actual gym and training photography is used here instead of empty placeholder cards.</p>
   </div>
 
   <div class="gallery">
-    <div class="pic g1 big reveal"><label>Strength Zone</label></div>
-    <div class="pic g2 reveal"><label>Cardio</label></div>
-    <div class="pic g3 reveal"><label>Energy</label></div>
-    <div class="pic g4 reveal"><label>Community</label></div>
-    <div class="pic g2 reveal"><label>Every Rep Counts</label></div>
+    <div class="pic big reveal">
+      <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1400&q=88" alt="Modern gym floor" loading="lazy">
+      <label>Strength Zone</label>
+    </div>
+    <div class="pic reveal">
+      <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1100&q=88" alt="Gym equipment and training floor" loading="lazy">
+      <label>Training Floor</label>
+    </div>
+    <div class="pic reveal">
+      <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1100&q=88" alt="Fitness training" loading="lazy">
+      <label>Energy</label>
+    </div>
+    <div class="pic reveal">
+      <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1100&q=88" alt="Athlete training" loading="lazy">
+      <label>Every Rep</label>
+    </div>
+    <div class="pic reveal">
+      <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=1100&q=88" alt="Strength equipment" loading="lazy">
+      <label>Free Weights</label>
+    </div>
   </div>
 </section>
 
@@ -1212,238 +566,148 @@ footer b{color:var(--lime)}
 
 <footer>
   <div>© 2026 <b>14 FITNESS GYM</b></div>
-  <div>Train Hard • Stay Consistent • Built Different</div>
+  <div>Train Hard • Stay Consistent • Become Stronger</div>
 </footer>
 
-<div id="toast" class="toast"></div>
-
 <script>
-/* HEADER */
-const header = document.getElementById("header");
-window.addEventListener("scroll", () => {
-  header.classList.toggle("scrolled", window.scrollY > 35);
-});
+const header=document.getElementById("header");
+window.addEventListener("scroll",()=>header.classList.toggle("scrolled",window.scrollY>40));
 
-/* MOBILE MENU */
-const menuBtn = document.getElementById("menuBtn");
-const nav = document.getElementById("nav");
-menuBtn.addEventListener("click", () => nav.classList.toggle("mobile-open"));
-document.querySelectorAll("nav a").forEach(a => {
-  a.addEventListener("click", () => nav.classList.remove("mobile-open"));
-});
+const menuBtn=document.getElementById("menuBtn");
+const nav=document.getElementById("nav");
+menuBtn.addEventListener("click",()=>nav.classList.toggle("mobile-open"));
+document.querySelectorAll("nav a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("mobile-open")));
 
-/* SCROLL REVEAL */
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
+const revealObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
     if(entry.isIntersecting){
       entry.target.classList.add("visible");
       revealObserver.unobserve(entry.target);
     }
   });
-},{threshold:.10});
-document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+},{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>revealObserver.observe(el));
 
-/* MEMBERSHIP DATA */
-const MEMBERS_KEY = "14fitness_members";
-
-const planInfo = {
-  "1400": {name:"1 MONTH + FREE ADMISSION", months:1},
-  "7560": {name:"6 MONTHS + FREE ADMISSION", months:6},
-  "14280": {name:"1 YEAR + FREE ADMISSION", months:12}
+const MEMBERS_KEY="14fitness_members";
+const planInfo={
+  "1400":{name:"1 MONTH + FREE ADMISSION",months:1},
+  "7560":{name:"6 MONTHS + FREE ADMISSION",months:6},
+  "14280":{name:"1 YEAR + FREE ADMISSION",months:12}
 };
 
 function escapeHTML(value){
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+  return String(value??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;").replace(/'/g,"&#039;");
 }
-
-/*
-  Expiry is calculated from createdAt.
-  If your order.html/server later stores a different start date,
-  use member.startDate instead when available.
-*/
-function getStartDate(member){
-  return member.startDate || member.createdAt || member.joinedAt || null;
-}
-
-function getExpiryDate(member){
-  const info = planInfo[String(member.plan)];
-  const raw = getStartDate(member);
-  if(!info || !raw) return null;
-
-  const start = new Date(raw);
-  if(Number.isNaN(start.getTime())) return null;
-
-  const expiry = new Date(start);
-  expiry.setMonth(expiry.getMonth() + info.months);
+function getExpiryDate(createdAt,planKey){
+  const info=planInfo[planKey];
+  if(!info||!createdAt)return null;
+  const start=new Date(createdAt);
+  if(Number.isNaN(start.getTime()))return null;
+  const expiry=new Date(start);
+  expiry.setMonth(expiry.getMonth()+info.months);
   return expiry;
 }
-
-function getDaysLeft(member){
-  const expiry = getExpiryDate(member);
-  if(!expiry) return 0;
-
-  const now = new Date();
-  const today = new Date(now.getFullYear(),now.getMonth(),now.getDate());
-  const end = new Date(expiry.getFullYear(),expiry.getMonth(),expiry.getDate());
-
+function getDaysLeft(createdAt,planKey){
+  const expiry=getExpiryDate(createdAt,planKey);
+  if(!expiry)return 0;
+  const now=new Date();
+  const today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  const end=new Date(expiry.getFullYear(),expiry.getMonth(),expiry.getDate());
   return Math.max(0,Math.ceil((end-today)/86400000));
 }
-
 function formatDate(date){
-  if(!date || Number.isNaN(date.getTime())) return "—";
-  return date.toLocaleDateString("en-IN",{
-    day:"2-digit",month:"short",year:"numeric"
-  });
+  if(!date)return "—";
+  return date.toLocaleDateString("en-IN",{day:"2-digit",month:"short",year:"numeric"});
 }
-
-function getStatus(member){
-  const days = getDaysLeft(member);
-  const saved = String(member.status || "").toLowerCase();
-
-  if(days <= 0) return {label:"EXPIRED",className:"status-expired"};
-  if(saved.includes("pending") || saved.includes("verification")){
-    return {label:"PAYMENT PENDING",className:"status-pending"};
-  }
+function getMemberStatus(member){
+  const days=getDaysLeft(member.createdAt,member.plan);
+  const saved=String(member.status||"").toLowerCase();
+  if(days<=0)return {label:"EXPIRED",className:"status-expired"};
+  if(saved.includes("pending")||saved.includes("verification"))return {label:"PAYMENT PENDING",className:"status-pending"};
   return {label:"ACTIVE",className:"status-active"};
 }
-
 function createMemberCard(member){
-  const name = member.name || member.fullName || "Member";
-  const info = planInfo[String(member.plan)];
-  const planName = info ? info.name : (member.planName || "MEMBERSHIP");
-  const expiry = getExpiryDate(member);
-  const days = getDaysLeft(member);
-  const status = getStatus(member);
-  const firstLetter = name.trim().charAt(0).toUpperCase() || "M";
-  const joinedRaw = getStartDate(member);
-  const joined = joinedRaw ? formatDate(new Date(joinedRaw)) : "—";
-
+  const name=member.name||"Member";
+  const plan=planInfo[member.plan]?.name||"MEMBERSHIP";
+  const expiry=getExpiryDate(member.createdAt,member.plan);
+  const days=getDaysLeft(member.createdAt,member.plan);
+  const status=getMemberStatus(member);
+  const first=(name.trim().charAt(0)||"M").toUpperCase();
+  const joined=member.createdAt?formatDate(new Date(member.createdAt)):"—";
   return `
-    <article class="member-card"
-      data-name="${escapeHTML(name.toLowerCase())}"
-      data-plan="${escapeHTML(planName.toLowerCase())}">
-
+    <article class="member-card" data-name="${escapeHTML(name.toLowerCase())}" data-plan="${escapeHTML(plan.toLowerCase())}">
       <div class="member-top">
-        <div class="member-avatar">${escapeHTML(firstLetter)}</div>
+        <div class="member-avatar">${escapeHTML(first)}</div>
         <div class="member-status ${status.className}">${status.label}</div>
       </div>
-
       <div class="member-name">${escapeHTML(name)}</div>
-      <div class="member-plan">${escapeHTML(planName)}</div>
-
-      <div class="member-days">
-        <strong>${days}</strong>
-        <span>Days<br>Left</span>
-      </div>
-
+      <div class="member-plan">${escapeHTML(plan)}</div>
+      <div class="member-days"><strong>${days}</strong><span>Days<br>Left</span></div>
       <div class="member-info">
-        <div class="info-row">
-          <span>Member ID</span>
-          <span>${escapeHTML(member.memberId || member.id || "—")}</span>
-        </div>
-        <div class="info-row">
-          <span>Joined</span>
-          <span>${escapeHTML(joined)}</span>
-        </div>
-        <div class="info-row">
-          <span>Expires</span>
-          <span>${escapeHTML(expiry ? formatDate(expiry) : "—")}</span>
-        </div>
-        <div class="info-row">
-          <span>Goal</span>
-          <span>${escapeHTML(member.goal || "—")}</span>
-        </div>
+        <div class="info-row"><span>Member ID</span><span>${escapeHTML(member.memberId||"—")}</span></div>
+        <div class="info-row"><span>Joined</span><span>${escapeHTML(joined)}</span></div>
+        <div class="info-row"><span>Expires</span><span>${escapeHTML(expiry?formatDate(expiry):"—")}</span></div>
+        <div class="info-row"><span>Goal</span><span>${escapeHTML(member.goal||"—")}</span></div>
       </div>
-    </article>
-  `;
+    </article>`;
 }
-
 function loadMembers(){
-  const grid = document.getElementById("membersGrid");
-  const empty = document.getElementById("emptyMembers");
-  const count = document.getElementById("memberCount");
-
-  let members = [];
-
+  const grid=document.getElementById("membersGrid");
+  const empty=document.getElementById("emptyMembers");
+  const count=document.getElementById("memberCount");
+  let members=[];
   try{
-    const raw = localStorage.getItem(MEMBERS_KEY);
-    const parsed = raw ? JSON.parse(raw) : [];
-    members = Array.isArray(parsed) ? parsed : [];
-  }catch(err){
-    console.error("Could not read member data:",err);
-    members = [];
-  }
-
-  count.textContent = members.length;
-
+    members=JSON.parse(localStorage.getItem(MEMBERS_KEY)||"[]");
+    if(!Array.isArray(members))members=[];
+  }catch(e){members=[]}
+  count.textContent=members.length;
   if(!members.length){
-    grid.innerHTML = "";
-    empty.querySelector("strong").textContent = "No Members Yet";
-    empty.querySelector("p").textContent =
-      "Once a membership registration is completed on this device, the member will appear here automatically.";
-    empty.classList.add("show");
+    grid.innerHTML="";
+    empty.style.display="block";
     return;
   }
-
-  empty.classList.remove("show");
-  grid.innerHTML = members.slice().reverse().map(createMemberCard).join("");
+  empty.style.display="none";
+  grid.innerHTML=members.slice().reverse().map(createMemberCard).join("");
 }
+loadMembers();
 
 document.getElementById("memberSearch").addEventListener("input",function(){
-  const query = this.value.trim().toLowerCase();
-  const cards = document.querySelectorAll(".member-card");
-  const empty = document.getElementById("emptyMembers");
-  let visible = 0;
-
-  cards.forEach(card => {
-    const match =
-      !query ||
-      (card.dataset.name || "").includes(query) ||
-      (card.dataset.plan || "").includes(query);
-
-    card.style.display = match ? "" : "none";
-    if(match) visible++;
+  const q=this.value.trim().toLowerCase();
+  const cards=document.querySelectorAll(".member-card");
+  let visible=0;
+  cards.forEach(card=>{
+    const match=!q||card.dataset.name.includes(q)||card.dataset.plan.includes(q);
+    card.style.display=match?"":"none";
+    if(match)visible++;
   });
-
-  if(cards.length && visible === 0){
-    empty.querySelector("strong").textContent = "No Match Found";
-    empty.querySelector("p").textContent =
-      "Try searching with another member name or membership plan.";
-    empty.classList.add("show");
+  const empty=document.getElementById("emptyMembers");
+  if(cards.length&&visible===0){
+    empty.querySelector("strong").textContent="No Match Found";
+    empty.querySelector("p").textContent="Try another member name or membership plan.";
+    empty.style.display="block";
   }else if(cards.length){
-    empty.classList.remove("show");
+    empty.style.display="none";
   }
 });
 
-/* LIVE UPDATE WHEN order.html CHANGES localStorage */
-window.addEventListener("storage",event => {
-  if(event.key === MEMBERS_KEY) loadMembers();
+window.addEventListener("storage",event=>{
+  if(event.key===MEMBERS_KEY)loadMembers();
 });
-
-/* Refresh remaining days periodically */
 setInterval(loadMembers,60000);
-loadMembers();
 
-/* ACTIVE NAV */
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll("nav a");
-
-const sectionObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
+const sections=document.querySelectorAll("section[id]");
+const navLinks=document.querySelectorAll("nav a");
+const sectionObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
     if(entry.isIntersecting){
-      navLinks.forEach(link => link.classList.remove("active"));
-      const active = document.querySelector(`nav a[href="#${entry.target.id}"]`);
-      if(active) active.classList.add("active");
+      navLinks.forEach(l=>l.classList.remove("active"));
+      const active=document.querySelector(`nav a[href="#${entry.target.id}"]`);
+      if(active)active.classList.add("active");
     }
   });
 },{rootMargin:"-35% 0px -55% 0px"});
-
-sections.forEach(section => sectionObserver.observe(section));
+sections.forEach(s=>sectionObserver.observe(s));
 </script>
 </body>
 </html>
