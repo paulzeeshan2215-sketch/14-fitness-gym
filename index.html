@@ -1,12 +1,12 @@
-
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="theme-color" content="#070a0d">
+<meta name="theme-color" content="#05070a">
 <meta name="description" content="14 FITNESS GYM — Train. Transform. Become Stronger.">
 
 <title>14 FITNESS GYM — Train. Transform. Become Stronger.</title>
@@ -66,6 +66,7 @@ html{
 body{
   font-family:Inter,sans-serif;
   color:var(--white);
+
   background:
     radial-gradient(
       circle at 75% 5%,
@@ -86,6 +87,7 @@ body:before{
   content:"";
   position:fixed;
   inset:0;
+
   pointer-events:none;
   z-index:-5;
 
@@ -107,6 +109,7 @@ body:after{
   content:"";
   position:fixed;
   inset:0;
+
   pointer-events:none;
   z-index:100;
 
@@ -146,8 +149,11 @@ button{
   height:350px;
   right:-150px;
   top:15%;
+
   background:rgba(201,255,40,.08);
-  animation:orbFloat 9s ease-in-out infinite;
+
+  animation:
+    orbFloat 9s ease-in-out infinite;
 }
 
 .orb-two{
@@ -155,8 +161,11 @@ button{
   height:280px;
   left:-130px;
   top:55%;
+
   background:rgba(80,130,255,.07);
-  animation:orbFloat 12s ease-in-out infinite reverse;
+
+  animation:
+    orbFloat 12s ease-in-out infinite reverse;
 }
 
 /* =========================================================
@@ -253,7 +262,8 @@ header.scrolled{
 
   transform:skewX(-25deg);
 
-  animation:logoShine 4s linear infinite;
+  animation:
+    logoShine 4s linear infinite;
 }
 
 .logo span{
@@ -262,7 +272,7 @@ header.scrolled{
 }
 
 /* =========================================================
-   DESKTOP NAV
+   NAV
 ========================================================= */
 
 nav{
@@ -342,12 +352,10 @@ nav a.active:before{
     Inter;
 
   letter-spacing:.8px;
+
   text-transform:uppercase;
 
   transition:.3s;
-
-  box-shadow:
-    0 0 0 rgba(201,255,40,0);
 }
 
 .header-btn:hover{
@@ -358,7 +366,7 @@ nav a.active:before{
 }
 
 /* =========================================================
-   MOBILE MENU BUTTON
+   MOBILE BUTTON
 ========================================================= */
 
 .menu-btn{
@@ -376,7 +384,6 @@ nav a.active:before{
   color:white;
 
   position:relative;
-
   overflow:hidden;
 }
 
@@ -390,7 +397,6 @@ nav a.active:before{
 
 .menu-lines span{
   height:2px;
-
   width:100%;
 
   background:var(--lime);
@@ -422,7 +428,7 @@ nav a.active:before{
   min-height:100vh;
 
   padding:
-    135px
+    115px
     6%
     80px;
 
@@ -446,46 +452,19 @@ nav a.active:before{
   z-index:5;
 }
 
-.eyebrow{
-  display:flex;
-  align-items:center;
-  gap:12px;
-
-  color:var(--lime);
-
-  font:
-    900 9px
-    Inter;
-
-  letter-spacing:3px;
-
-  text-transform:uppercase;
-
-  margin-bottom:25px;
-}
-
-.eyebrow:before{
-  content:"";
-
-  width:36px;
-  height:2px;
-
-  background:var(--lime);
-
-  box-shadow:
-    0 0 18px var(--lime);
-
-  animation:linePulse 2s ease-in-out infinite;
-}
+/* NEW HERO TITLE */
 
 .hero h1{
   font:
-    900 clamp(75px,9.5vw,145px)/.76
+    900 clamp(75px,9.5vw,145px)/.74
     "Barlow Condensed";
 
   text-transform:uppercase;
 
   letter-spacing:-5px;
+
+  animation:
+    heroTitleIn 1s cubic-bezier(.16,1,.3,1) both;
 }
 
 .hero h1 .lime{
@@ -494,6 +473,31 @@ nav a.active:before{
   text-shadow:
     5px 5px 0 #263600,
     0 0 35px rgba(201,255,40,.16);
+
+  position:relative;
+}
+
+.hero h1 .lime:after{
+  content:"";
+
+  position:absolute;
+
+  left:3%;
+  right:5%;
+  bottom:-8px;
+
+  height:3px;
+
+  background:var(--lime);
+
+  box-shadow:
+    0 0 20px rgba(201,255,40,.55);
+
+  transform:scaleX(0);
+  transform-origin:left;
+
+  animation:
+    titleLine 1s .65s ease forwards;
 }
 
 .hero h1 .outline{
@@ -501,13 +505,16 @@ nav a.active:before{
 
   -webkit-text-stroke:
     1px rgba(255,255,255,.72);
+
+  text-shadow:
+    0 0 30px rgba(255,255,255,.04);
 }
 
 .hero-description{
   max-width:520px;
 
   margin:
-    30px
+    35px
     0;
 
   color:var(--muted);
@@ -515,6 +522,9 @@ nav a.active:before{
   font-size:13px;
 
   line-height:1.85;
+
+  animation:
+    fadeUp .8s .35s ease both;
 }
 
 .hero-actions{
@@ -522,6 +532,9 @@ nav a.active:before{
   flex-wrap:wrap;
 
   gap:12px;
+
+  animation:
+    fadeUp .8s .5s ease both;
 }
 
 .btn{
@@ -620,6 +633,9 @@ nav a.active:before{
   gap:30px;
 
   margin-top:43px;
+
+  animation:
+    fadeUp .8s .65s ease both;
 }
 
 .hero-stat{
@@ -661,7 +677,7 @@ nav a.active:before{
 }
 
 /* =========================================================
-   PERFECT CIRCLE
+   ATHLETE CIRCLE
 ========================================================= */
 
 .athlete-circle{
@@ -709,7 +725,8 @@ nav a.active:before{
 
   border-radius:50%;
 
-  animation:spin 25s linear infinite;
+  animation:
+    spin 25s linear infinite;
 
   z-index:4;
 
@@ -725,9 +742,9 @@ nav a.active:before{
   background:
     radial-gradient(
       circle,
-      transparent 52%,
-      rgba(5,8,7,.28) 78%,
-      rgba(5,8,7,.75) 100%
+      transparent 50%,
+      rgba(5,8,7,.30) 78%,
+      rgba(5,8,7,.80) 100%
     );
 
   z-index:3;
@@ -757,7 +774,7 @@ nav a.active:before{
 }
 
 /* =========================================================
-   CIRCLE ROTATING DOTS
+   CIRCLE DOTS
 ========================================================= */
 
 .circle-dot{
@@ -818,7 +835,7 @@ nav a.active:before{
   text-align:center;
 
   background:
-    rgba(6,10,8,.75);
+    rgba(6,10,8,.78);
 
   backdrop-filter:blur(15px);
 
@@ -1618,7 +1635,7 @@ nav a.active:before{
 }
 
 /* =========================================================
-   WHY US
+   WHY US — VISUAL CARDS
 ========================================================= */
 
 .features{
@@ -1639,9 +1656,9 @@ nav a.active:before{
 .feature{
   position:relative;
 
-  min-height:255px;
+  min-height:350px;
 
-  padding:30px;
+  padding:0;
 
   background:#0b1218;
 
@@ -1662,27 +1679,61 @@ nav a.active:before{
   background:#101a21;
 }
 
+.feature-image{
+  position:absolute;
+
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  filter:
+    grayscale(.35)
+    saturate(.72)
+    contrast(1.12)
+    brightness(.55);
+
+  transition:
+    transform .8s,
+    filter .6s;
+}
+
+.feature:hover .feature-image{
+  transform:scale(1.09);
+
+  filter:
+    grayscale(0)
+    saturate(1)
+    contrast(1.08)
+    brightness(.68);
+}
+
 .feature:after{
   content:"";
 
   position:absolute;
 
-  width:150px;
-  height:150px;
-
-  right:-80px;
-  bottom:-80px;
-
-  border-radius:50%;
+  inset:0;
 
   background:
-    rgba(201,255,40,.07);
-
-  transition:.5s;
+    linear-gradient(
+      to top,
+      rgba(3,6,8,.98) 0%,
+      rgba(3,6,8,.76) 42%,
+      rgba(3,6,8,.18) 100%
+    );
 }
 
-.feature:hover:after{
-  transform:scale(1.5);
+.feature-content{
+  position:absolute;
+
+  left:25px;
+  right:25px;
+  bottom:25px;
+
+  z-index:3;
 }
 
 .feature-number{
@@ -1691,11 +1742,13 @@ nav a.active:before{
   right:18px;
   top:5px;
 
-  color:rgba(201,255,40,.035);
+  color:rgba(201,255,40,.12);
 
   font:
     900 100px
     "Barlow Condensed";
+
+  z-index:2;
 }
 
 .feature-icon{
@@ -1705,46 +1758,33 @@ nav a.active:before{
   display:grid;
   place-items:center;
 
-  margin-bottom:33px;
+  margin-bottom:20px;
 
   border:
     1px solid
-    rgba(201,255,40,.25);
+    rgba(201,255,40,.35);
 
   border-radius:12px;
 
   color:var(--lime);
 
-  font:
-    900 16px
-    Inter;
+  background:
+    rgba(5,10,7,.48);
+
+  backdrop-filter:blur(8px);
+
+  font-size:20px;
 
   position:relative;
 
   z-index:2;
-}
-
-.feature-icon:before{
-  content:"";
-
-  width:13px;
-  height:13px;
-
-  border:
-    2px solid
-    var(--lime);
-
-  transform:rotate(45deg);
-
-  box-shadow:
-    0 0 14px rgba(201,255,40,.25);
 }
 
 .feature h3{
   position:relative;
   z-index:2;
 
-  margin-bottom:13px;
+  margin-bottom:10px;
 
   font:
     900 29px
@@ -1757,11 +1797,11 @@ nav a.active:before{
   position:relative;
   z-index:2;
 
-  color:#6f7a84;
+  color:#9ca6ad;
 
   font-size:10px;
 
-  line-height:1.8;
+  line-height:1.75;
 }
 
 /* =========================================================
@@ -1828,10 +1868,6 @@ nav a.active:before{
 
   background:var(--lime);
 
-  box-shadow:
-    0 0 0 0
-    rgba(201,255,40,.5);
-
   animation:
     livePulse 1.5s infinite;
 }
@@ -1855,16 +1891,19 @@ nav a.active:before{
   gap:15px;
 }
 
+/* =========================================================
+   TIMING SLOT WITH PHOTOS
+========================================================= */
+
 .slot{
   position:relative;
 
-  min-height:190px;
+  min-height:220px;
 
-  padding:27px;
+  padding:0;
 
   display:flex;
-  align-items:center;
-  justify-content:space-between;
+  align-items:flex-end;
 
   border:
     1px solid
@@ -1872,31 +1911,11 @@ nav a.active:before{
 
   border-radius:18px;
 
-  background:
-    rgba(255,255,255,.025);
+  background:#0b1116;
 
   overflow:hidden;
 
   transition:.4s;
-}
-
-.slot:before{
-  content:"";
-
-  position:absolute;
-
-  width:190px;
-  height:190px;
-
-  border-radius:50%;
-
-  right:-80px;
-  top:-80px;
-
-  background:
-    rgba(255,255,255,.025);
-
-  transition:.5s;
 }
 
 .slot:hover{
@@ -1908,18 +1927,77 @@ nav a.active:before{
 
 .slot.active{
   border-color:
-    rgba(201,255,40,.65);
-
-  background:
-    radial-gradient(
-      circle at 90% 0%,
-      rgba(201,255,40,.15),
-      transparent 38%
-    ),
-    rgba(201,255,40,.035);
+    rgba(201,255,40,.70);
 
   box-shadow:
-    0 20px 60px rgba(201,255,40,.07);
+    0 20px 60px rgba(201,255,40,.08);
+}
+
+.slot-photo{
+  position:absolute;
+
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  filter:
+    grayscale(.25)
+    saturate(.75)
+    contrast(1.1)
+    brightness(.48);
+
+  transition:
+    transform .7s,
+    filter .5s;
+}
+
+.slot:hover .slot-photo{
+  transform:scale(1.06);
+
+  filter:
+    grayscale(0)
+    saturate(1)
+    contrast(1.08)
+    brightness(.60);
+}
+
+.slot:after{
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(3,7,9,.98) 0%,
+      rgba(3,7,9,.74) 48%,
+      rgba(3,7,9,.10) 100%
+    );
+}
+
+.slot.active:after{
+  background:
+    linear-gradient(
+      to top,
+      rgba(3,7,9,.98) 0%,
+      rgba(12,25,10,.78) 48%,
+      rgba(201,255,40,.04) 100%
+    );
+}
+
+.slot-content{
+  position:relative;
+
+  z-index:3;
+
+  width:100%;
+
+  padding:25px;
 }
 
 .slot-time{
@@ -1927,7 +2005,7 @@ nav a.active:before{
 
   margin-bottom:7px;
 
-  color:#71808a;
+  color:#a2adb5;
 
   font:
     900 8px
@@ -1942,10 +2020,12 @@ nav a.active:before{
   display:block;
 
   font:
-    900 45px
+    900 55px
     "Barlow Condensed";
 
   text-transform:uppercase;
+
+  letter-spacing:1px;
 }
 
 .slot.active strong{
@@ -1956,20 +2036,26 @@ nav a.active:before{
 }
 
 .slot-number{
-  position:relative;
-  z-index:3;
+  position:absolute;
 
-  color:#39444d;
+  z-index:4;
+
+  right:22px;
+  top:18px;
+
+  color:rgba(255,255,255,.32);
 
   font:
-    900 36px
+    900 35px
     "Barlow Condensed";
 }
 
 .slot-badge{
   position:absolute;
 
-  right:24px;
+  z-index:5;
+
+  right:22px;
   bottom:22px;
 
   display:none;
@@ -1993,72 +2079,32 @@ nav a.active:before{
   display:block;
 }
 
-/* =========================================================
-   GENDER VISUALS
-========================================================= */
+/* DAILY CARD */
 
-.gender-visual{
-  width:78px;
-  height:78px;
+.slot.daily{
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(201,255,40,.15),
+      transparent 40%
+    ),
+    #0b1116;
 
+  align-items:center;
+}
+
+.daily-content{
   position:relative;
 
-  display:grid;
-  place-items:center;
+  z-index:3;
 
-  border:
-    1px solid
-    rgba(255,255,255,.08);
-
-  border-radius:50%;
-
-  background:
-    rgba(255,255,255,.025);
-
-  margin-right:12px;
+  padding:30px;
 }
 
-.gender-head{
-  position:absolute;
+.daily-content strong{
+  font-size:54px;
 
-  width:18px;
-  height:18px;
-
-  top:17px;
-
-  border-radius:50%;
-
-  background:#aeb8bf;
-}
-
-.gender-body{
-  position:absolute;
-
-  width:38px;
-  height:30px;
-
-  bottom:14px;
-
-  border-radius:
-    18px
-    18px
-    9px
-    9px;
-
-  background:#8e989f;
-}
-
-.slot.active .gender-head,
-.slot.active .gender-body{
-  background:var(--lime);
-
-  box-shadow:
-    0 0 15px rgba(201,255,40,.25);
-}
-
-.gender-wrap{
-  display:flex;
-  align-items:center;
+  color:var(--lime);
 }
 
 /* =========================================================
@@ -2259,7 +2305,7 @@ nav a.active:before{
   border-radius:50px;
 
   background:
-    rgba(6,13,10,.88);
+    rgba(6,13,10,.90);
 
   backdrop-filter:blur(18px);
 
@@ -2284,6 +2330,8 @@ nav a.active:before{
     0 20px 55px rgba(82,255,152,.12);
 }
 
+/* ACTUAL WHATSAPP-STYLE SVG LOGO */
+
 .whatsapp-icon{
   width:43px;
   height:43px;
@@ -2293,41 +2341,17 @@ nav a.active:before{
 
   border-radius:50%;
 
-  background:
-    rgba(82,255,152,.13);
+  background:#25D366;
 
-  position:relative;
+  box-shadow:
+    0 0 20px rgba(37,211,102,.20);
 }
 
-.whatsapp-icon:before{
-  content:"";
+.whatsapp-icon svg{
+  width:25px;
+  height:25px;
 
-  width:19px;
-  height:19px;
-
-  border:
-    2px solid
-    var(--green);
-
-  border-radius:50%;
-}
-
-.whatsapp-icon:after{
-  content:"";
-
-  position:absolute;
-
-  width:7px;
-  height:7px;
-
-  left:10px;
-  bottom:9px;
-
-  border-left:
-    2px solid
-    var(--green);
-
-  transform:rotate(-35deg);
+  display:block;
 }
 
 .whatsapp-text{
@@ -2422,15 +2446,37 @@ footer b{
    ANIMATIONS
 ========================================================= */
 
-@keyframes pulse{
-  0%,100%{
-    transform:scale(.95);
-    opacity:.65;
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(25px);
   }
 
-  50%{
-    transform:scale(1.05);
+  to{
     opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes heroTitleIn{
+  from{
+    opacity:0;
+    transform:
+      translateY(35px)
+      scale(.97);
+  }
+
+  to{
+    opacity:1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes titleLine{
+  to{
+    transform:scaleX(1);
   }
 }
 
@@ -2475,18 +2521,6 @@ footer b{
 
   to{
     transform:translateX(-50%);
-  }
-}
-
-@keyframes linePulse{
-  0%,100%{
-    opacity:.5;
-    width:25px;
-  }
-
-  50%{
-    opacity:1;
-    width:42px;
   }
 }
 
@@ -2564,10 +2598,6 @@ footer b{
     margin:auto;
   }
 
-  .eyebrow{
-    justify-content:center;
-  }
-
   .hero-description{
     margin-inline:auto;
   }
@@ -2599,6 +2629,10 @@ footer b{
 
   .features{
     grid-template-columns:1fr 1fr;
+  }
+
+  .feature{
+    min-height:330px;
   }
 }
 
@@ -2702,7 +2736,7 @@ footer b{
     padding:
       125px
       5%
-      70px;
+      65px;
   }
 
   .hero h1{
@@ -2763,6 +2797,8 @@ footer b{
   }
 
   .feature{
+    min-height:350px;
+
     border-right:0;
 
     border-bottom:
@@ -2833,8 +2869,18 @@ footer b{
     font-size:22px;
   }
 
+  .hero{
+    padding-top:115px;
+  }
+
   .hero h1{
     font-size:64px;
+
+    line-height:.78;
+  }
+
+  .hero-description{
+    font-size:11px;
   }
 
   .hero-stats{
@@ -2843,6 +2889,10 @@ footer b{
 
   .hero-stat strong{
     font-size:27px;
+  }
+
+  .hero-stat span{
+    font-size:7px;
   }
 
   .athlete-circle{
@@ -2879,18 +2929,15 @@ footer b{
   }
 
   .slot{
-    min-height:165px;
-
-    padding:21px;
+    min-height:200px;
   }
 
   .slot strong{
-    font-size:37px;
+    font-size:43px;
   }
 
-  .gender-visual{
-    width:62px;
-    height:62px;
+  .daily-content strong{
+    font-size:43px;
   }
 
   .cta{
@@ -2903,6 +2950,7 @@ footer b{
 @keyframes mobileMenuIn{
   from{
     opacity:0;
+
     transform:
       translateY(-15px)
       scale(.97);
@@ -2910,6 +2958,7 @@ footer b{
 
   to{
     opacity:1;
+
     transform:
       translateY(0)
       scale(1);
@@ -2934,6 +2983,7 @@ footer b{
 }
 
 </style>
+
 </head>
 
 <body>
@@ -2949,68 +2999,75 @@ footer b{
 
   <a class="logo" href="#home">
 
-    <div class="logo-box">
-      14
-    </div>
+```
+<div class="logo-box">
+  14
+</div>
 
-    FITNESS
-    <span>GYM</span>
+FITNESS
+<span>GYM</span>
+```
 
   </a>
 
   <nav id="nav">
 
-    <a href="#home" class="active">
-      Home
-    </a>
+```
+<a href="#home" class="active">
+  Home
+</a>
 
-    <a href="#plans">
-      Membership
-    </a>
+<a href="#plans">
+  Membership
+</a>
 
-    <a href="#members">
-      Members
-    </a>
+<a href="#members">
+  Members
+</a>
 
-    <a href="#why">
-      Why Us
-    </a>
+<a href="#why">
+  Why Us
+</a>
 
-    <a href="#timings">
-      Timings
-    </a>
+<a href="#timings">
+  Timings
+</a>
 
-    <a href="#gallery">
-      Gym
-    </a>
+<a href="#gallery">
+  Gym
+</a>
+```
 
   </nav>
 
-  <a
-    class="header-btn"
-    href="#plans">
+<a
+ class="header-btn"
+ href="#plans">
 
-    Join Now →
+```
+Join Now →
+```
 
   </a>
 
-  <button
-    class="menu-btn"
-    id="menuBtn"
-    aria-label="Open menu">
+<button
+ class="menu-btn"
+ id="menuBtn"
+ aria-label="Open menu">
 
-    <div class="menu-lines">
+```
+<div class="menu-lines">
 
-      <span></span>
-      <span></span>
-      <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
 
-    </div>
+</div>
+```
 
   </button>
 
 </header>
-
 
 <!-- =======================================================
      HERO
@@ -3020,172 +3077,170 @@ footer b{
   class="hero"
   id="home">
 
-  <div class="hero-copy reveal">
+  <div class="hero-copy">
 
-    <div class="eyebrow">
-      Premium Fitness Training Environment
-    </div>
+```
+<h1>
 
-    <h1>
+  FORGE<br>
 
-      FORGE<br>
+  YOUR<br>
 
-      YOUR<br>
+  <span class="lime">
+    STRONGEST
+  </span><br>
 
-      <span class="lime">
-        STRONGEST
-      </span><br>
+  <span class="outline">
+    SELF.
+  </span>
 
-      <span class="outline">
-        SELF.
-      </span>
+</h1>
 
-    </h1>
+<p class="hero-description">
 
-    <p class="hero-description">
+  A serious training environment built for
+  strength, fitness and consistency.
+  Show up, put in the work and become
+  stronger every session.
 
-      A serious training environment built for
-      strength, fitness and consistency.
-      Show up, put in the work and become
-      stronger every session.
+</p>
 
-    </p>
+<div class="hero-actions">
 
-    <div class="hero-actions">
+  <a
+    class="btn btn-primary"
+    href="#plans">
 
-      <a
-        class="btn btn-primary"
-        href="#plans">
+    View Memberships →
 
-        View Memberships →
+  </a>
 
-      </a>
+  <a
+    class="btn btn-dark"
+    href="#timings">
 
-      <a
-        class="btn btn-dark"
-        href="#timings">
+    Check Live Timings
 
-        Check Live Timings
+  </a>
 
-      </a>
+</div>
 
-    </div>
+<div class="hero-stats">
 
-    <div class="hero-stats">
+  <div class="hero-stat">
 
-      <div class="hero-stat">
+    <strong>
+      01
+    </strong>
 
-        <strong>
-          01
-        </strong>
-
-        <span>
-          Focused Environment
-        </span>
-
-      </div>
-
-      <div class="hero-stat">
-
-        <strong>
-          100%
-        </strong>
-
-        <span>
-          Commitment
-        </span>
-
-      </div>
-
-      <div class="hero-stat">
-
-        <strong>
-          14
-        </strong>
-
-        <span>
-          Fitness Standard
-        </span>
-
-      </div>
-
-    </div>
+    <span>
+      Focused Environment
+    </span>
 
   </div>
 
+  <div class="hero-stat">
+
+    <strong>
+      100%
+    </strong>
+
+    <span>
+      Commitment
+    </span>
+
+  </div>
+
+  <div class="hero-stat">
+
+    <strong>
+      14
+    </strong>
+
+    <span>
+      Fitness Standard
+    </span>
+
+  </div>
+
+</div>
+```
+
+  </div>
 
   <!-- HERO VISUAL -->
 
   <div class="hero-visual reveal">
 
-    <div class="athlete-circle">
+```
+<div class="athlete-circle">
 
-      <img
-        class="athlete-photo"
-        src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1100&q=90"
-        alt="Fitness athlete training">
+  <img
+    class="athlete-photo"
+    src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1100&q=90"
+    alt="Fitness athlete training">
 
-      <div class="circle-dot dot-one"></div>
-      <div class="circle-dot dot-two"></div>
-      <div class="circle-dot dot-three"></div>
+  <div class="circle-dot dot-one"></div>
+  <div class="circle-dot dot-two"></div>
+  <div class="circle-dot dot-three"></div>
 
-      <div class="athlete-label">
+  <div class="athlete-label">
 
-        <small>
-          14 Fitness Athlete
-        </small>
+    <small>
+      14 Fitness Athlete
+    </small>
 
-        <strong>
-          Train With Purpose
-        </strong>
+    <strong>
+      Train With Purpose
+    </strong>
 
-      </div>
+  </div>
 
-    </div>
-
-
-    <div class="floating-card card-one">
-
-      <small>
-        Mindset
-      </small>
-
-      <strong>
-        Get Strong
-      </strong>
-
-    </div>
+</div>
 
 
-    <div class="floating-card card-two">
+<div class="floating-card card-one">
 
-      <small>
-        Daily Standard
-      </small>
+  <small>
+    Mindset
+  </small>
 
-      <strong>
-        No Limits
-      </strong>
+  <strong>
+    Get Strong
+  </strong>
 
-    </div>
+</div>
 
 
-    <div class="floating-card card-three">
+<div class="floating-card card-two">
 
-      <small>
-        Progress
-      </small>
+  <small>
+    Daily Standard
+  </small>
 
-      <strong>
-        +1% Every Day
-      </strong>
+  <strong>
+    No Limits
+  </strong>
 
-    </div>
+</div>
+
+
+<div class="floating-card card-three">
+
+  <small>
+    Progress
+  </small>
+
+  <strong>
+    +1% Every Day
+  </strong>
+
+</div>
+```
 
   </div>
 
 </section>
-
 
 <!-- =======================================================
      TICKER
@@ -3195,114 +3250,68 @@ footer b{
 
   <div class="ticker-track">
 
-    <div class="ticker-group">
+```
+<div class="ticker-group">
 
-      <span>
-        NO EXCUSES
-      </span>
+  <span>NO EXCUSES</span>
+  <i>✦</i>
 
-      <i>✦</i>
+  <span>TRAIN HARD</span>
+  <i>✦</i>
 
-      <span>
-        TRAIN HARD
-      </span>
+  <span>STAY CONSISTENT</span>
+  <i>✦</i>
 
-      <i>✦</i>
+  <span>GET STRONGER</span>
+  <i>✦</i>
 
-      <span>
-        STAY CONSISTENT
-      </span>
+  <span>SHOW UP</span>
+  <i>✦</i>
 
-      <i>✦</i>
+</div>
 
-      <span>
-        GET STRONGER
-      </span>
+<div class="ticker-group">
 
-      <i>✦</i>
+  <span>NO EXCUSES</span>
+  <i>✦</i>
 
-      <span>
-        SHOW UP
-      </span>
+  <span>TRAIN HARD</span>
+  <i>✦</i>
 
-      <i>✦</i>
+  <span>STAY CONSISTENT</span>
+  <i>✦</i>
 
-    </div>
+  <span>GET STRONGER</span>
+  <i>✦</i>
 
+  <span>SHOW UP</span>
+  <i>✦</i>
 
-    <div class="ticker-group">
+</div>
 
-      <span>
-        NO EXCUSES
-      </span>
+<div class="ticker-group">
 
-      <i>✦</i>
+  <span>NO EXCUSES</span>
+  <i>✦</i>
 
-      <span>
-        TRAIN HARD
-      </span>
+  <span>TRAIN HARD</span>
+  <i>✦</i>
 
-      <i>✦</i>
+  <span>STAY CONSISTENT</span>
+  <i>✦</i>
 
-      <span>
-        STAY CONSISTENT
-      </span>
+  <span>GET STRONGER</span>
+  <i>✦</i>
 
-      <i>✦</i>
+  <span>SHOW UP</span>
+  <i>✦</i>
 
-      <span>
-        GET STRONGER
-      </span>
-
-      <i>✦</i>
-
-      <span>
-        SHOW UP
-      </span>
-
-      <i>✦</i>
-
-    </div>
-
-
-    <div class="ticker-group">
-
-      <span>
-        NO EXCUSES
-      </span>
-
-      <i>✦</i>
-
-      <span>
-        TRAIN HARD
-      </span>
-
-      <i>✦</i>
-
-      <span>
-        STAY CONSISTENT
-      </span>
-
-      <i>✦</i>
-
-      <span>
-        GET STRONGER
-      </span>
-
-      <i>✦</i>
-
-      <span>
-        SHOW UP
-      </span>
-
-      <i>✦</i>
-
-    </div>
+</div>
+```
 
   </div>
 
 </div>
-
 
 <!-- =======================================================
      MEMBERSHIP
@@ -3314,234 +3323,181 @@ footer b{
 
   <div class="section-head reveal">
 
-    <div>
+```
+<div>
 
-      <div class="kicker">
-        Membership Plans
-      </div>
+  <div class="kicker">
+    Membership Plans
+  </div>
 
-      <h2>
-        Choose Your<br>
-        Commitment.
-      </h2>
+  <h2>
+    Choose Your<br>
+    Commitment.
+  </h2>
 
-    </div>
+</div>
 
-    <p>
+<p>
 
-      Choose the membership that matches
-      your commitment. Every plan gives you
-      access to the 14 FITNESS training environment.
+  Choose the membership that matches
+  your commitment. Every plan gives you
+  access to the 14 FITNESS training environment.
 
-    </p>
+</p>
+```
 
   </div>
 
-
   <div class="plans">
 
+```
+<article class="plan reveal">
 
-    <!-- STARTER -->
+  <div class="plan-number">
+    01
+  </div>
 
-    <article class="plan reveal">
+  <div class="plan-name">
+    Starter
+  </div>
 
-      <div class="plan-number">
-        01
-      </div>
+  <div class="old">
+    ₹2,000
+  </div>
 
-      <div class="plan-name">
-        Starter
-      </div>
+  <div class="price">
+    ₹1,400
+    <small>
+      / admission
+    </small>
+  </div>
 
-      <div class="old">
-        ₹2,000
-      </div>
+  <div class="save">
+    ADMISSION + 1 MONTH FREE
+  </div>
 
-      <div class="price">
-        ₹1,400
-        <small>
-          / admission
-        </small>
-      </div>
+  <ul>
 
-      <div class="save">
-        ADMISSION + 1 MONTH FREE
-      </div>
+    <li>Admission fee ₹1,400</li>
+    <li>1 Month FREE membership</li>
+    <li>Full gym access</li>
+    <li>Strength & cardio zones</li>
+    <li>Member profile</li>
 
-      <ul>
+  </ul>
 
-        <li>
-          Admission fee ₹1,400
-        </li>
+  <a
+    class="btn btn-dark"
+    href="order.html?plan=1400">
 
-        <li>
-          1 Month FREE membership
-        </li>
+    Join Starter →
 
-        <li>
-          Full gym access
-        </li>
+  </a>
 
-        <li>
-          Strength & cardio zones
-        </li>
-
-        <li>
-          Member profile
-        </li>
-
-      </ul>
-
-      <a
-        class="btn btn-dark"
-        href="order.html?plan=1400">
-
-        Join Starter →
-
-      </a>
-
-    </article>
+</article>
 
 
-    <!-- TRANSFORMATION -->
+<article class="plan best reveal">
 
-    <article class="plan best reveal">
+  <div class="ribbon">
+    BEST VALUE
+  </div>
 
-      <div class="ribbon">
-        BEST VALUE
-      </div>
+  <div class="plan-number">
+    02
+  </div>
 
-      <div class="plan-number">
-        02
-      </div>
+  <div class="plan-name">
+    Transformation
+  </div>
 
-      <div class="plan-name">
-        Transformation
-      </div>
+  <div class="old">
+    ₹8,400
+  </div>
 
-      <div class="old">
-        ₹8,400
-      </div>
+  <div class="price">
+    ₹7,560
+    <small>
+      / 6 months
+    </small>
+  </div>
 
-      <div class="price">
-        ₹7,560
-        <small>
-          / 6 months
-        </small>
-      </div>
+  <div class="save">
+    10% OFF + FREE ADMISSION
+  </div>
 
-      <div class="save">
-        10% OFF + FREE ADMISSION
-      </div>
+  <ul>
 
-      <ul>
+    <li>6 Months membership</li>
+    <li>FREE admission</li>
+    <li>10% long-term discount</li>
+    <li>Full gym access</li>
+    <li>Progress tracking</li>
+    <li>Priority member support</li>
 
-        <li>
-          6 Months membership
-        </li>
+  </ul>
 
-        <li>
-          FREE admission
-        </li>
+  <a
+    class="btn btn-primary"
+    href="order.html?plan=7560">
 
-        <li>
-          10% long-term discount
-        </li>
+    Choose Best Value →
 
-        <li>
-          Full gym access
-        </li>
+  </a>
 
-        <li>
-          Progress tracking
-        </li>
-
-        <li>
-          Priority member support
-        </li>
-
-      </ul>
-
-      <a
-        class="btn btn-primary"
-        href="order.html?plan=7560">
-
-        Choose Best Value →
-
-      </a>
-
-    </article>
+</article>
 
 
-    <!-- ELITE -->
+<article class="plan reveal">
 
-    <article class="plan reveal">
+  <div class="plan-number">
+    03
+  </div>
 
-      <div class="plan-number">
-        03
-      </div>
+  <div class="plan-name">
+    Elite
+  </div>
 
-      <div class="plan-name">
-        Elite
-      </div>
+  <div class="old">
+    ₹16,800
+  </div>
 
-      <div class="old">
-        ₹16,800
-      </div>
+  <div class="price">
+    ₹14,280
+    <small>
+      / 1 year
+    </small>
+  </div>
 
-      <div class="price">
-        ₹14,280
-        <small>
-          / 1 year
-        </small>
-      </div>
+  <div class="save">
+    15% OFF + FREE ADMISSION
+  </div>
 
-      <div class="save">
-        15% OFF + FREE ADMISSION
-      </div>
+  <ul>
 
-      <ul>
+    <li>12 Months membership</li>
+    <li>FREE admission</li>
+    <li>15% annual discount</li>
+    <li>Full gym access</li>
+    <li>Long-term progress profile</li>
+    <li>Priority support</li>
 
-        <li>
-          12 Months membership
-        </li>
+  </ul>
 
-        <li>
-          FREE admission
-        </li>
+  <a
+    class="btn btn-dark"
+    href="order.html?plan=14280">
 
-        <li>
-          15% annual discount
-        </li>
+    Join Elite →
 
-        <li>
-          Full gym access
-        </li>
+  </a>
 
-        <li>
-          Long-term progress profile
-        </li>
-
-        <li>
-          Priority support
-        </li>
-
-      </ul>
-
-      <a
-        class="btn btn-dark"
-        href="order.html?plan=14280">
-
-        Join Elite →
-
-      </a>
-
-    </article>
+</article>
+```
 
   </div>
 
 </section>
-
 
 <!-- =======================================================
      MEMBERS
@@ -3553,75 +3509,77 @@ footer b{
 
   <div class="section-head reveal">
 
-    <div>
+```
+<div>
 
-      <div class="kicker">
-        14 Fitness Community
-      </div>
-
-      <h2>
-        Meet The<br>
-        Members.
-      </h2>
-
-    </div>
-
-    <p>
-
-      Registered members are displayed
-      with their selected plan and
-      remaining membership time.
-
-    </p>
-
+  <div class="kicker">
+    14 Fitness Community
   </div>
 
+  <h2>
+    Meet The<br>
+    Members.
+  </h2>
+
+</div>
+
+<p>
+
+  Registered members are displayed
+  with their selected plan and
+  remaining membership time.
+
+</p>
+```
+
+  </div>
 
   <div class="member-toolbar reveal">
 
-    <div class="member-count">
+```
+<div class="member-count">
 
-      <b id="memberCount">
-        0
-      </b>
+  <b id="memberCount">
+    0
+  </b>
 
-      Registered Members
+  Registered Members
 
-    </div>
+</div>
 
-    <input
-      id="memberSearch"
-      class="member-search"
-      type="search"
-      placeholder="Search member..."
-      autocomplete="off">
+<input
+  id="memberSearch"
+  class="member-search"
+  type="search"
+  placeholder="Search member..."
+  autocomplete="off">
+```
 
   </div>
-
 
   <div
     id="membersGrid"
     class="members-grid">
   </div>
 
-
   <div
     id="emptyMembers"
     class="empty-members">
 
-    <strong>
-      No Members Yet
-    </strong>
+```
+<strong>
+  No Members Yet
+</strong>
 
-    <p>
-      Completed registrations saved on this device
-      will appear here automatically.
-    </p>
+<p>
+  Completed registrations saved on this device
+  will appear here automatically.
+</p>
+```
 
   </div>
 
 </section>
-
 
 <!-- =======================================================
      WHY US
@@ -3633,127 +3591,177 @@ footer b{
 
   <div class="section-head reveal">
 
-    <div>
+```
+<div>
 
-      <div class="kicker">
-        The 14 Standard
-      </div>
+  <div class="kicker">
+    The 14 Standard
+  </div>
 
-      <h2>
-        More Than<br>
-        A Gym.
-      </h2>
+  <h2>
+    More Than<br>
+    A Gym.
+  </h2>
 
+</div>
+
+<p>
+
+  Everything is designed around
+  consistency, focused training
+  and measurable progress.
+
+</p>
+```
+
+  </div>
+
+  <div class="features">
+
+```
+<!-- MODERN EQUIPMENT -->
+
+<div class="feature reveal">
+
+  <img
+    class="feature-image"
+    src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=90"
+    alt="Modern gym equipment"
+    loading="lazy">
+
+  <div class="feature-number">
+    01
+  </div>
+
+  <div class="feature-content">
+
+    <div class="feature-icon">
+      ⚙
     </div>
 
+    <h3>
+      Modern Equipment
+    </h3>
+
     <p>
-
-      Everything is designed around
-      consistency, focused training
-      and measurable progress.
-
+      Train with serious equipment
+      built for strength, conditioning
+      and complete workouts.
     </p>
 
   </div>
 
+</div>
 
-  <div class="features">
 
+<!-- HIGH ENERGY -->
 
-    <div class="feature reveal">
+<div class="feature reveal">
 
-      <div class="feature-number">
-        01
-      </div>
+  <img
+    class="feature-image"
+    src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=90"
+    alt="Energetic bodybuilder training"
+    loading="lazy">
 
-      <div class="feature-icon"></div>
+  <div class="feature-number">
+    02
+  </div>
 
-      <h3>
-        Modern Equipment
-      </h3>
+  <div class="feature-content">
 
-      <p>
-
-        Strength machines, free weights
-        and cardio equipment for complete
-        training sessions.
-
-      </p>
-
+    <div class="feature-icon">
+      ⚡
     </div>
 
+    <h3>
+      High Energy
+    </h3>
 
-    <div class="feature reveal">
+    <p>
+      Bring intensity to every session.
+      Stay focused, push harder and
+      keep your momentum alive.
+    </p>
 
-      <div class="feature-number">
-        02
-      </div>
+  </div>
 
-      <div class="feature-icon"></div>
+</div>
 
-      <h3>
-        High Energy
-      </h3>
 
-      <p>
+<!-- GOAL FOCUSED -->
 
-        A focused atmosphere designed
-        to keep your momentum moving
-        every session.
+<div class="feature reveal">
 
-      </p>
+  <img
+    class="feature-image"
+    src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=900&q=90"
+    alt="Focused athlete training"
+    loading="lazy">
 
+  <div class="feature-number">
+    03
+  </div>
+
+  <div class="feature-content">
+
+    <div class="feature-icon">
+      🎯
     </div>
 
+    <h3>
+      Goal Focused
+    </h3>
 
-    <div class="feature reveal">
+    <p>
+      Strength, fitness or conditioning.
+      Know your goal and train with
+      purpose every single day.
+    </p>
 
-      <div class="feature-number">
-        03
-      </div>
+  </div>
 
-      <div class="feature-icon"></div>
+</div>
 
-      <h3>
-        Goal Focused
-      </h3>
 
-      <p>
+<!-- COMMUNITY -->
 
-        Strength, fitness or general
-        conditioning — train around
-        your personal goal.
+<div class="feature reveal">
 
-      </p>
+  <img
+    class="feature-image"
+    src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=900&q=90"
+    alt="Gym training community"
+    loading="lazy">
 
+  <div class="feature-number">
+    04
+  </div>
+
+  <div class="feature-content">
+
+    <div class="feature-icon">
+      +
     </div>
 
+    <h3>
+      Community
+    </h3>
 
-    <div class="feature reveal">
+    <p>
+      Train around people who show up,
+      work hard and keep improving
+      together.
+    </p>
 
-      <div class="feature-number">
-        04
-      </div>
+  </div>
 
-      <div class="feature-icon"></div>
-
-      <h3>
-        Community
-      </h3>
-
-      <p>
-
-        Train around people who show up,
-        work hard and keep improving.
-
-      </p>
-
-    </div>
+</div>
+```
 
   </div>
 
 </section>
-
 
 <!-- =======================================================
      LIVE TIMINGS
@@ -3765,229 +3773,199 @@ footer b{
 
   <div class="section-head reveal">
 
-    <div>
+```
+<div>
 
-      <div class="kicker">
-        Live Gym Timings
-      </div>
-
-      <h2>
-        Train On<br>
-        Your Time.
-      </h2>
-
-    </div>
-
-    <p>
-
-      The timing indicator automatically
-      follows your device's current time
-      and highlights the session that is
-      currently active.
-
-    </p>
-
+  <div class="kicker">
+    Live Gym Timings
   </div>
 
+  <h2>
+    Train On<br>
+    Your Time.
+  </h2>
 
-  <!-- LIVE STATUS -->
+</div>
+
+<p>
+
+  The timing indicator automatically
+  follows your device's current time
+  and highlights the session that is
+  currently active.
+
+</p>
+```
+
+  </div>
 
   <div class="live-status-bar reveal">
 
-    <div class="live-now">
+```
+<div class="live-now">
 
-      <span class="live-dot"></span>
+  <span class="live-dot"></span>
 
-      <span id="liveText">
-        CHECKING LIVE SESSION...
-      </span>
+  <span id="liveText">
+    CHECKING LIVE SESSION...
+  </span>
 
-    </div>
+</div>
 
-    <div
-      class="live-clock"
-      id="liveClock">
+<div
+  class="live-clock"
+  id="liveClock">
 
-      --:--:--
+  --:--:--
 
-    </div>
+</div>
+```
 
   </div>
 
-
   <div class="schedule">
 
+```
+<!-- MEN MORNING -->
 
-    <!-- MEN MORNING -->
+<div
+  class="slot reveal"
+  data-start="06:00"
+  data-end="10:00"
+  data-gender="MEN">
 
-    <div
-      class="slot reveal"
-      data-start="06:00"
-      data-end="10:00"
-      data-gender="MEN">
+  <img
+    class="slot-photo"
+    src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1000&q=90"
+    alt="Male bodybuilder training"
+    loading="lazy">
 
-      <div class="gender-wrap">
+  <div class="slot-content">
 
-        <div class="gender-visual">
+    <span class="slot-time">
+      06:00 AM — 10:00 AM
+    </span>
 
-          <div class="gender-head"></div>
-          <div class="gender-body"></div>
+    <strong>
+      MEN
+    </strong>
 
-        </div>
+  </div>
 
-        <div>
+  <div class="slot-number">
+    01
+  </div>
 
-          <span class="slot-time">
-            06:00 AM — 10:00 AM
-          </span>
+  <div class="slot-badge">
+    LIVE NOW
+  </div>
 
-          <strong>
-            MEN
-          </strong>
-
-        </div>
-
-      </div>
-
-      <div class="slot-number">
-        01
-      </div>
-
-      <div class="slot-badge">
-        LIVE NOW
-      </div>
-
-    </div>
+</div>
 
 
-    <!-- WOMEN -->
+<!-- WOMEN -->
 
-    <div
-      class="slot reveal"
-      data-start="10:00"
-      data-end="16:30"
-      data-gender="WOMEN">
+<div
+  class="slot reveal"
+  data-start="10:00"
+  data-end="16:30"
+  data-gender="WOMEN">
 
-      <div class="gender-wrap">
+  <img
+    class="slot-photo"
+    src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?auto=format&fit=crop&w=1000&q=90"
+    alt="Fit woman training in gym"
+    loading="lazy">
 
-        <div class="gender-visual">
+  <div class="slot-content">
 
-          <div
-            class="gender-head"
-            style="
-              width:17px;
-              height:17px;
-            ">
-          </div>
+    <span class="slot-time">
+      10:00 AM — 04:30 PM
+    </span>
 
-          <div
-            class="gender-body"
-            style="
-              width:31px;
-              height:34px;
-              border-radius:16px 16px 9px 9px;
-            ">
-          </div>
+    <strong>
+      WOMEN
+    </strong>
 
-        </div>
+  </div>
 
-        <div>
+  <div class="slot-number">
+    02
+  </div>
 
-          <span class="slot-time">
-            10:00 AM — 04:30 PM
-          </span>
+  <div class="slot-badge">
+    LIVE NOW
+  </div>
 
-          <strong>
-            WOMEN
-          </strong>
-
-        </div>
-
-      </div>
-
-      <div class="slot-number">
-        02
-      </div>
-
-      <div class="slot-badge">
-        LIVE NOW
-      </div>
-
-    </div>
+</div>
 
 
-    <!-- MEN EVENING -->
+<!-- MEN EVENING -->
 
-    <div
-      class="slot reveal"
-      data-start="16:30"
-      data-end="24:00"
-      data-gender="MEN">
+<div
+  class="slot reveal"
+  data-start="16:30"
+  data-end="24:00"
+  data-gender="MEN">
 
-      <div class="gender-wrap">
+  <img
+    class="slot-photo"
+    src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=1000&q=90"
+    alt="Male athlete bodybuilding"
+    loading="lazy">
 
-        <div class="gender-visual">
+  <div class="slot-content">
 
-          <div class="gender-head"></div>
-          <div class="gender-body"></div>
+    <span class="slot-time">
+      04:30 PM — 12:00 AM
+    </span>
 
-        </div>
+    <strong>
+      MEN
+    </strong>
 
-        <div>
+  </div>
 
-          <span class="slot-time">
-            04:30 PM — 12:00 AM
-          </span>
+  <div class="slot-number">
+    03
+  </div>
 
-          <strong>
-            MEN
-          </strong>
+  <div class="slot-badge">
+    LIVE NOW
+  </div>
 
-        </div>
-
-      </div>
-
-      <div class="slot-number">
-        03
-      </div>
-
-      <div class="slot-badge">
-        LIVE NOW
-      </div>
-
-    </div>
+</div>
 
 
-    <!-- EVERY DAY -->
+<!-- DAILY -->
 
-    <div
-      class="slot reveal"
-      data-start="00:00"
-      data-end="00:00"
-      data-special="true">
+<div
+  class="slot daily reveal"
+  data-special="true">
 
-      <div>
+  <div class="daily-content">
 
-        <span class="slot-time">
-          OPEN DAILY
-        </span>
+    <span class="slot-time">
+      OPEN DAILY
+    </span>
 
-        <strong>
-          CONSISTENCY
-        </strong>
+    <strong>
+      TRAIN<br>
+      EVERY DAY
+    </strong>
 
-      </div>
+  </div>
 
-      <div class="slot-number">
-        ∞
-      </div>
+  <div class="slot-number">
+    ∞
+  </div>
 
-    </div>
+</div>
+```
 
   </div>
 
 </section>
-
 
 <!-- =======================================================
      GALLERY
@@ -3999,106 +3977,107 @@ footer b{
 
   <div class="section-head reveal">
 
-    <div>
+```
+<div>
 
-      <div class="kicker">
-        Inside 14 Fitness
-      </div>
+  <div class="kicker">
+    Inside 14 Fitness
+  </div>
 
-      <h2>
-        Real Gym.<br>
-        Real Work.
-      </h2>
+  <h2>
+    Real Gym.<br>
+    Real Work.
+  </h2>
 
-    </div>
+</div>
 
-    <p>
+<p>
 
-      A training environment built
-      around movement, strength and
-      consistent work.
+  A training environment built
+  around movement, strength and
+  consistent work.
 
-    </p>
+</p>
+```
 
   </div>
 
-
   <div class="gallery">
 
+```
+<div class="pic big reveal">
 
-    <div class="pic big reveal">
+  <img
+    src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1400&q=88"
+    alt="Modern gym floor"
+    loading="lazy">
 
-      <img
-        src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1400&q=88"
-        alt="Modern gym floor"
-        loading="lazy">
+  <label>
+    Strength Zone
+  </label>
 
-      <label>
-        Strength Zone
-      </label>
-
-    </div>
-
-
-    <div class="pic reveal">
-
-      <img
-        src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1100&q=88"
-        alt="Gym equipment"
-        loading="lazy">
-
-      <label>
-        Training Floor
-      </label>
-
-    </div>
+</div>
 
 
-    <div class="pic reveal">
+<div class="pic reveal">
 
-      <img
-        src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1100&q=88"
-        alt="Fitness training"
-        loading="lazy">
+  <img
+    src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1100&q=88"
+    alt="Gym equipment"
+    loading="lazy">
 
-      <label>
-        Energy
-      </label>
+  <label>
+    Training Floor
+  </label>
 
-    </div>
-
-
-    <div class="pic reveal">
-
-      <img
-        src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1100&q=88"
-        alt="Athlete training"
-        loading="lazy">
-
-      <label>
-        Every Rep
-      </label>
-
-    </div>
+</div>
 
 
-    <div class="pic reveal">
+<div class="pic reveal">
 
-      <img
-        src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=1100&q=88"
-        alt="Strength equipment"
-        loading="lazy">
+  <img
+    src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1100&q=88"
+    alt="Fitness training"
+    loading="lazy">
 
-      <label>
-        Free Weights
-      </label>
+  <label>
+    Energy
+  </label>
 
-    </div>
+</div>
+
+
+<div class="pic reveal">
+
+  <img
+    src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1100&q=88"
+    alt="Athlete training"
+    loading="lazy">
+
+  <label>
+    Every Rep
+  </label>
+
+</div>
+
+
+<div class="pic reveal">
+
+  <img
+    src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=1100&q=88"
+    alt="Strength equipment"
+    loading="lazy">
+
+  <label>
+    Free Weights
+  </label>
+
+</div>
+```
 
   </div>
 
 </section>
-
 
 <!-- =======================================================
      CTA
@@ -4108,68 +4087,84 @@ footer b{
 
   <div class="cta-content reveal">
 
-    <div class="kicker">
-      Your Next Version Starts Here
-    </div>
+```
+<div class="kicker">
+  Your Next Version Starts Here
+</div>
 
-    <h2>
+<h2>
 
-      Stop Waiting.<br>
+  Stop Waiting.<br>
 
-      <span>
-        Start Training.
-      </span>
+  <span>
+    Start Training.
+  </span>
 
-    </h2>
+</h2>
 
-    <p>
+<p>
 
-      The hardest part is making the decision
-      to begin. Make yours today and start
-      building your strongest self.
+  The hardest part is making the decision
+  to begin. Make yours today and start
+  building your strongest self.
 
-    </p>
+</p>
 
-    <a
-      class="btn btn-primary"
-      href="#plans">
+<a
+  class="btn btn-primary"
+  href="#plans">
 
-      Become A Member →
+  Become A Member →
 
-    </a>
+</a>
+```
 
   </div>
 
 </section>
-
 
 <!-- =======================================================
      WHATSAPP SUPPORT
 ======================================================= -->
 
 <a
-  class="whatsapp-support"
-  href="https://wa.me/917006568699"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="WhatsApp Support">
+class="whatsapp-support"
+href="https://wa.me/917006568699"
+target="_blank"
+rel="noopener noreferrer"
+aria-label="WhatsApp Support">
 
-  <div class="whatsapp-icon"></div>
+  <div class="whatsapp-icon">
+
+```
+<svg
+  viewBox="0 0 24 24"
+  aria-hidden="true">
+
+  <path
+    fill="#ffffff"
+    d="M20.52 3.48A11.78 11.78 0 0 0 12.12 0C5.6 0 .3 5.3.3 11.82c0 2.08.54 4.11 1.56 5.9L.2 24l6.42-1.63a11.82 11.82 0 0 0 5.5 1.4h.01c6.52 0 11.82-5.3 11.82-11.82 0-3.16-1.23-6.13-3.43-8.47ZM12.13 21.8h-.01a9.96 9.96 0 0 1-5.08-1.39l-.36-.21-3.81.97 1.02-3.72-.23-.38a9.94 9.94 0 0 1-1.52-5.25c0-5.49 4.47-9.96 9.97-9.96 2.66 0 5.16 1.04 7.04 2.93a9.9 9.9 0 0 1 2.92 7.04c0 5.49-4.47 9.97-9.94 9.97Zm5.46-7.47c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.79-1.68-2.09-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.25-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.35.2 1.86.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/>
+
+</svg>
+```
+
+  </div>
 
   <div class="whatsapp-text">
 
-    <small>
-      14 Fitness Support
-    </small>
+```
+<small>
+  14 Fitness Support
+</small>
 
-    <strong>
-      WhatsApp Us
-    </strong>
+<strong>
+  WhatsApp Us
+</strong>
+```
 
   </div>
 
 </a>
-
 
 <!-- =======================================================
      FOOTER
@@ -4186,7 +4181,6 @@ footer b{
   </div>
 
 </footer>
-
 
 <script>
 
@@ -4370,9 +4364,6 @@ function updateLiveTiming(){
   let activeGender =
     null;
 
-  let activeSlot =
-    null;
-
 
   timingSlots.forEach(
     slot => {
@@ -4396,7 +4387,6 @@ function updateLiveTiming(){
 
       }
 
-
       const start =
         timeToMinutes(
           slot.dataset.start
@@ -4407,12 +4397,6 @@ function updateLiveTiming(){
           slot.dataset.end
         );
 
-
-      /*
-        24:00 is represented
-        internally as 1440.
-      */
-
       if(
         slot.dataset.end === "24:00"
       ){
@@ -4420,7 +4404,6 @@ function updateLiveTiming(){
         end = 1440;
 
       }
-
 
       if(
         currentMinutes >= start &&
@@ -4433,9 +4416,6 @@ function updateLiveTiming(){
 
         activeGender =
           slot.dataset.gender;
-
-        activeSlot =
-          slot;
 
       }
 
@@ -4529,10 +4509,8 @@ function getExpiryDate(
 
   }
 
-
   const start =
     new Date(createdAt);
-
 
   if(
     Number.isNaN(
@@ -4544,16 +4522,13 @@ function getExpiryDate(
 
   }
 
-
   const expiry =
     new Date(start);
-
 
   expiry.setMonth(
     expiry.getMonth() +
     info.months
   );
-
 
   return expiry;
 
@@ -4571,17 +4546,14 @@ function getDaysLeft(
       planKey
     );
 
-
   if(!expiry){
 
     return 0;
 
   }
 
-
   const now =
     new Date();
-
 
   const today =
     new Date(
@@ -4590,14 +4562,12 @@ function getDaysLeft(
       now.getDate()
     );
 
-
   const end =
     new Date(
       expiry.getFullYear(),
       expiry.getMonth(),
       expiry.getDate()
     );
-
 
   return Math.max(
     0,
@@ -4634,12 +4604,10 @@ function getMemberStatus(member){
       member.plan
     );
 
-
   const saved =
     String(
       member.status || ""
     ).toLowerCase();
-
 
   if(days <= 0){
 
@@ -4649,7 +4617,6 @@ function getMemberStatus(member){
     };
 
   }
-
 
   if(
     saved.includes("pending") ||
@@ -4662,7 +4629,6 @@ function getMemberStatus(member){
     };
 
   }
-
 
   return {
     label:"ACTIVE",
@@ -4680,13 +4646,11 @@ function createMemberCard(
     member.name ||
     "Member";
 
-
   const plan =
     planInfo[
       member.plan
     ]?.name ||
     "MEMBERSHIP";
-
 
   const expiry =
     getExpiryDate(
@@ -4694,19 +4658,16 @@ function createMemberCard(
       member.plan
     );
 
-
   const days =
     getDaysLeft(
       member.createdAt,
       member.plan
     );
 
-
   const status =
     getMemberStatus(
       member
     );
-
 
   const first =
     (
@@ -4716,7 +4677,6 @@ function createMemberCard(
       "M"
     ).toUpperCase();
 
-
   const joined =
     member.createdAt
       ? formatDate(
@@ -4725,7 +4685,6 @@ function createMemberCard(
           )
         )
       : "—";
-
 
   return `
 
@@ -4754,16 +4713,13 @@ function createMemberCard(
 
       </div>
 
-
       <div class="member-name">
         ${escapeHTML(name)}
       </div>
 
-
       <div class="member-plan">
         ${escapeHTML(plan)}
       </div>
-
 
       <div class="member-days">
 
@@ -4777,7 +4733,6 @@ function createMemberCard(
         </span>
 
       </div>
-
 
       <div class="member-info">
 
@@ -4796,7 +4751,6 @@ function createMemberCard(
 
         </div>
 
-
         <div class="info-row">
 
           <span>
@@ -4808,7 +4762,6 @@ function createMemberCard(
           </span>
 
         </div>
-
 
         <div class="info-row">
 
@@ -4825,7 +4778,6 @@ function createMemberCard(
           </span>
 
         </div>
-
 
         <div class="info-row">
 
@@ -4858,21 +4810,17 @@ function loadMembers(){
       "membersGrid"
     );
 
-
   const empty =
     document.getElementById(
       "emptyMembers"
     );
-
 
   const count =
     document.getElementById(
       "memberCount"
     );
 
-
   let members = [];
-
 
   try{
 
@@ -4883,7 +4831,6 @@ function loadMembers(){
         ) ||
         "[]"
       );
-
 
     if(
       !Array.isArray(
@@ -4906,10 +4853,8 @@ function loadMembers(){
 
   }
 
-
   count.textContent =
     members.length;
-
 
   if(
     !members.length
@@ -4934,10 +4879,8 @@ function loadMembers(){
 
   }
 
-
   empty.style.display =
     "none";
-
 
   grid.innerHTML =
     members
@@ -4971,21 +4914,17 @@ document
           .trim()
           .toLowerCase();
 
-
       const cards =
         document.querySelectorAll(
           ".member-card"
         );
-
 
       const empty =
         document.getElementById(
           "emptyMembers"
         );
 
-
       let visible = 0;
-
 
       cards.forEach(
         card => {
@@ -4997,12 +4936,10 @@ document
             card.dataset.plan
               .includes(query);
 
-
           card.style.display =
             match
               ? ""
               : "none";
-
 
           if(match){
 
@@ -5012,7 +4949,6 @@ document
 
         }
       );
-
 
       if(
         cards.length &&
@@ -5080,12 +5016,10 @@ const sections =
     "section[id]"
   );
 
-
 const navLinks =
   document.querySelectorAll(
     "nav a"
   );
-
 
 const sectionObserver =
   new IntersectionObserver(
@@ -5108,12 +5042,10 @@ const sectionObserver =
               }
             );
 
-
             const active =
               document.querySelector(
                 `nav a[href="#${entry.target.id}"]`
               );
-
 
             if(active){
 
@@ -5146,32 +5078,7 @@ sections.forEach(
   }
 );
 
-
-/* =========================================================
-   NO OTP
-=========================================================
-
-   This homepage intentionally contains:
-
-   - NO OTP
-   - NO Twilio
-   - NO SMS verification
-   - NO login
-   - NO mobile verification
-   - NO /api/send-otp
-   - NO /api/verify-otp
-   - NO verification modal
-
-   Membership buttons directly open:
-
-   order.html?plan=1400
-   order.html?plan=7560
-   order.html?plan=14280
-
-========================================================= */
-
 </script>
 
 </body>
 </html>
-
