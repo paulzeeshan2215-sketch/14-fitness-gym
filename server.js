@@ -11,8 +11,26 @@ CONFIGURATION
 =========================================================
 */
 
-const PORT = Number(process.env.PORT) || 10000;
-const GYM_NAME = "14 FITNESS GYM";
+const PORT =
+  Number(process.env.PORT) || 10000;
+
+const GYM_NAME =
+  "14 FITNESS GYM";
+
+/*
+---------------------------------------------------------
+TWILIO DIRECT SMS CONFIGURATION
+---------------------------------------------------------
+
+Required Render Environment Variables:
+
+TWILIO_ACCOUNT_SID
+TWILIO_AUTH_TOKEN
+TWILIO_PHONE_NUMBER
+
+No TWILIO_VERIFY_SERVICE_SID is required.
+---------------------------------------------------------
+*/
 
 const TWILIO_ACCOUNT_SID =
   process.env.TWILIO_ACCOUNT_SID || "";
@@ -20,8 +38,8 @@ const TWILIO_ACCOUNT_SID =
 const TWILIO_AUTH_TOKEN =
   process.env.TWILIO_AUTH_TOKEN || "";
 
-const TWILIO_VERIFY_SERVICE_SID =
-  process.env.TWILIO_VERIFY_SERVICE_SID || "";
+const TWILIO_PHONE_NUMBER =
+  process.env.TWILIO_PHONE_NUMBER || "";
 
 const VERIFY_TOKEN_SECRET =
   process.env.VERIFY_TOKEN_SECRET || "";
@@ -51,7 +69,9 @@ app.use(
   })
 );
 
-app.use(express.static(__dirname));
+app.use(
+  express.static(__dirname)
+);
 
 
 /*
@@ -79,6 +99,7 @@ const NEW_PLANS = {
     amount: 14280
   }
 };
+
 
 const RENEWAL_PLANS = {
   "700": {
@@ -120,7 +141,11 @@ MEMBER STORAGE
 */
 
 const MEMBERS_FILE =
-  path.join(__dirname, "members.json");
+  path.join(
+    __dirname,
+    "members.json"
+  );
+
 
 function loadMembers() {
   try {
@@ -160,7 +185,10 @@ function loadMembers() {
   }
 }
 
-let members = loadMembers();
+
+let members =
+  loadMembers();
+
 
 function saveMembers() {
   const tempFile =
@@ -188,7 +216,9 @@ function saveMembers() {
     );
 
     try {
-      if (fs.existsSync(tempFile)) {
+      if (
+        fs.existsSync(tempFile)
+      ) {
         fs.unlinkSync(tempFile);
       }
     } catch (_) {}
@@ -200,12 +230,24 @@ function saveMembers() {
 
 /*
 =========================================================
-OTP RATE LIMITING
+OTP STORAGE
+=========================================================
+
+OTP is stored as a SHA-256 hash.
+
+Plain OTP is NEVER stored in members.json.
 =========================================================
 */
 
-const otpRequests =
+const otpStore =
   new Map();
+
+
+const OTP_LENGTH =
+  6;
+
+const OTP_EXPIRY_MS =
+  5 * 60 * 1000;
 
 const OTP_COOLDOWN_MS =
   60 * 1000;
@@ -214,6 +256,9 @@ const OTP_WINDOW_MS =
   10 * 60 * 1000;
 
 const MAX_OTP_REQUESTS_PER_WINDOW =
+  5;
+
+const MAX_OTP_ATTEMPTS =
   5;
 
 
@@ -354,111 +399,24 @@ function generateRenewalId() {
 }
 
 
+/*
+=========================================================
+TWILIO CONFIG CHECK
+=========================================================
+*/
+
 function twilioConfigured() {
   return Boolean(
     TWILIO_ACCOUNT_SID &&
     TWILIO_AUTH_TOKEN &&
-    TWILIO_VERIFY_SERVICE_SID
+    TWILIO_PHONE_NUMBER
   );
-}
-
-
-function normalizeAmount(value) {
-  const amount =
-    Number(value);
-
-  if (
-    !Number.isFinite(amount) ||
-    amount < 0
-  ) {
-    return null;
-  }
-
-  return amount;
 }
 
 
 /*
 =========================================================
-DATE HELPERS
-=========================================================
-*/
-
-function addMonths(date, months) {
-  const result =
-    new Date(date);
-
-  const originalDay =
-    result.getDate();
-
-  result.setDate(1);
-
-  result.setMonth(
-    result.getMonth() + months
-  );
-
-  const lastDay =
-    new Date(
-      result.getFullYear(),
-      result.getMonth() + 1,
-      0
-    ).getDate();
-
-  result.setDate(
-    Math.min(
-      originalDay,
-      lastDay
-    )
-  );
-
-  return result;
-}
-
-
-function getMembershipStartDate(member) {
-  if (
-    member &&
-    member.expiresAt
-  ) {
-    const existingExpiry =
-      new Date(
-        member.expiresAt
-      );
-
-    if (
-      !Number.isNaN(
-        existingExpiry.getTime()
-      ) &&
-      existingExpiry.getTime() >
-        Date.now()
-    ) {
-      return existingExpiry;
-    }
-  }
-
-  return new Date();
-}
-
-
-function calculateExpiry(months, member) {
-  const start =
-    getMembershipStartDate(member);
-
-  return addMonths(
-    start,
-    months
-  ).toISOString();
-}
-
-
-/*
-=========================================================
-VERIFICATION TOKEN
-=========================================================
-
-Created only after Twilio approves OTP.
-
-Valid for 30 minutes.
+VERIFY TOKEN
 =========================================================
 */
 
@@ -595,19 +553,35 @@ function verifyVerificationToken(
 
 /*
 =========================================================
-TWILIO VERIFY
+OTP GENERATION
 =========================================================
 */
 
-function twilioBaseUrl() {
-  return (
-    "https://verify.twilio.com/v2/Services/" +
-    encodeURIComponent(
-      TWILIO_VERIFY_SERVICE_SID
+function generateOTP() {
+  return String(
+    crypto.randomInt(
+      100000,
+      1000000
     )
   );
 }
 
+
+function hashOTP(otp) {
+  return crypto
+    .createHash("sha256")
+    .update(
+      String(otp)
+    )
+    .digest("hex");
+}
+
+
+/*
+=========================================================
+TWILIO AUTH HEADER
+=========================================================
+*/
 
 function twilioAuthHeader() {
   const credentials =
@@ -621,13 +595,20 @@ function twilioAuthHeader() {
 
 /*
 =========================================================
-SEND OTP
+SEND DIRECT SMS THROUGH TWILIO
 =========================================================
 */
 
-async function sendTwilioVerification(
-  phone
+async function sendTwilioSMS(
+  phone,
+  message
 ) {
+  if (!twilioConfigured()) {
+    throw new Error(
+      "Twilio SMS configuration is missing."
+    );
+  }
+
   const body =
     new URLSearchParams();
 
@@ -637,13 +618,22 @@ async function sendTwilioVerification(
   );
 
   body.set(
-    "Channel",
-    "sms"
+    "From",
+    TWILIO_PHONE_NUMBER
+  );
+
+  body.set(
+    "Body",
+    message
   );
 
   const response =
     await fetch(
-      `${twilioBaseUrl()}/Verifications`,
+      "https://api.twilio.com/2010-04-01/Accounts/" +
+        encodeURIComponent(
+          TWILIO_ACCOUNT_SID
+        ) +
+        "/Messages.json",
       {
         method: "POST",
 
@@ -665,13 +655,15 @@ async function sendTwilioVerification(
       .catch(() => ({}));
 
   if (!response.ok) {
-    const message =
+    const messageText =
       data?.message ||
       data?.detail ||
-      "Twilio could not send the OTP.";
+      "Twilio could not send the SMS.";
 
     const error =
-      new Error(message);
+      new Error(
+        messageText
+      );
 
     error.status =
       response.status;
@@ -688,69 +680,154 @@ async function sendTwilioVerification(
 
 /*
 =========================================================
+SEND OTP SMS
+=========================================================
+*/
+
+async function sendOTP(phone) {
+  const otp =
+    generateOTP();
+
+  const otpHash =
+    hashOTP(otp);
+
+  const now =
+    Date.now();
+
+  otpStore.set(
+    phone,
+    {
+      hash: otpHash,
+
+      createdAt:
+        now,
+
+      expiresAt:
+        now +
+        OTP_EXPIRY_MS,
+
+      attempts: 0
+    }
+  );
+
+  const smsText =
+    `Your ${GYM_NAME} verification code is ${otp}. This code expires in 5 minutes. Do not share this code with anyone.`;
+
+  try {
+    const result =
+      await sendTwilioSMS(
+        phone,
+        smsText
+      );
+
+    console.log(
+      `[OTP SENT] ${phone} | ${result.sid || "no-sid"}`
+    );
+
+    return result;
+  } catch (error) {
+    /*
+    If Twilio fails, remove the OTP
+    so the user is not stuck with
+    an unusable code.
+    */
+
+    otpStore.delete(phone);
+
+    throw error;
+  }
+}
+
+
+/*
+=========================================================
 VERIFY OTP
 =========================================================
 */
 
-async function checkTwilioVerification(
+function verifyOTP(
   phone,
-  code
+  otp
 ) {
-  const body =
-    new URLSearchParams();
+  const record =
+    otpStore.get(phone);
 
-  body.set(
-    "To",
-    phone
-  );
-
-  body.set(
-    "Code",
-    code
-  );
-
-  const response =
-    await fetch(
-      `${twilioBaseUrl()}/VerificationCheck`,
-      {
-        method: "POST",
-
-        headers: {
-          Authorization:
-            twilioAuthHeader(),
-
-          "Content-Type":
-            "application/x-www-form-urlencoded"
-        },
-
-        body
-      }
-    );
-
-  const data =
-    await response
-      .json()
-      .catch(() => ({}));
-
-  if (!response.ok) {
-    const message =
-      data?.message ||
-      data?.detail ||
-      "Twilio could not verify the OTP.";
-
-    const error =
-      new Error(message);
-
-    error.status =
-      response.status;
-
-    error.twilio =
-      data;
-
-    throw error;
+  if (!record) {
+    return {
+      success: false,
+      reason: "missing"
+    };
   }
 
-  return data;
+  if (
+    Date.now() >
+    record.expiresAt
+  ) {
+    otpStore.delete(phone);
+
+    return {
+      success: false,
+      reason: "expired"
+    };
+  }
+
+  if (
+    record.attempts >=
+    MAX_OTP_ATTEMPTS
+  ) {
+    otpStore.delete(phone);
+
+    return {
+      success: false,
+      reason: "attempts"
+    };
+  }
+
+  record.attempts += 1;
+
+  const providedHash =
+    hashOTP(otp);
+
+  const actual =
+    Buffer.from(
+      providedHash,
+      "utf8"
+    );
+
+  const expected =
+    Buffer.from(
+      record.hash,
+      "utf8"
+    );
+
+  if (
+    actual.length !==
+    expected.length
+  ) {
+    return {
+      success: false,
+      reason: "invalid"
+    };
+  }
+
+  const valid =
+    crypto.timingSafeEqual(
+      actual,
+      expected
+    );
+
+  if (!valid) {
+    return {
+      success: false,
+      reason: "invalid"
+    };
+  }
+
+  otpStore.delete(phone);
+
+  return {
+    success: true
+  };
 }
 
 
@@ -771,9 +848,14 @@ function canSendOTP(phone) {
     otpRequests.set(
       phone,
       {
-        firstRequest: now,
-        lastRequest: now,
-        count: 1
+        firstRequest:
+          now,
+
+        lastRequest:
+          now,
+
+        count:
+          1
       }
     );
 
@@ -791,9 +873,14 @@ function canSendOTP(phone) {
     otpRequests.set(
       phone,
       {
-        firstRequest: now,
-        lastRequest: now,
-        count: 1
+        firstRequest:
+          now,
+
+        lastRequest:
+          now,
+
+        count:
+          1
       }
     );
 
@@ -858,6 +945,95 @@ function canSendOTP(phone) {
 
 /*
 =========================================================
+AMOUNT
+=========================================================
+*/
+
+function normalizeAmount(value) {
+  const amount =
+    Number(value);
+
+  if (
+    !Number.isFinite(amount) ||
+    amount < 0
+  ) {
+    return null;
+  }
+
+  return amount;
+}
+
+
+/*
+=========================================================
+DATE HELPERS
+=========================================================
+*/
+
+function addMonths(
+  date,
+  months
+) {
+  const result =
+    new Date(date);
+
+  const originalDay =
+    result.getDate();
+
+  result.setDate(1);
+
+  result.setMonth(
+    result.getMonth() +
+      months
+  );
+
+  const lastDay =
+    new Date(
+      result.getFullYear(),
+      result.getMonth() + 1,
+      0
+    ).getDate();
+
+  result.setDate(
+    Math.min(
+      originalDay,
+      lastDay
+    )
+  );
+
+  return result;
+}
+
+
+function getMembershipStartDate(
+  member
+) {
+  if (
+    member &&
+    member.expiresAt
+  ) {
+    const existingExpiry =
+      new Date(
+        member.expiresAt
+      );
+
+    if (
+      !Number.isNaN(
+        existingExpiry.getTime()
+      ) &&
+      existingExpiry.getTime() >
+        Date.now()
+    ) {
+      return existingExpiry;
+    }
+  }
+
+  return new Date();
+}
+
+
+/*
+=========================================================
 SAFE MEMBER RESPONSE
 =========================================================
 */
@@ -869,43 +1045,56 @@ function safeMemberData(member) {
 
   return {
     memberId:
-      member.memberId || null,
+      member.memberId ||
+      null,
 
     name:
-      member.name || null,
+      member.name ||
+      null,
 
     phone:
-      member.phone || null,
+      member.phone ||
+      null,
 
     age:
-      member.age ?? null,
+      member.age ??
+      null,
 
     gender:
-      member.gender || null,
+      member.gender ||
+      null,
 
     goal:
-      member.goal || null,
+      member.goal ||
+      null,
 
     plan:
-      member.plan || null,
+      member.plan ||
+      null,
 
     planName:
-      member.planName || null,
+      member.planName ||
+      null,
 
     amount:
-      member.amount ?? null,
+      member.amount ??
+      null,
 
     status:
-      member.status || null,
+      member.status ||
+      null,
 
     expiresAt:
-      member.expiresAt || null,
+      member.expiresAt ||
+      null,
 
     createdAt:
-      member.createdAt || null,
+      member.createdAt ||
+      null,
 
     updatedAt:
-      member.updatedAt || null
+      member.updatedAt ||
+      null
   };
 }
 
@@ -945,7 +1134,9 @@ app.get(
         "members.json",
 
       memberCount:
-        Object.keys(members).length
+        Object.keys(
+          members
+        ).length
     });
   }
 );
@@ -959,7 +1150,10 @@ SEND OTP
 
 app.post(
   "/api/send-otp",
-  async (req, res) => {
+  async (
+    req,
+    res
+  ) => {
     try {
       const name =
         cleanName(
@@ -996,9 +1190,11 @@ app.post(
           });
       }
 
-      if (!twilioConfigured()) {
+      if (
+        !twilioConfigured()
+      ) {
         console.error(
-          "[OTP] Twilio configuration missing."
+          "[OTP] Twilio SMS configuration missing."
         );
 
         return res
@@ -1011,7 +1207,9 @@ app.post(
           });
       }
 
-      if (!VERIFY_TOKEN_SECRET) {
+      if (
+        !VERIFY_TOKEN_SECRET
+      ) {
         console.error(
           "[OTP] VERIFY_TOKEN_SECRET missing."
         );
@@ -1043,14 +1241,7 @@ app.post(
           });
       }
 
-      const result =
-        await sendTwilioVerification(
-          phone
-        );
-
-      console.log(
-        `[OTP SENT] ${phone} | ${result.status || "unknown"}`
-      );
+      await sendOTP(phone);
 
       return res.json({
         success: true,
@@ -1097,7 +1288,10 @@ VERIFY OTP
 
 app.post(
   "/api/verify-otp",
-  async (req, res) => {
+  async (
+    req,
+    res
+  ) => {
     try {
       const name =
         cleanName(
@@ -1142,7 +1336,7 @@ app.post(
       }
 
       if (
-        !/^\d{4,6}$/.test(otp)
+        !/^\d{6}$/.test(otp)
       ) {
         return res
           .status(400)
@@ -1150,11 +1344,13 @@ app.post(
             success: false,
 
             message:
-              "Please enter the OTP received by SMS."
+              "Please enter the 6-digit OTP received by SMS."
           });
       }
 
-      if (!twilioConfigured()) {
+      if (
+        !twilioConfigured()
+      ) {
         return res
           .status(503)
           .json({
@@ -1165,7 +1361,9 @@ app.post(
           });
       }
 
-      if (!VERIFY_TOKEN_SECRET) {
+      if (
+        !VERIFY_TOKEN_SECRET
+      ) {
         return res
           .status(503)
           .json({
@@ -1177,27 +1375,50 @@ app.post(
       }
 
       const result =
-        await checkTwilioVerification(
+        verifyOTP(
           phone,
           otp
         );
 
-      if (
-        result?.status !==
-        "approved"
-      ) {
+      if (!result.success) {
+        let message =
+          "Invalid OTP. Please try again.";
+
+        if (
+          result.reason ===
+          "missing"
+        ) {
+          message =
+            "No active OTP found. Please request a new OTP.";
+        }
+
+        if (
+          result.reason ===
+          "expired"
+        ) {
+          message =
+            "OTP expired. Please request a new OTP.";
+        }
+
+        if (
+          result.reason ===
+          "attempts"
+        ) {
+          message =
+            "Too many incorrect attempts. Please request a new OTP.";
+        }
+
         return res
           .status(401)
           .json({
             success: false,
-
-            message:
-              "Invalid or expired OTP. Please request a new OTP."
+            message
           });
       }
 
       const existingMember =
-        members[phone] || null;
+        members[phone] ||
+        null;
 
       const isExistingMember =
         Boolean(
@@ -1233,20 +1454,11 @@ app.post(
     } catch (error) {
       console.error(
         "[OTP VERIFY ERROR]",
-        {
-          message:
-            error?.message,
-
-          status:
-            error?.status,
-
-          code:
-            error?.twilio?.code
-        }
+        error
       );
 
       return res
-        .status(502)
+        .status(500)
         .json({
           success: false,
 
@@ -1266,7 +1478,10 @@ NEW MEMBERSHIP REGISTRATION
 
 app.post(
   "/api/membership",
-  (req, res) => {
+  (
+    req,
+    res
+  ) => {
     try {
       const {
         name,
@@ -1326,7 +1541,9 @@ app.post(
           });
       }
 
-      if (!validGender(gender)) {
+      if (
+        !validGender(gender)
+      ) {
         return res
           .status(400)
           .json({
@@ -1337,7 +1554,9 @@ app.post(
           });
       }
 
-      if (!validGoal(goal)) {
+      if (
+        !validGoal(goal)
+      ) {
         return res
           .status(400)
           .json({
@@ -1377,9 +1596,7 @@ app.post(
 
       /*
       -----------------------------------------------------
-      IMPORTANT:
-      Do not trust amount sent by frontend.
-      Use server-side plan amount.
+      SERVER-SIDE PRICE
       -----------------------------------------------------
       */
 
@@ -1391,7 +1608,8 @@ app.post(
 
       if (
         requestedAmount !== null &&
-        requestedAmount !== serverAmount
+        requestedAmount !==
+          serverAmount
       ) {
         console.warn(
           `[MEMBERSHIP] Amount mismatch for ${phone}. Frontend: ${requestedAmount}, Server: ${serverAmount}`
@@ -1400,16 +1618,18 @@ app.post(
 
       /*
       -----------------------------------------------------
-      Prevent duplicate active membership.
+      DUPLICATE ACTIVE MEMBERSHIP
       -----------------------------------------------------
       */
 
       const existing =
-        members[phone] || null;
+        members[phone] ||
+        null;
 
       if (
         existing &&
-        existing.status === "ACTIVE"
+        existing.status ===
+          "ACTIVE"
       ) {
         return res
           .status(409)
@@ -1531,7 +1751,10 @@ RENEW MEMBERSHIP
 
 app.post(
   "/api/renew",
-  (req, res) => {
+  (
+    req,
+    res
+  ) => {
     try {
       const {
         phone: rawPhone,
@@ -1587,7 +1810,8 @@ app.post(
       }
 
       const member =
-        members[phone] || null;
+        members[phone] ||
+        null;
 
       if (!member) {
         return res
@@ -1608,7 +1832,8 @@ app.post(
 
       if (
         requestedAmount !== null &&
-        requestedAmount !== serverAmount
+        requestedAmount !==
+          serverAmount
       ) {
         console.warn(
           `[RENEWAL] Amount mismatch for ${phone}. Frontend: ${requestedAmount}, Server: ${serverAmount}`
@@ -1746,7 +1971,10 @@ GET MEMBER
 
 app.get(
   "/api/member",
-  (req, res) => {
+  (
+    req,
+    res
+  ) => {
     try {
       const phone =
         normalizeIndianPhone(
@@ -1765,7 +1993,8 @@ app.get(
       }
 
       const member =
-        members[phone] || null;
+        members[phone] ||
+        null;
 
       if (!member) {
         return res
@@ -1811,7 +2040,11 @@ ADMIN AUTHENTICATION
 =========================================================
 */
 
-function requireAdmin(req, res, next) {
+function requireAdmin(
+  req,
+  res,
+  next
+) {
   if (!ADMIN_KEY) {
     return res
       .status(503)
@@ -1824,13 +2057,16 @@ function requireAdmin(req, res, next) {
   }
 
   const providedKey =
-    req.headers["x-admin-key"] ||
+    req.headers[
+      "x-admin-key"
+    ] ||
     req.body?.adminKey ||
     req.query?.adminKey ||
     "";
 
   if (
-    typeof providedKey !== "string" ||
+    typeof providedKey !==
+      "string" ||
     providedKey.length === 0
   ) {
     return res
@@ -1845,13 +2081,17 @@ function requireAdmin(req, res, next) {
 
   const actual =
     Buffer.from(
-      String(providedKey),
+      String(
+        providedKey
+      ),
       "utf8"
     );
 
   const expected =
     Buffer.from(
-      String(ADMIN_KEY),
+      String(
+        ADMIN_KEY
+      ),
       "utf8"
     );
 
@@ -1898,7 +2138,10 @@ ADMIN - ALL MEMBERS
 app.get(
   "/api/admin/members",
   requireAdmin,
-  (req, res) => {
+  (
+    req,
+    res
+  ) => {
     try {
       const list =
         Object.values(
@@ -1944,7 +2187,10 @@ ADMIN - SINGLE MEMBER
 app.get(
   "/api/admin/member/:phone",
   requireAdmin,
-  (req, res) => {
+  (
+    req,
+    res
+  ) => {
     try {
       const phone =
         normalizeIndianPhone(
@@ -1963,7 +2209,8 @@ app.get(
       }
 
       const member =
-        members[phone] || null;
+        members[phone] ||
+        null;
 
       if (!member) {
         return res
@@ -2019,7 +2266,10 @@ ADMIN - DELETE MEMBER
 app.delete(
   "/api/admin/member/:phone",
   requireAdmin,
-  (req, res) => {
+  (
+    req,
+    res
+  ) => {
     try {
       const phone =
         normalizeIndianPhone(
@@ -2090,7 +2340,10 @@ ADMIN - DASHBOARD STATS
 app.get(
   "/api/admin/stats",
   requireAdmin,
-  (req, res) => {
+  (
+    req,
+    res
+  ) => {
     try {
       const allMembers =
         Object.values(
@@ -2131,11 +2384,13 @@ app.get(
       let totalRevenue = 0;
 
       for (
-        const member of allMembers
+        const member of
+          allMembers
       ) {
         totalRevenue +=
           Number(
-            member.amount || 0
+            member.amount ||
+              0
           );
 
         if (
@@ -2199,7 +2454,10 @@ app.get(
 
 app.use(
   "/api",
-  (req, res) => {
+  (
+    req,
+    res
+  ) => {
     res
       .status(404)
       .json({
@@ -2271,23 +2529,33 @@ app.listen(
     );
 
     console.log(
-      `Members: ${Object.keys(members).length}`
+      `Members: ${
+        Object.keys(
+          members
+        ).length
+      }`
     );
 
     console.log(
-      `Twilio configured: ${twilioConfigured()}`
+      `Twilio configured: ${
+        twilioConfigured()
+      }`
     );
 
     console.log(
-      `Verification secret configured: ${Boolean(
-        VERIFY_TOKEN_SECRET
-      )}`
+      `Verification secret configured: ${
+        Boolean(
+          VERIFY_TOKEN_SECRET
+        )
+      }`
     );
 
     console.log(
-      `Admin configured: ${Boolean(
-        ADMIN_KEY
-      )}`
+      `Admin configured: ${
+        Boolean(
+          ADMIN_KEY
+        )
+      }`
     );
 
     console.log(
