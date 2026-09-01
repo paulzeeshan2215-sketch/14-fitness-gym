@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#070b09">
+
 <title>14 FITNESS GYM — Train. Transform. Become Stronger.</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,6 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
   --bg:#060a08;
   --panel:#0d1510;
@@ -21,9 +24,6 @@
   --muted:#89958d;
   --line:rgba(255,255,255,.10);
   --shadow:0 30px 90px rgba(0,0,0,.42);
-  --blue:#49a7ff;
-  --violet:#a66bff;
-  --cyan:#35e8ff;
   --green:#65ff9a;
   --red:#ff6262;
   --orange:#ffb84d;
@@ -32,11 +32,11 @@
 *{
   box-sizing:border-box;
   margin:0;
-  padding:0
+  padding:0;
 }
 
 html{
-  scroll-behavior:smooth
+  scroll-behavior:smooth;
 }
 
 body{
@@ -46,7 +46,7 @@ body{
     radial-gradient(circle at 78% 10%,rgba(202,255,36,.09),transparent 25%),
     radial-gradient(circle at 10% 65%,rgba(30,100,45,.13),transparent 28%),
     var(--bg);
-  overflow-x:hidden
+  overflow-x:hidden;
 }
 
 body:before{
@@ -59,20 +59,21 @@ body:before{
   background-image:
     linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
     linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
-  background-size:64px 64px
+  background-size:64px 64px;
 }
 
 a{
   color:inherit;
-  text-decoration:none
+  text-decoration:none;
 }
 
-button,input{
-  font:inherit
+button,
+input{
+  font:inherit;
 }
 
 button{
-  cursor:pointer
+  cursor:pointer;
 }
 
 .noise{
@@ -81,7 +82,7 @@ button{
   pointer-events:none;
   z-index:100;
   opacity:.018;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* ================= HEADER ================= */
@@ -96,21 +97,21 @@ header{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  transition:.35s
+  transition:.35s;
 }
 
 header.scrolled{
   padding:11px 4%;
   background:rgba(6,10,8,.82);
   backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--line)
+  border-bottom:1px solid var(--line);
 }
 
 .logo{
   display:flex;
   align-items:center;
   font:900 29px "Barlow Condensed";
-  letter-spacing:.5px
+  letter-spacing:.5px;
 }
 
 .logo b{
@@ -119,17 +120,17 @@ header.scrolled{
   padding:7px 10px;
   border-radius:7px;
   margin-right:8px;
-  box-shadow:0 0 30px rgba(202,255,36,.2)
+  box-shadow:0 0 30px rgba(202,255,36,.2);
 }
 
 .logo span{
   color:var(--lime);
-  margin-left:5px
+  margin-left:5px;
 }
 
 nav{
   display:flex;
-  gap:28px
+  gap:28px;
 }
 
 nav a{
@@ -139,7 +140,7 @@ nav a{
   font-weight:900;
   letter-spacing:1.5px;
   text-transform:uppercase;
-  transition:.25s
+  transition:.25s;
 }
 
 nav a:after{
@@ -150,17 +151,17 @@ nav a:after{
   width:0;
   height:2px;
   background:var(--lime);
-  transition:.25s
+  transition:.25s;
 }
 
 nav a:hover,
 nav a.active{
-  color:#fff
+  color:#fff;
 }
 
 nav a:hover:after,
 nav a.active:after{
-  width:100%
+  width:100%;
 }
 
 .header-btn,
@@ -172,20 +173,20 @@ nav a.active:after{
   letter-spacing:.7px;
   transition:.3s;
   position:relative;
-  overflow:hidden
+  overflow:hidden;
 }
 
 .header-btn{
   padding:12px 19px;
   background:var(--lime);
   color:#071006;
-  font-size:10px
+  font-size:10px;
 }
 
 .header-btn:hover,
 .btn-primary:hover{
   transform:translateY(-4px);
-  box-shadow:0 18px 45px rgba(202,255,36,.22)
+  box-shadow:0 18px 45px rgba(202,255,36,.22);
 }
 
 .menu-btn{
@@ -195,7 +196,7 @@ nav a.active:after{
   border-radius:8px;
   border:1px solid var(--line);
   background:#101711;
-  color:#fff
+  color:#fff;
 }
 
 /* ================= HERO ================= */
@@ -208,12 +209,12 @@ nav a.active:after{
   grid-template-columns:.85fr 1.15fr;
   align-items:center;
   gap:25px;
-  overflow:hidden
+  overflow:hidden;
 }
 
 .hero-copy{
   position:relative;
-  z-index:4
+  z-index:4;
 }
 
 .eyebrow,
@@ -222,14 +223,14 @@ nav a.active:after{
   font-size:9px;
   font-weight:900;
   letter-spacing:3px;
-  text-transform:uppercase
+  text-transform:uppercase;
 }
 
 .eyebrow{
   display:flex;
   align-items:center;
   gap:10px;
-  margin-bottom:24px
+  margin-bottom:24px;
 }
 
 .eyebrow:before{
@@ -237,23 +238,23 @@ nav a.active:after{
   width:34px;
   height:2px;
   background:var(--lime);
-  box-shadow:0 0 14px var(--lime)
+  box-shadow:0 0 14px var(--lime);
 }
 
 .hero h1{
   font:900 clamp(76px,10vw,150px)/.76 "Barlow Condensed";
   text-transform:uppercase;
-  letter-spacing:-4px
+  letter-spacing:-4px;
 }
 
 .hero h1 .lime{
   color:var(--lime);
-  text-shadow:6px 6px 0 #294000
+  text-shadow:6px 6px 0 #294000;
 }
 
 .hero h1 .outline{
   color:transparent;
-  -webkit-text-stroke:1px rgba(255,255,255,.75)
+  -webkit-text-stroke:1px rgba(255,255,255,.75);
 }
 
 .hero-description{
@@ -261,45 +262,45 @@ nav a.active:after{
   margin:30px 0;
   color:var(--muted);
   font-size:13px;
-  line-height:1.8
+  line-height:1.8;
 }
 
 .hero-actions{
   display:flex;
   flex-wrap:wrap;
-  gap:11px
+  gap:11px;
 }
 
 .btn{
   padding:15px 23px;
-  font-size:10px
+  font-size:10px;
 }
 
 .btn-primary{
   background:var(--lime);
-  color:#071006
+  color:#071006;
 }
 
 .btn-dark{
   background:#111914;
   color:#fff;
-  border:1px solid var(--line)
+  border:1px solid var(--line);
 }
 
 .btn-dark:hover{
   border-color:rgba(202,255,36,.5);
-  transform:translateY(-3px)
+  transform:translateY(-3px);
 }
 
 .hero-stats{
   display:flex;
   gap:30px;
-  margin-top:42px
+  margin-top:42px;
 }
 
 .hero-stat strong{
   display:block;
-  font:800 32px "Barlow Condensed"
+  font:800 32px "Barlow Condensed";
 }
 
 .hero-stat span{
@@ -307,7 +308,7 @@ nav a.active:after{
   font-size:8px;
   font-weight:800;
   letter-spacing:1.2px;
-  text-transform:uppercase
+  text-transform:uppercase;
 }
 
 .hero-visual{
@@ -316,7 +317,7 @@ nav a.active:after{
   display:flex;
   align-items:center;
   justify-content:center;
-  z-index:2
+  z-index:2;
 }
 
 .athlete-glow{
@@ -326,7 +327,7 @@ nav a.active:after{
   border-radius:50%;
   background:radial-gradient(circle,rgba(202,255,36,.24),transparent 67%);
   filter:blur(18px);
-  animation:pulse 4s ease-in-out infinite
+  animation:pulse 4s ease-in-out infinite;
 }
 
 .athlete-ring{
@@ -335,7 +336,7 @@ nav a.active:after{
   height:610px;
   border:1px solid rgba(202,255,36,.22);
   border-radius:50%;
-  animation:spin 24s linear infinite
+  animation:spin 24s linear infinite;
 }
 
 .athlete-ring:before,
@@ -344,21 +345,21 @@ nav a.active:after{
   position:absolute;
   border-radius:50%;
   background:var(--lime);
-  box-shadow:0 0 20px var(--lime)
+  box-shadow:0 0 20px var(--lime);
 }
 
 .athlete-ring:before{
   width:9px;
   height:9px;
   top:30px;
-  left:100px
+  left:100px;
 }
 
 .athlete-ring:after{
   width:6px;
   height:6px;
   right:85px;
-  bottom:120px
+  bottom:120px;
 }
 
 .athlete-frame{
@@ -369,7 +370,7 @@ nav a.active:after{
   overflow:hidden;
   border-radius:28px 28px 0 0;
   background:#111b14;
-  box-shadow:var(--shadow)
+  box-shadow:var(--shadow);
 }
 
 .athlete-frame:before{
@@ -379,7 +380,7 @@ nav a.active:after{
   z-index:1;
   background:
     linear-gradient(90deg,rgba(4,8,6,.45),transparent 35%,rgba(4,8,6,.12)),
-    linear-gradient(0deg,rgba(4,8,6,.85),transparent 48%)
+    linear-gradient(0deg,rgba(4,8,6,.85),transparent 48%);
 }
 
 .athlete-photo{
@@ -390,7 +391,7 @@ nav a.active:after{
   object-position:center top;
   filter:saturate(.82) contrast(1.08);
   transform:scale(1.02);
-  animation:photoFloat 6s ease-in-out infinite
+  animation:photoFloat 6s ease-in-out infinite;
 }
 
 .athlete-label{
@@ -402,7 +403,7 @@ nav a.active:after{
   border:1px solid rgba(255,255,255,.18);
   background:rgba(7,11,8,.68);
   backdrop-filter:blur(14px);
-  border-radius:9px
+  border-radius:9px;
 }
 
 .athlete-label small{
@@ -411,14 +412,14 @@ nav a.active:after{
   font-size:7px;
   font-weight:900;
   letter-spacing:1.6px;
-  text-transform:uppercase
+  text-transform:uppercase;
 }
 
 .athlete-label strong{
   display:block;
   color:var(--lime);
   font:900 28px "Barlow Condensed";
-  text-transform:uppercase
+  text-transform:uppercase;
 }
 
 .floating-card{
@@ -430,7 +431,7 @@ nav a.active:after{
   backdrop-filter:blur(18px);
   border:1px solid rgba(255,255,255,.13);
   box-shadow:0 25px 70px rgba(0,0,0,.35);
-  animation:float 5s ease-in-out infinite
+  animation:float 5s ease-in-out infinite;
 }
 
 .floating-card small{
@@ -440,38 +441,38 @@ nav a.active:after{
   font-weight:900;
   letter-spacing:1.5px;
   text-transform:uppercase;
-  margin-bottom:5px
+  margin-bottom:5px;
 }
 
 .floating-card strong{
   display:block;
   font:800 25px "Barlow Condensed";
-  text-transform:uppercase
+  text-transform:uppercase;
 }
 
 .card-one{
   left:-5px;
-  top:24%
+  top:24%;
 }
 
 .card-one strong{
-  color:var(--lime)
+  color:var(--lime);
 }
 
 .card-two{
   right:-5px;
   top:13%;
-  animation-delay:-2s
+  animation-delay:-2s;
 }
 
 .card-three{
   right:3%;
   bottom:12%;
-  animation-delay:-1s
+  animation-delay:-1s;
 }
 
 .card-three strong{
-  color:var(--lime)
+  color:var(--lime);
 }
 
 /* ================= TICKER ================= */
@@ -484,13 +485,13 @@ nav a.active:after{
   transform:rotate(-1.2deg) scale(1.03);
   margin:12px 0 0;
   position:relative;
-  z-index:10
+  z-index:10;
 }
 
 .ticker-track{
   display:flex;
   width:max-content;
-  animation:ticker 24s linear infinite
+  animation:ticker 24s linear infinite;
 }
 
 .ticker-group{
@@ -499,23 +500,23 @@ nav a.active:after{
   gap:25px;
   padding:15px 0;
   margin-right:25px;
-  white-space:nowrap
+  white-space:nowrap;
 }
 
 .ticker-group span{
   font:900 22px "Barlow Condensed";
-  letter-spacing:2px
+  letter-spacing:2px;
 }
 
 .ticker-group i{
-  font-style:normal
+  font-style:normal;
 }
 
 /* ================= SECTIONS ================= */
 
 .section{
   padding:125px 6%;
-  position:relative
+  position:relative;
 }
 
 .section-head{
@@ -523,21 +524,21 @@ nav a.active:after{
   align-items:end;
   justify-content:space-between;
   gap:40px;
-  margin-bottom:55px
+  margin-bottom:55px;
 }
 
 .section-head h2{
   font:900 clamp(58px,8vw,105px)/.8 "Barlow Condensed";
   text-transform:uppercase;
   letter-spacing:-2px;
-  margin-top:12px
+  margin-top:12px;
 }
 
 .section-head p{
   max-width:430px;
   color:var(--muted);
   font-size:12px;
-  line-height:1.8
+  line-height:1.8;
 }
 
 /* ================= PLANS ================= */
@@ -545,7 +546,7 @@ nav a.active:after{
 .plans{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:18px
+  gap:18px;
 }
 
 .plan{
@@ -555,13 +556,13 @@ nav a.active:after{
   border-radius:20px;
   padding:30px;
   overflow:hidden;
-  transition:.4s
+  transition:.4s;
 }
 
 .plan:hover{
   transform:translateY(-10px);
   border-color:rgba(202,255,36,.35);
-  box-shadow:var(--shadow)
+  box-shadow:var(--shadow);
 }
 
 .plan.best{
@@ -569,11 +570,11 @@ nav a.active:after{
   background:
     radial-gradient(circle at 90% 5%,rgba(202,255,36,.14),transparent 35%),
     linear-gradient(145deg,#16251a,#0b130e);
-  transform:translateY(-12px)
+  transform:translateY(-12px);
 }
 
 .plan.best:hover{
-  transform:translateY(-21px)
+  transform:translateY(-21px);
 }
 
 .ribbon{
@@ -586,33 +587,33 @@ nav a.active:after{
   border-radius:5px;
   font-size:7px;
   font-weight:900;
-  letter-spacing:1px
+  letter-spacing:1px;
 }
 
 .plan-number{
   color:#4d5a52;
-  font:800 45px "Barlow Condensed"
+  font:800 45px "Barlow Condensed";
 }
 
 .plan-name{
   font:800 30px "Barlow Condensed";
   text-transform:uppercase;
-  margin:5px 0 30px
+  margin:5px 0 30px;
 }
 
 .old{
   color:#59635d;
   text-decoration:line-through;
-  font-size:12px
+  font-size:12px;
 }
 
 .price{
-  font:900 68px/.9 "Barlow Condensed"
+  font:900 68px/.9 "Barlow Condensed";
 }
 
 .price small{
   font:600 9px Inter;
-  color:#69756d
+  color:#69756d;
 }
 
 .save{
@@ -623,7 +624,7 @@ nav a.active:after{
   background:rgba(202,255,36,.1);
   color:var(--lime);
   font-size:8px;
-  font-weight:900
+  font-weight:900;
 }
 
 .plan ul{
@@ -631,24 +632,24 @@ nav a.active:after{
   border-top:1px solid var(--line);
   padding-top:22px;
   display:grid;
-  gap:12px
+  gap:12px;
 }
 
 .plan li{
   color:#87928b;
-  font-size:10px
+  font-size:10px;
 }
 
 .plan li:before{
   content:"✓";
   color:var(--lime);
   font-weight:900;
-  margin-right:9px
+  margin-right:9px;
 }
 
 .plan .btn{
   width:100%;
-  margin-top:28px
+  margin-top:28px;
 }
 
 /* ================= MEMBERS ================= */
@@ -656,7 +657,7 @@ nav a.active:after{
 .members-section{
   background:#090e0b;
   border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line)
+  border-bottom:1px solid var(--line);
 }
 
 .member-toolbar{
@@ -665,7 +666,7 @@ nav a.active:after{
   align-items:center;
   gap:15px;
   margin-bottom:30px;
-  flex-wrap:wrap
+  flex-wrap:wrap;
 }
 
 .member-count{
@@ -676,7 +677,7 @@ nav a.active:after{
   font-size:9px;
   font-weight:900;
   letter-spacing:1.2px;
-  text-transform:uppercase
+  text-transform:uppercase;
 }
 
 .member-count b{
@@ -687,7 +688,7 @@ nav a.active:after{
   border-radius:50%;
   background:var(--lime);
   color:#071006;
-  font-size:12px
+  font-size:12px;
 }
 
 .member-search{
@@ -698,13 +699,13 @@ nav a.active:after{
   border-radius:8px;
   color:white;
   outline:0;
-  font-size:10px
+  font-size:10px;
 }
 
 .members-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:15px
+  gap:15px;
 }
 
 .member-card{
@@ -714,20 +715,20 @@ nav a.active:after{
   background:linear-gradient(145deg,#111a14,#0d130f);
   border:1px solid var(--line);
   transition:.35s;
-  overflow:hidden
+  overflow:hidden;
 }
 
 .member-card:hover{
   transform:translateY(-7px);
   border-color:rgba(202,255,36,.28);
-  box-shadow:var(--shadow)
+  box-shadow:var(--shadow);
 }
 
 .member-top{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:10px
+  gap:10px;
 }
 
 .member-avatar{
@@ -738,7 +739,7 @@ nav a.active:after{
   place-items:center;
   background:rgba(202,255,36,.1);
   color:var(--lime);
-  font:800 22px "Barlow Condensed"
+  font:800 22px "Barlow Condensed";
 }
 
 .member-status{
@@ -747,28 +748,28 @@ nav a.active:after{
   letter-spacing:1px;
   padding:6px 8px;
   border-radius:5px;
-  text-transform:uppercase
+  text-transform:uppercase;
 }
 
 .status-active{
   background:rgba(202,255,36,.1);
-  color:var(--lime)
+  color:var(--lime);
 }
 
 .status-pending{
   background:rgba(255,184,77,.1);
-  color:#ffb84d
+  color:#ffb84d;
 }
 
 .status-expired{
   background:rgba(255,93,93,.1);
-  color:#ff5d5d
+  color:#ff5d5d;
 }
 
 .member-name{
   font:800 29px "Barlow Condensed";
   text-transform:uppercase;
-  margin:17px 0 2px
+  margin:17px 0 2px;
 }
 
 .member-plan{
@@ -776,7 +777,7 @@ nav a.active:after{
   font-size:8px;
   font-weight:900;
   letter-spacing:1.2px;
-  text-transform:uppercase
+  text-transform:uppercase;
 }
 
 .member-days{
@@ -787,12 +788,12 @@ nav a.active:after{
   border:1px solid var(--line);
   display:flex;
   align-items:end;
-  justify-content:space-between
+  justify-content:space-between;
 }
 
 .member-days strong{
   font:900 45px/.8 "Barlow Condensed";
-  color:var(--lime)
+  color:var(--lime);
 }
 
 .member-days span{
@@ -800,52 +801,52 @@ nav a.active:after{
   font-size:7px;
   font-weight:900;
   text-transform:uppercase;
-  letter-spacing:1px
+  letter-spacing:1px;
 }
 
 .member-info{
   display:grid;
   gap:8px;
   border-top:1px solid var(--line);
-  padding-top:15px
+  padding-top:15px;
 }
 
 .info-row{
   display:flex;
   justify-content:space-between;
   gap:15px;
-  font-size:8px
+  font-size:8px;
 }
 
 .info-row span:first-child{
   color:#566159;
   text-transform:uppercase;
-  letter-spacing:1px
+  letter-spacing:1px;
 }
 
 .info-row span:last-child{
   color:#c0c8c3;
   font-weight:700;
-  text-align:right
+  text-align:right;
 }
 
 .empty-members{
   text-align:center;
   padding:70px 20px;
   border:1px dashed var(--line);
-  border-radius:15px
+  border-radius:15px;
 }
 
 .empty-members strong{
   display:block;
   font:800 38px "Barlow Condensed";
   text-transform:uppercase;
-  margin-bottom:8px
+  margin-bottom:8px;
 }
 
 .empty-members p{
   color:#68736c;
-  font-size:10px
+  font-size:10px;
 }
 
 /* ================= FEATURES ================= */
@@ -855,7 +856,7 @@ nav a.active:after{
   grid-template-columns:repeat(4,1fr);
   border:1px solid var(--line);
   border-radius:18px;
-  overflow:hidden
+  overflow:hidden;
 }
 
 .feature{
@@ -864,15 +865,15 @@ nav a.active:after{
   background:#0d140f;
   border-right:1px solid var(--line);
   position:relative;
-  transition:.4s
+  transition:.4s;
 }
 
 .feature:last-child{
-  border-right:0
+  border-right:0;
 }
 
 .feature:hover{
-  background:#121d15
+  background:#121d15;
 }
 
 .feature-number{
@@ -880,24 +881,24 @@ nav a.active:after{
   right:18px;
   top:10px;
   color:rgba(202,255,36,.05);
-  font:900 100px "Barlow Condensed"
+  font:900 100px "Barlow Condensed";
 }
 
 .feature-icon{
   font-size:27px;
-  margin-bottom:35px
+  margin-bottom:35px;
 }
 
 .feature h3{
   font:800 29px "Barlow Condensed";
   text-transform:uppercase;
-  margin-bottom:13px
+  margin-bottom:13px;
 }
 
 .feature p{
   color:#707b73;
   font-size:10px;
-  line-height:1.8
+  line-height:1.8;
 }
 
 /* ================= TIMINGS ================= */
@@ -905,13 +906,13 @@ nav a.active:after{
 .timings{
   background:
     radial-gradient(circle at 90% 30%,rgba(202,255,36,.09),transparent 30%),
-    #101a13
+    #101a13;
 }
 
 .schedule{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:12px
+  gap:12px;
 }
 
 .slot{
@@ -922,17 +923,17 @@ nav a.active:after{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  transition:.35s
+  transition:.35s;
 }
 
 .slot:hover{
   border-color:rgba(202,255,36,.3);
-  transform:translateX(5px)
+  transform:translateX(5px);
 }
 
 .slot.women{
   border-color:rgba(202,255,36,.5);
-  background:rgba(202,255,36,.05)
+  background:rgba(202,255,36,.05);
 }
 
 .slot span{
@@ -942,21 +943,21 @@ nav a.active:after{
   font-weight:800;
   letter-spacing:1.3px;
   text-transform:uppercase;
-  margin-bottom:5px
+  margin-bottom:5px;
 }
 
 .slot strong{
   font:800 35px "Barlow Condensed";
-  text-transform:uppercase
+  text-transform:uppercase;
 }
 
 .slot.women strong{
-  color:var(--lime)
+  color:var(--lime);
 }
 
 .slot>b{
   color:#3d493f;
-  font:800 28px "Barlow Condensed"
+  font:800 28px "Barlow Condensed";
 }
 
 /* ================= GALLERY ================= */
@@ -965,7 +966,7 @@ nav a.active:after{
   display:grid;
   grid-template-columns:1.4fr 1fr 1fr;
   grid-auto-rows:260px;
-  gap:12px
+  gap:12px;
 }
 
 .pic{
@@ -974,7 +975,7 @@ nav a.active:after{
   border-radius:15px;
   background:#111;
   border:1px solid var(--line);
-  min-height:220px
+  min-height:220px;
 }
 
 .pic img{
@@ -983,7 +984,7 @@ nav a.active:after{
   object-fit:cover;
   display:block;
   filter:saturate(.78) contrast(1.08);
-  transition:transform .7s,filter .5s
+  transition:transform .7s,filter .5s;
 }
 
 .pic:after{
@@ -991,12 +992,12 @@ nav a.active:after{
   position:absolute;
   inset:0;
   background:linear-gradient(to top,rgba(0,0,0,.72),transparent 60%);
-  pointer-events:none
+  pointer-events:none;
 }
 
 .pic:hover img{
   transform:scale(1.07);
-  filter:saturate(1) contrast(1.08)
+  filter:saturate(1) contrast(1.08);
 }
 
 .pic label{
@@ -1006,11 +1007,11 @@ nav a.active:after{
   bottom:18px;
   color:#fff;
   font:800 30px "Barlow Condensed";
-  text-transform:uppercase
+  text-transform:uppercase;
 }
 
 .big{
-  grid-row:span 2
+  grid-row:span 2;
 }
 
 /* ================= CTA ================= */
@@ -1022,7 +1023,7 @@ nav a.active:after{
   overflow:hidden;
   background:
     radial-gradient(circle at center,rgba(202,255,36,.15),transparent 35%),
-    #080d0a
+    #080d0a;
 }
 
 .cta:before{
@@ -1033,23 +1034,23 @@ nav a.active:after{
   transform:translate(-50%,-50%);
   font:900 420px "Barlow Condensed";
   color:rgba(255,255,255,.015);
-  pointer-events:none
+  pointer-events:none;
 }
 
 .cta-content{
   position:relative;
-  z-index:2
+  z-index:2;
 }
 
 .cta h2{
   font:900 clamp(65px,10vw,140px)/.78 "Barlow Condensed";
   text-transform:uppercase;
-  letter-spacing:-3px
+  letter-spacing:-3px;
 }
 
 .cta h2 span{
   color:var(--lime);
-  text-shadow:5px 5px 0 #294000
+  text-shadow:5px 5px 0 #294000;
 }
 
 .cta p{
@@ -1057,7 +1058,7 @@ nav a.active:after{
   margin:28px auto;
   color:#707b73;
   font-size:12px;
-  line-height:1.8
+  line-height:1.8;
 }
 
 footer{
@@ -1070,22 +1071,22 @@ footer{
   color:#657067;
   font-size:8px;
   text-transform:uppercase;
-  letter-spacing:1.2px
+  letter-spacing:1.2px;
 }
 
 footer b{
-  color:var(--lime)
+  color:var(--lime);
 }
 
 .reveal{
   opacity:0;
   transform:translateY(35px);
-  transition:opacity .8s,transform .8s
+  transition:opacity .8s,transform .8s;
 }
 
 .reveal.visible{
   opacity:1;
-  transform:translateY(0)
+  transform:translateY(0);
 }
 
 /* ================= ANIMATIONS ================= */
@@ -1093,850 +1094,45 @@ footer b{
 @keyframes pulse{
   0%,100%{
     transform:scale(.94);
-    opacity:.65
+    opacity:.65;
   }
   50%{
     transform:scale(1.06);
-    opacity:1
+    opacity:1;
   }
 }
 
 @keyframes spin{
   to{
-    transform:rotate(360deg)
+    transform:rotate(360deg);
   }
 }
 
 @keyframes float{
   0%,100%{
-    transform:translateY(0) rotate(-1deg)
+    transform:translateY(0) rotate(-1deg);
   }
   50%{
-    transform:translateY(-13px) rotate(1deg)
+    transform:translateY(-13px) rotate(1deg);
   }
 }
 
 @keyframes photoFloat{
   0%,100%{
-    transform:scale(1.02) translateY(0)
+    transform:scale(1.02) translateY(0);
   }
   50%{
-    transform:scale(1.045) translateY(-6px)
+    transform:scale(1.045) translateY(-6px);
   }
 }
 
 @keyframes ticker{
   from{
-    transform:translateX(0)
+    transform:translateX(0);
   }
   to{
-    transform:translateX(-50%)
+    transform:translateX(-50%);
   }
-}
-
-/* =========================================================
-   NEW OTP / MEMBERSHIP SYSTEM
-   ========================================================= */
-
-.modal{
-  position:fixed;
-  inset:0;
-  z-index:200;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  background:rgba(2,5,3,.82);
-  backdrop-filter:blur(20px)
-}
-
-.modal.open{
-  display:flex;
-  animation:modalIn .35s ease
-}
-
-@keyframes modalIn{
-  from{
-    opacity:0
-  }
-  to{
-    opacity:1
-  }
-}
-
-.modal-box{
-  width:min(980px,100%);
-  max-height:92vh;
-  overflow:auto;
-  background:
-    radial-gradient(circle at 10% 0,rgba(73,167,255,.08),transparent 28%),
-    radial-gradient(circle at 100% 100%,rgba(202,255,36,.08),transparent 30%),
-    linear-gradient(145deg,#111a14,#080d0a);
-  border:1px solid rgba(202,255,36,.22);
-  border-radius:24px;
-  box-shadow:0 40px 120px rgba(0,0,0,.65);
-  padding:28px;
-  position:relative
-}
-
-.modal-close{
-  position:absolute;
-  right:18px;
-  top:18px;
-  width:38px;
-  height:38px;
-  border:1px solid var(--line);
-  border-radius:9px;
-  background:#0b120e;
-  color:#fff;
-  z-index:20;
-  transition:.3s
-}
-
-.modal-close:hover{
-  background:#1a241d;
-  transform:rotate(90deg)
-}
-
-/* ================= OTP HEADER ================= */
-
-.otp-header{
-  text-align:center;
-  max-width:700px;
-  margin:0 auto 25px
-}
-
-.otp-kicker{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  color:var(--lime);
-  font-size:9px;
-  font-weight:900;
-  letter-spacing:3px;
-  text-transform:uppercase
-}
-
-.live-dot{
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:var(--lime);
-  box-shadow:0 0 15px var(--lime);
-  animation:livePulse 1.5s infinite
-}
-
-@keyframes livePulse{
-  0%,100%{
-    opacity:.45;
-    transform:scale(.8)
-  }
-  50%{
-    opacity:1;
-    transform:scale(1.2)
-  }
-}
-
-.otp-title{
-  font:900 clamp(44px,7vw,78px)/.82 "Barlow Condensed";
-  text-transform:uppercase;
-  margin:14px 0 12px;
-  letter-spacing:-1px
-}
-
-.otp-title span{
-  color:var(--lime);
-  text-shadow:4px 4px 0 #294000
-}
-
-.otp-sub{
-  color:#7d8981;
-  font-size:10px;
-  line-height:1.8;
-  max-width:620px;
-  margin:auto
-}
-
-/* ================= STEP INDICATOR ================= */
-
-.stepper{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  max-width:650px;
-  margin:25px auto 30px
-}
-
-.step{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:7px;
-  min-width:100px
-}
-
-.step-circle{
-  width:39px;
-  height:39px;
-  display:grid;
-  place-items:center;
-  border-radius:50%;
-  background:#101812;
-  border:1px solid rgba(255,255,255,.12);
-  color:#647068;
-  font:900 13px Inter;
-  transition:.45s;
-  position:relative
-}
-
-.step-label{
-  color:#59655e;
-  font-size:7px;
-  font-weight:900;
-  letter-spacing:1px;
-  text-transform:uppercase;
-  transition:.35s
-}
-
-.step-line{
-  flex:1;
-  height:1px;
-  max-width:120px;
-  background:rgba(255,255,255,.09);
-  position:relative;
-  overflow:hidden
-}
-
-.step-line:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(90deg,var(--lime),var(--cyan));
-  transform:translateX(-100%);
-  transition:.5s
-}
-
-.step.active .step-circle,
-.step.done .step-circle{
-  color:#071006;
-  background:var(--lime);
-  border-color:var(--lime);
-  box-shadow:0 0 25px rgba(202,255,36,.22)
-}
-
-.step.active .step-label,
-.step.done .step-label{
-  color:var(--lime)
-}
-
-.step.done .step-circle:after{
-  content:"✓";
-  position:absolute;
-  font-weight:900
-}
-
-.step.done .step-circle{
-  font-size:0
-}
-
-.step.done + .step-line:after{
-  transform:translateX(0)
-}
-
-/* ================= OTP PANELS ================= */
-
-.otp-stage{
-  position:relative;
-  min-height:315px
-}
-
-.otp-panel{
-  display:none;
-  animation:panelIn .45s ease
-}
-
-.otp-panel.active{
-  display:block
-}
-
-@keyframes panelIn{
-  from{
-    opacity:0;
-    transform:translateY(15px) scale(.985)
-  }
-  to{
-    opacity:1;
-    transform:translateY(0) scale(1)
-  }
-}
-
-.panel-icon{
-  width:66px;
-  height:66px;
-  margin:0 auto 16px;
-  display:grid;
-  place-items:center;
-  border-radius:18px;
-  background:
-    linear-gradient(145deg,rgba(73,167,255,.16),rgba(166,107,255,.10));
-  border:1px solid rgba(73,167,255,.25);
-  font-size:28px;
-  box-shadow:0 15px 50px rgba(73,167,255,.08)
-}
-
-.panel-heading{
-  text-align:center;
-  font:800 34px "Barlow Condensed";
-  text-transform:uppercase;
-  margin-bottom:7px
-}
-
-.panel-description{
-  text-align:center;
-  color:#707c74;
-  font-size:9px;
-  line-height:1.7;
-  max-width:500px;
-  margin:0 auto 22px
-}
-
-/* ================= FIELDS ================= */
-
-.identity{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-  max-width:760px;
-  margin:0 auto
-}
-
-.field{
-  background:rgba(10,16,12,.9);
-  border:1px solid rgba(255,255,255,.09);
-  border-radius:12px;
-  padding:14px;
-  transition:.3s
-}
-
-.field:focus-within{
-  border-color:rgba(202,255,36,.55);
-  box-shadow:0 0 0 3px rgba(202,255,36,.06),0 15px 40px rgba(0,0,0,.2)
-}
-
-.field label{
-  display:block;
-  color:#68746c;
-  font-size:7px;
-  font-weight:900;
-  letter-spacing:1.5px;
-  text-transform:uppercase;
-  margin-bottom:7px
-}
-
-.field input{
-  width:100%;
-  border:0;
-  outline:0;
-  background:transparent;
-  color:#fff;
-  font-size:13px
-}
-
-.field input::placeholder{
-  color:#465149
-}
-
-.phone-row{
-  display:flex;
-  gap:8px;
-  align-items:center
-}
-
-.phone-row span{
-  color:var(--lime);
-  font-size:13px;
-  font-weight:800
-}
-
-.otp-actions{
-  max-width:760px;
-  margin:18px auto 0;
-  display:flex;
-  gap:10px;
-  justify-content:center;
-  flex-wrap:wrap
-}
-
-.otp-actions .btn{
-  min-width:190px
-}
-
-.btn:disabled{
-  cursor:not-allowed;
-  opacity:.55;
-  transform:none!important;
-  box-shadow:none!important
-}
-
-/* ================= OTP SCREEN ================= */
-
-.otp-code-wrap{
-  max-width:570px;
-  margin:0 auto
-}
-
-.otp-phone-badge{
-  width:max-content;
-  max-width:100%;
-  margin:0 auto 17px;
-  padding:9px 14px;
-  border-radius:999px;
-  background:rgba(73,167,255,.08);
-  border:1px solid rgba(73,167,255,.25);
-  color:#91caff;
-  font-size:8px;
-  font-weight:900;
-  letter-spacing:1px
-}
-
-.otp-input{
-  width:100%!important;
-  padding:18px 14px!important;
-  border-radius:15px!important;
-  border:1px solid rgba(202,255,36,.22)!important;
-  background:#080d0a!important;
-  letter-spacing:13px!important;
-  text-align:center!important;
-  font-size:25px!important;
-  font-weight:900!important;
-  color:var(--lime)!important;
-  box-shadow:inset 0 0 30px rgba(202,255,36,.025)
-}
-
-.otp-input:focus{
-  border-color:var(--lime)!important;
-  box-shadow:
-    0 0 0 3px rgba(202,255,36,.06),
-    0 0 35px rgba(202,255,36,.08)!important
-}
-
-.otp-status{
-  min-height:20px;
-  margin-top:11px;
-  text-align:center;
-  color:#8b9790;
-  font-size:9px
-}
-
-.otp-status.success{
-  color:var(--green)
-}
-
-.otp-status.error{
-  color:var(--red)
-}
-
-.otp-status.info{
-  color:#8cc8ff
-}
-
-.resend-row{
-  margin-top:15px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap
-}
-
-.resend-text{
-  color:#56625a;
-  font-size:8px
-}
-
-.resend-btn{
-  border:0;
-  background:transparent;
-  color:var(--cyan);
-  font-size:8px;
-  font-weight:900;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  padding:5px
-}
-
-.resend-btn:disabled{
-  color:#4c5851;
-  cursor:not-allowed
-}
-
-/* ================= VERIFIED SCREEN ================= */
-
-.success-panel{
-  text-align:center;
-  padding:15px 0 5px
-}
-
-.success-ring{
-  width:100px;
-  height:100px;
-  margin:0 auto 20px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  border:1px solid rgba(202,255,36,.5);
-  background:rgba(202,255,36,.08);
-  box-shadow:
-    0 0 0 10px rgba(202,255,36,.025),
-    0 0 70px rgba(202,255,36,.14);
-  animation:successPop .6s cubic-bezier(.2,1.5,.4,1)
-}
-
-.success-ring span{
-  font-size:42px;
-  color:var(--lime)
-}
-
-@keyframes successPop{
-  0%{
-    transform:scale(.2);
-    opacity:0
-  }
-  70%{
-    transform:scale(1.12)
-  }
-  100%{
-    transform:scale(1);
-    opacity:1
-  }
-}
-
-.success-title{
-  font:900 53px "Barlow Condensed";
-  text-transform:uppercase
-}
-
-.success-title span{
-  color:var(--lime)
-}
-
-.success-text{
-  color:#77837b;
-  font-size:10px;
-  line-height:1.8;
-  margin:8px auto 20px;
-  max-width:500px
-}
-
-.verified-badge{
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  padding:8px 12px;
-  border-radius:999px;
-  color:var(--green);
-  background:rgba(101,255,154,.06);
-  border:1px solid rgba(101,255,154,.2);
-  font-size:7px;
-  font-weight:900;
-  letter-spacing:1px;
-  text-transform:uppercase
-}
-
-.verified-badge i{
-  width:6px;
-  height:6px;
-  background:var(--green);
-  border-radius:50%;
-  box-shadow:0 0 10px var(--green)
-}
-
-/* ================= PLAN SELECTOR ================= */
-
-.plans-picker{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:13px;
-  margin-top:24px
-}
-
-.pick-card{
-  padding:20px;
-  border-radius:16px;
-  border:1px solid var(--line);
-  background:#0d1510;
-  transition:.3s;
-  position:relative
-}
-
-.pick-card:hover{
-  transform:translateY(-5px);
-  border-color:rgba(202,255,36,.45)
-}
-
-.pick-card.featured{
-  border-color:rgba(202,255,36,.65);
-  background:
-    radial-gradient(circle at 100% 0,rgba(202,255,36,.13),transparent 38%),
-    #101a13
-}
-
-.pick-badge{
-  position:absolute;
-  right:12px;
-  top:12px;
-  background:var(--lime);
-  color:#071006;
-  padding:5px 7px;
-  border-radius:4px;
-  font-size:6px;
-  font-weight:900
-}
-
-.pick-no{
-  color:#536057;
-  font:800 32px "Barlow Condensed"
-}
-
-.pick-name{
-  font:800 27px "Barlow Condensed";
-  text-transform:uppercase
-}
-
-.pick-price{
-  font:900 48px "Barlow Condensed";
-  margin:12px 0 2px
-}
-
-.pick-period{
-  color:#66726a;
-  font-size:8px;
-  text-transform:uppercase
-}
-
-.pick-desc{
-  color:#7f8b83;
-  font-size:9px;
-  line-height:1.7;
-  margin:14px 0;
-  min-height:46px
-}
-
-.pick-card .btn{
-  width:100%
-}
-
-/* ================= RENEWAL ================= */
-
-.return-box{
-  margin-top:22px
-}
-
-.return-box-header{
-  text-align:center;
-  margin-bottom:20px
-}
-
-.return-box-header h3{
-  font:900 40px "Barlow Condensed";
-  text-transform:uppercase
-}
-
-.return-box-header h3 span{
-  color:var(--lime)
-}
-
-.return-box-header p{
-  color:#7b877f;
-  font-size:9px;
-  line-height:1.7;
-  max-width:620px;
-  margin:7px auto 0
-}
-
-.renewal-grid{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:10px
-}
-
-.renew-card{
-  position:relative;
-  padding:17px 13px;
-  min-height:185px;
-  border-radius:15px;
-  background:
-    linear-gradient(145deg,#111a14,#0a100c);
-  border:1px solid rgba(255,255,255,.09);
-  text-align:center;
-  overflow:hidden;
-  transition:.35s
-}
-
-.renew-card:before{
-  content:"";
-  position:absolute;
-  width:100px;
-  height:100px;
-  left:50%;
-  top:-70px;
-  transform:translateX(-50%);
-  border-radius:50%;
-  background:rgba(202,255,36,.08);
-  filter:blur(20px);
-  transition:.4s
-}
-
-.renew-card:hover{
-  transform:translateY(-8px);
-  border-color:rgba(202,255,36,.4);
-  box-shadow:0 20px 55px rgba(0,0,0,.35)
-}
-
-.renew-card:hover:before{
-  background:rgba(202,255,36,.18);
-  transform:translateX(-50%) scale(1.4)
-}
-
-.renew-card.recommended{
-  border-color:rgba(202,255,36,.55);
-  background:
-    radial-gradient(circle at 50% 0,rgba(202,255,36,.12),transparent 45%),
-    #101a13
-}
-
-.renew-tag{
-  display:inline-block;
-  padding:5px 7px;
-  border-radius:4px;
-  background:rgba(202,255,36,.1);
-  color:var(--lime);
-  font-size:6px;
-  font-weight:900;
-  letter-spacing:.8px;
-  text-transform:uppercase;
-  margin-bottom:6px
-}
-
-.renew-months{
-  color:#6b776f;
-  font-size:7px;
-  font-weight:900;
-  letter-spacing:1px;
-  text-transform:uppercase
-}
-
-.renew-price{
-  font:900 38px "Barlow Condensed";
-  color:#fff;
-  margin:4px 0
-}
-
-.renew-price small{
-  display:block;
-  color:#5f6b63;
-  font:600 7px Inter;
-  text-transform:uppercase
-}
-
-.renew-total{
-  color:#7e8a82;
-  font-size:7px;
-  margin-bottom:9px
-}
-
-.renew-card .btn{
-  width:100%;
-  padding:10px 7px;
-  font-size:7px
-}
-
-.member-welcome{
-  display:none
-}
-
-.member-welcome.show{
-  display:block
-}
-
-.welcome-header{
-  text-align:center
-}
-
-.member-welcome .avatar{
-  margin:0 auto 12px;
-  width:78px;
-  height:78px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  background:rgba(202,255,36,.12);
-  color:var(--lime);
-  font:900 38px "Barlow Condensed";
-  border:1px solid rgba(202,255,36,.35);
-  box-shadow:0 0 50px rgba(202,255,36,.08)
-}
-
-.member-welcome h3{
-  font:900 50px "Barlow Condensed";
-  text-transform:uppercase;
-  margin-top:14px
-}
-
-.member-welcome p{
-  color:#7e8982;
-  font-size:10px
-}
-
-.welcome-status{
-  margin:13px auto 0;
-  display:inline-flex;
-  padding:7px 10px;
-  border-radius:999px;
-  background:rgba(101,255,154,.06);
-  border:1px solid rgba(101,255,154,.18);
-  color:var(--green);
-  font-size:7px;
-  font-weight:900;
-  letter-spacing:1px;
-  text-transform:uppercase
-}
-
-.gate-note{
-  margin-top:17px;
-  color:#68746c;
-  font-size:8px;
-  line-height:1.6;
-  text-align:center
-}
-
-.gate-note b{
-  color:#aeb8b1
-}
-
-.secure-dot{
-  display:inline-block;
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  background:var(--lime);
-  box-shadow:0 0 10px var(--lime);
-  margin-right:6px
-}
-
-.back-btn{
-  border:0;
-  background:transparent;
-  color:#69756d;
-  font-size:8px;
-  font-weight:900;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  padding:8px
-}
-
-.back-btn:hover{
-  color:#fff
 }
 
 /* ================= RESPONSIVE ================= */
@@ -1944,103 +1140,71 @@ footer b{
 @media(max-width:1000px){
 
   nav{
-    gap:17px
+    gap:17px;
   }
 
   .hero{
     grid-template-columns:1fr;
     text-align:center;
-    padding-top:140px
+    padding-top:140px;
   }
 
   .hero-copy{
     max-width:800px;
-    margin:auto
+    margin:auto;
   }
 
   .eyebrow{
-    justify-content:center
+    justify-content:center;
   }
 
   .hero-description{
-    margin-inline:auto
+    margin-inline:auto;
   }
 
   .hero-actions,
   .hero-stats{
-    justify-content:center
+    justify-content:center;
   }
 
   .hero-visual{
-    min-height:590px
+    min-height:590px;
   }
 
   .plans{
-    grid-template-columns:1fr
+    grid-template-columns:1fr;
   }
 
   .plan.best{
-    transform:none
+    transform:none;
   }
 
   .plan.best:hover{
-    transform:translateY(-10px)
+    transform:translateY(-10px);
   }
 
   .members-grid{
-    grid-template-columns:1fr 1fr
+    grid-template-columns:1fr 1fr;
   }
 
   .features{
-    grid-template-columns:1fr 1fr
-  }
-
-  .plans-picker{
-    grid-template-columns:1fr
-  }
-
-  .pick-card{
-    display:grid;
-    grid-template-columns:1fr auto;
-    column-gap:15px;
-    align-items:center
-  }
-
-  .pick-card .pick-desc{
-    grid-column:1/2
-  }
-
-  .pick-card .btn{
-    grid-column:2;
-    grid-row:1/5;
-    width:180px
-  }
-
-  .pick-badge{
-    position:static;
-    display:inline-block;
-    width:max-content;
-    margin-bottom:4px
-  }
-
-  .renewal-grid{
-    grid-template-columns:repeat(3,1fr)
+    grid-template-columns:1fr 1fr;
   }
 }
 
 @media(max-width:700px){
 
   header{
-    padding:14px 5%
+    padding:14px 5%;
   }
 
   nav,
   header .header-btn{
-    display:none
+    display:none;
   }
 
   .menu-btn{
-    display:block
+    display:block;
   }
 
   nav.mobile-open{
@@ -2055,189 +1219,127 @@ footer b{
     background:rgba(10,15,12,.96);
     backdrop-filter:blur(20px);
     border:1px solid var(--line);
-    border-radius:12px
+    border-radius:12px;
   }
 
   .hero{
-    padding-inline:5%
+    padding-inline:5%;
   }
 
   .hero h1{
     font-size:76px;
-    letter-spacing:-2px
+    letter-spacing:-2px;
   }
 
   .hero-visual{
-    min-height:500px
+    min-height:500px;
   }
 
   .athlete-frame{
     height:510px;
-    width:92%
+    width:92%;
   }
 
   .athlete-ring{
     width:430px;
-    height:430px
+    height:430px;
   }
 
   .card-one{
-    left:-5px
+    left:-5px;
   }
 
   .card-two{
-    right:-5px
+    right:-5px;
   }
 
   .card-three{
     right:0;
-    bottom:8%
+    bottom:8%;
   }
 
   .section{
-    padding:90px 5%
+    padding:90px 5%;
   }
 
   .section-head{
     display:block;
-    margin-bottom:40px
+    margin-bottom:40px;
   }
 
   .section-head p{
-    margin-top:22px
+    margin-top:22px;
   }
 
   .features{
-    grid-template-columns:1fr
+    grid-template-columns:1fr;
   }
 
   .feature{
-    border-right:0
+    border-right:0;
   }
 
   .schedule{
-    grid-template-columns:1fr
+    grid-template-columns:1fr;
   }
 
   .members-grid{
-    grid-template-columns:1fr
+    grid-template-columns:1fr;
   }
 
   .gallery{
     grid-template-columns:1fr;
-    grid-auto-rows:220px
+    grid-auto-rows:220px;
   }
 
   .big{
-    grid-row:span 1
+    grid-row:span 1;
   }
 
   footer{
     display:block;
     text-align:center;
-    line-height:2
-  }
-
-  .identity{
-    grid-template-columns:1fr
-  }
-
-  .modal{
-    padding:10px
-  }
-
-  .modal-box{
-    padding:20px;
-    max-height:94vh
-  }
-
-  .member-welcome h3{
-    font-size:42px
-  }
-
-  .step{
-    min-width:75px
-  }
-
-  .step-label{
-    font-size:6px
-  }
-
-  .step-line{
-    max-width:50px
-  }
-
-  .otp-input{
-    letter-spacing:8px!important;
-    font-size:21px!important
-  }
-
-  .renewal-grid{
-    grid-template-columns:1fr 1fr
+    line-height:2;
   }
 }
 
 @media(max-width:430px){
 
   .logo{
-    font-size:24px
+    font-size:24px;
   }
 
   .hero h1{
-    font-size:65px
+    font-size:65px;
   }
 
   .hero-stats{
-    gap:18px
+    gap:18px;
   }
 
   .hero-stat strong{
-    font-size:27px
+    font-size:27px;
   }
 
   .floating-card{
-    padding:11px
+    padding:11px;
   }
 
   .floating-card strong{
-    font-size:20px
+    font-size:20px;
   }
 
   .member-toolbar{
-    align-items:stretch
+    align-items:stretch;
   }
 
   .member-search{
-    width:100%
-  }
-
-  .pick-card{
-    display:block
-  }
-
-  .pick-card .btn{
     width:100%;
-    margin-top:10px
-  }
-
-  .renewal-grid{
-    grid-template-columns:1fr
-  }
-
-  .step{
-    min-width:60px
-  }
-
-  .step-circle{
-    width:34px;
-    height:34px
-  }
-
-  .step-line{
-    max-width:30px
   }
 }
+
 </style>
+
 </head>
 
 <body>
@@ -2261,8 +1363,13 @@ footer b{
   <a href="#gallery">Gym</a>
 </nav>
 
-<button class="header-btn" onclick="openJoin()">Join Now →</button>
-<button class="menu-btn" id="menuBtn">☰</button>
+<a class="header-btn" href="#plans">
+  Join Now →
+</a>
+
+<button class="menu-btn" id="menuBtn">
+  ☰
+</button>
 
 </header>
 
@@ -2272,7 +1379,9 @@ footer b{
 
 <div class="hero-copy reveal">
 
-<div class="eyebrow">Premium Unisex Fitness Club</div>
+<div class="eyebrow">
+  Premium Unisex Fitness Club
+</div>
 
 <h1>
 Forge<br>
@@ -2288,17 +1397,15 @@ improve fitness and stay consistent — one session at a time.
 
 <div class="hero-actions">
 
-<button
+<a
 class="btn btn-primary"
-onclick="document.querySelector('#plans').scrollIntoView({behavior:'smooth'})">
-View Memberships →
-</button>
+href="#plans">
+View Memberships → </a>
 
-<button
+<a
 class="btn btn-dark"
-onclick="openJoin()">
-Start Your Journey
-</button>
+href="#plans">
+Start Your Journey </a>
 
 </div>
 
@@ -2417,8 +1524,16 @@ loading="eager">
 <div class="section-head reveal">
 
 <div>
-<div class="kicker">Membership Plans</div>
-<h2>Choose Your<br>Commitment.</h2>
+
+<div class="kicker">
+Membership Plans
+</div>
+
+<h2>
+Choose Your<br>
+Commitment.
+</h2>
+
 </div>
 
 <p>
@@ -2430,15 +1545,30 @@ Every membership gives you access to the 14 FITNESS training environment.
 
 <div class="plans">
 
+<!-- STARTER -->
+
 <article class="plan reveal">
 
-<div class="plan-number">01</div>
-<div class="plan-name">Starter</div>
+<div class="plan-number">
+01
+</div>
 
-<div class="old">₹2,000</div>
-<div class="price">₹1,400 <small>/ admission</small></div>
+<div class="plan-name">
+Starter
+</div>
 
-<div class="save">🔥 ADMISSION + 1 MONTH FREE</div>
+<div class="old">
+₹2,000
+</div>
+
+<div class="price">
+₹1,400
+<small>/ admission</small>
+</div>
+
+<div class="save">
+🔥 ADMISSION + 1 MONTH FREE
+</div>
 
 <ul>
 <li>Admission fee ₹1,400</li>
@@ -2448,22 +1578,44 @@ Every membership gives you access to the 14 FITNESS training environment.
 <li>Member profile</li>
 </ul>
 
-<button class="btn btn-dark" onclick="openJoin('1400')">
+<a
+class="btn btn-dark"
+href="order.html?plan=1400">
+
 Join Starter →
-</button>
+
+</a>
 
 </article>
 
+<!-- TRANSFORMATION -->
+
 <article class="plan best reveal">
 
-<div class="ribbon">BEST VALUE</div>
-<div class="plan-number">02</div>
-<div class="plan-name">Transformation</div>
+<div class="ribbon">
+BEST VALUE
+</div>
 
-<div class="old">₹8,400</div>
-<div class="price">₹7,560 <small>/ 6 months</small></div>
+<div class="plan-number">
+02
+</div>
 
-<div class="save">⚡ 10% OFF + FREE ADMISSION</div>
+<div class="plan-name">
+Transformation
+</div>
+
+<div class="old">
+₹8,400
+</div>
+
+<div class="price">
+₹7,560
+<small>/ 6 months</small>
+</div>
+
+<div class="save">
+⚡ 10% OFF + FREE ADMISSION
+</div>
 
 <ul>
 <li>6 Months membership</li>
@@ -2474,21 +1626,40 @@ Join Starter →
 <li>Priority member support</li>
 </ul>
 
-<button class="btn btn-primary" onclick="openJoin('7560')">
+<a
+class="btn btn-primary"
+href="order.html?plan=7560">
+
 Choose Best Value →
-</button>
+
+</a>
 
 </article>
 
+<!-- ELITE -->
+
 <article class="plan reveal">
 
-<div class="plan-number">03</div>
-<div class="plan-name">Elite</div>
+<div class="plan-number">
+03
+</div>
 
-<div class="old">₹16,800</div>
-<div class="price">₹14,280 <small>/ 1 year</small></div>
+<div class="plan-name">
+Elite
+</div>
 
-<div class="save">👑 15% OFF + FREE ADMISSION</div>
+<div class="old">
+₹16,800
+</div>
+
+<div class="price">
+₹14,280
+<small>/ 1 year</small>
+</div>
+
+<div class="save">
+👑 15% OFF + FREE ADMISSION
+</div>
 
 <ul>
 <li>12 Months membership</li>
@@ -2499,13 +1670,18 @@ Choose Best Value →
 <li>Priority support</li>
 </ul>
 
-<button class="btn btn-dark" onclick="openJoin('14280')">
+<a
+class="btn btn-dark"
+href="order.html?plan=14280">
+
 Join Elite →
-</button>
+
+</a>
 
 </article>
 
 </div>
+
 </section>
 
 <!-- ================= MEMBERS ================= -->
@@ -2515,8 +1691,16 @@ Join Elite →
 <div class="section-head reveal">
 
 <div>
-<div class="kicker">14 Fitness Community</div>
-<h2>Meet The<br>Members.</h2>
+
+<div class="kicker">
+14 Fitness Community
+</div>
+
+<h2>
+Meet The<br>
+Members.
+</h2>
+
 </div>
 
 <p>
@@ -2528,8 +1712,13 @@ Registered members are displayed with their selected plan and remaining membersh
 <div class="member-toolbar reveal">
 
 <div class="member-count">
-<b id="memberCount">0</b>
+
+<b id="memberCount">
+0
+</b>
+
 Registered Members
+
 </div>
 
 <input
@@ -2541,11 +1730,19 @@ autocomplete="off">
 
 </div>
 
-<div id="membersGrid" class="members-grid"></div>
+<div
+id="membersGrid"
+class="members-grid">
+</div>
 
-<div id="emptyMembers" class="empty-members">
+<div
+id="emptyMembers"
+class="empty-members">
 
-<strong>No Members Yet</strong>
+<strong>
+No Members Yet
+</strong>
+
 <p>
 Completed registrations saved on this device will appear here automatically.
 </p>
@@ -2561,8 +1758,16 @@ Completed registrations saved on this device will appear here automatically.
 <div class="section-head reveal">
 
 <div>
-<div class="kicker">The 14 Standard</div>
-<h2>More Than<br>A Gym.</h2>
+
+<div class="kicker">
+The 14 Standard
+</div>
+
+<h2>
+More Than<br>
+A Gym.
+</h2>
+
 </div>
 
 <p>
@@ -2574,39 +1779,83 @@ Everything is designed around consistency, focused training and measurable progr
 <div class="features">
 
 <div class="feature reveal">
-<div class="feature-number">01</div>
-<div class="feature-icon">🏋️</div>
-<h3>Modern Equipment</h3>
+
+<div class="feature-number">
+01
+</div>
+
+<div class="feature-icon">
+🏋️
+</div>
+
+<h3>
+Modern Equipment
+</h3>
+
 <p>
 Strength machines, free weights and cardio equipment for complete training sessions.
 </p>
+
 </div>
 
 <div class="feature reveal">
-<div class="feature-number">02</div>
-<div class="feature-icon">⚡</div>
-<h3>High Energy</h3>
+
+<div class="feature-number">
+02
+</div>
+
+<div class="feature-icon">
+⚡
+</div>
+
+<h3>
+High Energy
+</h3>
+
 <p>
 A focused atmosphere that helps you keep your momentum going.
 </p>
+
 </div>
 
 <div class="feature reveal">
-<div class="feature-number">03</div>
-<div class="feature-icon">🎯</div>
-<h3>Goal Focused</h3>
+
+<div class="feature-number">
+03
+</div>
+
+<div class="feature-icon">
+🎯
+</div>
+
+<h3>
+Goal Focused
+</h3>
+
 <p>
 Strength, fitness or general conditioning — train around your goal.
 </p>
+
 </div>
 
 <div class="feature reveal">
-<div class="feature-number">04</div>
-<div class="feature-icon">🤝</div>
-<h3>Community</h3>
+
+<div class="feature-number">
+04
+</div>
+
+<div class="feature-icon">
+🤝
+</div>
+
+<h3>
+Community
+</h3>
+
 <p>
 Train around people who show up, work hard and keep improving.
 </p>
+
 </div>
 
 </div>
@@ -2620,8 +1869,16 @@ Train around people who show up, work hard and keep improving.
 <div class="section-head reveal">
 
 <div>
-<div class="kicker">Gym Timings</div>
-<h2>Train On<br>Your Time.</h2>
+
+<div class="kicker">
+Gym Timings
+</div>
+
+<h2>
+Train On<br>
+Your Time.
+</h2>
+
 </div>
 
 <p>
@@ -2633,35 +1890,75 @@ Dedicated time windows for men and women create a comfortable and organized trai
 <div class="schedule">
 
 <div class="slot reveal">
+
 <div>
-<span>06:00 AM — 10:00 AM</span>
-<strong>MEN</strong>
+<span>
+06:00 AM — 10:00 AM
+</span>
+
+<strong>
+MEN
+</strong>
 </div>
-<b>01</b>
+
+<b>
+01
+</b>
+
 </div>
 
 <div class="slot women reveal">
+
 <div>
-<span>10:00 AM — 04:30 PM</span>
-<strong>WOMEN</strong>
+<span>
+10:00 AM — 04:30 PM
+</span>
+
+<strong>
+WOMEN
+</strong>
 </div>
-<b>02</b>
+
+<b>
+02
+</b>
+
 </div>
 
 <div class="slot reveal">
+
 <div>
-<span>04:30 PM — 12:00 AM</span>
-<strong>MEN</strong>
+<span>
+04:30 PM — 12:00 AM
+</span>
+
+<strong>
+MEN
+</strong>
 </div>
-<b>03</b>
+
+<b>
+03
+</b>
+
 </div>
 
 <div class="slot reveal">
+
 <div>
-<span>OPEN DAILY</span>
-<strong>CONSISTENCY</strong>
+<span>
+OPEN DAILY
+</span>
+
+<strong>
+CONSISTENCY
+</strong>
 </div>
-<b>∞</b>
+
+<b>
+∞
+</b>
+
 </div>
 
 </div>
@@ -2675,8 +1972,16 @@ Dedicated time windows for men and women create a comfortable and organized trai
 <div class="section-head reveal">
 
 <div>
-<div class="kicker">Inside 14 Fitness</div>
-<h2>Real Gym.<br>Real Work.</h2>
+
+<div class="kicker">
+Inside 14 Fitness
+</div>
+
+<h2>
+Real Gym.<br>
+Real Work.
+</h2>
+
 </div>
 
 <p>
@@ -2688,28 +1993,68 @@ Actual gym and training photography is used here instead of empty placeholder ca
 <div class="gallery">
 
 <div class="pic big reveal">
-<img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1400&q=88" alt="Modern gym floor" loading="lazy">
-<label>Strength Zone</label>
+
+<img
+src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1400&q=88"
+alt="Modern gym floor"
+loading="lazy">
+
+<label>
+Strength Zone
+</label>
+
 </div>
 
 <div class="pic reveal">
-<img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1100&q=88" alt="Gym equipment and training floor" loading="lazy">
-<label>Training Floor</label>
+
+<img
+src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1100&q=88"
+alt="Gym equipment and training floor"
+loading="lazy">
+
+<label>
+Training Floor
+</label>
+
 </div>
 
 <div class="pic reveal">
-<img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1100&q=88" alt="Fitness training" loading="lazy">
-<label>Energy</label>
+
+<img
+src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1100&q=88"
+alt="Fitness training"
+loading="lazy">
+
+<label>
+Energy
+</label>
+
 </div>
 
 <div class="pic reveal">
-<img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1100&q=88" alt="Athlete training" loading="lazy">
-<label>Every Rep</label>
+
+<img
+src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1100&q=88"
+alt="Athlete training"
+loading="lazy">
+
+<label>
+Every Rep
+</label>
+
 </div>
 
 <div class="pic reveal">
-<img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=1100&q=88" alt="Strength equipment" loading="lazy">
-<label>Free Weights</label>
+
+<img
+src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=1100&q=88"
+alt="Strength equipment"
+loading="lazy">
+
+<label>
+Free Weights
+</label>
+
 </div>
 
 </div>
@@ -2722,11 +2067,15 @@ Actual gym and training photography is used here instead of empty placeholder ca
 
 <div class="cta-content reveal">
 
-<div class="kicker">Your Next Version Starts Here</div>
+<div class="kicker">
+Your Next Version Starts Here
+</div>
 
 <h2>
 Stop Waiting.<br>
-<span>Start Training.</span>
+<span>
+Start Training.
+</span>
 </h2>
 
 <p>
@@ -2734,636 +2083,31 @@ The hardest part is making the decision to begin.
 Make yours today and start building your strongest self.
 </p>
 
-<button class="btn btn-primary" onclick="openJoin()">
+<a
+class="btn btn-primary"
+href="#plans">
+
 Become A Member →
-</button>
+
+</a>
 
 </div>
 
 </section>
 
+<!-- ================= FOOTER ================= -->
+
 <footer>
-<div>© 2026 <b>14 FITNESS GYM</b></div>
-<div>Train Hard • Stay Consistent • Become Stronger</div>
+
+<div>
+© 2026 <b>14 FITNESS GYM</b>
+</div>
+
+<div>
+Train Hard • Stay Consistent • Become Stronger
+</div>
+
 </footer>
-
-
-<!-- =========================================================
-     OTP MODAL
-     ========================================================= -->
-
-<div class="modal" id="joinModal" aria-hidden="true">
-
-<div class="modal-box">
-
-<button class="modal-close" onclick="closeJoin()">×</button>
-
-<!-- ================= OTP GATE ================= -->
-
-<div id="gateContent">
-
-<div class="otp-header">
-
-<div class="otp-kicker">
-<span class="live-dot"></span>
-14 FITNESS SECURE ENTRY
-</div>
-
-<div class="otp-title">
-Verify.<br>
-<span>Enter.</span> Train.
-</div>
-
-<p class="otp-sub">
-Securely verify your mobile number before entering the membership area.
-Your OTP is sent through the website's SMS backend.
-</p>
-
-</div>
-
-<!-- STEP INDICATOR -->
-
-<div class="stepper">
-
-<div class="step active" id="step1Indicator">
-<div class="step-circle">1</div>
-<div class="step-label">Your Details</div>
-</div>
-
-<div class="step-line" id="stepLine1"></div>
-
-<div class="step" id="step2Indicator">
-<div class="step-circle">2</div>
-<div class="step-label">Verify OTP</div>
-</div>
-
-<div class="step-line" id="stepLine2"></div>
-
-<div class="step" id="step3Indicator">
-<div class="step-circle">3</div>
-<div class="step-label">Verified</div>
-</div>
-
-</div>
-
-
-<div class="otp-stage">
-
-<!-- ================= STEP 1 ================= -->
-
-<div class="otp-panel active" id="otpStep1">
-
-<div class="panel-icon">👤</div>
-
-<div class="panel-heading">
-Tell Us About You
-</div>
-
-<p class="panel-description">
-Enter your name and Indian mobile number.
-We'll send a secure verification code to your phone.
-</p>
-
-<div class="identity">
-
-<div class="field">
-
-<label>Full Name</label>
-
-<input
-id="visitorName"
-type="text"
-maxlength="80"
-placeholder="Your full name"
-autocomplete="name">
-
-</div>
-
-<div class="field">
-
-<label>Mobile Number</label>
-
-<div class="phone-row">
-
-<span>+91</span>
-
-<input
-id="visitorPhone"
-type="tel"
-inputmode="numeric"
-maxlength="10"
-placeholder="10-digit mobile"
-autocomplete="tel">
-
-</div>
-
-</div>
-
-</div>
-
-<div class="otp-actions">
-
-<button
-class="btn btn-primary"
-id="otpButton"
-onclick="sendOTP()">
-
-Send Secure OTP →
-
-</button>
-
-</div>
-
-<div
-class="otp-status"
-id="otpStatus">
-</div>
-
-</div>
-
-
-<!-- ================= STEP 2 ================= -->
-
-<div class="otp-panel" id="otpStep2">
-
-<div class="panel-icon">📱</div>
-
-<div class="panel-heading">
-Check Your Phone
-</div>
-
-<p class="panel-description">
-We've sent a verification code to the mobile number below.
-Enter the OTP to continue.
-</p>
-
-<div class="otp-code-wrap">
-
-<div
-class="otp-phone-badge"
-id="otpPhoneBadge">
-+91
-</div>
-
-<div class="field">
-
-<label>6 Digit Verification OTP</label>
-
-<input
-id="visitorOtp"
-class="otp-input"
-type="text"
-inputmode="numeric"
-maxlength="6"
-placeholder="••••••"
-autocomplete="one-time-code">
-
-</div>
-
-<div
-class="otp-status"
-id="otpStatus2">
-</div>
-
-<div class="otp-actions">
-
-<button
-class="btn btn-primary"
-id="verifyButton"
-onclick="verifyOTP()">
-
-✓ Verify & Continue →
-
-</button>
-
-</div>
-
-<div class="resend-row">
-
-<span class="resend-text" id="resendText">
-Didn't receive the code?
-</span>
-
-<button
-class="resend-btn"
-id="resendButton"
-onclick="resendOTP()">
-
-Resend OTP
-
-</button>
-
-<button
-class="back-btn"
-onclick="backToStep1()">
-
-← Change Number
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- ================= STEP 3 ================= -->
-
-<div class="otp-panel" id="otpStep3">
-
-<div class="success-panel">
-
-<div class="success-ring">
-<span>✓</span>
-</div>
-
-<div class="success-title">
-You're <span>Verified.</span>
-</div>
-
-<p class="success-text" id="successText">
-Your mobile number has been successfully verified.
-</p>
-
-<div class="verified-badge">
-<i></i>
-SECURE VERIFICATION COMPLETE
-</div>
-
-<div class="otp-actions">
-
-<button
-class="btn btn-primary"
-onclick="continueAfterVerification()">
-
-Continue →
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="gate-note">
-
-<span class="secure-dot"></span>
-
-<b>Secure:</b>
-Your OTP is handled by the website's server and SMS provider.
-Never share your OTP with anyone.
-
-</div>
-
-</div>
-
-
-<!-- =========================================================
-     RETURNING MEMBER
-     ========================================================= -->
-
-<div
-class="member-welcome"
-id="memberWelcome">
-
-<div class="welcome-header">
-
-<div
-class="avatar"
-id="welcomeAvatar">
-M
-</div>
-
-<h3 id="welcomeName">
-Welcome Back
-</h3>
-
-<p id="welcomeText">
-Your 14 FITNESS member profile has been recognized.
-</p>
-
-<div class="welcome-status">
-✓ MOBILE VERIFIED
-</div>
-
-</div>
-
-
-<div class="return-box">
-
-<div class="return-box-header">
-
-<h3>
-Membership <span>Renewal</span>
-</h3>
-
-<p>
-Your previous membership has ended.
-Choose how many months you want to renew.
-The options below are for regular monthly renewal.
-</p>
-
-</div>
-
-
-<div class="renewal-grid">
-
-<!-- 1 MONTH -->
-
-<div class="renew-card">
-
-<div class="renew-months">
-1 MONTH
-</div>
-
-<div class="renew-price">
-₹700
-<small>1 month membership</small>
-</div>
-
-<div class="renew-total">
-₹700 total
-</div>
-
-<button
-class="btn btn-primary"
-onclick="goRenew(700,1)">
-
-Choose
-
-</button>
-
-</div>
-
-
-<!-- 2 MONTHS -->
-
-<div class="renew-card">
-
-<div class="renew-months">
-2 MONTHS
-</div>
-
-<div class="renew-price">
-₹1,400
-<small>2 month membership</small>
-</div>
-
-<div class="renew-total">
-₹700 / month
-</div>
-
-<button
-class="btn btn-dark"
-onclick="goRenew(1400,2)">
-
-Choose
-
-</button>
-
-</div>
-
-
-<!-- 3 MONTHS -->
-
-<div class="renew-card recommended">
-
-<div class="renew-tag">
-POPULAR
-</div>
-
-<div class="renew-months">
-3 MONTHS
-</div>
-
-<div class="renew-price">
-₹2,000
-<small>3 month membership</small>
-</div>
-
-<div class="renew-total">
-Best regular option
-</div>
-
-<button
-class="btn btn-primary"
-onclick="goRenew(2000,3)">
-
-Choose
-
-</button>
-
-</div>
-
-
-<!-- 4 MONTHS -->
-
-<div class="renew-card">
-
-<div class="renew-months">
-4 MONTHS
-</div>
-
-<div class="renew-price">
-₹4,000
-<small>4 month membership</small>
-</div>
-
-<div class="renew-total">
-₹1,000 / month
-</div>
-
-<button
-class="btn btn-dark"
-onclick="goRenew(4000,4)">
-
-Choose
-
-</button>
-
-</div>
-
-
-<!-- 5 MONTHS -->
-
-<div class="renew-card">
-
-<div class="renew-months">
-5 MONTHS
-</div>
-
-<div class="renew-price">
-₹5,000
-<small>5 month membership</small>
-</div>
-
-<div class="renew-total">
-₹1,000 / month
-</div>
-
-<button
-class="btn btn-dark"
-onclick="goRenew(5000,5)">
-
-Choose
-
-</button>
-
-</div>
-
-</div>
-
-
-<div style="text-align:center;margin-top:18px">
-
-<button
-class="btn btn-dark"
-onclick="closeJoin()">
-
-Continue To Website
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- =========================================================
-     PLAN SELECTOR
-     ========================================================= -->
-
-<div class="modal" id="planModal" aria-hidden="true">
-
-<div class="modal-box">
-
-<button class="modal-close" onclick="closePlans()">×</button>
-
-<div class="otp-header">
-
-<div class="otp-kicker">
-14 FITNESS MEMBERSHIP
-</div>
-
-<div class="otp-title">
-Pick Your<br>
-<span>Commitment.</span>
-</div>
-
-<p class="otp-sub">
-Choose the membership plan that fits your training commitment.
-</p>
-
-</div>
-
-
-<div class="plans-picker">
-
-<div class="pick-card">
-
-<div class="pick-no">01</div>
-<div class="pick-name">Starter</div>
-
-<div class="pick-price">
-₹1,400
-</div>
-
-<div class="pick-period">
-Admission
-</div>
-
-<p class="pick-desc">
-Admission ₹1,400 + 1 month FREE membership.
-Full gym access.
-</p>
-
-<button
-class="btn btn-dark"
-onclick="choosePlan('1400')">
-
-Choose Starter →
-
-</button>
-
-</div>
-
-
-<div class="pick-card featured">
-
-<div class="pick-badge">
-BEST VALUE
-</div>
-
-<div class="pick-no">02</div>
-<div class="pick-name">Transformation</div>
-
-<div class="pick-price">
-₹7,560
-</div>
-
-<div class="pick-period">
-6 Months
-</div>
-
-<p class="pick-desc">
-6 months + FREE admission with 10% long-term discount.
-</p>
-
-<button
-class="btn btn-primary"
-onclick="choosePlan('7560')">
-
-Choose 6 Months →
-
-</button>
-
-</div>
-
-
-<div class="pick-card">
-
-<div class="pick-no">03</div>
-<div class="pick-name">Elite</div>
-
-<div class="pick-price">
-₹14,280
-</div>
-
-<div class="pick-period">
-1 Year
-</div>
-
-<p class="pick-desc">
-12 months + FREE admission with 15% annual discount.
-</p>
-
-<button
-class="btn btn-dark"
-onclick="choosePlan('14280')">
-
-Choose Elite →
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 
 <script>
 
@@ -3371,119 +2115,222 @@ Choose Elite →
    BASIC UI
    ========================================================= */
 
-const header=document.getElementById("header");
+const header =
+  document.getElementById("header");
 
 window.addEventListener("scroll",()=>{
-  header.classList.toggle("scrolled",window.scrollY>40);
+
+  header.classList.toggle(
+    "scrolled",
+    window.scrollY > 40
+  );
+
 });
 
-const menuBtn=document.getElementById("menuBtn");
-const nav=document.getElementById("nav");
+
+/* =========================================================
+   MOBILE MENU
+   ========================================================= */
+
+const menuBtn =
+  document.getElementById("menuBtn");
+
+const nav =
+  document.getElementById("nav");
 
 menuBtn.addEventListener("click",()=>{
+
   nav.classList.toggle("mobile-open");
+
 });
 
-document.querySelectorAll("nav a").forEach(a=>{
-  a.addEventListener("click",()=>{
-    nav.classList.remove("mobile-open");
-  });
-});
+document
+  .querySelectorAll("nav a")
+  .forEach(a=>{
 
-const revealObserver=new IntersectionObserver(
-  entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add("visible");
-        revealObserver.unobserve(entry.target);
-      }
+    a.addEventListener("click",()=>{
+
+      nav.classList.remove(
+        "mobile-open"
+      );
+
     });
-  },
-  {threshold:.12}
-);
 
-document.querySelectorAll(".reveal").forEach(el=>{
-  revealObserver.observe(el);
-});
+  });
+
+
+/* =========================================================
+   REVEAL ANIMATION
+   ========================================================= */
+
+const revealObserver =
+  new IntersectionObserver(
+    entries=>{
+
+      entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+          entry.target.classList.add(
+            "visible"
+          );
+
+          revealObserver.unobserve(
+            entry.target
+          );
+
+        }
+
+      });
+
+    },
+    {
+      threshold:.12
+    }
+  );
+
+document
+  .querySelectorAll(".reveal")
+  .forEach(el=>{
+
+    revealObserver.observe(el);
+
+  });
 
 
 /* =========================================================
    MEMBERS
    ========================================================= */
 
-const MEMBERS_KEY="14fitness_members";
-const VISITOR_KEY="14fitness_verified_visitor";
+const MEMBERS_KEY =
+  "14fitness_members";
 
-const planInfo={
+const planInfo = {
+
   "1400":{
     name:"1 MONTH + FREE ADMISSION",
     months:1
   },
+
   "7560":{
     name:"6 MONTHS + FREE ADMISSION",
     months:6
   },
+
   "14280":{
     name:"1 YEAR + FREE ADMISSION",
     months:12
   }
+
 };
 
-let selectedPlan="7560";
+
+/* =========================================================
+   SECURITY / HTML ESCAPE
+   ========================================================= */
 
 function escapeHTML(value){
-  return String(value??"")
+
+  return String(value ?? "")
     .replace(/&/g,"&amp;")
     .replace(/</g,"&lt;")
     .replace(/>/g,"&gt;")
     .replace(/"/g,"&quot;")
     .replace(/'/g,"&#039;");
+
 }
 
-function getExpiryDate(createdAt,planKey){
 
-  const info=planInfo[planKey];
+/* =========================================================
+   EXPIRY DATE
+   ========================================================= */
 
-  if(!info||!createdAt)return null;
+function getExpiryDate(
+  createdAt,
+  planKey
+){
 
-  const start=new Date(createdAt);
+  const info =
+    planInfo[planKey];
 
-  if(Number.isNaN(start.getTime()))return null;
+  if(!info || !createdAt){
+    return null;
+  }
 
-  const expiry=new Date(start);
+  const start =
+    new Date(createdAt);
+
+  if(
+    Number.isNaN(
+      start.getTime()
+    )
+  ){
+    return null;
+  }
+
+  const expiry =
+    new Date(start);
 
   expiry.setMonth(
-    expiry.getMonth()+info.months
+    expiry.getMonth() +
+    info.months
   );
 
   return expiry;
+
 }
 
-function getDaysLeft(createdAt,planKey){
 
-  const expiry=getExpiryDate(createdAt,planKey);
+/* =========================================================
+   DAYS LEFT
+   ========================================================= */
 
-  if(!expiry)return 0;
+function getDaysLeft(
+  createdAt,
+  planKey
+){
 
-  const now=new Date();
+  const expiry =
+    getExpiryDate(
+      createdAt,
+      planKey
+    );
 
-  const today=new Date(
-    now.getFullYear(),
-    now.getMonth(),
-    now.getDate()
-  );
+  if(!expiry){
+    return 0;
+  }
 
-  const end=new Date(
-    expiry.getFullYear(),
-    expiry.getMonth(),
-    expiry.getDate()
-  );
+  const now =
+    new Date();
+
+  const today =
+    new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate()
+    );
+
+  const end =
+    new Date(
+      expiry.getFullYear(),
+      expiry.getMonth(),
+      expiry.getDate()
+    );
 
   return Math.max(
     0,
-    Math.ceil((end-today)/86400000)
+    Math.ceil(
+      (end - today) /
+      86400000
+    )
   );
+
 }
+
+
+/* =========================================================
+   DATE FORMAT
+   ========================================================= */
 
 function formatDate(date){
 
@@ -3497,79 +2344,110 @@ function formatDate(date){
         }
       )
     : "—";
+
 }
+
+
+/* =========================================================
+   MEMBER STATUS
+   ========================================================= */
 
 function getMemberStatus(member){
 
-  const days=getDaysLeft(
-    member.createdAt,
-    member.plan
-  );
-
-  const saved=String(
-    member.status||""
-  ).toLowerCase();
-
-  if(days<=0){
-    return{
-      label:"EXPIRED",
-      className:"status-expired"
-    };
-  }
-
-  if(
-    saved.includes("pending")||
-    saved.includes("verification")
-  ){
-    return{
-      label:"PAYMENT PENDING",
-      className:"status-pending"
-    };
-  }
-
-  return{
-    label:"ACTIVE",
-    className:"status-active"
-  };
-}
-
-function createMemberCard(member){
-
-  const name=member.name||"Member";
-
-  const plan=
-    planInfo[member.plan]?.name||
-    "MEMBERSHIP";
-
-  const expiry=
-    getExpiryDate(
-      member.createdAt,
-      member.plan
-    );
-
-  const days=
+  const days =
     getDaysLeft(
       member.createdAt,
       member.plan
     );
 
-  const status=
+  const saved =
+    String(
+      member.status || ""
+    ).toLowerCase();
+
+  if(days <= 0){
+
+    return {
+      label:"EXPIRED",
+      className:"status-expired"
+    };
+
+  }
+
+  if(
+    saved.includes("pending") ||
+    saved.includes("verification")
+  ){
+
+    return {
+      label:"PAYMENT PENDING",
+      className:"status-pending"
+    };
+
+  }
+
+  return {
+    label:"ACTIVE",
+    className:"status-active"
+  };
+
+}
+
+
+/* =========================================================
+   CREATE MEMBER CARD
+   ========================================================= */
+
+function createMemberCard(member){
+
+  const name =
+    member.name ||
+    "Member";
+
+  const plan =
+    planInfo[member.plan]?.name ||
+    "MEMBERSHIP";
+
+  const expiry =
+    getExpiryDate(
+      member.createdAt,
+      member.plan
+    );
+
+  const days =
+    getDaysLeft(
+      member.createdAt,
+      member.plan
+    );
+
+  const status =
     getMemberStatus(member);
 
-  const first=
-    (name.trim().charAt(0)||"M")
-      .toUpperCase();
+  const first =
+    (
+      name.trim().charAt(0) ||
+      "M"
+    ).toUpperCase();
 
-  const joined=
+  const joined =
     member.createdAt
-      ? formatDate(new Date(member.createdAt))
+      ? formatDate(
+          new Date(
+            member.createdAt
+          )
+        )
       : "—";
 
   return `
+
     <article
       class="member-card"
-      data-name="${escapeHTML(name.toLowerCase())}"
-      data-plan="${escapeHTML(plan.toLowerCase())}">
+      data-name="${escapeHTML(
+        name.toLowerCase()
+      )}"
+      data-plan="${escapeHTML(
+        plan.toLowerCase()
+      )}">
 
       <div class="member-top">
 
@@ -3593,7 +2471,9 @@ function createMemberCard(member){
 
       <div class="member-days">
 
-        <strong>${days}</strong>
+        <strong>
+          ${days}
+        </strong>
 
         <span>
           Days<br>
@@ -3606,1107 +2486,329 @@ function createMemberCard(member){
 
         <div class="info-row">
           <span>Member ID</span>
-          <span>${escapeHTML(member.memberId||"—")}</span>
+          <span>
+            ${escapeHTML(
+              member.memberId || "—"
+            )}
+          </span>
         </div>
 
         <div class="info-row">
           <span>Joined</span>
-          <span>${escapeHTML(joined)}</span>
+          <span>
+            ${escapeHTML(joined)}
+          </span>
         </div>
 
         <div class="info-row">
           <span>Expires</span>
-          <span>${escapeHTML(
-            expiry?formatDate(expiry):"—"
-          )}</span>
+          <span>
+            ${escapeHTML(
+              expiry
+                ? formatDate(expiry)
+                : "—"
+            )}
+          </span>
         </div>
 
         <div class="info-row">
           <span>Goal</span>
-          <span>${escapeHTML(member.goal||"—")}</span>
+          <span>
+            ${escapeHTML(
+              member.goal || "—"
+            )}
+          </span>
         </div>
 
       </div>
 
     </article>
+
   `;
+
 }
+
+
+/* =========================================================
+   LOAD MEMBERS
+   ========================================================= */
 
 function loadMembers(){
 
-  const grid=
-    document.getElementById("membersGrid");
+  const grid =
+    document.getElementById(
+      "membersGrid"
+    );
 
-  const empty=
-    document.getElementById("emptyMembers");
+  const empty =
+    document.getElementById(
+      "emptyMembers"
+    );
 
-  const count=
-    document.getElementById("memberCount");
+  const count =
+    document.getElementById(
+      "memberCount"
+    );
 
-  let members=[];
+  let members = [];
 
   try{
 
-    members=
+    members =
       JSON.parse(
-        localStorage.getItem(MEMBERS_KEY)||"[]"
+        localStorage.getItem(
+          MEMBERS_KEY
+        ) || "[]"
       );
 
-    if(!Array.isArray(members)){
-      members=[];
+    if(
+      !Array.isArray(members)
+    ){
+
+      members = [];
+
     }
 
-  }catch(e){
+  }catch(error){
 
-    members=[];
+    console.error(
+      "MEMBER LOAD ERROR:",
+      error
+    );
+
+    members = [];
 
   }
 
-  count.textContent=members.length;
+  count.textContent =
+    members.length;
 
   if(!members.length){
 
-    grid.innerHTML="";
-    empty.style.display="block";
+    grid.innerHTML = "";
+
+    empty.style.display =
+      "block";
+
+    empty.querySelector(
+      "strong"
+    ).textContent =
+      "No Members Yet";
+
+    empty.querySelector(
+      "p"
+    ).textContent =
+      "Completed registrations saved on this device will appear here automatically.";
 
     return;
+
   }
 
-  empty.style.display="none";
+  empty.style.display =
+    "none";
 
-  grid.innerHTML=
+  grid.innerHTML =
     members
       .slice()
       .reverse()
       .map(createMemberCard)
       .join("");
+
 }
+
+
+/* Initial member load */
 
 loadMembers();
 
+
+/* =========================================================
+   MEMBER SEARCH
+   ========================================================= */
+
 document
-  .getElementById("memberSearch")
-  .addEventListener("input",function(){
+  .getElementById(
+    "memberSearch"
+  )
+  .addEventListener(
+    "input",
+    function(){
 
-    const q=
-      this.value.trim().toLowerCase();
+      const query =
+        this.value
+          .trim()
+          .toLowerCase();
 
-    const cards=
-      document.querySelectorAll(".member-card");
+      const cards =
+        document.querySelectorAll(
+          ".member-card"
+        );
 
-    let visible=0;
+      const empty =
+        document.getElementById(
+          "emptyMembers"
+        );
 
-    cards.forEach(card=>{
+      let visible = 0;
 
-      const match=
-        !q||
-        card.dataset.name.includes(q)||
-        card.dataset.plan.includes(q);
+      cards.forEach(card=>{
 
-      card.style.display=
-        match?"":"none";
+        const match =
+          !query ||
+          card.dataset.name
+            .includes(query) ||
+          card.dataset.plan
+            .includes(query);
 
-      if(match)visible++;
-    });
+        card.style.display =
+          match ? "" : "none";
 
-    const empty=
-      document.getElementById("emptyMembers");
+        if(match){
+          visible++;
+        }
 
-    if(cards.length&&visible===0){
+      });
 
-      empty.querySelector("strong")
-        .textContent="No Match Found";
+      if(
+        cards.length &&
+        visible === 0
+      ){
 
-      empty.querySelector("p")
-        .textContent=
-        "Try another member name or membership plan.";
+        empty.querySelector(
+          "strong"
+        ).textContent =
+          "No Match Found";
 
-      empty.style.display="block";
+        empty.querySelector(
+          "p"
+        ).textContent =
+          "Try another member name or membership plan.";
 
-    }else if(cards.length){
+        empty.style.display =
+          "block";
 
-      empty.style.display="none";
+      }else if(cards.length){
+
+        empty.style.display =
+          "none";
+
+      }
 
     }
-  });
-
-window.addEventListener("storage",e=>{
-
-  if(e.key===MEMBERS_KEY){
-    loadMembers();
-  }
-
-});
-
-setInterval(loadMembers,60000);
+  );
 
 
 /* =========================================================
-   NAV ACTIVE
+   UPDATE MEMBERS AUTOMATICALLY
    ========================================================= */
 
-const sections=
-  document.querySelectorAll("section[id]");
+window.addEventListener(
+  "storage",
+  event=>{
 
-const navLinks=
-  document.querySelectorAll("nav a");
+    if(
+      event.key === MEMBERS_KEY
+    ){
 
-const sectionObserver=
+      loadMembers();
+
+    }
+
+  }
+);
+
+setInterval(
+  loadMembers,
+  60000
+);
+
+
+/* =========================================================
+   ACTIVE NAVIGATION
+   ========================================================= */
+
+const sections =
+  document.querySelectorAll(
+    "section[id]"
+  );
+
+const navLinks =
+  document.querySelectorAll(
+    "nav a"
+  );
+
+const sectionObserver =
   new IntersectionObserver(
     entries=>{
+
       entries.forEach(entry=>{
 
-        if(entry.isIntersecting){
+        if(
+          entry.isIntersecting
+        ){
 
-          navLinks.forEach(l=>{
-            l.classList.remove("active");
+          navLinks.forEach(link=>{
+
+            link.classList.remove(
+              "active"
+            );
+
           });
 
-          const active=
+          const active =
             document.querySelector(
               `nav a[href="#${entry.target.id}"]`
             );
 
           if(active){
-            active.classList.add("active");
+
+            active.classList.add(
+              "active"
+            );
+
           }
 
         }
 
       });
+
     },
     {
-      rootMargin:"-35% 0px -55% 0px"
+      rootMargin:
+        "-35% 0px -55% 0px"
     }
   );
 
-sections.forEach(s=>{
-  sectionObserver.observe(s);
+sections.forEach(section=>{
+
+  sectionObserver.observe(
+    section
+  );
+
 });
 
 
 /* =========================================================
-   MODALS
-   ========================================================= */
-
-const joinModal=
-  document.getElementById("joinModal");
-
-const planModal=
-  document.getElementById("planModal");
-
-function openJoin(plan){
-
-  selectedPlan=
-    plan||"7560";
-
-  const saved=
-    localStorage.getItem(VISITOR_KEY);
-
-  if(saved){
-
-    try{
-
-      const v=JSON.parse(saved);
-
-      if(v&&v.verified){
-
-        if(v.isExistingMember){
-
-          showReturning(v);
-
-          joinModal.classList.add("open");
-          joinModal.setAttribute(
-            "aria-hidden",
-            "false"
-          );
-
-          return;
-        }
-
-        openPlans();
-
-        return;
-      }
-
-    }catch(e){}
-
-  }
-
-  resetVerificationUI();
-
-  joinModal.classList.add("open");
-
-  joinModal.setAttribute(
-    "aria-hidden",
-    "false"
-  );
-}
-
-function closeJoin(){
-
-  joinModal.classList.remove("open");
-
-  joinModal.setAttribute(
-    "aria-hidden",
-    "true"
-  );
-}
-
-function openPlans(){
-
-  planModal.classList.add("open");
-
-  planModal.setAttribute(
-    "aria-hidden",
-    "false"
-  );
-}
-
-function closePlans(){
-
-  planModal.classList.remove("open");
-
-  planModal.setAttribute(
-    "aria-hidden",
-    "true"
-  );
-}
-
-function choosePlan(plan){
-
-  selectedPlan=plan;
-
-  closePlans();
-
-  window.location.href=
-    "order.html?plan="+
-    encodeURIComponent(plan);
-}
-
-
-/* =========================================================
-   OTP STATE
-   ========================================================= */
-
-let verifiedVisitorData=null;
-
-let otpCooldownTimer=null;
-
-let otpCooldown=0;
-
-function showStep(number){
-
-  document
-    .querySelectorAll(".otp-panel")
-    .forEach(panel=>{
-      panel.classList.remove("active");
-    });
-
-  const target=
-    document.getElementById(
-      "otpStep"+number
-    );
-
-  if(target){
-    target.classList.add("active");
-  }
-
-  const steps=[
-    document.getElementById("step1Indicator"),
-    document.getElementById("step2Indicator"),
-    document.getElementById("step3Indicator")
-  ];
-
-  steps.forEach((step,index)=>{
-
-    step.classList.remove(
-      "active",
-      "done"
-    );
-
-    if(index+1<number){
-      step.classList.add("done");
-    }
-
-    if(index+1===number){
-      step.classList.add("active");
-    }
-
-  });
-
-  document
-    .getElementById("stepLine1")
-    .classList.toggle(
-      "completed",
-      number>=2
-    );
-
-  document
-    .getElementById("stepLine2")
-    .classList.toggle(
-      "completed",
-      number>=3
-    );
-}
-
-function resetVerificationUI(){
-
-  document
-    .getElementById("gateContent")
-    .style.display="block";
-
-  document
-    .getElementById("memberWelcome")
-    .classList.remove("show");
-
-  document
-    .getElementById("visitorOtp")
-    .value="";
-
-  document
-    .getElementById("otpStatus")
-    .textContent="";
-
-  document
-    .getElementById("otpStatus2")
-    .textContent="";
-
-  document
-    .getElementById("otpStatus2")
-    .className="otp-status";
-
-  document
-    .getElementById("verifyButton")
-    .disabled=false;
-
-  showStep(1);
-}
-
-
-/* =========================================================
-   PHONE
-   ========================================================= */
-
-function normalizePhone(v){
-
-  return String(v||"")
-    .replace(/\D/g,"")
-    .slice(-10);
-}
-
-function validPhone(p){
-
-  return /^[6-9]\d{9}$/.test(p);
-}
-
-
-/* =========================================================
-   SEND OTP
-   ========================================================= */
-
-async function sendOTP(){
-
-  const name=
-    document
-      .getElementById("visitorName")
-      .value
-      .trim();
-
-  const phone=
-    normalizePhone(
-      document
-        .getElementById("visitorPhone")
-        .value
-    );
-
-  const status=
-    document.getElementById(
-      "otpStatus"
-    );
-
-  const btn=
-    document.getElementById(
-      "otpButton"
-    );
-
-  if(name.length<2){
-
-    status.className="otp-status error";
-
-    status.textContent=
-      "Please enter your full name.";
-
-    return;
-  }
-
-  if(
-    !validPhone(phone)
-  ){
-
-    status.className="otp-status error";
-
-    status.textContent=
-      "Please enter a valid 10-digit Indian mobile number.";
-
-    return;
-  }
-
-  btn.disabled=true;
-
-  btn.textContent=
-    "Sending OTP…";
-
-  status.className=
-    "otp-status info";
-
-  status.textContent=
-    "Connecting to secure SMS service…";
-
-  try{
-
-    const res=
-      await fetch(
-        "/api/send-otp",
-        {
-          method:"POST",
-          headers:{
-            "Content-Type":
-              "application/json"
-          },
-          body:JSON.stringify({
-            name:name,
-            phone:"+91"+phone
-          })
-        }
-      );
-
-    let data={};
-
-    try{
-      data=await res.json();
-    }catch(e){}
-
-    if(!res.ok){
-
-      throw new Error(
-        data.message||
-        data.error||
-        "SMS service returned an error."
-      );
-    }
-
-    if(
-      data.success!==true &&
-      data.ok!==true
-    ){
-
-      throw new Error(
-        data.message||
-        data.error||
-        "OTP could not be sent."
-      );
-    }
-
-    /*
-      IMPORTANT:
-      OTP screen is shown immediately after
-      successful server response.
-    */
-
-    document
-      .getElementById("otpPhoneBadge")
-      .textContent=
-      "+91 "+phone;
-
-    status.textContent="";
-
-    document
-      .getElementById("otpStatus2")
-      .className=
-      "otp-status info";
-
-    document
-      .getElementById("otpStatus2")
-      .textContent=
-      "OTP sent successfully. Enter the code from your SMS.";
-
-    document
-      .getElementById("visitorOtp")
-      .value="";
-
-    /*
-      FORCE VERIFY BUTTON VISIBLE
-    */
-
-    const verifyButton=
-      document.getElementById(
-        "verifyButton"
-      );
-
-    verifyButton.style.display=
-      "inline-block";
-
-    verifyButton.disabled=false;
-
-    showStep(2);
-
-    setTimeout(()=>{
-      document
-        .getElementById("visitorOtp")
-        .focus();
-    },350);
-
-    startResendCooldown(30);
-
-  }catch(err){
-
-    console.error(
-      "SEND OTP ERROR:",
-      err
-    );
-
-    status.className=
-      "otp-status error";
-
-    status.textContent=
-      err.message||
-      "OTP could not be sent. Please try again.";
-
-    btn.disabled=false;
-
-    btn.textContent=
-      "Send Secure OTP →";
-  }
-}
-
-
-/* =========================================================
-   VERIFY OTP
-   ========================================================= */
-
-async function verifyOTP(){
-
-  const name=
-    document
-      .getElementById("visitorName")
-      .value
-      .trim();
-
-  const phone=
-    normalizePhone(
-      document
-        .getElementById("visitorPhone")
-        .value
-    );
-
-  const otp=
-    document
-      .getElementById("visitorOtp")
-      .value
-      .trim();
-
-  const status=
-    document.getElementById(
-      "otpStatus2"
-    );
-
-  const btn=
-    document.getElementById(
-      "verifyButton"
-    );
-
-  if(!validPhone(phone)){
-
-    status.className=
-      "otp-status error";
-
-    status.textContent=
-      "Mobile number is invalid.";
-
-    return;
-  }
-
-  if(!/^\d{4,6}$/.test(otp)){
-
-    status.className=
-      "otp-status error";
-
-    status.textContent=
-      "Please enter the OTP you received by SMS.";
-
-    return;
-  }
-
-  btn.disabled=true;
-
-  btn.textContent=
-    "Verifying…";
-
-  status.className=
-    "otp-status info";
-
-  status.textContent=
-    "Checking your verification code…";
-
-  try{
-
-    const res=
-      await fetch(
-        "/api/verify-otp",
-        {
-          method:"POST",
-          headers:{
-            "Content-Type":
-              "application/json"
-          },
-          body:JSON.stringify({
-            name:name,
-            phone:"+91"+phone,
-            otp:otp
-          })
-        }
-      );
-
-    let data={};
-
-    try{
-      data=await res.json();
-    }catch(e){}
-
-    if(!res.ok){
-
-      throw new Error(
-        data.message||
-        data.error||
-        "OTP verification failed."
-      );
-    }
-
-    if(
-      data.success!==true &&
-      data.ok!==true
-    ){
-
-      throw new Error(
-        data.message||
-        data.error||
-        "Invalid OTP."
-      );
-    }
-
-    const visitor={
-      verified:true,
-      name:name,
-      phone:"+91"+phone,
-      isExistingMember:Boolean(
-        data.isExistingMember
-      ),
-      member:data.member||null,
-      verifiedAt:
-        new Date().toISOString()
-    };
-
-    localStorage.setItem(
-      VISITOR_KEY,
-      JSON.stringify(visitor)
-    );
-
-    verifiedVisitorData=
-      visitor;
-
-    status.className=
-      "otp-status success";
-
-    status.textContent=
-      "Verification successful.";
-
-    document
-      .getElementById("successText")
-      .textContent=
-      "Welcome, "+name+". Your mobile number has been successfully verified.";
-
-    showStep(3);
-
-  }catch(err){
-
-    console.error(
-      "VERIFY OTP ERROR:",
-      err
-    );
-
-    status.className=
-      "otp-status error";
-
-    status.textContent=
-      err.message||
-      "OTP verification could not be completed.";
-
-    btn.disabled=false;
-
-    btn.textContent=
-      "✓ Verify & Continue →";
-  }
-}
-
-
-/* =========================================================
-   RESEND OTP
-   ========================================================= */
-
-async function resendOTP(){
-
-  if(otpCooldown>0){
-    return;
-  }
-
-  await sendOTP();
-}
-
-function startResendCooldown(seconds){
-
-  clearInterval(
-    otpCooldownTimer
-  );
-
-  otpCooldown=seconds;
-
-  const button=
-    document.getElementById(
-      "resendButton"
-    );
-
-  const text=
-    document.getElementById(
-      "resendText"
-    );
-
-  button.disabled=true;
-
-  function update(){
-
-    if(otpCooldown<=0){
-
-      clearInterval(
-        otpCooldownTimer
-      );
-
-      button.disabled=false;
-
-      button.textContent=
-        "Resend OTP";
-
-      text.textContent=
-        "Didn't receive the code?";
-
-      return;
-    }
-
-    button.textContent=
-      "Resend in "+otpCooldown+"s";
-
-    otpCooldown--;
-  }
-
-  update();
-
-  otpCooldownTimer=
-    setInterval(
-      update,
-      1000
-    );
-}
-
-
-/* =========================================================
-   BACK TO STEP 1
-   ========================================================= */
-
-function backToStep1(){
-
-  showStep(1);
-
-  const status=
-    document.getElementById(
-      "otpStatus"
-    );
-
-  status.className=
-    "otp-status";
-
-  status.textContent="";
-
-  document
-    .getElementById("otpButton")
-    .disabled=false;
-
-  document
-    .getElementById("otpButton")
-    .textContent=
-      "Send Secure OTP →";
-}
-
-
-/* =========================================================
-   AFTER VERIFICATION
-   ========================================================= */
-
-function continueAfterVerification(){
-
-  if(!verifiedVisitorData){
-
-    const saved=
-      localStorage.getItem(
-        VISITOR_KEY
-      );
-
-    if(saved){
-
-      try{
-        verifiedVisitorData=
-          JSON.parse(saved);
-      }catch(e){}
-
-    }
-  }
-
-  if(
-    verifiedVisitorData &&
-    verifiedVisitorData.isExistingMember
-  ){
-
-    showReturning(
-      verifiedVisitorData
-    );
-
-    return;
-  }
-
-  closeJoin();
-
-  openPlans();
-}
-
-
-/* =========================================================
-   RETURNING MEMBER
-   ========================================================= */
-
-function showReturning(v){
-
-  document
-    .getElementById("gateContent")
-    .style.display="none";
-
-  const welcome=
-    document.getElementById(
-      "memberWelcome"
-    );
-
-  welcome.classList.add("show");
-
-  document
-    .getElementById("welcomeName")
-    .textContent=
-      "Welcome Back, "+
-      (v.name||"Member");
-
-  document
-    .getElementById("welcomeAvatar")
-    .textContent=
-      (v.name||"M")
-        .trim()
-        .charAt(0)
-        .toUpperCase();
-
-  document
-    .getElementById("welcomeText")
-    .textContent=
-      "Your existing 14 FITNESS profile has been recognized.";
-}
-
-
-/* =========================================================
-   RENEWAL
-   ========================================================= */
-
-function goRenew(amount,months){
-
-  window.location.href=
-    "order.html?plan="+
-    encodeURIComponent(amount)+
-    "&type=renewal"+
-    "&months="+
-    encodeURIComponent(months);
-}
-
-
-/* =========================================================
-   MODAL CLICK OUTSIDE
-   ========================================================= */
-
-document
-  .getElementById("joinModal")
-  .addEventListener(
-    "click",
-    e=>{
-      if(e.target===joinModal){
-        closeJoin();
-      }
-    }
-  );
-
-document
-  .getElementById("planModal")
-  .addEventListener(
-    "click",
-    e=>{
-      if(e.target===planModal){
-        closePlans();
-      }
-    }
-  );
-
-
-/* =========================================================
-   OTP INPUT ONLY NUMBERS
-   ========================================================= */
-
-document
-  .getElementById("visitorOtp")
-  .addEventListener(
-    "input",
-    function(){
-
-      this.value=
-        this.value
-          .replace(/\D/g,"")
-          .slice(0,6);
-
-    }
-  );
-
-document
-  .getElementById("visitorPhone")
-  .addEventListener(
-    "input",
-    function(){
-
-      this.value=
-        this.value
-          .replace(/\D/g,"")
-          .slice(0,10);
-
-    }
-  );
-
-
-/* =========================================================
-   ENTER KEY
-   ========================================================= */
-
-document
-  .getElementById("visitorName")
-  .addEventListener(
-    "keydown",
-    e=>{
-      if(e.key==="Enter"){
-        document
-          .getElementById("visitorPhone")
-          .focus();
-      }
-    }
-  );
-
-document
-  .getElementById("visitorPhone")
-  .addEventListener(
-    "keydown",
-    e=>{
-      if(e.key==="Enter"){
-        sendOTP();
-      }
-    }
-  );
-
-document
-  .getElementById("visitorOtp")
-  .addEventListener(
-    "keydown",
-    e=>{
-      if(
-        e.key==="Enter" &&
-        !document
-          .getElementById("verifyButton")
-          .disabled
-      ){
-        verifyOTP();
-      }
-    }
-  );
-
-
-/* =========================================================
-   FIRST VISIT / RETURNING MEMBER
-   ========================================================= */
-
-window.addEventListener(
-  "load",
-  ()=>{
-
-    const saved=
-      localStorage.getItem(
-        VISITOR_KEY
-      );
-
-    if(saved){
-
-      try{
-
-        const v=
-          JSON.parse(saved);
-
-        if(
-          v &&
-          v.verified &&
-          v.isExistingMember
-        ){
-
-          showReturning(v);
-
-          joinModal.classList.add("open");
-
-          joinModal.setAttribute(
-            "aria-hidden",
-            "false"
-          );
-
-          return;
-        }
-
-        if(
-          v &&
-          v.verified
-        ){
-
-          return;
-        }
-
-      }catch(e){}
-
-    }
-
-    /*
-      First visitor gets the secure gate.
-    */
-
-    setTimeout(
-      ()=>openJoin(),
-      350
-    );
-
-  }
-);
+   NO OTP SYSTEM
+   =========================================================
+
+   There is intentionally NO:
+
+   - Twilio
+   - OTP
+   - SMS verification
+   - Login
+   - Mobile verification
+   - /api/send-otp
+   - /api/verify-otp
+   - verification modal
+   - returning-member gate
+   - OTP localStorage key
+
+   Membership buttons go directly
+   to order.html.
+
+========================================================= */
 
 </script>
 
