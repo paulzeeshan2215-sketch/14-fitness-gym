@@ -20,38 +20,24 @@
 
 <style>
 
-/* =========================================================
-   ROOT
-========================================================= */
-
 :root{
   --bg:#05070a;
   --bg2:#080d12;
   --panel:#0c1218;
   --panel2:#101820;
-
   --lime:#c9ff28;
   --lime2:#8fd400;
-
   --white:#f5f7fa;
   --muted:#87919c;
   --muted2:#59636d;
-
   --line:rgba(255,255,255,.10);
   --line2:rgba(201,255,40,.22);
-
   --green:#52ff98;
   --red:#ff5d68;
   --orange:#ffb84d;
-
   --shadow:0 30px 90px rgba(0,0,0,.55);
-
   --radius:22px;
 }
-
-/* =========================================================
-   RESET
-========================================================= */
 
 *{
   margin:0;
@@ -66,20 +52,10 @@ html{
 body{
   font-family:Inter,sans-serif;
   color:var(--white);
-
   background:
-    radial-gradient(
-      circle at 75% 5%,
-      rgba(201,255,40,.10),
-      transparent 25%
-    ),
-    radial-gradient(
-      circle at 10% 45%,
-      rgba(35,90,255,.08),
-      transparent 25%
-    ),
+    radial-gradient(circle at 75% 5%,rgba(201,255,40,.10),transparent 25%),
+    radial-gradient(circle at 10% 45%,rgba(35,90,255,.08),transparent 25%),
     var(--bg);
-
   overflow-x:hidden;
 }
 
@@ -87,21 +63,11 @@ body:before{
   content:"";
   position:fixed;
   inset:0;
-
   pointer-events:none;
   z-index:-5;
-
   background-image:
-    linear-gradient(
-      rgba(255,255,255,.025) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(255,255,255,.025) 1px,
-      transparent 1px
-    );
-
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
   background-size:60px 60px;
 }
 
@@ -109,12 +75,9 @@ body:after{
   content:"";
   position:fixed;
   inset:0;
-
   pointer-events:none;
   z-index:100;
-
   opacity:.018;
-
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -132,10 +95,6 @@ button{
   cursor:pointer;
 }
 
-/* =========================================================
-   BACKGROUND ORBS
-========================================================= */
-
 .bg-orb{
   position:fixed;
   border-radius:50%;
@@ -149,11 +108,8 @@ button{
   height:350px;
   right:-150px;
   top:15%;
-
   background:rgba(201,255,40,.08);
-
-  animation:
-    orbFloat 9s ease-in-out infinite;
+  animation:orbFloat 9s ease-in-out infinite;
 }
 
 .orb-two{
@@ -161,119 +117,72 @@ button{
   height:280px;
   left:-130px;
   top:55%;
-
   background:rgba(80,130,255,.07);
-
-  animation:
-    orbFloat 12s ease-in-out infinite reverse;
+  animation:orbFloat 12s ease-in-out infinite reverse;
 }
-
-/* =========================================================
-   HEADER
-========================================================= */
 
 header{
   position:fixed;
   top:0;
   left:0;
   right:0;
-
   z-index:80;
-
   padding:18px 5%;
-
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   transition:.4s;
 }
 
 header.scrolled{
   padding:10px 4%;
-
   background:rgba(5,7,10,.78);
-
   backdrop-filter:blur(22px);
-
   border-bottom:1px solid var(--line);
-
-  box-shadow:
-    0 15px 45px rgba(0,0,0,.25);
+  box-shadow:0 15px 45px rgba(0,0,0,.25);
 }
-
-/* =========================================================
-   LOGO
-========================================================= */
 
 .logo{
   display:flex;
   align-items:center;
-
-  font:
-    900 28px
-    "Barlow Condensed";
-
+  font:900 28px "Barlow Condensed";
   letter-spacing:.7px;
-
   white-space:nowrap;
 }
 
 .logo-box{
   position:relative;
-
   width:44px;
   height:44px;
-
   display:grid;
   place-items:center;
-
   margin-right:9px;
-
   border-radius:11px;
-
   background:var(--lime);
-
   color:#050900;
-
-  font:
-    900 25px
-    "Barlow Condensed";
-
+  font:900 25px "Barlow Condensed";
   box-shadow:
     0 0 0 1px rgba(201,255,40,.25),
     0 0 35px rgba(201,255,40,.18);
-
   overflow:hidden;
 }
 
 .logo-box:after{
   content:"";
-
   position:absolute;
-
   width:100%;
   height:30%;
-
   left:-100%;
   top:0;
-
   background:rgba(255,255,255,.45);
-
   transform:skewX(-25deg);
-
-  animation:
-    logoShine 4s linear infinite;
+  animation:logoShine 4s linear infinite;
 }
 
 .logo span{
   color:var(--lime);
   margin-left:5px;
 }
-
-/* =========================================================
-   NAV
-========================================================= */
 
 nav{
   display:flex;
@@ -283,42 +192,24 @@ nav{
 
 nav a{
   position:relative;
-
   color:#a5afb8;
-
-  font:
-    800 10px
-    Inter;
-
+  font:800 10px Inter;
   letter-spacing:1.5px;
-
   text-transform:uppercase;
-
   transition:.3s;
 }
 
 nav a:before{
   content:"";
-
   position:absolute;
-
   left:50%;
   bottom:-11px;
-
   width:5px;
   height:5px;
-
   border-radius:50%;
-
   background:var(--lime);
-
-  transform:
-    translateX(-50%)
-    scale(0);
-
-  box-shadow:
-    0 0 15px var(--lime);
-
+  transform:translateX(-50%) scale(0);
+  box-shadow:0 0 15px var(--lime);
   transition:.3s;
 }
 
@@ -329,60 +220,34 @@ nav a.active{
 
 nav a:hover:before,
 nav a.active:before{
-  transform:
-    translateX(-50%)
-    scale(1);
+  transform:translateX(-50%) scale(1);
 }
-
-/* =========================================================
-   HEADER BUTTON
-========================================================= */
 
 .header-btn{
   padding:13px 20px;
-
   border:0;
   border-radius:9px;
-
   background:var(--lime);
   color:#060900;
-
-  font:
-    900 10px
-    Inter;
-
+  font:900 10px Inter;
   letter-spacing:.8px;
-
   text-transform:uppercase;
-
   transition:.3s;
 }
 
 .header-btn:hover{
   transform:translateY(-3px);
-
-  box-shadow:
-    0 15px 35px rgba(201,255,40,.22);
+  box-shadow:0 15px 35px rgba(201,255,40,.22);
 }
-
-/* =========================================================
-   MOBILE BUTTON
-========================================================= */
 
 .menu-btn{
   display:none;
-
   width:48px;
   height:48px;
-
   border:1px solid var(--line);
-
   border-radius:13px;
-
   background:rgba(15,22,29,.9);
-
   color:white;
-
   position:relative;
   overflow:hidden;
 }
@@ -390,7 +255,6 @@ nav a.active:before{
 .menu-lines{
   width:21px;
   margin:auto;
-
   display:grid;
   gap:5px;
 }
@@ -398,16 +262,12 @@ nav a.active:before{
 .menu-lines span{
   height:2px;
   width:100%;
-
   background:var(--lime);
-
   transition:.3s;
 }
 
 .menu-btn.open .menu-lines span:nth-child(1){
-  transform:
-    translateY(7px)
-    rotate(45deg);
+  transform:translateY(7px) rotate(45deg);
 }
 
 .menu-btn.open .menu-lines span:nth-child(2){
@@ -415,35 +275,17 @@ nav a.active:before{
 }
 
 .menu-btn.open .menu-lines span:nth-child(3){
-  transform:
-    translateY(-7px)
-    rotate(-45deg);
+  transform:translateY(-7px) rotate(-45deg);
 }
-
-/* =========================================================
-   HERO
-========================================================= */
 
 .hero{
   min-height:100vh;
-
-  padding:
-    115px
-    6%
-    80px;
-
+  padding:115px 6% 80px;
   display:grid;
-
-  grid-template-columns:
-    .9fr
-    1.1fr;
-
+  grid-template-columns:.9fr 1.1fr;
   align-items:center;
-
   gap:35px;
-
   position:relative;
-
   overflow:hidden;
 }
 
@@ -452,142 +294,80 @@ nav a.active:before{
   z-index:5;
 }
 
-/* NEW HERO TITLE */
-
 .hero h1{
-  font:
-    900 clamp(75px,9.5vw,145px)/.74
-    "Barlow Condensed";
-
+  font:900 clamp(75px,9.5vw,145px)/.74 "Barlow Condensed";
   text-transform:uppercase;
-
   letter-spacing:-5px;
-
-  animation:
-    heroTitleIn 1s cubic-bezier(.16,1,.3,1) both;
+  animation:heroTitleIn 1s cubic-bezier(.16,1,.3,1) both;
 }
 
 .hero h1 .lime{
   color:var(--lime);
-
-  text-shadow:
-    5px 5px 0 #263600,
-    0 0 35px rgba(201,255,40,.16);
-
+  text-shadow:5px 5px 0 #263600,0 0 35px rgba(201,255,40,.16);
   position:relative;
 }
 
 .hero h1 .lime:after{
   content:"";
-
   position:absolute;
-
   left:3%;
   right:5%;
   bottom:-8px;
-
   height:3px;
-
   background:var(--lime);
-
-  box-shadow:
-    0 0 20px rgba(201,255,40,.55);
-
+  box-shadow:0 0 20px rgba(201,255,40,.55);
   transform:scaleX(0);
   transform-origin:left;
-
-  animation:
-    titleLine 1s .65s ease forwards;
+  animation:titleLine 1s .65s ease forwards;
 }
 
 .hero h1 .outline{
   color:transparent;
-
-  -webkit-text-stroke:
-    1px rgba(255,255,255,.72);
-
-  text-shadow:
-    0 0 30px rgba(255,255,255,.04);
+  -webkit-text-stroke:1px rgba(255,255,255,.72);
+  text-shadow:0 0 30px rgba(255,255,255,.04);
 }
 
 .hero-description{
   max-width:520px;
-
-  margin:
-    35px
-    0;
-
+  margin:35px 0;
   color:var(--muted);
-
   font-size:13px;
-
   line-height:1.85;
-
-  animation:
-    fadeUp .8s .35s ease both;
+  animation:fadeUp .8s .35s ease both;
 }
 
 .hero-actions{
   display:flex;
   flex-wrap:wrap;
-
   gap:12px;
-
-  animation:
-    fadeUp .8s .5s ease both;
+  animation:fadeUp .8s .5s ease both;
 }
 
 .btn{
   position:relative;
-
   display:inline-flex;
   align-items:center;
   justify-content:center;
-
   min-height:48px;
-
-  padding:
-    14px
-    22px;
-
+  padding:14px 22px;
   border-radius:10px;
-
   border:1px solid transparent;
-
-  font:
-    900 10px
-    Inter;
-
+  font:900 10px Inter;
   letter-spacing:.8px;
-
   text-transform:uppercase;
-
   overflow:hidden;
-
   transition:.35s;
 }
 
 .btn:after{
   content:"";
-
   position:absolute;
-
   top:0;
   left:-120%;
-
   width:70%;
   height:100%;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(255,255,255,.28),
-      transparent
-    );
-
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);
   transform:skewX(-20deg);
-
   transition:.6s;
 }
 
@@ -598,44 +378,30 @@ nav a.active:before{
 .btn-primary{
   background:var(--lime);
   color:#050900;
-
-  box-shadow:
-    0 0 30px rgba(201,255,40,.08);
+  box-shadow:0 0 30px rgba(201,255,40,.08);
 }
 
 .btn-primary:hover{
   transform:translateY(-4px);
-
-  box-shadow:
-    0 18px 45px rgba(201,255,40,.22);
+  box-shadow:0 18px 45px rgba(201,255,40,.22);
 }
 
 .btn-dark{
   background:#0e151b;
   color:#fff;
-
   border-color:var(--line);
 }
 
 .btn-dark:hover{
   transform:translateY(-4px);
-
-  border-color:
-    rgba(201,255,40,.4);
+  border-color:rgba(201,255,40,.4);
 }
-
-/* =========================================================
-   HERO STATS
-========================================================= */
 
 .hero-stats{
   display:flex;
   gap:30px;
-
   margin-top:43px;
-
-  animation:
-    fadeUp .8s .65s ease both;
+  animation:fadeUp .8s .65s ease both;
 }
 
 .hero-stat{
@@ -644,152 +410,80 @@ nav a.active:before{
 
 .hero-stat strong{
   display:block;
-
-  font:
-    900 34px
-    "Barlow Condensed";
+  font:900 34px "Barlow Condensed";
 }
 
 .hero-stat span{
   color:#68737d;
-
-  font:
-    800 8px
-    Inter;
-
+  font:800 8px Inter;
   letter-spacing:1.3px;
-
   text-transform:uppercase;
 }
 
-/* =========================================================
-   HERO VISUAL
-========================================================= */
-
 .hero-visual{
   min-height:650px;
-
   position:relative;
-
   display:flex;
   align-items:center;
   justify-content:center;
 }
 
-/* =========================================================
-   ATHLETE CIRCLE
-========================================================= */
-
 .athlete-circle{
   position:absolute;
-
   width:min(620px,88vw);
   aspect-ratio:1;
-
   border-radius:50%;
-
   overflow:hidden;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(201,255,40,.12),
-      rgba(7,12,10,.9) 68%
-    );
-
-  border:
-    1px solid
-    rgba(201,255,40,.35);
-
+  background:radial-gradient(circle at center,rgba(201,255,40,.12),rgba(7,12,10,.9) 68%);
+  border:1px solid rgba(201,255,40,.35);
   box-shadow:
     0 0 0 12px rgba(201,255,40,.025),
     0 0 0 1px rgba(255,255,255,.04) inset,
     0 0 100px rgba(201,255,40,.10);
-
   z-index:2;
 }
 
 .athlete-circle:before{
   content:"";
-
   position:absolute;
   inset:22px;
-
-  border:
-    1px dashed
-    rgba(201,255,40,.25);
-
+  border:1px dashed rgba(201,255,40,.25);
   border-radius:50%;
-
-  animation:
-    spin 25s linear infinite;
-
+  animation:spin 25s linear infinite;
   z-index:4;
-
   pointer-events:none;
 }
 
 .athlete-circle:after{
   content:"";
-
   position:absolute;
   inset:0;
-
-  background:
-    radial-gradient(
-      circle,
-      transparent 50%,
-      rgba(5,8,7,.30) 78%,
-      rgba(5,8,7,.80) 100%
-    );
-
+  background:radial-gradient(circle,transparent 50%,rgba(5,8,7,.30) 78%,rgba(5,8,7,.80) 100%);
   z-index:3;
-
   pointer-events:none;
 }
 
 .athlete-photo{
   width:100%;
   height:100%;
-
   object-fit:cover;
-
   object-position:center;
-
   display:block;
-
-  filter:
-    saturate(.82)
-    contrast(1.1)
-    brightness(.9);
-
+  filter:saturate(.82) contrast(1.1) brightness(.9);
   transform:scale(1.01);
-
-  animation:
-    athleteFloat 6s ease-in-out infinite;
+  animation:athleteFloat 6s ease-in-out infinite;
 }
-
-/* =========================================================
-   CIRCLE DOTS
-========================================================= */
 
 .circle-dot{
   position:absolute;
-
   width:10px;
   height:10px;
-
   border-radius:50%;
-
   background:var(--lime);
-
-  box-shadow:
-    0 0 20px var(--lime);
-
+  box-shadow:0 0 20px var(--lime);
   z-index:6;
 }
 
@@ -801,7 +495,6 @@ nav a.active:before{
 .dot-two{
   bottom:22%;
   left:10%;
-
   width:6px;
   height:6px;
 }
@@ -809,128 +502,67 @@ nav a.active:before{
 .dot-three{
   top:45%;
   right:5%;
-
   width:5px;
   height:5px;
 }
 
-/* =========================================================
-   ATHLETE LABEL
-========================================================= */
-
 .athlete-label{
   position:absolute;
-
   left:50%;
   bottom:42px;
-
   transform:translateX(-50%);
-
   z-index:7;
-
   min-width:210px;
-
   padding:12px 18px;
-
   text-align:center;
-
-  background:
-    rgba(6,10,8,.78);
-
+  background:rgba(6,10,8,.78);
   backdrop-filter:blur(15px);
-
-  border:
-    1px solid
-    rgba(255,255,255,.14);
-
+  border:1px solid rgba(255,255,255,.14);
   border-radius:11px;
-
-  box-shadow:
-    0 20px 50px rgba(0,0,0,.35);
+  box-shadow:0 20px 50px rgba(0,0,0,.35);
 }
 
 .athlete-label small{
   display:block;
-
   color:#76827b;
-
-  font:
-    800 7px
-    Inter;
-
+  font:800 7px Inter;
   letter-spacing:1.6px;
-
   text-transform:uppercase;
 }
 
 .athlete-label strong{
   display:block;
-
   margin-top:4px;
-
   color:var(--lime);
-
-  font:
-    900 25px
-    "Barlow Condensed";
-
+  font:900 25px "Barlow Condensed";
   letter-spacing:.5px;
 }
 
-/* =========================================================
-   FLOATING CARDS
-========================================================= */
-
 .floating-card{
   position:absolute;
-
   z-index:10;
-
   padding:15px 18px;
-
   min-width:135px;
-
-  background:
-    rgba(10,16,14,.88);
-
+  background:rgba(10,16,14,.88);
   backdrop-filter:blur(18px);
-
-  border:
-    1px solid
-    rgba(255,255,255,.13);
-
+  border:1px solid rgba(255,255,255,.13);
   border-radius:13px;
-
-  box-shadow:
-    0 25px 70px rgba(0,0,0,.4);
-
-  animation:
-    floatCard 5s ease-in-out infinite;
+  box-shadow:0 25px 70px rgba(0,0,0,.4);
+  animation:floatCard 5s ease-in-out infinite;
 }
 
 .floating-card small{
   display:block;
-
   color:#707b85;
-
-  font:
-    800 7px
-    Inter;
-
+  font:800 7px Inter;
   letter-spacing:1.4px;
-
   text-transform:uppercase;
-
   margin-bottom:4px;
 }
 
 .floating-card strong{
   display:block;
-
-  font:
-    900 24px
-    "Barlow Condensed";
-
+  font:900 24px "Barlow Condensed";
   text-transform:uppercase;
 }
 
@@ -946,14 +578,12 @@ nav a.active:before{
 .card-two{
   right:0;
   top:12%;
-
   animation-delay:-2s;
 }
 
 .card-three{
   right:2%;
   bottom:15%;
-
   animation-delay:-1s;
 }
 
@@ -961,58 +591,34 @@ nav a.active:before{
   color:var(--lime);
 }
 
-/* =========================================================
-   TICKER
-========================================================= */
-
 .ticker{
   width:100%;
-
   overflow:hidden;
-
   background:var(--lime);
-
   color:#050900;
-
-  transform:
-    rotate(-1deg)
-    scale(1.03);
-
+  transform:rotate(-1deg) scale(1.03);
   position:relative;
-
   z-index:15;
-
-  box-shadow:
-    0 10px 35px rgba(201,255,40,.08);
+  box-shadow:0 10px 35px rgba(201,255,40,.08);
 }
 
 .ticker-track{
   display:flex;
-
   width:max-content;
-
-  animation:
-    ticker 25s linear infinite;
+  animation:ticker 25s linear infinite;
 }
 
 .ticker-group{
   display:flex;
   align-items:center;
-
   gap:25px;
-
   padding:15px 0;
-
   margin-right:25px;
-
   white-space:nowrap;
 }
 
 .ticker-group span{
-  font:
-    900 21px
-    "Barlow Condensed";
-
+  font:900 21px "Barlow Condensed";
   letter-spacing:2px;
 }
 
@@ -1021,127 +627,73 @@ nav a.active:before{
   font-size:13px;
 }
 
-/* =========================================================
-   SECTIONS
-========================================================= */
-
 .section{
   position:relative;
-
-  padding:
-    125px
-    6%;
+  padding:125px 6%;
 }
 
 .section-head{
   display:flex;
   align-items:flex-end;
   justify-content:space-between;
-
   gap:40px;
-
   margin-bottom:55px;
 }
 
 .kicker{
   color:var(--lime);
-
-  font:
-    900 9px
-    Inter;
-
+  font:900 9px Inter;
   letter-spacing:3px;
-
   text-transform:uppercase;
 }
 
 .section-head h2{
   margin-top:13px;
-
-  font:
-    900 clamp(58px,8vw,105px)/.8
-    "Barlow Condensed";
-
+  font:900 clamp(58px,8vw,105px)/.8 "Barlow Condensed";
   text-transform:uppercase;
-
   letter-spacing:-2px;
 }
 
 .section-head p{
   max-width:430px;
-
   color:var(--muted);
-
   font-size:12px;
-
   line-height:1.85;
 }
 
-/* =========================================================
-   MEMBERSHIP
-========================================================= */
-
 .plans{
   display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
+  grid-template-columns:repeat(3,1fr);
   gap:18px;
 }
 
 .plan{
   position:relative;
-
   padding:31px;
-
-  border:
-    1px solid
-    var(--line);
-
+  border:1px solid var(--line);
   border-radius:var(--radius);
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(19,28,35,.95),
-      rgba(8,13,18,.98)
-    );
-
+  background:linear-gradient(145deg,rgba(19,28,35,.95),rgba(8,13,18,.98));
   overflow:hidden;
-
   transition:.45s;
 }
 
 .plan:before{
   content:"";
-
   position:absolute;
-
   width:180px;
   height:180px;
-
   right:-90px;
   top:-90px;
-
   border-radius:50%;
-
-  background:
-    rgba(201,255,40,.07);
-
+  background:rgba(201,255,40,.07);
   filter:blur(20px);
-
   transition:.5s;
 }
 
 .plan:hover{
   transform:translateY(-12px);
-
-  border-color:
-    rgba(201,255,40,.35);
-
-  box-shadow:
-    var(--shadow);
+  border-color:rgba(201,255,40,.35);
+  box-shadow:var(--shadow);
 }
 
 .plan:hover:before{
@@ -1149,25 +701,12 @@ nav a.active:before{
 }
 
 .plan.best{
-  border-color:
-    rgba(201,255,40,.55);
-
+  border-color:rgba(201,255,40,.55);
   background:
-    radial-gradient(
-      circle at 90% 0%,
-      rgba(201,255,40,.13),
-      transparent 32%
-    ),
-    linear-gradient(
-      145deg,
-      #17231a,
-      #09100d
-    );
-
+    radial-gradient(circle at 90% 0%,rgba(201,255,40,.13),transparent 32%),
+    linear-gradient(145deg,#17231a,#09100d);
   transform:translateY(-10px);
-
-  box-shadow:
-    0 25px 80px rgba(201,255,40,.06);
+  box-shadow:0 25px 80px rgba(201,255,40,.06);
 }
 
 .plan.best:hover{
@@ -1176,170 +715,95 @@ nav a.active:before{
 
 .ribbon{
   position:absolute;
-
   right:17px;
   top:17px;
-
   padding:7px 10px;
-
   border-radius:5px;
-
   background:var(--lime);
-
   color:#050900;
-
-  font:
-    900 7px
-    Inter;
-
+  font:900 7px Inter;
   letter-spacing:1px;
 }
 
 .plan-number{
   color:#3f4a54;
-
-  font:
-    900 48px
-    "Barlow Condensed";
+  font:900 48px "Barlow Condensed";
 }
 
 .plan-name{
-  margin:
-    4px
-    0
-    28px;
-
-  font:
-    900 34px
-    "Barlow Condensed";
-
+  margin:4px 0 28px;
+  font:900 34px "Barlow Condensed";
   text-transform:uppercase;
 }
 
 .old{
   color:#56616b;
-
   font-size:12px;
-
   text-decoration:line-through;
 }
 
 .price{
   margin-top:3px;
-
-  font:
-    900 70px/.9
-    "Barlow Condensed";
+  font:900 70px/.9 "Barlow Condensed";
 }
 
 .price small{
   color:#65717a;
-
-  font:
-    600 9px
-    Inter;
+  font:600 9px Inter;
 }
 
 .save{
   display:inline-block;
-
-  margin:
-    16px
-    0
-    25px;
-
-  padding:
-    8px
-    10px;
-
+  margin:16px 0 25px;
+  padding:8px 10px;
   border-radius:6px;
-
-  background:
-    rgba(201,255,40,.09);
-
+  background:rgba(201,255,40,.09);
   color:var(--lime);
-
-  font:
-    900 8px
-    Inter;
-
+  font:900 8px Inter;
   letter-spacing:.5px;
 }
 
 .plan ul{
   list-style:none;
-
   display:grid;
-
   gap:13px;
-
   padding-top:22px;
-
-  border-top:
-    1px solid
-    var(--line);
+  border-top:1px solid var(--line);
 }
 
 .plan li{
   color:#89939d;
-
   font-size:10px;
 }
 
 .plan li:before{
   content:"";
-
   display:inline-block;
-
   width:6px;
   height:6px;
-
   margin-right:10px;
-
   border-radius:50%;
-
   background:var(--lime);
-
-  box-shadow:
-    0 0 8px rgba(201,255,40,.5);
+  box-shadow:0 0 8px rgba(201,255,40,.5);
 }
 
 .plan .btn{
   width:100%;
-
   margin-top:29px;
 }
 
-/* =========================================================
-   MEMBERS
-========================================================= */
-
 .members-section{
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,.015),
-      transparent
-    );
-
-  border-top:
-    1px solid
-    var(--line);
-
-  border-bottom:
-    1px solid
-    var(--line);
+  background:linear-gradient(180deg,rgba(255,255,255,.015),transparent);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
 }
 
 .member-toolbar{
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   gap:15px;
-
   flex-wrap:wrap;
-
   margin-bottom:30px;
 }
 
@@ -1347,109 +811,61 @@ nav a.active:before{
   display:flex;
   align-items:center;
   gap:10px;
-
   color:#7f8992;
-
-  font:
-    900 9px
-    Inter;
-
+  font:900 9px Inter;
   letter-spacing:1.2px;
-
   text-transform:uppercase;
 }
 
 .member-count b{
   width:38px;
   height:38px;
-
   display:grid;
   place-items:center;
-
   border-radius:50%;
-
   background:var(--lime);
-
   color:#050900;
-
-  font:
-    900 13px
-    Inter;
-
-  box-shadow:
-    0 0 20px rgba(201,255,40,.12);
+  font:900 13px Inter;
+  box-shadow:0 0 20px rgba(201,255,40,.12);
 }
 
 .member-search{
   width:min(320px,100%);
-
   padding:14px 16px;
-
-  border:
-    1px solid
-    var(--line);
-
+  border:1px solid var(--line);
   border-radius:10px;
-
   background:#0d141a;
-
   color:#fff;
-
   outline:0;
-
   font-size:10px;
-
   transition:.3s;
 }
 
 .member-search:focus{
-  border-color:
-    rgba(201,255,40,.45);
-
-  box-shadow:
-    0 0 25px rgba(201,255,40,.06);
+  border-color:rgba(201,255,40,.45);
+  box-shadow:0 0 25px rgba(201,255,40,.06);
 }
 
 .members-grid{
   display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
+  grid-template-columns:repeat(3,1fr);
   gap:15px;
 }
 
 .member-card{
   position:relative;
-
   padding:23px;
-
-  border:
-    1px solid
-    var(--line);
-
+  border:1px solid var(--line);
   border-radius:17px;
-
-  background:
-    linear-gradient(
-      145deg,
-      #111920,
-      #0b1015
-    );
-
+  background:linear-gradient(145deg,#111920,#0b1015);
   overflow:hidden;
-
   transition:.35s;
 }
 
 .member-card:hover{
   transform:translateY(-8px);
-
-  border-color:
-    rgba(201,255,40,.28);
-
-  box-shadow:
-    var(--shadow);
+  border-color:rgba(201,255,40,.28);
+  box-shadow:var(--shadow);
 }
 
 .member-top{
@@ -1461,33 +877,19 @@ nav a.active:before{
 .member-avatar{
   width:48px;
   height:48px;
-
   display:grid;
   place-items:center;
-
   border-radius:13px;
-
-  background:
-    rgba(201,255,40,.09);
-
+  background:rgba(201,255,40,.09);
   color:var(--lime);
-
-  font:
-    900 23px
-    "Barlow Condensed";
+  font:900 23px "Barlow Condensed";
 }
 
 .member-status{
   padding:6px 9px;
-
   border-radius:6px;
-
-  font:
-    900 7px
-    Inter;
-
+  font:900 7px Inter;
   letter-spacing:1px;
-
   text-transform:uppercase;
 }
 
@@ -1508,166 +910,100 @@ nav a.active:before{
 
 .member-name{
   margin-top:17px;
-
-  font:
-    900 29px
-    "Barlow Condensed";
-
+  font:900 29px "Barlow Condensed";
   text-transform:uppercase;
 }
 
 .member-plan{
   color:#69747e;
-
-  font:
-    900 8px
-    Inter;
-
+  font:900 8px Inter;
   letter-spacing:1.2px;
-
   text-transform:uppercase;
 }
 
 .member-days{
-  margin:
-    20px
-    0;
-
+  margin:20px 0;
   padding:16px;
-
   display:flex;
   align-items:flex-end;
   justify-content:space-between;
-
-  border:
-    1px solid
-    var(--line);
-
+  border:1px solid var(--line);
   border-radius:11px;
-
   background:#080d12;
 }
 
 .member-days strong{
   color:var(--lime);
-
-  font:
-    900 46px/.8
-    "Barlow Condensed";
+  font:900 46px/.8 "Barlow Condensed";
 }
 
 .member-days span{
   color:#59636c;
-
-  font:
-    900 7px
-    Inter;
-
+  font:900 7px Inter;
   letter-spacing:1px;
-
   text-transform:uppercase;
 }
 
 .member-info{
   display:grid;
   gap:9px;
-
   padding-top:15px;
-
-  border-top:
-    1px solid
-    var(--line);
+  border-top:1px solid var(--line);
 }
 
 .info-row{
   display:flex;
   justify-content:space-between;
-
   gap:15px;
-
   font-size:8px;
 }
 
 .info-row span:first-child{
   color:#56616a;
-
   text-transform:uppercase;
-
   letter-spacing:1px;
 }
 
 .info-row span:last-child{
   color:#c4cbd0;
-
   font-weight:700;
-
   text-align:right;
 }
 
 .empty-members{
   padding:70px 20px;
-
   text-align:center;
-
-  border:
-    1px dashed
-    var(--line);
-
+  border:1px dashed var(--line);
   border-radius:17px;
 }
 
 .empty-members strong{
   display:block;
-
   margin-bottom:8px;
-
-  font:
-    900 38px
-    "Barlow Condensed";
-
+  font:900 38px "Barlow Condensed";
   text-transform:uppercase;
 }
 
 .empty-members p{
   color:#66717a;
-
   font-size:10px;
 }
 
-/* =========================================================
-   WHY US — VISUAL CARDS
-========================================================= */
-
 .features{
   display:grid;
-
-  grid-template-columns:
-    repeat(4,1fr);
-
-  border:
-    1px solid
-    var(--line);
-
+  grid-template-columns:repeat(4,1fr);
+  border:1px solid var(--line);
   border-radius:20px;
-
   overflow:hidden;
 }
 
 .feature{
   position:relative;
-
   min-height:350px;
-
   padding:0;
-
   background:#0b1218;
-
-  border-right:
-    1px solid
-    var(--line);
-
+  border-right:1px solid var(--line);
   overflow:hidden;
-
   transition:.45s;
 }
 
@@ -1681,142 +1017,79 @@ nav a.active:before{
 
 .feature-image{
   position:absolute;
-
   inset:0;
-
   width:100%;
   height:100%;
-
   object-fit:cover;
-
-  filter:
-    grayscale(.35)
-    saturate(.72)
-    contrast(1.12)
-    brightness(.55);
-
-  transition:
-    transform .8s,
-    filter .6s;
+  filter:grayscale(.35) saturate(.72) contrast(1.12) brightness(.55);
+  transition:transform .8s,filter .6s;
 }
 
 .feature:hover .feature-image{
   transform:scale(1.09);
-
-  filter:
-    grayscale(0)
-    saturate(1)
-    contrast(1.08)
-    brightness(.68);
+  filter:grayscale(0) saturate(1) contrast(1.08) brightness(.68);
 }
 
 .feature:after{
   content:"";
-
   position:absolute;
-
   inset:0;
-
-  background:
-    linear-gradient(
-      to top,
-      rgba(3,6,8,.98) 0%,
-      rgba(3,6,8,.76) 42%,
-      rgba(3,6,8,.18) 100%
-    );
+  background:linear-gradient(to top,rgba(3,6,8,.98) 0%,rgba(3,6,8,.76) 42%,rgba(3,6,8,.18) 100%);
 }
 
 .feature-content{
   position:absolute;
-
   left:25px;
   right:25px;
   bottom:25px;
-
   z-index:3;
 }
 
 .feature-number{
   position:absolute;
-
   right:18px;
   top:5px;
-
   color:rgba(201,255,40,.12);
-
-  font:
-    900 100px
-    "Barlow Condensed";
-
+  font:900 100px "Barlow Condensed";
   z-index:2;
 }
 
 .feature-icon{
   width:45px;
   height:45px;
-
   display:grid;
   place-items:center;
-
   margin-bottom:20px;
-
-  border:
-    1px solid
-    rgba(201,255,40,.35);
-
+  border:1px solid rgba(201,255,40,.35);
   border-radius:12px;
-
   color:var(--lime);
-
-  background:
-    rgba(5,10,7,.48);
-
+  background:rgba(5,10,7,.48);
   backdrop-filter:blur(8px);
-
   font-size:20px;
-
   position:relative;
-
   z-index:2;
 }
 
 .feature h3{
   position:relative;
   z-index:2;
-
   margin-bottom:10px;
-
-  font:
-    900 29px
-    "Barlow Condensed";
-
+  font:900 29px "Barlow Condensed";
   text-transform:uppercase;
 }
 
 .feature p{
   position:relative;
   z-index:2;
-
   color:#9ca6ad;
-
   font-size:10px;
-
   line-height:1.75;
 }
 
-/* =========================================================
-   LIVE TIMINGS
-========================================================= */
-
 .timings{
   position:relative;
-
   background:
-    radial-gradient(
-      circle at 80% 20%,
-      rgba(201,255,40,.09),
-      transparent 30%
-    ),
+    radial-gradient(circle at 80% 20%,rgba(201,255,40,.09),transparent 30%),
     #091016;
 }
 
@@ -1824,254 +1097,142 @@ nav a.active:before{
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   gap:20px;
-
   padding:17px 20px;
-
   margin-bottom:25px;
-
-  border:
-    1px solid
-    rgba(201,255,40,.15);
-
+  border:1px solid rgba(201,255,40,.15);
   border-radius:13px;
-
-  background:
-    rgba(201,255,40,.035);
-
+  background:rgba(201,255,40,.035);
   backdrop-filter:blur(12px);
 }
 
 .live-now{
   display:flex;
   align-items:center;
-
   gap:9px;
-
   color:var(--lime);
-
-  font:
-    900 9px
-    Inter;
-
+  font:900 9px Inter;
   letter-spacing:1.5px;
-
   text-transform:uppercase;
 }
 
 .live-dot{
   width:9px;
   height:9px;
-
   border-radius:50%;
-
   background:var(--lime);
-
-  animation:
-    livePulse 1.5s infinite;
+  animation:livePulse 1.5s infinite;
 }
 
 .live-clock{
   color:#a8b1b8;
-
-  font:
-    800 11px
-    Inter;
-
+  font:800 11px Inter;
   letter-spacing:1px;
 }
 
 .schedule{
   display:grid;
-
-  grid-template-columns:
-    repeat(2,1fr);
-
+  grid-template-columns:repeat(2,1fr);
   gap:15px;
 }
 
-/* =========================================================
-   TIMING SLOT WITH PHOTOS
-========================================================= */
-
 .slot{
   position:relative;
-
   min-height:220px;
-
   padding:0;
-
   display:flex;
   align-items:flex-end;
-
-  border:
-    1px solid
-    var(--line);
-
+  border:1px solid var(--line);
   border-radius:18px;
-
   background:#0b1116;
-
   overflow:hidden;
-
   transition:.4s;
 }
 
 .slot:hover{
   transform:translateY(-5px);
-
-  border-color:
-    rgba(201,255,40,.25);
+  border-color:rgba(201,255,40,.25);
 }
 
 .slot.active{
-  border-color:
-    rgba(201,255,40,.70);
-
-  box-shadow:
-    0 20px 60px rgba(201,255,40,.08);
+  border-color:rgba(201,255,40,.70);
+  box-shadow:0 20px 60px rgba(201,255,40,.08);
 }
 
 .slot-photo{
   position:absolute;
-
   inset:0;
-
   width:100%;
   height:100%;
-
   object-fit:cover;
-
-  filter:
-    grayscale(.25)
-    saturate(.75)
-    contrast(1.1)
-    brightness(.48);
-
-  transition:
-    transform .7s,
-    filter .5s;
+  filter:grayscale(.25) saturate(.75) contrast(1.1) brightness(.48);
+  transition:transform .7s,filter .5s;
 }
 
 .slot:hover .slot-photo{
   transform:scale(1.06);
-
-  filter:
-    grayscale(0)
-    saturate(1)
-    contrast(1.08)
-    brightness(.60);
+  filter:grayscale(0) saturate(1) contrast(1.08) brightness(.60);
 }
 
 .slot:after{
   content:"";
-
   position:absolute;
-
   inset:0;
-
-  background:
-    linear-gradient(
-      to top,
-      rgba(3,7,9,.98) 0%,
-      rgba(3,7,9,.74) 48%,
-      rgba(3,7,9,.10) 100%
-    );
+  background:linear-gradient(to top,rgba(3,7,9,.98) 0%,rgba(3,7,9,.74) 48%,rgba(3,7,9,.10) 100%);
 }
 
 .slot.active:after{
-  background:
-    linear-gradient(
-      to top,
-      rgba(3,7,9,.98) 0%,
-      rgba(12,25,10,.78) 48%,
-      rgba(201,255,40,.04) 100%
-    );
+  background:linear-gradient(to top,rgba(3,7,9,.98) 0%,rgba(12,25,10,.78) 48%,rgba(201,255,40,.04) 100%);
 }
 
 .slot-content{
   position:relative;
-
   z-index:3;
-
   width:100%;
-
   padding:25px;
 }
 
 .slot-time{
   display:block;
-
   margin-bottom:7px;
-
   color:#a2adb5;
-
-  font:
-    900 8px
-    Inter;
-
+  font:900 8px Inter;
   letter-spacing:1.5px;
-
   text-transform:uppercase;
 }
 
 .slot strong{
   display:block;
-
-  font:
-    900 55px
-    "Barlow Condensed";
-
+  font:900 55px "Barlow Condensed";
   text-transform:uppercase;
-
   letter-spacing:1px;
 }
 
 .slot.active strong{
   color:var(--lime);
-
-  text-shadow:
-    0 0 20px rgba(201,255,40,.18);
+  text-shadow:0 0 20px rgba(201,255,40,.18);
 }
 
 .slot-number{
   position:absolute;
-
   z-index:4;
-
   right:22px;
   top:18px;
-
   color:rgba(255,255,255,.32);
-
-  font:
-    900 35px
-    "Barlow Condensed";
+  font:900 35px "Barlow Condensed";
 }
 
 .slot-badge{
   position:absolute;
-
   z-index:5;
-
   right:22px;
   bottom:22px;
-
   display:none;
-
   padding:6px 9px;
-
   border-radius:5px;
-
   background:var(--lime);
-
   color:#050900;
-
-  font:
-    900 7px
-    Inter;
-
+  font:900 7px Inter;
   letter-spacing:1px;
 }
 
@@ -2079,120 +1240,68 @@ nav a.active:before{
   display:block;
 }
 
-/* DAILY CARD */
-
 .slot.daily{
   background:
-    radial-gradient(
-      circle at 80% 20%,
-      rgba(201,255,40,.15),
-      transparent 40%
-    ),
+    radial-gradient(circle at 80% 20%,rgba(201,255,40,.15),transparent 40%),
     #0b1116;
-
   align-items:center;
 }
 
 .daily-content{
   position:relative;
-
   z-index:3;
-
   padding:30px;
 }
 
 .daily-content strong{
   font-size:54px;
-
   color:var(--lime);
 }
 
-/* =========================================================
-   GALLERY
-========================================================= */
-
 .gallery{
   display:grid;
-
-  grid-template-columns:
-    1.4fr
-    1fr
-    1fr;
-
+  grid-template-columns:1.4fr 1fr 1fr;
   grid-auto-rows:260px;
-
   gap:12px;
 }
 
 .pic{
   position:relative;
-
   min-height:220px;
-
   overflow:hidden;
-
-  border:
-    1px solid
-    var(--line);
-
+  border:1px solid var(--line);
   border-radius:17px;
-
   background:#111;
-
   transition:.4s;
 }
 
 .pic:after{
   content:"";
-
   position:absolute;
   inset:0;
-
-  background:
-    linear-gradient(
-      to top,
-      rgba(0,0,0,.78),
-      transparent 65%
-    );
+  background:linear-gradient(to top,rgba(0,0,0,.78),transparent 65%);
 }
 
 .pic img{
   width:100%;
   height:100%;
-
   display:block;
-
   object-fit:cover;
-
-  filter:
-    saturate(.72)
-    contrast(1.08);
-
-  transition:
-    transform .8s,
-    filter .5s;
+  filter:saturate(.72) contrast(1.08);
+  transition:transform .8s,filter .5s;
 }
 
 .pic:hover img{
   transform:scale(1.08);
-
-  filter:
-    saturate(1)
-    contrast(1.08);
+  filter:saturate(1) contrast(1.08);
 }
 
 .pic label{
   position:absolute;
-
   left:20px;
   bottom:18px;
-
   z-index:3;
-
-  font:
-    900 30px
-    "Barlow Condensed";
-
+  font:900 30px "Barlow Condensed";
   text-transform:uppercase;
 }
 
@@ -2200,47 +1309,24 @@ nav a.active:before{
   grid-row:span 2;
 }
 
-/* =========================================================
-   CTA
-========================================================= */
-
 .cta{
   position:relative;
-
-  padding:
-    145px
-    6%;
-
+  padding:145px 6%;
   text-align:center;
-
   overflow:hidden;
-
   background:
-    radial-gradient(
-      circle at center,
-      rgba(201,255,40,.14),
-      transparent 36%
-    ),
+    radial-gradient(circle at center,rgba(201,255,40,.14),transparent 36%),
     #060a0e;
 }
 
 .cta:before{
   content:"14";
-
   position:absolute;
-
   left:50%;
   top:50%;
-
-  transform:
-    translate(-50%,-50%);
-
-  color:
-    rgba(255,255,255,.018);
-
-  font:
-    900 430px
-    "Barlow Condensed";
+  transform:translate(-50%,-50%);
+  color:rgba(255,255,255,.018);
+  font:900 430px "Barlow Condensed";
 }
 
 .cta-content{
@@ -2249,108 +1335,61 @@ nav a.active:before{
 }
 
 .cta h2{
-  font:
-    900 clamp(65px,10vw,140px)/.78
-    "Barlow Condensed";
-
+  font:900 clamp(65px,10vw,140px)/.78 "Barlow Condensed";
   text-transform:uppercase;
-
   letter-spacing:-4px;
 }
 
 .cta h2 span{
   color:var(--lime);
-
-  text-shadow:
-    5px 5px 0 #273700;
+  text-shadow:5px 5px 0 #273700;
 }
 
 .cta p{
   max-width:510px;
-
-  margin:
-    28px
-    auto;
-
+  margin:28px auto;
   color:#707b84;
-
   font-size:12px;
-
   line-height:1.8;
 }
 
-/* =========================================================
-   WHATSAPP SUPPORT
-========================================================= */
-
 .whatsapp-support{
   position:fixed;
-
   right:22px;
   bottom:24px;
-
   z-index:90;
-
   display:flex;
   align-items:center;
-
   gap:10px;
-
   padding:10px 13px 10px 10px;
-
-  border:
-    1px solid
-    rgba(82,255,152,.35);
-
+  border:1px solid rgba(82,255,152,.35);
   border-radius:50px;
-
-  background:
-    rgba(6,13,10,.90);
-
+  background:rgba(6,13,10,.90);
   backdrop-filter:blur(18px);
-
-  box-shadow:
-    0 18px 50px rgba(0,0,0,.45);
-
-  animation:
-    whatsappFloat 4s ease-in-out infinite;
-
+  box-shadow:0 18px 50px rgba(0,0,0,.45);
+  animation:whatsappFloat 4s ease-in-out infinite;
   transition:.35s;
 }
 
 .whatsapp-support:hover{
-  transform:
-    translateY(-6px)
-    scale(1.03);
-
-  border-color:
-    rgba(82,255,152,.7);
-
-  box-shadow:
-    0 20px 55px rgba(82,255,152,.12);
+  transform:translateY(-6px) scale(1.03);
+  border-color:rgba(82,255,152,.7);
+  box-shadow:0 20px 55px rgba(82,255,152,.12);
 }
-
-/* ACTUAL WHATSAPP-STYLE SVG LOGO */
 
 .whatsapp-icon{
   width:43px;
   height:43px;
-
   display:grid;
   place-items:center;
-
   border-radius:50%;
-
   background:#25D366;
-
-  box-shadow:
-    0 0 20px rgba(37,211,102,.20);
+  box-shadow:0 0 20px rgba(37,211,102,.20);
 }
 
 .whatsapp-icon svg{
   width:25px;
   height:25px;
-
   display:block;
 }
 
@@ -2360,59 +1399,29 @@ nav a.active:before{
 
 .whatsapp-text small{
   display:block;
-
   color:#718078;
-
-  font:
-    800 7px
-    Inter;
-
+  font:800 7px Inter;
   letter-spacing:1px;
-
   text-transform:uppercase;
 }
 
 .whatsapp-text strong{
   display:block;
-
   margin-top:2px;
-
   color:#eafff1;
-
-  font:
-    900 12px
-    Inter;
+  font:900 12px Inter;
 }
 
-/* =========================================================
-   FOOTER
-========================================================= */
-
 footer{
-  padding:
-    27px
-    6%;
-
+  padding:27px 6%;
   display:flex;
-
   justify-content:space-between;
-
   gap:20px;
-
   background:#040609;
-
-  border-top:
-    1px solid
-    var(--line);
-
+  border-top:1px solid var(--line);
   color:#626d76;
-
-  font:
-    800 8px
-    Inter;
-
+  font:800 8px Inter;
   letter-spacing:1.2px;
-
   text-transform:uppercase;
 }
 
@@ -2420,38 +1429,22 @@ footer b{
   color:var(--lime);
 }
 
-/* =========================================================
-   REVEAL
-========================================================= */
-
 .reveal{
   opacity:0;
-
-  transform:
-    translateY(35px);
-
-  transition:
-    opacity .8s ease,
-    transform .8s ease;
+  transform:translateY(35px);
+  transition:opacity .8s ease,transform .8s ease;
 }
 
 .reveal.visible{
   opacity:1;
-
-  transform:
-    translateY(0);
+  transform:translateY(0);
 }
-
-/* =========================================================
-   ANIMATIONS
-========================================================= */
 
 @keyframes fadeUp{
   from{
     opacity:0;
     transform:translateY(25px);
   }
-
   to{
     opacity:1;
     transform:translateY(0);
@@ -2461,16 +1454,11 @@ footer b{
 @keyframes heroTitleIn{
   from{
     opacity:0;
-    transform:
-      translateY(35px)
-      scale(.97);
+    transform:translateY(35px) scale(.97);
   }
-
   to{
     opacity:1;
-    transform:
-      translateY(0)
-      scale(1);
+    transform:translateY(0) scale(1);
   }
 }
 
@@ -2488,29 +1476,19 @@ footer b{
 
 @keyframes floatCard{
   0%,100%{
-    transform:
-      translateY(0)
-      rotate(-1deg);
+    transform:translateY(0) rotate(-1deg);
   }
-
   50%{
-    transform:
-      translateY(-12px)
-      rotate(1deg);
+    transform:translateY(-12px) rotate(1deg);
   }
 }
 
 @keyframes athleteFloat{
   0%,100%{
-    transform:
-      scale(1.01)
-      translateY(0);
+    transform:scale(1.01) translateY(0);
   }
-
   50%{
-    transform:
-      scale(1.035)
-      translateY(-5px);
+    transform:scale(1.035) translateY(-5px);
   }
 }
 
@@ -2518,7 +1496,6 @@ footer b{
   from{
     transform:translateX(0);
   }
-
   to{
     transform:translateX(-50%);
   }
@@ -2526,21 +1503,13 @@ footer b{
 
 @keyframes livePulse{
   0%{
-    box-shadow:
-      0 0 0 0
-      rgba(201,255,40,.5);
+    box-shadow:0 0 0 0 rgba(201,255,40,.5);
   }
-
   70%{
-    box-shadow:
-      0 0 0 10px
-      rgba(201,255,40,0);
+    box-shadow:0 0 0 10px rgba(201,255,40,0);
   }
-
   100%{
-    box-shadow:
-      0 0 0 0
-      rgba(201,255,40,0);
+    box-shadow:0 0 0 0 rgba(201,255,40,0);
   }
 }
 
@@ -2548,7 +1517,6 @@ footer b{
   0%,100%{
     transform:translateY(0);
   }
-
   50%{
     transform:translateY(-7px);
   }
@@ -2558,7 +1526,6 @@ footer b{
   0%{
     left:-100%;
   }
-
   45%,100%{
     left:140%;
   }
@@ -2566,21 +1533,12 @@ footer b{
 
 @keyframes orbFloat{
   0%,100%{
-    transform:
-      translate(0,0)
-      scale(1);
+    transform:translate(0,0) scale(1);
   }
-
   50%{
-    transform:
-      translate(25px,-30px)
-      scale(1.08);
+    transform:translate(25px,-30px) scale(1.08);
   }
 }
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
 
 @media(max-width:1050px){
 
@@ -2658,74 +1616,40 @@ footer b{
 
   nav.mobile-open{
     position:absolute;
-
     top:70px;
     left:4%;
     right:4%;
-
     display:flex;
-
     flex-direction:column;
-
     align-items:stretch;
-
     gap:5px;
-
     padding:12px;
-
-    background:
-      rgba(7,11,15,.96);
-
+    background:rgba(7,11,15,.96);
     backdrop-filter:blur(24px);
-
-    border:
-      1px solid
-      rgba(201,255,40,.18);
-
+    border:1px solid rgba(201,255,40,.18);
     border-radius:18px;
-
-    box-shadow:
-      0 30px 80px rgba(0,0,0,.5);
-
-    animation:
-      mobileMenuIn .35s ease;
+    box-shadow:0 30px 80px rgba(0,0,0,.5);
+    animation:mobileMenuIn .35s ease;
   }
 
   nav.mobile-open a{
     width:100%;
-
     padding:18px 16px;
-
     border-radius:12px;
-
     font-size:12px;
-
     letter-spacing:1.8px;
-
-    background:
-      rgba(255,255,255,.025);
-
-    border:
-      1px solid
-      transparent;
-
+    background:rgba(255,255,255,.025);
+    border:1px solid transparent;
     transition:.3s;
   }
 
   nav.mobile-open a:hover,
   nav.mobile-open a.active{
     color:var(--lime);
-
-    background:
-      rgba(201,255,40,.07);
-
-    border-color:
-      rgba(201,255,40,.18);
-
+    background:rgba(201,255,40,.07);
+    border-color:rgba(201,255,40,.18);
     padding-left:23px;
-
-    box-shadow:
-      inset 3px 0 0 var(--lime);
+    box-shadow:inset 3px 0 0 var(--lime);
   }
 
   nav.mobile-open a:before{
@@ -2733,15 +1657,11 @@ footer b{
   }
 
   .hero{
-    padding:
-      125px
-      5%
-      65px;
+    padding:125px 5% 65px;
   }
 
   .hero h1{
     font-size:76px;
-
     letter-spacing:-2px;
   }
 
@@ -2755,7 +1675,6 @@ footer b{
 
   .floating-card{
     padding:12px;
-
     min-width:120px;
   }
 
@@ -2777,14 +1696,11 @@ footer b{
   }
 
   .section{
-    padding:
-      90px
-      5%;
+    padding:90px 5%;
   }
 
   .section-head{
     display:block;
-
     margin-bottom:40px;
   }
 
@@ -2798,12 +1714,8 @@ footer b{
 
   .feature{
     min-height:350px;
-
     border-right:0;
-
-    border-bottom:
-      1px solid
-      var(--line);
+    border-bottom:1px solid var(--line);
   }
 
   .feature:last-child{
@@ -2820,7 +1732,6 @@ footer b{
 
   .gallery{
     grid-template-columns:1fr;
-
     grid-auto-rows:220px;
   }
 
@@ -2830,15 +1741,12 @@ footer b{
 
   .live-status-bar{
     align-items:flex-start;
-
     flex-direction:column;
   }
 
   footer{
     display:block;
-
     text-align:center;
-
     line-height:2;
   }
 
@@ -2865,7 +1773,6 @@ footer b{
   .logo-box{
     width:38px;
     height:38px;
-
     font-size:22px;
   }
 
@@ -2875,7 +1782,6 @@ footer b{
 
   .hero h1{
     font-size:64px;
-
     line-height:.78;
   }
 
@@ -2941,33 +1847,20 @@ footer b{
   }
 
   .cta{
-    padding:
-      110px
-      5%;
+    padding:110px 5%;
   }
 }
 
 @keyframes mobileMenuIn{
   from{
     opacity:0;
-
-    transform:
-      translateY(-15px)
-      scale(.97);
+    transform:translateY(-15px) scale(.97);
   }
-
   to{
     opacity:1;
-
-    transform:
-      translateY(0)
-      scale(1);
+    transform:translateY(0) scale(1);
   }
 }
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -2991,63 +1884,34 @@ footer b{
 <div class="bg-orb orb-one"></div>
 <div class="bg-orb orb-two"></div>
 
-<!-- =======================================================
-     HEADER
-======================================================= -->
-
 <header id="header">
 
   <a class="logo" href="#home">
-
-```
-<div class="logo-box">
-  14
-</div>
-
-FITNESS
-<span>GYM</span>
-```
-
+    <div class="logo-box">14</div>
+    FITNESS
+    <span>GYM</span>
   </a>
 
   <nav id="nav">
 
 ```
-<a href="#home" class="active">
-  Home
-</a>
+<a href="#home" class="active">Home</a>
 
-<a href="#plans">
-  Membership
-</a>
+<a href="#plans">Membership</a>
 
-<a href="#members">
-  Members
-</a>
+<a href="#members">Members</a>
 
-<a href="#why">
-  Why Us
-</a>
+<a href="#why">Why Us</a>
 
-<a href="#timings">
-  Timings
-</a>
+<a href="#timings">Timings</a>
 
-<a href="#gallery">
-  Gym
-</a>
+<a href="#gallery">Gym</a>
 ```
 
   </nav>
 
-<a
- class="header-btn"
- href="#plans">
-
-```
-Join Now →
-```
-
+  <a class="header-btn" href="#plans">
+    Join Now →
   </a>
 
 <button
@@ -3057,11 +1921,9 @@ Join Now →
 
 ```
 <div class="menu-lines">
-
   <span></span>
   <span></span>
   <span></span>
-
 </div>
 ```
 
@@ -3069,58 +1931,33 @@ Join Now →
 
 </header>
 
-<!-- =======================================================
-     HERO
-======================================================= -->
-
-<section
-  class="hero"
-  id="home">
+<section class="hero" id="home">
 
   <div class="hero-copy">
 
 ```
 <h1>
-
   FORGE<br>
-
   YOUR<br>
-
-  <span class="lime">
-    STRONGEST
-  </span><br>
-
-  <span class="outline">
-    SELF.
-  </span>
-
+  <span class="lime">STRONGEST</span><br>
+  <span class="outline">SELF.</span>
 </h1>
 
 <p class="hero-description">
-
   A serious training environment built for
   strength, fitness and consistency.
   Show up, put in the work and become
   stronger every session.
-
 </p>
 
 <div class="hero-actions">
 
-  <a
-    class="btn btn-primary"
-    href="#plans">
-
+  <a class="btn btn-primary" href="#plans">
     View Memberships →
-
   </a>
 
-  <a
-    class="btn btn-dark"
-    href="#timings">
-
+  <a class="btn btn-dark" href="#timings">
     Check Live Timings
-
   </a>
 
 </div>
@@ -3128,47 +1965,24 @@ Join Now →
 <div class="hero-stats">
 
   <div class="hero-stat">
-
-    <strong>
-      01
-    </strong>
-
-    <span>
-      Focused Environment
-    </span>
-
+    <strong>01</strong>
+    <span>Focused Environment</span>
   </div>
 
   <div class="hero-stat">
-
-    <strong>
-      100%
-    </strong>
-
-    <span>
-      Commitment
-    </span>
-
+    <strong>100%</strong>
+    <span>Commitment</span>
   </div>
 
   <div class="hero-stat">
-
-    <strong>
-      14
-    </strong>
-
-    <span>
-      Fitness Standard
-    </span>
-
+    <strong>14</strong>
+    <span>Fitness Standard</span>
   </div>
 
 </div>
 ```
 
   </div>
-
-  <!-- HERO VISUAL -->
 
   <div class="hero-visual reveal">
 
@@ -3186,54 +2000,35 @@ Join Now →
 
   <div class="athlete-label">
 
-    <small>
-      14 Fitness Athlete
-    </small>
+    <small>14 Fitness Athlete</small>
 
-    <strong>
-      Train With Purpose
-    </strong>
+    <strong>Train With Purpose</strong>
 
   </div>
 
 </div>
 
-
 <div class="floating-card card-one">
 
-  <small>
-    Mindset
-  </small>
+  <small>Mindset</small>
 
-  <strong>
-    Get Strong
-  </strong>
+  <strong>Get Strong</strong>
 
 </div>
-
 
 <div class="floating-card card-two">
 
-  <small>
-    Daily Standard
-  </small>
+  <small>Daily Standard</small>
 
-  <strong>
-    No Limits
-  </strong>
+  <strong>No Limits</strong>
 
 </div>
 
-
 <div class="floating-card card-three">
 
-  <small>
-    Progress
-  </small>
+  <small>Progress</small>
 
-  <strong>
-    +1% Every Day
-  </strong>
+  <strong>+1% Every Day</strong>
 
 </div>
 ```
@@ -3241,10 +2036,6 @@ Join Now →
   </div>
 
 </section>
-
-<!-- =======================================================
-     TICKER
-======================================================= -->
 
 <div class="ticker">
 
@@ -3313,13 +2104,7 @@ Join Now →
 
 </div>
 
-<!-- =======================================================
-     MEMBERSHIP
-======================================================= -->
-
-<section
-  class="section"
-  id="plans">
+<section class="section" id="plans">
 
   <div class="section-head reveal">
 
@@ -3338,11 +2123,9 @@ Join Now →
 </div>
 
 <p>
-
   Choose the membership that matches
   your commitment. Every plan gives you
   access to the 14 FITNESS training environment.
-
 </p>
 ```
 
@@ -3367,9 +2150,7 @@ Join Now →
 
   <div class="price">
     ₹1,400
-    <small>
-      / admission
-    </small>
+    <small>/ admission</small>
   </div>
 
   <div class="save">
@@ -3377,25 +2158,20 @@ Join Now →
   </div>
 
   <ul>
-
     <li>Admission fee ₹1,400</li>
     <li>1 Month FREE membership</li>
     <li>Full gym access</li>
-    <li>Strength & cardio zones</li>
+    <li>Strength &amp; cardio zones</li>
     <li>Member profile</li>
-
   </ul>
 
   <a
     class="btn btn-dark"
     href="order.html?plan=1400">
-
     Join Starter →
-
   </a>
 
 </article>
-
 
 <article class="plan best reveal">
 
@@ -3417,9 +2193,7 @@ Join Now →
 
   <div class="price">
     ₹7,560
-    <small>
-      / 6 months
-    </small>
+    <small>/ 6 months</small>
   </div>
 
   <div class="save">
@@ -3427,26 +2201,21 @@ Join Now →
   </div>
 
   <ul>
-
     <li>6 Months membership</li>
     <li>FREE admission</li>
     <li>10% long-term discount</li>
     <li>Full gym access</li>
     <li>Progress tracking</li>
     <li>Priority member support</li>
-
   </ul>
 
   <a
     class="btn btn-primary"
     href="order.html?plan=7560">
-
     Choose Best Value →
-
   </a>
 
 </article>
-
 
 <article class="plan reveal">
 
@@ -3464,9 +2233,7 @@ Join Now →
 
   <div class="price">
     ₹14,280
-    <small>
-      / 1 year
-    </small>
+    <small>/ 1 year</small>
   </div>
 
   <div class="save">
@@ -3474,22 +2241,18 @@ Join Now →
   </div>
 
   <ul>
-
     <li>12 Months membership</li>
     <li>FREE admission</li>
     <li>15% annual discount</li>
     <li>Full gym access</li>
     <li>Long-term progress profile</li>
     <li>Priority support</li>
-
   </ul>
 
   <a
     class="btn btn-dark"
     href="order.html?plan=14280">
-
     Join Elite →
-
   </a>
 
 </article>
@@ -3499,13 +2262,7 @@ Join Now →
 
 </section>
 
-<!-- =======================================================
-     MEMBERS
-======================================================= -->
-
-<section
-  class="section members-section"
-  id="members">
+<section class="section members-section" id="members">
 
   <div class="section-head reveal">
 
@@ -3524,11 +2281,9 @@ Join Now →
 </div>
 
 <p>
-
   Registered members are displayed
   with their selected plan and
   remaining membership time.
-
 </p>
 ```
 
@@ -3557,14 +2312,9 @@ Join Now →
 
   </div>
 
-  <div
-    id="membersGrid"
-    class="members-grid">
-  </div>
+  <div id="membersGrid" class="members-grid"></div>
 
-  <div
-    id="emptyMembers"
-    class="empty-members">
+  <div id="emptyMembers" class="empty-members">
 
 ```
 <strong>
@@ -3581,13 +2331,7 @@ Join Now →
 
 </section>
 
-<!-- =======================================================
-     WHY US
-======================================================= -->
-
-<section
-  class="section"
-  id="why">
+<section class="section" id="why">
 
   <div class="section-head reveal">
 
@@ -3606,11 +2350,9 @@ Join Now →
 </div>
 
 <p>
-
   Everything is designed around
   consistency, focused training
   and measurable progress.
-
 </p>
 ```
 
@@ -3619,8 +2361,6 @@ Join Now →
   <div class="features">
 
 ```
-<!-- MODERN EQUIPMENT -->
-
 <div class="feature reveal">
 
   <img
@@ -3652,9 +2392,6 @@ Join Now →
   </div>
 
 </div>
-
-
-<!-- HIGH ENERGY -->
 
 <div class="feature reveal">
 
@@ -3688,9 +2425,6 @@ Join Now →
 
 </div>
 
-
-<!-- GOAL FOCUSED -->
-
 <div class="feature reveal">
 
   <img
@@ -3722,9 +2456,6 @@ Join Now →
   </div>
 
 </div>
-
-
-<!-- COMMUNITY -->
 
 <div class="feature reveal">
 
@@ -3763,13 +2494,7 @@ Join Now →
 
 </section>
 
-<!-- =======================================================
-     LIVE TIMINGS
-======================================================= -->
-
-<section
-  class="section timings"
-  id="timings">
+<section class="section timings" id="timings">
 
   <div class="section-head reveal">
 
@@ -3788,12 +2513,10 @@ Join Now →
 </div>
 
 <p>
-
   The timing indicator automatically
   follows your device's current time
   and highlights the session that is
   currently active.
-
 </p>
 ```
 
@@ -3812,12 +2535,8 @@ Join Now →
 
 </div>
 
-<div
-  class="live-clock"
-  id="liveClock">
-
+<div class="live-clock" id="liveClock">
   --:--:--
-
 </div>
 ```
 
@@ -3826,8 +2545,6 @@ Join Now →
   <div class="schedule">
 
 ```
-<!-- MEN MORNING -->
-
 <div
   class="slot reveal"
   data-start="06:00"
@@ -3861,9 +2578,6 @@ Join Now →
   </div>
 
 </div>
-
-
-<!-- WOMEN -->
 
 <div
   class="slot reveal"
@@ -3899,9 +2613,6 @@ Join Now →
 
 </div>
 
-
-<!-- MEN EVENING -->
-
 <div
   class="slot reveal"
   data-start="16:30"
@@ -3936,9 +2647,6 @@ Join Now →
 
 </div>
 
-
-<!-- DAILY -->
-
 <div
   class="slot daily reveal"
   data-special="true">
@@ -3967,13 +2675,7 @@ Join Now →
 
 </section>
 
-<!-- =======================================================
-     GALLERY
-======================================================= -->
-
-<section
-  class="section"
-  id="gallery">
+<section class="section" id="gallery">
 
   <div class="section-head reveal">
 
@@ -3992,11 +2694,9 @@ Join Now →
 </div>
 
 <p>
-
   A training environment built
   around movement, strength and
   consistent work.
-
 </p>
 ```
 
@@ -4018,7 +2718,6 @@ Join Now →
 
 </div>
 
-
 <div class="pic reveal">
 
   <img
@@ -4031,7 +2730,6 @@ Join Now →
   </label>
 
 </div>
-
 
 <div class="pic reveal">
 
@@ -4046,7 +2744,6 @@ Join Now →
 
 </div>
 
-
 <div class="pic reveal">
 
   <img
@@ -4059,7 +2756,6 @@ Join Now →
   </label>
 
 </div>
-
 
 <div class="pic reveal">
 
@@ -4079,10 +2775,6 @@ Join Now →
 
 </section>
 
-<!-- =======================================================
-     CTA
-======================================================= -->
-
 <section class="cta">
 
   <div class="cta-content reveal">
@@ -4093,39 +2785,26 @@ Join Now →
 </div>
 
 <h2>
-
   Stop Waiting.<br>
-
   <span>
     Start Training.
   </span>
-
 </h2>
 
 <p>
-
   The hardest part is making the decision
   to begin. Make yours today and start
   building your strongest self.
-
 </p>
 
-<a
-  class="btn btn-primary"
-  href="#plans">
-
+<a class="btn btn-primary" href="#plans">
   Become A Member →
-
 </a>
 ```
 
   </div>
 
 </section>
-
-<!-- =======================================================
-     WHATSAPP SUPPORT
-======================================================= -->
 
 <a
 class="whatsapp-support"
@@ -4166,10 +2845,6 @@ aria-label="WhatsApp Support">
 
 </a>
 
-<!-- =======================================================
-     FOOTER
-======================================================= -->
-
 <footer>
 
   <div>
@@ -4183,10 +2858,6 @@ aria-label="WhatsApp Support">
 </footer>
 
 <script>
-
-/* =========================================================
-   HEADER
-========================================================= */
 
 const header =
   document.getElementById("header");
@@ -4202,11 +2873,6 @@ window.addEventListener(
 
   }
 );
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
 
 const menuBtn =
   document.getElementById("menuBtn");
@@ -4250,11 +2916,6 @@ document
 
   });
 
-
-/* =========================================================
-   REVEAL ANIMATIONS
-========================================================= */
-
 const revealObserver =
   new IntersectionObserver(
     entries => {
@@ -4297,11 +2958,6 @@ document
     }
   );
 
-
-/* =========================================================
-   LIVE TIMING SYSTEM
-========================================================= */
-
 const timingSlots =
   document.querySelectorAll(
     ".slot[data-start]"
@@ -4316,7 +2972,6 @@ const liveText =
   document.getElementById(
     "liveText"
   );
-
 
 function timeToMinutes(time){
 
@@ -4336,7 +2991,6 @@ function timeToMinutes(time){
 
 }
 
-
 function formatTime(date){
 
   return date.toLocaleTimeString(
@@ -4351,7 +3005,6 @@ function formatTime(date){
 
 }
 
-
 function updateLiveTiming(){
 
   const now =
@@ -4364,7 +3017,6 @@ function updateLiveTiming(){
   let activeGender =
     null;
 
-
   timingSlots.forEach(
     slot => {
 
@@ -4374,7 +3026,6 @@ function updateLiveTiming(){
 
     }
   );
-
 
   timingSlots.forEach(
     slot => {
@@ -4422,10 +3073,8 @@ function updateLiveTiming(){
     }
   );
 
-
   liveClock.textContent =
     formatTime(now);
-
 
   if(activeGender){
 
@@ -4443,7 +3092,6 @@ function updateLiveTiming(){
 
 }
 
-
 updateLiveTiming();
 
 setInterval(
@@ -4451,14 +3099,8 @@ setInterval(
   1000
 );
 
-
-/* =========================================================
-   MEMBERS
-========================================================= */
-
 const MEMBERS_KEY =
   "14fitness_members";
-
 
 const planInfo = {
 
@@ -4479,7 +3121,6 @@ const planInfo = {
 
 };
 
-
 function escapeHTML(value){
 
   return String(value ?? "")
@@ -4490,7 +3131,6 @@ function escapeHTML(value){
     .replace(/'/g,"&#039;");
 
 }
-
 
 function getExpiryDate(
   createdAt,
@@ -4533,7 +3173,6 @@ function getExpiryDate(
   return expiry;
 
 }
-
 
 function getDaysLeft(
   createdAt,
@@ -4579,7 +3218,6 @@ function getDaysLeft(
 
 }
 
-
 function formatDate(date){
 
   return date
@@ -4594,7 +3232,6 @@ function formatDate(date){
     : "—";
 
 }
-
 
 function getMemberStatus(member){
 
@@ -4636,7 +3273,6 @@ function getMemberStatus(member){
   };
 
 }
-
 
 function createMemberCard(
   member
@@ -4703,12 +3339,8 @@ function createMemberCard(
           ${escapeHTML(first)}
         </div>
 
-        <div
-          class="member-status
-          ${status.className}">
-
+        <div class="member-status ${status.className}">
           ${status.label}
-
         </div>
 
       </div>
@@ -4802,7 +3434,6 @@ function createMemberCard(
 
 }
 
-
 function loadMembers(){
 
   const grid =
@@ -4893,13 +3524,7 @@ function loadMembers(){
 
 }
 
-
 loadMembers();
-
-
-/* =========================================================
-   MEMBER SEARCH
-========================================================= */
 
 document
   .getElementById(
@@ -4980,11 +3605,6 @@ document
     }
   );
 
-
-/* =========================================================
-   AUTO UPDATE MEMBERS
-========================================================= */
-
 window.addEventListener(
   "storage",
   event => {
@@ -5000,16 +3620,10 @@ window.addEventListener(
   }
 );
 
-
 setInterval(
   loadMembers,
   60000
 );
-
-
-/* =========================================================
-   ACTIVE NAVIGATION
-========================================================= */
 
 const sections =
   document.querySelectorAll(
@@ -5066,7 +3680,6 @@ const sectionObserver =
         "-35% 0px -55% 0px"
     }
   );
-
 
 sections.forEach(
   section => {
