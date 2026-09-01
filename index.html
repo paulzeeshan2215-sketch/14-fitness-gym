@@ -1,2998 +1,2816 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>14 FITNESS GYM — Train Beyond Limits</title>
-
-  <meta
-    name="description"
-    content="14 FITNESS GYM — Premium fitness, powerful training and a stronger version of you."
-  >
-
-  <meta name="theme-color" content="#07070a">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@500;600;700;800;900&display=swap"
-    rel="stylesheet"
-  >
-
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-  >
-
-  <style>
-    :root {
-      --bg: #07070a;
-      --bg2: #0d0d12;
-      --card: rgba(20, 20, 27, 0.78);
-      --card2: rgba(255,255,255,0.045);
-
-      --text: #ffffff;
-      --muted: #9b9ba6;
-
-      --accent: #b8ff00;
-      --accent2: #7cff00;
-      --purple: #9b5cff;
-      --cyan: #00e5ff;
-      --red: #ff3159;
-
-      --border: rgba(255,255,255,0.09);
-
-      --shadow:
-        0 20px 70px rgba(0,0,0,0.45);
-
-      --radius: 26px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "Inter", sans-serif;
-      background:
-        radial-gradient(circle at 15% 10%, rgba(184,255,0,.08), transparent 28%),
-        radial-gradient(circle at 90% 25%, rgba(155,92,255,.08), transparent 25%),
-        radial-gradient(circle at 50% 90%, rgba(0,229,255,.05), transparent 28%),
-        var(--bg);
-
-      color: var(--text);
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 9998;
-
-      background-image:
-        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
-
-      background-size: 45px 45px;
-      mask-image: linear-gradient(to bottom, black, transparent 85%);
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font-family: inherit;
-    }
-
-    /* ==============================
-       PRELOADER
-    ============================== */
-
-    #preloader {
-      position: fixed;
-      inset: 0;
-      z-index: 10000;
-      background: #050507;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      transition: opacity .6s ease, visibility .6s ease;
-    }
-
-    #preloader.hide {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .loader {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      border: 3px solid rgba(255,255,255,.08);
-      border-top-color: var(--accent);
-      border-right-color: var(--purple);
-
-      animation: spin 1s linear infinite;
-
-      box-shadow:
-        0 0 30px rgba(184,255,0,.2);
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    /* ==============================
-       NAVBAR
-    ============================== */
-
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-
-      z-index: 5000;
-
-      padding: 18px 5%;
-
-      transition:
-        background .35s ease,
-        backdrop-filter .35s ease,
-        padding .35s ease;
-    }
-
-    .navbar.scrolled {
-      background: rgba(7,7,10,.78);
-      backdrop-filter: blur(22px);
-      border-bottom: 1px solid var(--border);
-      padding-top: 12px;
-      padding-bottom: 12px;
-    }
-
-    .nav-inner {
-      max-width: 1400px;
-      margin: auto;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 25px;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-
-      font-family: "Montserrat", sans-serif;
-      font-weight: 900;
-      letter-spacing: -1px;
-      font-size: 1.25rem;
-    }
-
-    .logo-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 13px;
-
-      display: grid;
-      place-items: center;
-
-      background:
-        linear-gradient(135deg, var(--accent), #63ff00);
-
-      color: #070707;
-
-      box-shadow:
-        0 0 30px rgba(184,255,0,.28);
-
-      transform: rotate(-8deg);
-
-      transition: transform .35s ease;
-    }
-
-    .logo:hover .logo-mark {
-      transform: rotate(8deg) scale(1.08);
-    }
-
-    .logo span span {
-      color: var(--accent);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-    }
-
-    .nav-links a {
-      position: relative;
-      color: #d4d4da;
-      font-size: .9rem;
-      font-weight: 600;
-      transition: color .25s ease;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#070b09">
+
+<title>14 FITNESS GYM — Train. Transform. Become Stronger.</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --bg:#060a08;
+  --panel:#0d1510;
+  --panel2:#111b14;
+  --lime:#caff24;
+  --lime2:#9fd900;
+  --text:#f3f6ef;
+  --muted:#89958d;
+  --line:rgba(255,255,255,.10);
+  --shadow:0 30px 90px rgba(0,0,0,.42);
+  --green:#65ff9a;
+  --red:#ff6262;
+  --orange:#ffb84d;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Inter,sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 78% 10%,rgba(202,255,36,.09),transparent 25%),
+    radial-gradient(circle at 10% 65%,rgba(30,100,45,.13),transparent 28%),
+    var(--bg);
+  overflow-x:hidden;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-2;
+  opacity:.22;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:64px 64px;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button,
+input{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.noise{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:100;
+  opacity:.018;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ================= HEADER ================= */
+
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:50;
+  padding:18px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  transition:.35s;
+}
+
+header.scrolled{
+  padding:11px 4%;
+  background:rgba(6,10,8,.82);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--line);
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  font:900 29px "Barlow Condensed";
+  letter-spacing:.5px;
+}
+
+.logo b{
+  background:var(--lime);
+  color:#071006;
+  padding:7px 10px;
+  border-radius:7px;
+  margin-right:8px;
+  box-shadow:0 0 30px rgba(202,255,36,.2);
+}
+
+.logo span{
+  color:var(--lime);
+  margin-left:5px;
+}
+
+nav{
+  display:flex;
+  gap:28px;
+}
+
+nav a{
+  position:relative;
+  color:#aab4ad;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  transition:.25s;
+}
+
+nav a:after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-8px;
+  width:0;
+  height:2px;
+  background:var(--lime);
+  transition:.25s;
+}
+
+nav a:hover,
+nav a.active{
+  color:#fff;
+}
+
+nav a:hover:after,
+nav a.active:after{
+  width:100%;
+}
+
+.header-btn,
+.btn{
+  border:0;
+  border-radius:8px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.7px;
+  transition:.3s;
+  position:relative;
+  overflow:hidden;
+}
+
+.header-btn{
+  padding:12px 19px;
+  background:var(--lime);
+  color:#071006;
+  font-size:10px;
+}
+
+.header-btn:hover,
+.btn-primary:hover{
+  transform:translateY(-4px);
+  box-shadow:0 18px 45px rgba(202,255,36,.22);
+}
+
+.menu-btn{
+  display:none;
+  width:42px;
+  height:42px;
+  border-radius:8px;
+  border:1px solid var(--line);
+  background:#101711;
+  color:#fff;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  min-height:100vh;
+  padding:125px 6% 70px;
+  position:relative;
+  display:grid;
+  grid-template-columns:.85fr 1.15fr;
+  align-items:center;
+  gap:25px;
+  overflow:hidden;
+}
+
+.hero-copy{
+  position:relative;
+  z-index:4;
+}
+
+.eyebrow,
+.kicker{
+  color:var(--lime);
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+
+.eyebrow{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:24px;
+}
+
+.eyebrow:before{
+  content:"";
+  width:34px;
+  height:2px;
+  background:var(--lime);
+  box-shadow:0 0 14px var(--lime);
+}
+
+.hero h1{
+  font:900 clamp(76px,10vw,150px)/.76 "Barlow Condensed";
+  text-transform:uppercase;
+  letter-spacing:-4px;
+}
+
+.hero h1 .lime{
+  color:var(--lime);
+  text-shadow:6px 6px 0 #294000;
+}
+
+.hero h1 .outline{
+  color:transparent;
+  -webkit-text-stroke:1px rgba(255,255,255,.75);
+}
+
+.hero-description{
+  max-width:520px;
+  margin:30px 0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.8;
+}
+
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:11px;
+}
+
+.btn{
+  padding:15px 23px;
+  font-size:10px;
+}
+
+.btn-primary{
+  background:var(--lime);
+  color:#071006;
+}
+
+.btn-dark{
+  background:#111914;
+  color:#fff;
+  border:1px solid var(--line);
+}
+
+.btn-dark:hover{
+  border-color:rgba(202,255,36,.5);
+  transform:translateY(-3px);
+}
+
+.hero-stats{
+  display:flex;
+  gap:30px;
+  margin-top:42px;
+}
+
+.hero-stat strong{
+  display:block;
+  font:800 32px "Barlow Condensed";
+}
+
+.hero-stat span{
+  color:#6e7971;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+}
+
+.hero-visual{
+  min-height:650px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:2;
+}
+
+.athlete-glow{
+  position:absolute;
+  width:570px;
+  height:570px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(202,255,36,.24),transparent 67%);
+  filter:blur(18px);
+  animation:pulse 4s ease-in-out infinite;
+}
+
+.athlete-ring{
+  position:absolute;
+  width:610px;
+  height:610px;
+  border:1px solid rgba(202,255,36,.22);
+  border-radius:50%;
+  animation:spin 24s linear infinite;
+}
+
+.athlete-ring:before,
+.athlete-ring:after{
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  background:var(--lime);
+  box-shadow:0 0 20px var(--lime);
+}
+
+.athlete-ring:before{
+  width:9px;
+  height:9px;
+  top:30px;
+  left:100px;
+}
+
+.athlete-ring:after{
+  width:6px;
+  height:6px;
+  right:85px;
+  bottom:120px;
+}
+
+.athlete-frame{
+  position:relative;
+  width:min(520px,88%);
+  height:650px;
+  z-index:3;
+  overflow:hidden;
+  border-radius:28px 28px 0 0;
+  background:#111b14;
+  box-shadow:var(--shadow);
+}
+
+.athlete-frame:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:
+    linear-gradient(90deg,rgba(4,8,6,.45),transparent 35%,rgba(4,8,6,.12)),
+    linear-gradient(0deg,rgba(4,8,6,.85),transparent 48%);
+}
+
+.athlete-photo{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center top;
+  filter:saturate(.82) contrast(1.08);
+  transform:scale(1.02);
+  animation:photoFloat 6s ease-in-out infinite;
+}
+
+.athlete-label{
+  position:absolute;
+  left:22px;
+  bottom:24px;
+  z-index:4;
+  padding:11px 13px;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(7,11,8,.68);
+  backdrop-filter:blur(14px);
+  border-radius:9px;
+}
+
+.athlete-label small{
+  display:block;
+  color:#7c877f;
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:1.6px;
+  text-transform:uppercase;
+}
+
+.athlete-label strong{
+  display:block;
+  color:var(--lime);
+  font:900 28px "Barlow Condensed";
+  text-transform:uppercase;
+}
+
+.floating-card{
+  position:absolute;
+  z-index:6;
+  padding:15px 17px;
+  border-radius:12px;
+  background:rgba(10,16,12,.84);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.13);
+  box-shadow:0 25px 70px rgba(0,0,0,.35);
+  animation:float 5s ease-in-out infinite;
+}
+
+.floating-card small{
+  display:block;
+  color:#758078;
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  margin-bottom:5px;
+}
+
+.floating-card strong{
+  display:block;
+  font:800 25px "Barlow Condensed";
+  text-transform:uppercase;
+}
+
+.card-one{
+  left:-5px;
+  top:24%;
+}
+
+.card-one strong{
+  color:var(--lime);
+}
+
+.card-two{
+  right:-5px;
+  top:13%;
+  animation-delay:-2s;
+}
+
+.card-three{
+  right:3%;
+  bottom:12%;
+  animation-delay:-1s;
+}
+
+.card-three strong{
+  color:var(--lime);
+}
+
+/* ================= TICKER ================= */
+
+.ticker{
+  width:100%;
+  overflow:hidden;
+  background:var(--lime);
+  color:#071006;
+  transform:rotate(-1.2deg) scale(1.03);
+  margin:12px 0 0;
+  position:relative;
+  z-index:10;
+}
+
+.ticker-track{
+  display:flex;
+  width:max-content;
+  animation:ticker 24s linear infinite;
+}
+
+.ticker-group{
+  display:flex;
+  align-items:center;
+  gap:25px;
+  padding:15px 0;
+  margin-right:25px;
+  white-space:nowrap;
+}
+
+.ticker-group span{
+  font:900 22px "Barlow Condensed";
+  letter-spacing:2px;
+}
+
+.ticker-group i{
+  font-style:normal;
+}
+
+/* ================= SECTIONS ================= */
+
+.section{
+  padding:125px 6%;
+  position:relative;
+}
+
+.section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:40px;
+  margin-bottom:55px;
+}
+
+.section-head h2{
+  font:900 clamp(58px,8vw,105px)/.8 "Barlow Condensed";
+  text-transform:uppercase;
+  letter-spacing:-2px;
+  margin-top:12px;
+}
+
+.section-head p{
+  max-width:430px;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.8;
+}
+
+/* ================= PLANS ================= */
+
+.plans{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.plan{
+  position:relative;
+  background:linear-gradient(145deg,#111a14,#0b110e);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:30px;
+  overflow:hidden;
+  transition:.4s;
+}
+
+.plan:hover{
+  transform:translateY(-10px);
+  border-color:rgba(202,255,36,.35);
+  box-shadow:var(--shadow);
+}
+
+.plan.best{
+  border-color:rgba(202,255,36,.6);
+  background:
+    radial-gradient(circle at 90% 5%,rgba(202,255,36,.14),transparent 35%),
+    linear-gradient(145deg,#16251a,#0b130e);
+  transform:translateY(-12px);
+}
+
+.plan.best:hover{
+  transform:translateY(-21px);
+}
+
+.ribbon{
+  position:absolute;
+  top:18px;
+  right:18px;
+  background:var(--lime);
+  color:#071006;
+  padding:7px 10px;
+  border-radius:5px;
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.plan-number{
+  color:#4d5a52;
+  font:800 45px "Barlow Condensed";
+}
+
+.plan-name{
+  font:800 30px "Barlow Condensed";
+  text-transform:uppercase;
+  margin:5px 0 30px;
+}
+
+.old{
+  color:#59635d;
+  text-decoration:line-through;
+  font-size:12px;
+}
+
+.price{
+  font:900 68px/.9 "Barlow Condensed";
+}
+
+.price small{
+  font:600 9px Inter;
+  color:#69756d;
+}
+
+.save{
+  display:inline-block;
+  margin:15px 0 25px;
+  padding:7px 9px;
+  border-radius:4px;
+  background:rgba(202,255,36,.1);
+  color:var(--lime);
+  font-size:8px;
+  font-weight:900;
+}
+
+.plan ul{
+  list-style:none;
+  border-top:1px solid var(--line);
+  padding-top:22px;
+  display:grid;
+  gap:12px;
+}
+
+.plan li{
+  color:#87928b;
+  font-size:10px;
+}
+
+.plan li:before{
+  content:"✓";
+  color:var(--lime);
+  font-weight:900;
+  margin-right:9px;
+}
+
+.plan .btn{
+  width:100%;
+  margin-top:28px;
+}
+
+/* ================= MEMBERS ================= */
+
+.members-section{
+  background:#090e0b;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.member-toolbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:30px;
+  flex-wrap:wrap;
+}
+
+.member-count{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#859188;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+}
+
+.member-count b{
+  display:grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  background:var(--lime);
+  color:#071006;
+  font-size:12px;
+}
+
+.member-search{
+  width:min(300px,100%);
+  padding:13px 15px;
+  border:1px solid var(--line);
+  background:#101712;
+  border-radius:8px;
+  color:white;
+  outline:0;
+  font-size:10px;
+}
+
+.members-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.member-card{
+  position:relative;
+  padding:22px;
+  border-radius:15px;
+  background:linear-gradient(145deg,#111a14,#0d130f);
+  border:1px solid var(--line);
+  transition:.35s;
+  overflow:hidden;
+}
+
+.member-card:hover{
+  transform:translateY(-7px);
+  border-color:rgba(202,255,36,.28);
+  box-shadow:var(--shadow);
+}
+
+.member-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.member-avatar{
+  width:47px;
+  height:47px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  background:rgba(202,255,36,.1);
+  color:var(--lime);
+  font:800 22px "Barlow Condensed";
+}
+
+.member-status{
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:1px;
+  padding:6px 8px;
+  border-radius:5px;
+  text-transform:uppercase;
+}
+
+.status-active{
+  background:rgba(202,255,36,.1);
+  color:var(--lime);
+}
+
+.status-pending{
+  background:rgba(255,184,77,.1);
+  color:#ffb84d;
+}
+
+.status-expired{
+  background:rgba(255,93,93,.1);
+  color:#ff5d5d;
+}
+
+.member-name{
+  font:800 29px "Barlow Condensed";
+  text-transform:uppercase;
+  margin:17px 0 2px;
+}
+
+.member-plan{
+  color:#748078;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+}
+
+.member-days{
+  margin:20px 0;
+  padding:15px;
+  border-radius:10px;
+  background:#080d0a;
+  border:1px solid var(--line);
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+}
+
+.member-days strong{
+  font:900 45px/.8 "Barlow Condensed";
+  color:var(--lime);
+}
+
+.member-days span{
+  color:#59655d;
+  font-size:7px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.member-info{
+  display:grid;
+  gap:8px;
+  border-top:1px solid var(--line);
+  padding-top:15px;
+}
+
+.info-row{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  font-size:8px;
+}
+
+.info-row span:first-child{
+  color:#566159;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.info-row span:last-child{
+  color:#c0c8c3;
+  font-weight:700;
+  text-align:right;
+}
+
+.empty-members{
+  text-align:center;
+  padding:70px 20px;
+  border:1px dashed var(--line);
+  border-radius:15px;
+}
+
+.empty-members strong{
+  display:block;
+  font:800 38px "Barlow Condensed";
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+
+.empty-members p{
+  color:#68736c;
+  font-size:10px;
+}
+
+/* ================= FEATURES ================= */
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+}
+
+.feature{
+  min-height:250px;
+  padding:30px;
+  background:#0d140f;
+  border-right:1px solid var(--line);
+  position:relative;
+  transition:.4s;
+}
+
+.feature:last-child{
+  border-right:0;
+}
+
+.feature:hover{
+  background:#121d15;
+}
+
+.feature-number{
+  position:absolute;
+  right:18px;
+  top:10px;
+  color:rgba(202,255,36,.05);
+  font:900 100px "Barlow Condensed";
+}
+
+.feature-icon{
+  font-size:27px;
+  margin-bottom:35px;
+}
+
+.feature h3{
+  font:800 29px "Barlow Condensed";
+  text-transform:uppercase;
+  margin-bottom:13px;
+}
+
+.feature p{
+  color:#707b73;
+  font-size:10px;
+  line-height:1.8;
+}
+
+/* ================= TIMINGS ================= */
+
+.timings{
+  background:
+    radial-gradient(circle at 90% 30%,rgba(202,255,36,.09),transparent 30%),
+    #101a13;
+}
+
+.schedule{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.slot{
+  padding:25px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.025);
+  border-radius:14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  transition:.35s;
+}
+
+.slot:hover{
+  border-color:rgba(202,255,36,.3);
+  transform:translateX(5px);
+}
+
+.slot.women{
+  border-color:rgba(202,255,36,.5);
+  background:rgba(202,255,36,.05);
+}
+
+.slot span{
+  display:block;
+  color:#6d7971;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:1.3px;
+  text-transform:uppercase;
+  margin-bottom:5px;
+}
+
+.slot strong{
+  font:800 35px "Barlow Condensed";
+  text-transform:uppercase;
+}
+
+.slot.women strong{
+  color:var(--lime);
+}
+
+.slot>b{
+  color:#3d493f;
+  font:800 28px "Barlow Condensed";
+}
+
+/* ================= GALLERY ================= */
+
+.gallery{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr;
+  grid-auto-rows:260px;
+  gap:12px;
+}
+
+.pic{
+  position:relative;
+  overflow:hidden;
+  border-radius:15px;
+  background:#111;
+  border:1px solid var(--line);
+  min-height:220px;
+}
+
+.pic img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  filter:saturate(.78) contrast(1.08);
+  transition:transform .7s,filter .5s;
+}
+
+.pic:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.72),transparent 60%);
+  pointer-events:none;
+}
+
+.pic:hover img{
+  transform:scale(1.07);
+  filter:saturate(1) contrast(1.08);
+}
+
+.pic label{
+  position:absolute;
+  z-index:2;
+  left:20px;
+  bottom:18px;
+  color:#fff;
+  font:800 30px "Barlow Condensed";
+  text-transform:uppercase;
+}
+
+.big{
+  grid-row:span 2;
+}
+
+/* ================= CTA ================= */
+
+.cta{
+  padding:140px 6%;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at center,rgba(202,255,36,.15),transparent 35%),
+    #080d0a;
+}
+
+.cta:before{
+  content:"14";
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  font:900 420px "Barlow Condensed";
+  color:rgba(255,255,255,.015);
+  pointer-events:none;
+}
+
+.cta-content{
+  position:relative;
+  z-index:2;
+}
+
+.cta h2{
+  font:900 clamp(65px,10vw,140px)/.78 "Barlow Condensed";
+  text-transform:uppercase;
+  letter-spacing:-3px;
+}
+
+.cta h2 span{
+  color:var(--lime);
+  text-shadow:5px 5px 0 #294000;
+}
+
+.cta p{
+  max-width:500px;
+  margin:28px auto;
+  color:#707b73;
+  font-size:12px;
+  line-height:1.8;
+}
+
+footer{
+  padding:25px 6%;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  background:#050806;
+  border-top:1px solid var(--line);
+  color:#657067;
+  font-size:8px;
+  text-transform:uppercase;
+  letter-spacing:1.2px;
+}
+
+footer b{
+  color:var(--lime);
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(35px);
+  transition:opacity .8s,transform .8s;
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes pulse{
+  0%,100%{
+    transform:scale(.94);
+    opacity:.65;
+  }
+  50%{
+    transform:scale(1.06);
+    opacity:1;
+  }
+}
+
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+@keyframes float{
+  0%,100%{
+    transform:translateY(0) rotate(-1deg);
+  }
+  50%{
+    transform:translateY(-13px) rotate(1deg);
+  }
+}
+
+@keyframes photoFloat{
+  0%,100%{
+    transform:scale(1.02) translateY(0);
+  }
+  50%{
+    transform:scale(1.045) translateY(-6px);
+  }
+}
+
+@keyframes ticker{
+  from{
+    transform:translateX(0);
+  }
+  to{
+    transform:translateX(-50%);
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1000px){
+
+  nav{
+    gap:17px;
+  }
+
+  .hero{
+    grid-template-columns:1fr;
+    text-align:center;
+    padding-top:140px;
+  }
+
+  .hero-copy{
+    max-width:800px;
+    margin:auto;
+  }
+
+  .eyebrow{
+    justify-content:center;
+  }
+
+  .hero-description{
+    margin-inline:auto;
+  }
+
+  .hero-actions,
+  .hero-stats{
+    justify-content:center;
+  }
+
+  .hero-visual{
+    min-height:590px;
+  }
+
+  .plans{
+    grid-template-columns:1fr;
+  }
+
+  .plan.best{
+    transform:none;
+  }
+
+  .plan.best:hover{
+    transform:translateY(-10px);
+  }
+
+  .members-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .features{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:700px){
+
+  header{
+    padding:14px 5%;
+  }
+
+  nav,
+  header .header-btn{
+    display:none;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  nav.mobile-open{
+    display:flex;
+    position:absolute;
+    top:70px;
+    left:5%;
+    right:5%;
+    padding:20px;
+    flex-direction:column;
+    align-items:flex-start;
+    background:rgba(10,15,12,.96);
+    backdrop-filter:blur(20px);
+    border:1px solid var(--line);
+    border-radius:12px;
+  }
+
+  .hero{
+    padding-inline:5%;
+  }
+
+  .hero h1{
+    font-size:76px;
+    letter-spacing:-2px;
+  }
+
+  .hero-visual{
+    min-height:500px;
+  }
+
+  .athlete-frame{
+    height:510px;
+    width:92%;
+  }
+
+  .athlete-ring{
+    width:430px;
+    height:430px;
+  }
+
+  .card-one{
+    left:-5px;
+  }
+
+  .card-two{
+    right:-5px;
+  }
+
+  .card-three{
+    right:0;
+    bottom:8%;
+  }
+
+  .section{
+    padding:90px 5%;
+  }
+
+  .section-head{
+    display:block;
+    margin-bottom:40px;
+  }
+
+  .section-head p{
+    margin-top:22px;
+  }
+
+  .features{
+    grid-template-columns:1fr;
+  }
+
+  .feature{
+    border-right:0;
+  }
+
+  .schedule{
+    grid-template-columns:1fr;
+  }
+
+  .members-grid{
+    grid-template-columns:1fr;
+  }
+
+  .gallery{
+    grid-template-columns:1fr;
+    grid-auto-rows:220px;
+  }
+
+  .big{
+    grid-row:span 1;
+  }
+
+  footer{
+    display:block;
+    text-align:center;
+    line-height:2;
+  }
+}
+
+@media(max-width:430px){
+
+  .logo{
+    font-size:24px;
+  }
+
+  .hero h1{
+    font-size:65px;
+  }
+
+  .hero-stats{
+    gap:18px;
+  }
+
+  .hero-stat strong{
+    font-size:27px;
+  }
+
+  .floating-card{
+    padding:11px;
+  }
+
+  .floating-card strong{
+    font-size:20px;
+  }
+
+  .member-toolbar{
+    align-items:stretch;
+  }
+
+  .member-search{
+    width:100%;
+  }
+}
+
+</style>
 
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -7px;
-
-      width: 0;
-      height: 2px;
-
-      background: var(--accent);
-      box-shadow: 0 0 10px var(--accent);
-
-      transition: width .3s ease;
-    }
-
-    .nav-links a:hover {
-      color: #fff;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .nav-cta {
-      padding: 12px 19px;
-
-      border-radius: 14px;
-
-      background: var(--accent);
-      color: #080808;
-
-      font-weight: 800;
-      font-size: .86rem;
-
-      box-shadow:
-        0 0 25px rgba(184,255,0,.18);
-
-      transition:
-        transform .25s ease,
-        box-shadow .25s ease;
-    }
-
-    .nav-cta:hover {
-      transform: translateY(-3px);
-      box-shadow:
-        0 12px 35px rgba(184,255,0,.25);
-    }
-
-    .menu-btn {
-      display: none;
-
-      width: 44px;
-      height: 44px;
-
-      border: 1px solid var(--border);
-      border-radius: 13px;
-
-      background: rgba(255,255,255,.04);
-      color: #fff;
-
-      cursor: pointer;
-    }
-
-    /* ==============================
-       HERO
-    ============================== */
-
-    .hero {
-      position: relative;
-      min-height: 100vh;
-
-      display: flex;
-      align-items: center;
-
-      padding: 150px 5% 100px;
-
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-
-      background:
-        radial-gradient(circle at 72% 50%, rgba(184,255,0,.13), transparent 22%),
-        radial-gradient(circle at 86% 35%, rgba(155,92,255,.13), transparent 25%);
-    }
-
-    .hero::after {
-      content: "";
-
-      position: absolute;
-      right: -180px;
-      top: 15%;
-
-      width: 600px;
-      height: 600px;
-
-      border-radius: 50%;
-
-      border: 1px solid rgba(184,255,0,.13);
-
-      box-shadow:
-        0 0 100px rgba(184,255,0,.06),
-        inset 0 0 100px rgba(184,255,0,.03);
-
-      animation: pulseCircle 5s ease-in-out infinite;
-    }
-
-    @keyframes pulseCircle {
-      0%,100% {
-        transform: scale(.96);
-        opacity: .6;
-      }
-
-      50% {
-        transform: scale(1.04);
-        opacity: 1;
-      }
-    }
-
-    .hero-grid {
-      width: 100%;
-      max-width: 1400px;
-      margin: auto;
-
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-
-      gap: 70px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-
-      padding: 8px 13px;
-
-      border: 1px solid rgba(184,255,0,.18);
-      border-radius: 100px;
-
-      background: rgba(184,255,0,.055);
-
-      color: var(--accent);
-
-      font-size: .75rem;
-      font-weight: 800;
-
-      letter-spacing: 1.4px;
-      text-transform: uppercase;
-
-      margin-bottom: 24px;
-
-      animation: fadeUp .8s ease both;
-    }
-
-    .eyebrow-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-
-      background: var(--accent);
-
-      box-shadow:
-        0 0 10px var(--accent);
-
-      animation: blink 1.4s infinite;
-    }
-
-    @keyframes blink {
-      50% {
-        opacity: .3;
-        transform: scale(.65);
-      }
-    }
-
-    .hero h1 {
-      font-family: "Montserrat", sans-serif;
-
-      font-size:
-        clamp(3.3rem, 7vw, 7.4rem);
-
-      line-height: .91;
-
-      letter-spacing: -5px;
-
-      max-width: 850px;
-
-      animation: fadeUp .8s .1s ease both;
-    }
-
-    .hero h1 .lime {
-      color: var(--accent);
-
-      text-shadow:
-        0 0 35px rgba(184,255,0,.16);
-    }
-
-    .hero h1 .outline {
-      color: transparent;
-
-      -webkit-text-stroke: 1px rgba(255,255,255,.48);
-    }
-
-    .hero-text {
-      max-width: 600px;
-
-      margin-top: 28px;
-
-      color: #a8a8b2;
-
-      font-size: 1.04rem;
-      line-height: 1.8;
-
-      animation: fadeUp .8s .2s ease both;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-
-      margin-top: 35px;
-
-      animation: fadeUp .8s .3s ease both;
-    }
-
-    .btn {
-      min-height: 53px;
-
-      padding: 0 22px;
-
-      border-radius: 16px;
-
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-
-      font-weight: 800;
-      font-size: .9rem;
-
-      transition:
-        transform .25s ease,
-        box-shadow .25s ease,
-        background .25s ease;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #080808;
-
-      box-shadow:
-        0 12px 35px rgba(184,255,0,.15);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-5px);
-      box-shadow:
-        0 18px 45px rgba(184,255,0,.28);
-    }
-
-    .btn-secondary {
-      background: rgba(255,255,255,.04);
-      border: 1px solid var(--border);
-      color: #fff;
-    }
-
-    .btn-secondary:hover {
-      transform: translateY(-5px);
-      background: rgba(255,255,255,.07);
-    }
-
-    .hero-mini-stats {
-      display: flex;
-      gap: 30px;
-
-      margin-top: 48px;
-
-      animation: fadeUp .8s .4s ease both;
-    }
-
-    .mini-stat strong {
-      display: block;
-
-      font-family: "Montserrat", sans-serif;
-      font-size: 1.5rem;
-    }
-
-    .mini-stat span {
-      color: #777783;
-      font-size: .72rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    /* HERO VISUAL */
-
-    .hero-visual {
-      position: relative;
-      min-height: 590px;
-
-      display: grid;
-      place-items: center;
-    }
-
-    .visual-ring {
-      position: absolute;
-
-      width: min(510px, 82vw);
-      aspect-ratio: 1;
-
-      border-radius: 50%;
-
-      border: 1px solid rgba(184,255,0,.22);
-
-      box-shadow:
-        0 0 80px rgba(184,255,0,.07),
-        inset 0 0 80px rgba(184,255,0,.03);
-
-      animation: ringFloat 7s ease-in-out infinite;
-    }
-
-    .visual-ring::before,
-    .visual-ring::after {
-      content: "";
-
-      position: absolute;
-      inset: 30px;
-
-      border-radius: 50%;
-
-      border: 1px dashed rgba(255,255,255,.09);
-
-      animation: spin 22s linear infinite;
-    }
-
-    .visual-ring::after {
-      inset: 70px;
-
-      border-color: rgba(155,92,255,.16);
-
-      animation-direction: reverse;
-      animation-duration: 15s;
-    }
-
-    @keyframes ringFloat {
-      0%,100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-15px);
-      }
-    }
-
-    .power-core {
-      position: relative;
-
-      width: 300px;
-      height: 380px;
-
-      border-radius: 150px 150px 50px 50px;
-
-      background:
-        linear-gradient(
-          150deg,
-          rgba(184,255,0,.16),
-          rgba(255,255,255,.025) 42%,
-          rgba(155,92,255,.11)
-        );
-
-      border: 1px solid rgba(255,255,255,.12);
-
-      backdrop-filter: blur(15px);
-
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-
-      overflow: hidden;
-
-      box-shadow:
-        0 35px 100px rgba(0,0,0,.6),
-        0 0 60px rgba(184,255,0,.07);
-
-      animation: coreFloat 4.5s ease-in-out infinite;
-    }
-
-    @keyframes coreFloat {
-      0%,100% {
-        transform: translateY(0) rotate(-1deg);
-      }
-
-      50% {
-        transform: translateY(-13px) rotate(1deg);
-      }
-    }
-
-    .power-core::before {
-      content: "14";
-
-      position: absolute;
-
-      top: 25px;
-      left: 0;
-      right: 0;
-
-      text-align: center;
-
-      font-family: "Montserrat", sans-serif;
-
-      font-size: 7rem;
-      font-weight: 900;
-
-      color: rgba(255,255,255,.035);
-    }
-
-    .silhouette {
-      width: 190px;
-      height: 340px;
-
-      position: relative;
-
-      margin-bottom: -10px;
-
-      filter:
-        drop-shadow(0 0 20px rgba(184,255,0,.12));
-    }
-
-    .head {
-      position: absolute;
-
-      width: 48px;
-      height: 58px;
-
-      border-radius: 50%;
-
-      background: linear-gradient(140deg,#eee,#666);
-
-      top: 8px;
-      left: 71px;
-    }
-
-    .body {
-      position: absolute;
-
-      width: 92px;
-      height: 160px;
-
-      background: linear-gradient(140deg,#e9e9e9,#4b4b4b);
-
-      top: 58px;
-      left: 49px;
-
-      border-radius: 45px 45px 25px 25px;
-    }
-
-    .arm {
-      position: absolute;
-
-      width: 34px;
-      height: 145px;
-
-      background: linear-gradient(140deg,#ddd,#444);
-
-      border-radius: 30px;
-
-      top: 65px;
-    }
-
-    .arm.left {
-      left: 20px;
-      transform: rotate(17deg);
-    }
-
-    .arm.right {
-      right: 20px;
-      transform: rotate(-17deg);
-    }
-
-    .leg {
-      position: absolute;
-
-      width: 42px;
-      height: 155px;
-
-      background: linear-gradient(140deg,#ccc,#3e3e3e);
-
-      border-radius: 30px;
-
-      top: 190px;
-    }
-
-    .leg.left {
-      left: 49px;
-      transform: rotate(4deg);
-    }
-
-    .leg.right {
-      right: 49px;
-      transform: rotate(-4deg);
-    }
-
-    .floating-card {
-      position: absolute;
-
-      padding: 15px 17px;
-
-      background: rgba(12,12,16,.82);
-      backdrop-filter: blur(18px);
-
-      border: 1px solid var(--border);
-
-      border-radius: 18px;
-
-      box-shadow:
-        0 20px 50px rgba(0,0,0,.4);
-
-      z-index: 5;
-    }
-
-    .floating-card.one {
-      top: 80px;
-      left: 0;
-
-      animation: cardFloat 4s ease-in-out infinite;
-    }
-
-    .floating-card.two {
-      right: -5px;
-      bottom: 95px;
-
-      animation: cardFloat 4.5s .7s ease-in-out infinite;
-    }
-
-    @keyframes cardFloat {
-      0%,100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-12px);
-      }
-    }
-
-    .float-label {
-      color: #777783;
-      font-size: .65rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .float-value {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-
-      margin-top: 5px;
-
-      font-weight: 900;
-    }
-
-    .float-icon {
-      width: 30px;
-      height: 30px;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 9px;
-
-      background: rgba(184,255,0,.1);
-      color: var(--accent);
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(25px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* ==============================
-       MARQUEE
-    ============================== */
-
-    .marquee {
-      overflow: hidden;
-
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-
-      background: rgba(255,255,255,.018);
-
-      padding: 19px 0;
-    }
-
-    .marquee-track {
-      display: flex;
-      width: max-content;
-
-      animation: marquee 25s linear infinite;
-    }
-
-    .marquee-item {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-
-      padding: 0 25px;
-
-      font-family: "Montserrat", sans-serif;
-
-      font-size: .8rem;
-      font-weight: 800;
-
-      letter-spacing: 2px;
-      text-transform: uppercase;
-
-      white-space: nowrap;
-
-      color: #c6c6cc;
-    }
-
-    .marquee-item i {
-      color: var(--accent);
-      font-size: .55rem;
-    }
-
-    @keyframes marquee {
-      to {
-        transform: translateX(-50%);
-      }
-    }
-
-    /* ==============================
-       GENERAL
-    ============================== */
-
-    section {
-      padding: 120px 5%;
-      position: relative;
-    }
-
-    .container {
-      max-width: 1400px;
-      margin: auto;
-    }
-
-    .section-heading {
-      max-width: 760px;
-      margin-bottom: 60px;
-    }
-
-    .section-kicker {
-      color: var(--accent);
-
-      font-size: .72rem;
-      font-weight: 900;
-
-      text-transform: uppercase;
-      letter-spacing: 2px;
-
-      margin-bottom: 13px;
-    }
-
-    .section-heading h2 {
-      font-family: "Montserrat", sans-serif;
-
-      font-size:
-        clamp(2.4rem, 5vw, 4.6rem);
-
-      line-height: .98;
-
-      letter-spacing: -2.8px;
-    }
-
-    .section-heading p {
-      margin-top: 20px;
-
-      color: var(--muted);
-
-      line-height: 1.8;
-      max-width: 650px;
-    }
-
-    /* ==============================
-       FEATURE CARDS
-    ============================== */
-
-    .feature-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      gap: 16px;
-    }
-
-    .feature-card {
-      position: relative;
-
-      min-height: 260px;
-
-      padding: 28px;
-
-      border-radius: var(--radius);
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255,255,255,.065),
-          rgba(255,255,255,.018)
-        );
-
-      border: 1px solid var(--border);
-
-      overflow: hidden;
-
-      transition:
-        transform .35s ease,
-        border-color .35s ease,
-        background .35s ease;
-    }
-
-    .feature-card::before {
-      content: "";
-
-      position: absolute;
-
-      width: 160px;
-      height: 160px;
-
-      right: -70px;
-      bottom: -70px;
-
-      border-radius: 50%;
-
-      background: var(--accent);
-
-      filter: blur(70px);
-
-      opacity: 0;
-
-      transition: opacity .4s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-10px);
-
-      border-color: rgba(184,255,0,.3);
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(184,255,0,.07),
-          rgba(255,255,255,.02)
-        );
-    }
-
-    .feature-card:hover::before {
-      opacity: .12;
-    }
-
-    .feature-number {
-      position: absolute;
-
-      right: 20px;
-      top: 18px;
-
-      font-family: "Montserrat", sans-serif;
-
-      font-size: 4rem;
-      font-weight: 900;
-
-      color: rgba(255,255,255,.035);
-    }
-
-    .feature-icon {
-      width: 58px;
-      height: 58px;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 17px;
-
-      background:
-        rgba(184,255,0,.08);
-
-      border: 1px solid rgba(184,255,0,.13);
-
-      color: var(--accent);
-
-      font-size: 1.25rem;
-
-      margin-bottom: 55px;
-
-      transition:
-        transform .35s ease,
-        background .35s ease;
-    }
-
-    .feature-card:hover .feature-icon {
-      transform: rotate(-8deg) scale(1.08);
-
-      background: rgba(184,255,0,.14);
-    }
-
-    .feature-card h3 {
-      font-family: "Montserrat", sans-serif;
-      font-size: 1.05rem;
-      margin-bottom: 10px;
-    }
-
-    .feature-card p {
-      color: var(--muted);
-
-      font-size: .84rem;
-      line-height: 1.7;
-    }
-
-    /* ==============================
-       SCHEDULE
-    ============================== */
-
-    .schedule-section {
-      background:
-        radial-gradient(
-          circle at 50% 50%,
-          rgba(155,92,255,.08),
-          transparent 40%
-        );
-    }
-
-    .schedule-top {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-
-      gap: 30px;
-
-      margin-bottom: 45px;
-    }
-
-    .live-time {
-      min-width: 220px;
-
-      padding: 18px;
-
-      border-radius: 18px;
-
-      background: rgba(255,255,255,.035);
-      border: 1px solid var(--border);
-
-      text-align: right;
-    }
-
-    .live-time small {
-      display: block;
-
-      color: #777783;
-
-      text-transform: uppercase;
-      letter-spacing: 1px;
-
-      font-size: .62rem;
-    }
-
-    .live-time strong {
-      display: block;
-
-      margin-top: 4px;
-
-      font-family: "Montserrat", sans-serif;
-      font-size: 1.4rem;
-    }
-
-    .schedule-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      gap: 14px;
-    }
-
-    .time-card {
-      position: relative;
-
-      padding: 28px 22px;
-
-      border-radius: 22px;
-
-      border: 1px solid var(--border);
-
-      background:
-        rgba(255,255,255,.025);
-
-      transition:
-        transform .35s ease,
-        border-color .35s ease,
-        box-shadow .35s ease;
-    }
-
-    .time-card:hover {
-      transform: translateY(-8px);
-    }
-
-    .time-card.active {
-      border-color: var(--accent);
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(184,255,0,.12),
-          rgba(184,255,0,.025)
-        );
-
-      box-shadow:
-        0 20px 55px rgba(184,255,0,.08);
-    }
-
-    .active-badge {
-      position: absolute;
-
-      top: 14px;
-      right: 14px;
-
-      padding: 5px 8px;
-
-      border-radius: 8px;
-
-      background: var(--accent);
-      color: #070707;
-
-      font-size: .57rem;
-      font-weight: 900;
-
-      text-transform: uppercase;
-      letter-spacing: .8px;
-
-      display: none;
-    }
-
-    .time-card.active .active-badge {
-      display: block;
-    }
-
-    .time {
-      color: #777783;
-
-      font-size: .68rem;
-      font-weight: 700;
-
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .time-card h3 {
-      margin-top: 15px;
-
-      font-family: "Montserrat", sans-serif;
-
-      font-size: 1.35rem;
-    }
-
-    .time-card p {
-      margin-top: 10px;
-
-      color: var(--muted);
-
-      font-size: .8rem;
-      line-height: 1.6;
-    }
-
-    .gender-line {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-
-      margin-top: 22px;
-
-      font-size: .72rem;
-      font-weight: 800;
-    }
-
-    .gender-line i {
-      color: var(--accent);
-    }
-
-    /* ==============================
-       PLANS
-    ============================== */
-
-    .plans {
-      background:
-        linear-gradient(
-          180deg,
-          transparent,
-          rgba(255,255,255,.012),
-          transparent
-        );
-    }
-
-    .plans-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap: 18px;
-
-      align-items: stretch;
-    }
-
-    .plan {
-      position: relative;
-
-      padding: 38px 30px 30px;
-
-      border-radius: 30px;
-
-      background:
-        linear-gradient(
-          150deg,
-          rgba(255,255,255,.055),
-          rgba(255,255,255,.015)
-        );
-
-      border: 1px solid var(--border);
-
-      overflow: hidden;
-
-      transition:
-        transform .4s ease,
-        border-color .4s ease;
-    }
-
-    .plan:hover {
-      transform: translateY(-12px);
-
-      border-color: rgba(255,255,255,.18);
-    }
-
-    .plan.featured {
-      border-color: rgba(184,255,0,.42);
-
-      transform: translateY(-10px);
-
-      background:
-        radial-gradient(
-          circle at 80% 10%,
-          rgba(184,255,0,.13),
-          transparent 35%
-        ),
-        linear-gradient(
-          150deg,
-          rgba(255,255,255,.065),
-          rgba(255,255,255,.015)
-        );
-
-      box-shadow:
-        0 30px 80px rgba(184,255,0,.08);
-    }
-
-    .plan.featured:hover {
-      transform: translateY(-18px);
-    }
-
-    .popular {
-      position: absolute;
-
-      top: 18px;
-      right: 18px;
-
-      padding: 7px 10px;
-
-      border-radius: 10px;
-
-      background: var(--accent);
-      color: #080808;
-
-      font-size: .58rem;
-      font-weight: 900;
-
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .plan-tag {
-      font-size: .67rem;
-
-      color: #777783;
-
-      text-transform: uppercase;
-      letter-spacing: 1.7px;
-      font-weight: 800;
-    }
-
-    .plan h3 {
-      margin-top: 12px;
-
-      font-family: "Montserrat", sans-serif;
-
-      font-size: 1.8rem;
-    }
-
-    .plan-sub {
-      color: var(--muted);
-
-      margin-top: 9px;
-
-      font-size: .82rem;
-      line-height: 1.6;
-    }
-
-    .price {
-      display: flex;
-      align-items: baseline;
-      gap: 5px;
-
-      margin: 28px 0;
-
-      font-family: "Montserrat", sans-serif;
-    }
-
-    .price strong {
-      font-size: 3.2rem;
-      letter-spacing: -2px;
-    }
-
-    .price span {
-      color: #777783;
-      font-size: .75rem;
-    }
-
-    .plan-features {
-      list-style: none;
-
-      display: grid;
-      gap: 14px;
-
-      padding-top: 23px;
-
-      border-top: 1px solid var(--border);
-    }
-
-    .plan-features li {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-
-      color: #c5c5cc;
-
-      font-size: .79rem;
-    }
-
-    .plan-features i {
-      color: var(--accent);
-      font-size: .7rem;
-    }
-
-    .plan-btn {
-      width: 100%;
-
-      margin-top: 30px;
-
-      border: 0;
-      cursor: pointer;
-    }
-
-    /* ==============================
-       STATS
-    ============================== */
-
-    .stats-strip {
-      padding-top: 35px;
-      padding-bottom: 35px;
-    }
-
-    .stats-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      border: 1px solid var(--border);
-      border-radius: 24px;
-
-      overflow: hidden;
-
-      background: rgba(255,255,255,.025);
-    }
-
-    .big-stat {
-      padding: 34px;
-
-      border-right: 1px solid var(--border);
-
-      text-align: center;
-    }
-
-    .big-stat:last-child {
-      border-right: 0;
-    }
-
-    .big-stat strong {
-      display: block;
-
-      font-family: "Montserrat", sans-serif;
-
-      font-size: 2.4rem;
-    }
-
-    .big-stat span {
-      color: #777783;
-
-      font-size: .66rem;
-
-      text-transform: uppercase;
-      letter-spacing: 1.4px;
-    }
-
-    /* ==============================
-       CTA
-    ============================== */
-
-    .final-cta {
-      padding-bottom: 140px;
-    }
-
-    .cta-box {
-      position: relative;
-
-      padding: 75px 7%;
-
-      border-radius: 35px;
-
-      overflow: hidden;
-
-      border: 1px solid rgba(184,255,0,.2);
-
-      background:
-        radial-gradient(
-          circle at 75% 30%,
-          rgba(155,92,255,.2),
-          transparent 28%
-        ),
-        radial-gradient(
-          circle at 20% 80%,
-          rgba(184,255,0,.13),
-          transparent 30%
-        ),
-        rgba(255,255,255,.025);
-    }
-
-    .cta-box::before {
-      content: "14";
-
-      position: absolute;
-
-      right: 5%;
-      top: -70px;
-
-      font-family: "Montserrat", sans-serif;
-
-      font-size: 22rem;
-      font-weight: 900;
-
-      color: rgba(255,255,255,.025);
-
-      pointer-events: none;
-    }
-
-    .cta-content {
-      position: relative;
-      z-index: 2;
-
-      max-width: 700px;
-    }
-
-    .cta-content h2 {
-      font-family: "Montserrat", sans-serif;
-
-      font-size:
-        clamp(2.4rem, 5vw, 5rem);
-
-      line-height: .98;
-
-      letter-spacing: -3px;
-    }
-
-    .cta-content h2 span {
-      color: var(--accent);
-    }
-
-    .cta-content p {
-      margin-top: 20px;
-
-      color: var(--muted);
-
-      line-height: 1.8;
-    }
-
-    /* ==============================
-       FOOTER
-    ============================== */
-
-    footer {
-      border-top: 1px solid var(--border);
-
-      padding: 45px 5%;
-    }
-
-    .footer-inner {
-      max-width: 1400px;
-      margin: auto;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 25px;
-    }
-
-    .footer-copy {
-      color: #666670;
-      font-size: .72rem;
-    }
-
-    .socials {
-      display: flex;
-      gap: 9px;
-    }
-
-    .social {
-      width: 39px;
-      height: 39px;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 12px;
-
-      background: rgba(255,255,255,.04);
-      border: 1px solid var(--border);
-
-      color: #aaaab2;
-
-      transition:
-        transform .25s ease,
-        color .25s ease,
-        border-color .25s ease;
-    }
-
-    .social:hover {
-      transform: translateY(-4px);
-
-      color: var(--accent);
-
-      border-color: rgba(184,255,0,.3);
-    }
-
-    /* ==============================
-       SCROLL REVEAL
-    ============================== */
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(35px);
-
-      transition:
-        opacity .8s ease,
-        transform .8s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ==============================
-       MOBILE
-    ============================== */
-
-    @media (max-width: 1050px) {
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-content {
-        text-align: center;
-      }
-
-      .hero-text {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .hero-actions,
-      .hero-mini-stats {
-        justify-content: center;
-      }
-
-      .hero-visual {
-        min-height: 520px;
-      }
-
-      .feature-grid {
-        grid-template-columns:
-          repeat(2,1fr);
-      }
-
-      .schedule-grid {
-        grid-template-columns:
-          repeat(2,1fr);
-      }
-
-      .plans-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .plan.featured {
-        transform: none;
-      }
-
-      .plan.featured:hover {
-        transform: translateY(-10px);
-      }
-
-      .stats-grid {
-        grid-template-columns:
-          repeat(2,1fr);
-      }
-
-      .big-stat:nth-child(2) {
-        border-right: 0;
-      }
-
-      .big-stat:nth-child(-n+2) {
-        border-bottom: 1px solid var(--border);
-      }
-    }
-
-    @media (max-width: 760px) {
-
-      .navbar {
-        padding-left: 4%;
-        padding-right: 4%;
-      }
-
-      .nav-links,
-      .nav-cta {
-        display: none;
-      }
-
-      .menu-btn {
-        display: grid;
-        place-items: center;
-      }
-
-      .nav-links.mobile-open {
-        position: absolute;
-
-        left: 4%;
-        right: 4%;
-        top: 72px;
-
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-
-        padding: 20px;
-
-        background: rgba(12,12,16,.95);
-        backdrop-filter: blur(20px);
-
-        border: 1px solid var(--border);
-        border-radius: 20px;
-
-        box-shadow: 0 25px 70px rgba(0,0,0,.5);
-      }
-
-      .nav-links.mobile-open a {
-        padding: 10px 5px;
-      }
-
-      .hero {
-        padding-top: 125px;
-      }
-
-      .hero h1 {
-        font-size: clamp(3rem, 15vw, 5rem);
-        letter-spacing: -3px;
-      }
-
-      .hero-mini-stats {
-        gap: 18px;
-      }
-
-      .hero-visual {
-        min-height: 440px;
-      }
-
-      .power-core {
-        transform: scale(.78);
-      }
-
-      .floating-card.one {
-        left: 2%;
-      }
-
-      .floating-card.two {
-        right: 0;
-      }
-
-      section {
-        padding: 85px 5%;
-      }
-
-      .section-heading {
-        margin-bottom: 40px;
-      }
-
-      .feature-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .feature-card {
-        min-height: 220px;
-      }
-
-      .schedule-top {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .live-time {
-        width: 100%;
-        text-align: left;
-      }
-
-      .schedule-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .stats-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .big-stat {
-        border-right: 0;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .big-stat:last-child {
-        border-bottom: 0;
-      }
-
-      .footer-inner {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .cta-box {
-        padding: 55px 25px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
-      }
-    }
-  </style>
 </head>
 
 <body>
 
-  <!-- PRELOADER -->
-  <div id="preloader">
-    <div class="loader"></div>
-  </div>
+<div class="noise"></div>
 
+<!-- ================= HEADER ================= -->
 
-  <!-- NAVBAR -->
-  <header class="navbar" id="navbar">
+<header id="header">
 
-    <div class="nav-inner">
+<a class="logo" href="#home">
+  <b>14</b> FITNESS <span>GYM</span>
+</a>
 
-      <a href="#home" class="logo">
-        <div class="logo-mark">
-          <i class="fa-solid fa-bolt"></i>
-        </div>
+<nav id="nav">
+  <a href="#home">Home</a>
+  <a href="#plans">Membership</a>
+  <a href="#members">Members</a>
+  <a href="#why">Why Us</a>
+  <a href="#timings">Timings</a>
+  <a href="#gallery">Gym</a>
+</nav>
 
-        <span>
-          14 <span>FITNESS</span> GYM
-        </span>
-      </a>
+<a class="header-btn" href="#plans">
+  Join Now →
+</a>
 
-      <nav class="nav-links" id="navLinks">
-        <a href="#home">Home</a>
-        <a href="#experience">Experience</a>
-        <a href="#timings">Timings</a>
-        <a href="#plans">Membership</a>
-        <a href="#contact">Join Now</a>
-      </nav>
+<button class="menu-btn" id="menuBtn">
+  ☰
+</button>
 
-      <a href="order.html" class="nav-cta">
-        JOIN NOW
-      </a>
+</header>
 
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
-        <i class="fa-solid fa-bars"></i>
-      </button>
+<!-- ================= HERO ================= -->
 
-    </div>
+<section class="hero" id="home">
 
-  </header>
+<div class="hero-copy reveal">
 
+<div class="eyebrow">
+  Premium Unisex Fitness Club
+</div>
 
-  <!-- HERO -->
-  <main id="home">
+<h1>
+Forge<br>
+Your<br>
+<span class="lime">Strongest</span><br>
+<span class="outline">Self.</span>
+</h1>
 
-    <section class="hero">
+<p class="hero-description">
+A serious training environment for people who want to build strength,
+improve fitness and stay consistent — one session at a time.
+</p>
 
-      <div class="hero-bg"></div>
+<div class="hero-actions">
 
-      <div class="hero-grid">
+<a
+class="btn btn-primary"
+href="#plans">
+View Memberships → </a>
 
-        <div class="hero-content">
+<a
+class="btn btn-dark"
+href="#plans">
+Start Your Journey </a>
+
+</div>
+
+<div class="hero-stats">
+
+<div class="hero-stat">
+<strong>01</strong>
+<span>Focused Environment</span>
+</div>
+
+<div class="hero-stat">
+<strong>24/7</strong>
+<span>Mindset</span>
+</div>
+
+<div class="hero-stat">
+<strong>100%</strong>
+<span>Commitment</span>
+</div>
 
-          <div class="eyebrow">
-            <span class="eyebrow-dot"></span>
-            Your Stronger Era Starts Here
-          </div>
+</div>
 
-          <h1>
-            BUILD
-            <span class="lime">POWER.</span>
-            <br>
-            <span class="outline">BECOME</span>
-            <br>
-            UNSTOPPABLE.
-          </h1>
+</div>
 
-          <p class="hero-text">
-            14 FITNESS GYM is built for people who don't want ordinary.
-            Train harder, move stronger and create a version of yourself
-            that you are proud of.
-          </p>
+<div class="hero-visual reveal">
 
-          <div class="hero-actions">
+<div class="athlete-glow"></div>
+<div class="athlete-ring"></div>
 
-            <a href="order.html" class="btn btn-primary">
-              START TRAINING
-              <i class="fa-solid fa-arrow-right"></i>
-            </a>
+<div class="athlete-frame">
 
-            <a href="#plans" class="btn btn-secondary">
-              VIEW MEMBERSHIPS
-            </a>
+<img
+class="athlete-photo"
+src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1000&q=90"
+alt="Fitness athlete training in a gym"
+loading="eager">
 
-          </div>
+<div class="athlete-label">
+<small>14 Fitness Athlete</small>
+<strong>TRAIN WITH PURPOSE</strong>
+</div>
+
+</div>
+
+<div class="floating-card card-one">
+<small>Mindset</small>
+<strong>GET STRONG</strong>
+</div>
+
+<div class="floating-card card-two">
+<small>Daily Standard</small>
+<strong>NO LIMITS</strong>
+</div>
+
+<div class="floating-card card-three">
+<small>Progress</small>
+<strong>+1% EVERY DAY</strong>
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= TICKER ================= -->
+
+<div class="ticker">
+
+<div class="ticker-track">
+
+<div class="ticker-group">
+<span>NO EXCUSES</span>
+<i>✦</i>
+<span>TRAIN HARD</span>
+<i>✦</i>
+<span>STAY CONSISTENT</span>
+<i>✦</i>
+<span>GET STRONGER</span>
+<i>✦</i>
+<span>SHOW UP</span>
+<i>✦</i>
+</div>
+
+<div class="ticker-group">
+<span>NO EXCUSES</span>
+<i>✦</i>
+<span>TRAIN HARD</span>
+<i>✦</i>
+<span>STAY CONSISTENT</span>
+<i>✦</i>
+<span>GET STRONGER</span>
+<i>✦</i>
+<span>SHOW UP</span>
+<i>✦</i>
+</div>
 
-          <div class="hero-mini-stats">
+<div class="ticker-group">
+<span>NO EXCUSES</span>
+<i>✦</i>
+<span>TRAIN HARD</span>
+<i>✦</i>
+<span>STAY CONSISTENT</span>
+<i>✦</i>
+<span>GET STRONGER</span>
+<i>✦</i>
+<span>SHOW UP</span>
+<i>✦</i>
+</div>
 
-            <div class="mini-stat">
-              <strong>14</strong>
-              <span>Fitness Identity</span>
-            </div>
+</div>
+</div>
 
-            <div class="mini-stat">
-              <strong>24/7*</strong>
-              <span>Training Mindset</span>
-            </div>
+<!-- ================= MEMBERSHIP PLANS ================= -->
 
-            <div class="mini-stat">
-              <strong>100%</strong>
-              <span>Commitment</span>
-            </div>
+<section class="section" id="plans">
 
-          </div>
+<div class="section-head reveal">
+
+<div>
+
+<div class="kicker">
+Membership Plans
+</div>
+
+<h2>
+Choose Your<br>
+Commitment.
+</h2>
+
+</div>
 
-        </div>
+<p>
+Pick the plan that matches your commitment.
+Every membership gives you access to the 14 FITNESS training environment.
+</p>
 
+</div>
 
-        <!-- HERO VISUAL -->
-        <div class="hero-visual">
+<div class="plans">
 
-          <div class="visual-ring"></div>
+<!-- STARTER -->
 
-          <div class="floating-card one">
+<article class="plan reveal">
 
-            <div class="float-label">
-              Training Status
-            </div>
+<div class="plan-number">
+01
+</div>
 
-            <div class="float-value">
-              <div class="float-icon">
-                <i class="fa-solid fa-fire"></i>
-              </div>
+<div class="plan-name">
+Starter
+</div>
 
-              <span>LEVEL UP</span>
-            </div>
+<div class="old">
+₹2,000
+</div>
 
-          </div>
+<div class="price">
+₹1,400
+<small>/ admission</small>
+</div>
 
+<div class="save">
+🔥 ADMISSION + 1 MONTH FREE
+</div>
+
+<ul>
+<li>Admission fee ₹1,400</li>
+<li>1 Month FREE membership</li>
+<li>Full gym access</li>
+<li>Strength & cardio zones</li>
+<li>Member profile</li>
+</ul>
 
-          <div class="power-core">
+<a
+class="btn btn-dark"
+href="order.html?plan=1400">
 
-            <div class="silhouette">
+Join Starter →
 
-              <div class="head"></div>
+</a>
 
-              <div class="body"></div>
+</article>
 
-              <div class="arm left"></div>
-              <div class="arm right"></div>
+<!-- TRANSFORMATION -->
 
-              <div class="leg left"></div>
-              <div class="leg right"></div>
+<article class="plan best reveal">
 
-            </div>
+<div class="ribbon">
+BEST VALUE
+</div>
 
-          </div>
+<div class="plan-number">
+02
+</div>
 
+<div class="plan-name">
+Transformation
+</div>
 
-          <div class="floating-card two">
+<div class="old">
+₹8,400
+</div>
 
-            <div class="float-label">
-              Daily Mission
-            </div>
+<div class="price">
+₹7,560
+<small>/ 6 months</small>
+</div>
 
-            <div class="float-value">
-              <div class="float-icon">
-                <i class="fa-solid fa-dumbbell"></i>
-              </div>
+<div class="save">
+⚡ 10% OFF + FREE ADMISSION
+</div>
 
-              <span>GET STRONGER</span>
-            </div>
+<ul>
+<li>6 Months membership</li>
+<li>FREE admission</li>
+<li>10% long-term discount</li>
+<li>Full gym access</li>
+<li>Progress tracking</li>
+<li>Priority member support</li>
+</ul>
 
-          </div>
+<a
+class="btn btn-primary"
+href="order.html?plan=7560">
 
-        </div>
+Choose Best Value →
 
-      </div>
+</a>
 
-    </section>
+</article>
 
+<!-- ELITE -->
 
-    <!-- MARQUEE -->
-    <div class="marquee">
+<article class="plan reveal">
 
-      <div class="marquee-track">
+<div class="plan-number">
+03
+</div>
 
-        <div class="marquee-item">
-          TRAIN HARDER
-          <i class="fa-solid fa-circle"></i>
-        </div>
+<div class="plan-name">
+Elite
+</div>
 
-        <div class="marquee-item">
-          MOVE STRONGER
-          <i class="fa-solid fa-circle"></i>
-        </div>
+<div class="old">
+₹16,800
+</div>
 
-        <div class="marquee-item">
-          THINK BIGGER
-          <i class="fa-solid fa-circle"></i>
-        </div>
+<div class="price">
+₹14,280
+<small>/ 1 year</small>
+</div>
 
-        <div class="marquee-item">
-          BECOME UNSTOPPABLE
-          <i class="fa-solid fa-circle"></i>
-        </div>
+<div class="save">
+👑 15% OFF + FREE ADMISSION
+</div>
 
-        <div class="marquee-item">
-          14 FITNESS GYM
-          <i class="fa-solid fa-circle"></i>
-        </div>
+<ul>
+<li>12 Months membership</li>
+<li>FREE admission</li>
+<li>15% annual discount</li>
+<li>Full gym access</li>
+<li>Long-term progress profile</li>
+<li>Priority support</li>
+</ul>
 
-        <div class="marquee-item">
-          TRAIN HARDER
-          <i class="fa-solid fa-circle"></i>
-        </div>
+<a
+class="btn btn-dark"
+href="order.html?plan=14280">
 
-        <div class="marquee-item">
-          MOVE STRONGER
-          <i class="fa-solid fa-circle"></i>
-        </div>
+Join Elite →
 
-        <div class="marquee-item">
-          THINK BIGGER
-          <i class="fa-solid fa-circle"></i>
-        </div>
+</a>
 
-        <div class="marquee-item">
-          BECOME UNSTOPPABLE
-          <i class="fa-solid fa-circle"></i>
-        </div>
+</article>
 
-        <div class="marquee-item">
-          14 FITNESS GYM
-          <i class="fa-solid fa-circle"></i>
-        </div>
+</div>
 
-      </div>
+</section>
 
-    </div>
+<!-- ================= MEMBERS ================= -->
 
+<section class="section members-section" id="members">
 
-    <!-- EXPERIENCE -->
-    <section id="experience">
+<div class="section-head reveal">
 
-      <div class="container">
+<div>
 
-        <div class="section-heading reveal">
+<div class="kicker">
+14 Fitness Community
+</div>
 
-          <div class="section-kicker">
-            THE 14 EXPERIENCE
-          </div>
+<h2>
+Meet The<br>
+Members.
+</h2>
 
-          <h2>
-            More Than A Gym.
-            <br>
-            It's Your <span style="color:var(--accent)">Upgrade.</span>
-          </h2>
+</div>
 
-          <p>
-            Everything around you should push you forward.
-            Your training environment, your routine and your mindset.
-          </p>
+<p>
+Registered members are displayed with their selected plan and remaining membership time.
+</p>
 
-        </div>
+</div>
 
+<div class="member-toolbar reveal">
 
-        <div class="feature-grid">
+<div class="member-count">
 
-          <article class="feature-card reveal">
+<b id="memberCount">
+0
+</b>
 
-            <div class="feature-number">01</div>
+Registered Members
 
-            <div class="feature-icon">
-              <i class="fa-solid fa-sliders"></i>
-            </div>
+</div>
 
-            <h3>Modern Training</h3>
+<input
+id="memberSearch"
+class="member-search"
+type="search"
+placeholder="Search member..."
+autocomplete="off">
 
-            <p>
-              A focused training environment designed to keep
-              your workouts productive and powerful.
-            </p>
+</div>
 
-          </article>
+<div
+id="membersGrid"
+class="members-grid">
+</div>
 
+<div
+id="emptyMembers"
+class="empty-members">
 
-          <article class="feature-card reveal">
+<strong>
+No Members Yet
+</strong>
 
-            <div class="feature-number">02</div>
+<p>
+Completed registrations saved on this device will appear here automatically.
+</p>
 
-            <div class="feature-icon">
-              <i class="fa-solid fa-bolt"></i>
-            </div>
+</div>
 
-            <h3>High Energy</h3>
+</section>
 
-            <p>
-              Bring your energy, lock in your focus and make
-              every session count.
-            </p>
+<!-- ================= WHY US ================= -->
 
-          </article>
+<section class="section" id="why">
 
+<div class="section-head reveal">
 
-          <article class="feature-card reveal">
+<div>
 
-            <div class="feature-number">03</div>
+<div class="kicker">
+The 14 Standard
+</div>
 
-            <div class="feature-icon">
-              <i class="fa-solid fa-chart-line"></i>
-            </div>
+<h2>
+More Than<br>
+A Gym.
+</h2>
 
-            <h3>Progress Driven</h3>
+</div>
 
-            <p>
-              Don't just show up. Track your consistency,
-              challenge yourself and keep progressing.
-            </p>
+<p>
+Everything is designed around consistency, focused training and measurable progress.
+</p>
 
-          </article>
+</div>
 
+<div class="features">
 
-          <article class="feature-card reveal">
+<div class="feature reveal">
 
-            <div class="feature-number">04</div>
+<div class="feature-number">
+01
+</div>
 
-            <div class="feature-icon">
-              <i class="fa-solid fa-shield-halved"></i>
-            </div>
+<div class="feature-icon">
+🏋️
+</div>
 
-            <h3>Your Fitness Zone</h3>
+<h3>
+Modern Equipment
+</h3>
 
-            <p>
-              A dedicated place where your only competition
-              is the person you were yesterday.
-            </p>
+<p>
+Strength machines, free weights and cardio equipment for complete training sessions.
+</p>
 
-          </article>
+</div>
 
-        </div>
+<div class="feature reveal">
 
-      </div>
+<div class="feature-number">
+02
+</div>
 
-    </section>
+<div class="feature-icon">
+⚡
+</div>
 
+<h3>
+High Energy
+</h3>
 
-    <!-- TIMINGS -->
-    <section class="schedule-section" id="timings">
+<p>
+A focused atmosphere that helps you keep your momentum going.
+</p>
 
-      <div class="container">
+</div>
 
-        <div class="schedule-top">
+<div class="feature reveal">
 
-          <div class="section-heading reveal" style="margin-bottom:0">
+<div class="feature-number">
+03
+</div>
 
-            <div class="section-kicker">
-              TRAIN ON YOUR TIME
-            </div>
+<div class="feature-icon">
+🎯
+</div>
 
-            <h2>
-              Your Time.
-              <br>
-              Your <span style="color:var(--accent)">Session.</span>
-            </h2>
+<h3>
+Goal Focused
+</h3>
 
-            <p>
-              The schedule automatically highlights the current
-              training slot based on the time right now.
-            </p>
+<p>
+Strength, fitness or general conditioning — train around your goal.
+</p>
 
-          </div>
+</div>
 
+<div class="feature reveal">
 
-          <div class="live-time reveal">
+<div class="feature-number">
+04
+</div>
 
-            <small>Current Local Time</small>
+<div class="feature-icon">
+🤝
+</div>
 
-            <strong id="liveClock">
-              --:--
-            </strong>
+<h3>
+Community
+</h3>
 
-            <small id="liveDate">
-              Loading...
-            </small>
+<p>
+Train around people who show up, work hard and keep improving.
+</p>
 
-          </div>
+</div>
 
-        </div>
+</div>
 
+</section>
 
-        <div class="schedule-grid">
+<!-- ================= TIMINGS ================= -->
 
-          <!-- 06-10 -->
-          <article
-            class="time-card reveal"
-            data-start="6"
-            data-end="10"
-            data-session="Men"
-          >
+<section class="section timings" id="timings">
 
-            <span class="active-badge">
-              LIVE NOW
-            </span>
+<div class="section-head reveal">
 
-            <div class="time">
-              06:00 AM — 10:00 AM
-            </div>
+<div>
 
-            <h3>Morning Power</h3>
+<div class="kicker">
+Gym Timings
+</div>
 
-            <p>
-              Start your day with focused strength and
-              high-energy training.
-            </p>
+<h2>
+Train On<br>
+Your Time.
+</h2>
 
-            <div class="gender-line">
-              <i class="fa-solid fa-person"></i>
-              MEN
-            </div>
+</div>
 
-          </article>
+<p>
+Dedicated time windows for men and women create a comfortable and organized training environment.
+</p>
 
+</div>
 
-          <!-- 10-14 -->
-          <article
-            class="time-card reveal"
-            data-start="10"
-            data-end="14"
-            data-session="Women"
-          >
+<div class="schedule">
 
-            <span class="active-badge">
-              LIVE NOW
-            </span>
+<div class="slot reveal">
 
-            <div class="time">
-              10:00 AM — 02:00 PM
-            </div>
+<div>
+<span>
+06:00 AM — 10:00 AM
+</span>
 
-            <h3>Midday Strength</h3>
+<strong>
+MEN
+</strong>
+</div>
 
-            <p>
-              A dedicated session to train consistently
-              and build your strength.
-            </p>
+<b>
+01
+</b>
 
-            <div class="gender-line">
-              <i class="fa-solid fa-person-dress"></i>
-              WOMEN
-            </div>
+</div>
 
-          </article>
+<div class="slot women reveal">
 
+<div>
+<span>
+10:00 AM — 04:30 PM
+</span>
 
-          <!-- 14-18 -->
-          <article
-            class="time-card reveal"
-            data-start="14"
-            data-end="18"
-            data-session="Mixed"
-          >
+<strong>
+WOMEN
+</strong>
+</div>
 
-            <span class="active-badge">
-              LIVE NOW
-            </span>
+<b>
+02
+</b>
 
-            <div class="time">
-              02:00 PM — 06:00 PM
-            </div>
+</div>
 
-            <h3>Open Training</h3>
+<div class="slot reveal">
 
-            <p>
-              Flexible training time for members who
-              prefer an afternoon workout.
-            </p>
+<div>
+<span>
+04:30 PM — 12:00 AM
+</span>
 
-            <div class="gender-line">
-              <i class="fa-solid fa-users"></i>
-              OPEN SESSION
-            </div>
+<strong>
+MEN
+</strong>
+</div>
 
-          </article>
+<b>
+03
+</b>
 
+</div>
 
-          <!-- 18-22 -->
-          <article
-            class="time-card reveal"
-            data-start="18"
-            data-end="22"
-            data-session="Men"
-          >
+<div class="slot reveal">
 
-            <span class="active-badge">
-              LIVE NOW
-            </span>
+<div>
+<span>
+OPEN DAILY
+</span>
 
-            <div class="time">
-              06:00 PM — 10:00 PM
-            </div>
+<strong>
+CONSISTENCY
+</strong>
+</div>
 
-            <h3>Evening Power</h3>
+<b>
+∞
+</b>
 
-            <p>
-              Finish your day strong with an intense
-              evening training session.
-            </p>
+</div>
 
-            <div class="gender-line">
-              <i class="fa-solid fa-person"></i>
-              MEN
-            </div>
+</div>
 
-          </article>
+</section>
 
-        </div>
+<!-- ================= GALLERY ================= -->
 
-      </div>
+<section class="section" id="gallery">
 
-    </section>
+<div class="section-head reveal">
 
+<div>
 
-    <!-- MEMBERSHIP -->
-    <section class="plans" id="plans">
+<div class="kicker">
+Inside 14 Fitness
+</div>
 
-      <div class="container">
+<h2>
+Real Gym.<br>
+Real Work.
+</h2>
 
-        <div class="section-heading reveal">
+</div>
 
-          <div class="section-kicker">
-            MEMBERSHIP
-          </div>
+<p>
+Actual gym and training photography is used here instead of empty placeholder cards.
+</p>
 
-          <h2>
-            Choose Your
-            <span style="color:var(--accent)">Level.</span>
-          </h2>
+</div>
 
-          <p>
-            Start where you are. Build from there.
-            Pick the membership that matches your commitment.
-          </p>
+<div class="gallery">
 
-        </div>
+<div class="pic big reveal">
 
+<img
+src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1400&q=88"
+alt="Modern gym floor"
+loading="lazy">
 
-        <div class="plans-grid">
+<label>
+Strength Zone
+</label>
 
+</div>
 
-          <!-- STARTER -->
-          <article class="plan reveal">
+<div class="pic reveal">
 
-            <div class="plan-tag">
-              LEVEL 01
-            </div>
+<img
+src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1100&q=88"
+alt="Gym equipment and training floor"
+loading="lazy">
 
-            <h3>Starter</h3>
+<label>
+Training Floor
+</label>
 
-            <p class="plan-sub">
-              Your first step toward a stronger routine.
-            </p>
+</div>
 
-            <div class="price">
-              <strong>₹999</strong>
-              <span>/ month</span>
-            </div>
+<div class="pic reveal">
 
-            <ul class="plan-features">
+<img
+src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1100&q=88"
+alt="Fitness training"
+loading="lazy">
 
-              <li>
-                <i class="fa-solid fa-check"></i>
-                Gym access
-              </li>
+<label>
+Energy
+</label>
 
-              <li>
-                <i class="fa-solid fa-check"></i>
-                Basic workout guidance
-              </li>
+</div>
 
-              <li>
-                <i class="fa-solid fa-check"></i>
-                Flexible training sessions
-              </li>
+<div class="pic reveal">
 
-              <li>
-                <i class="fa-solid fa-check"></i>
-                Progress focused environment
-              </li>
+<img
+src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1100&q=88"
+alt="Athlete training"
+loading="lazy">
 
-            </ul>
+<label>
+Every Rep
+</label>
 
-            <a
-              href="order.html?plan=starter"
-              class="btn btn-secondary plan-btn"
-            >
-              CHOOSE STARTER
-            </a>
+</div>
 
-          </article>
+<div class="pic reveal">
 
+<img
+src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=1100&q=88"
+alt="Strength equipment"
+loading="lazy">
 
-          <!-- TRANSFORMATION -->
-          <article class="plan featured reveal">
+<label>
+Free Weights
+</label>
 
-            <div class="popular">
-              MOST POPULAR
-            </div>
+</div>
 
-            <div class="plan-tag">
-              LEVEL 02
-            </div>
+</div>
 
-            <h3>Transformation</h3>
+</section>
 
-            <p class="plan-sub">
-              For members serious about visible progress.
-            </p>
+<!-- ================= CTA ================= -->
 
-            <div class="price">
-              <strong>₹1499</strong>
-              <span>/ month</span>
-            </div>
+<section class="cta">
 
-            <ul class="plan-features">
+<div class="cta-content reveal">
 
-              <li>
-                <i class="fa-solid fa-check"></i>
-                Full gym access
-              </li>
+<div class="kicker">
+Your Next Version Starts Here
+</div>
 
-              <li>
-                <i class="fa-solid fa-check"></i>
-                Structured workout support
-              </li>
+<h2>
+Stop Waiting.<br>
+<span>
+Start Training.
+</span>
+</h2>
 
-              <li>
-                <i class="fa-solid fa-check"></i>
-                Progress tracking
-              </li>
+<p>
+The hardest part is making the decision to begin.
+Make yours today and start building your strongest self.
+</p>
 
-              <li>
-                <i class="fa-solid fa-check"></i>
-                Goal focused training
-              </li>
+<a
+class="btn btn-primary"
+href="#plans">
 
-              <li>
-                <i class="fa-solid fa-check"></i>
-                Transformation mindset
-              </li>
+Become A Member →
 
-            </ul>
+</a>
 
-            <a
-              href="order.html?plan=transformation"
-              class="btn btn-primary plan-btn"
-            >
-              START TRANSFORMATION
-              <i class="fa-solid fa-arrow-right"></i>
-            </a>
+</div>
 
-          </article>
+</section>
 
+<!-- ================= FOOTER ================= -->
 
-          <!-- ELITE -->
-          <article class="plan reveal">
+<footer>
 
-            <div class="plan-tag">
-              LEVEL 03
-            </div>
+<div>
+© 2026 <b>14 FITNESS GYM</b>
+</div>
 
-            <h3>Elite</h3>
+<div>
+Train Hard • Stay Consistent • Become Stronger
+</div>
 
-            <p class="plan-sub">
-              Maximum commitment. Maximum focus.
-            </p>
+</footer>
 
-            <div class="price">
-              <strong>₹1999</strong>
-              <span>/ month</span>
-            </div>
+<script>
 
-            <ul class="plan-features">
+/* =========================================================
+   BASIC UI
+   ========================================================= */
 
-              <li>
-                <i class="fa-solid fa-check"></i>
-                Premium gym access
-              </li>
+const header =
+  document.getElementById("header");
 
-              <li>
-                <i class="fa-solid fa-check"></i>
-                Advanced workout guidance
-              </li>
+window.addEventListener("scroll",()=>{
 
-              <li>
-                <i class="fa-solid fa-check"></i>
-                Detailed progress focus
-              </li>
+  header.classList.toggle(
+    "scrolled",
+    window.scrollY > 40
+  );
 
-              <li>
-                <i class="fa-solid fa-check"></i>
-                Priority training support
-              </li>
+});
 
-              <li>
-                <i class="fa-solid fa-check"></i>
-                Elite performance mindset
-              </li>
 
-            </ul>
+/* =========================================================
+   MOBILE MENU
+   ========================================================= */
 
-            <a
-              href="order.html?plan=elite"
-              class="btn btn-secondary plan-btn"
-            >
-              GO ELITE
-            </a>
+const menuBtn =
+  document.getElementById("menuBtn");
 
-          </article>
+const nav =
+  document.getElementById("nav");
 
-        </div>
+menuBtn.addEventListener("click",()=>{
 
-      </div>
+  nav.classList.toggle("mobile-open");
 
-    </section>
+});
 
+document
+  .querySelectorAll("nav a")
+  .forEach(a=>{
 
-    <!-- STATS -->
-    <section class="stats-strip">
+    a.addEventListener("click",()=>{
 
-      <div class="container">
-
-        <div class="stats-grid reveal">
-
-          <div class="big-stat">
-            <strong data-counter="14">0</strong>
-            <span>Fitness Identity</span>
-          </div>
-
-          <div class="big-stat">
-            <strong data-counter="100">0</strong>
-            <span>Percent Commitment</span>
-          </div>
-
-          <div class="big-stat">
-            <strong data-counter="4">0</strong>
-            <span>Training Windows</span>
-          </div>
-
-          <div class="big-stat">
-            <strong data-counter="1">0</strong>
-            <span>Goal — Your Progress</span>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- FINAL CTA -->
-    <section class="final-cta" id="contact">
-
-      <div class="container">
-
-        <div class="cta-box reveal">
-
-          <div class="cta-content">
-
-            <div class="section-kicker">
-              READY?
-            </div>
-
-            <h2>
-              DON'T WAIT FOR
-              <span>MONDAY.</span>
-            </h2>
-
-            <p>
-              Your strongest version doesn't appear by accident.
-              It starts with one decision — showing up.
-            </p>
-
-            <div class="hero-actions">
-
-              <a href="order.html" class="btn btn-primary">
-                JOIN 14 FITNESS GYM
-                <i class="fa-solid fa-arrow-right"></i>
-              </a>
-
-              <a href="#timings" class="btn btn-secondary">
-                CHECK TIMINGS
-              </a>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- FOOTER -->
-  <footer>
-
-    <div class="footer-inner">
-
-      <div class="logo">
-
-        <div class="logo-mark">
-          <i class="fa-solid fa-bolt"></i>
-        </div>
-
-        <span>
-          14 <span>FITNESS</span> GYM
-        </span>
-
-      </div>
-
-
-      <div class="footer-copy">
-        © <span id="year"></span> 14 FITNESS GYM. Train beyond limits.
-      </div>
-
-
-      <div class="socials">
-
-        <a href="#" class="social" aria-label="Instagram">
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-
-        <a href="#" class="social" aria-label="Facebook">
-          <i class="fa-brands fa-facebook-f"></i>
-        </a>
-
-        <a href="#" class="social" aria-label="WhatsApp">
-          <i class="fa-brands fa-whatsapp"></i>
-        </a>
-
-      </div>
-
-    </div>
-
-  </footer>
-
-
-  <script>
-
-    /* =========================================
-       PRELOADER
-    ========================================= */
-
-    window.addEventListener("load", () => {
-
-      setTimeout(() => {
-        document
-          .getElementById("preloader")
-          .classList.add("hide");
-      }, 500);
+      nav.classList.remove(
+        "mobile-open"
+      );
 
     });
 
-
-    /* =========================================
-       NAVBAR SCROLL EFFECT
-    ========================================= */
-
-    const navbar = document.getElementById("navbar");
-
-    window.addEventListener("scroll", () => {
-
-      if (window.scrollY > 40) {
-        navbar.classList.add("scrolled");
-      } else {
-        navbar.classList.remove("scrolled");
-      }
-
-    });
+  });
 
 
-    /* =========================================
-       MOBILE MENU
-    ========================================= */
+/* =========================================================
+   REVEAL ANIMATION
+   ========================================================= */
 
-    const menuBtn = document.getElementById("menuBtn");
-    const navLinks = document.getElementById("navLinks");
+const revealObserver =
+  new IntersectionObserver(
+    entries=>{
 
-    menuBtn.addEventListener("click", () => {
+      entries.forEach(entry=>{
 
-      navLinks.classList.toggle("mobile-open");
+        if(entry.isIntersecting){
 
-      const icon = menuBtn.querySelector("i");
+          entry.target.classList.add(
+            "visible"
+          );
 
-      if (navLinks.classList.contains("mobile-open")) {
-        icon.className = "fa-solid fa-xmark";
-      } else {
-        icon.className = "fa-solid fa-bars";
-      }
+          revealObserver.unobserve(
+            entry.target
+          );
 
-    });
-
-
-    navLinks.querySelectorAll("a").forEach(link => {
-
-      link.addEventListener("click", () => {
-
-        navLinks.classList.remove("mobile-open");
-
-        menuBtn.querySelector("i").className =
-          "fa-solid fa-bars";
-
-      });
-
-    });
-
-
-    /* =========================================
-       CURRENT TIME
-       TRAINING SLOT AUTO HIGHLIGHT
-    ========================================= */
-
-    const clock = document.getElementById("liveClock");
-    const dateElement = document.getElementById("liveDate");
-
-    const timeCards =
-      document.querySelectorAll(".time-card");
-
-
-    function updateTrainingTime() {
-
-      const now = new Date();
-
-      let hours = now.getHours();
-      const minutes = now.getMinutes();
-
-      let displayHours = hours % 12;
-
-      if (displayHours === 0) {
-        displayHours = 12;
-      }
-
-      const ampm = hours >= 12 ? "PM" : "AM";
-
-      const minuteText =
-        String(minutes).padStart(2, "0");
-
-      clock.textContent =
-        `${String(displayHours).padStart(2,"0")}:${minuteText} ${ampm}`;
-
-
-      dateElement.textContent =
-        now.toLocaleDateString("en-IN", {
-          weekday: "long",
-          day: "numeric",
-          month: "short"
-        });
-
-
-      /*
-        Remove previous active state
-      */
-
-      timeCards.forEach(card => {
-        card.classList.remove("active");
-      });
-
-
-      /*
-        Find the current training window
-      */
-
-      timeCards.forEach(card => {
-
-        const start =
-          Number(card.dataset.start);
-
-        const end =
-          Number(card.dataset.end);
-
-        if (hours >= start && hours < end) {
-          card.classList.add("active");
         }
 
       });
+
+    },
+    {
+      threshold:.12
+    }
+  );
+
+document
+  .querySelectorAll(".reveal")
+  .forEach(el=>{
+
+    revealObserver.observe(el);
+
+  });
+
+
+/* =========================================================
+   MEMBERS
+   ========================================================= */
+
+const MEMBERS_KEY =
+  "14fitness_members";
+
+const planInfo = {
+
+  "1400":{
+    name:"1 MONTH + FREE ADMISSION",
+    months:1
+  },
+
+  "7560":{
+    name:"6 MONTHS + FREE ADMISSION",
+    months:6
+  },
+
+  "14280":{
+    name:"1 YEAR + FREE ADMISSION",
+    months:12
+  }
+
+};
+
+
+/* =========================================================
+   SECURITY / HTML ESCAPE
+   ========================================================= */
+
+function escapeHTML(value){
+
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================================
+   EXPIRY DATE
+   ========================================================= */
+
+function getExpiryDate(
+  createdAt,
+  planKey
+){
+
+  const info =
+    planInfo[planKey];
+
+  if(!info || !createdAt){
+    return null;
+  }
+
+  const start =
+    new Date(createdAt);
+
+  if(
+    Number.isNaN(
+      start.getTime()
+    )
+  ){
+    return null;
+  }
+
+  const expiry =
+    new Date(start);
+
+  expiry.setMonth(
+    expiry.getMonth() +
+    info.months
+  );
+
+  return expiry;
+
+}
+
+
+/* =========================================================
+   DAYS LEFT
+   ========================================================= */
+
+function getDaysLeft(
+  createdAt,
+  planKey
+){
+
+  const expiry =
+    getExpiryDate(
+      createdAt,
+      planKey
+    );
+
+  if(!expiry){
+    return 0;
+  }
+
+  const now =
+    new Date();
+
+  const today =
+    new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate()
+    );
+
+  const end =
+    new Date(
+      expiry.getFullYear(),
+      expiry.getMonth(),
+      expiry.getDate()
+    );
+
+  return Math.max(
+    0,
+    Math.ceil(
+      (end - today) /
+      86400000
+    )
+  );
+
+}
+
+
+/* =========================================================
+   DATE FORMAT
+   ========================================================= */
+
+function formatDate(date){
+
+  return date
+    ? date.toLocaleDateString(
+        "en-IN",
+        {
+          day:"2-digit",
+          month:"short",
+          year:"numeric"
+        }
+      )
+    : "—";
+
+}
+
+
+/* =========================================================
+   MEMBER STATUS
+   ========================================================= */
+
+function getMemberStatus(member){
+
+  const days =
+    getDaysLeft(
+      member.createdAt,
+      member.plan
+    );
+
+  const saved =
+    String(
+      member.status || ""
+    ).toLowerCase();
+
+  if(days <= 0){
+
+    return {
+      label:"EXPIRED",
+      className:"status-expired"
+    };
+
+  }
+
+  if(
+    saved.includes("pending") ||
+    saved.includes("verification")
+  ){
+
+    return {
+      label:"PAYMENT PENDING",
+      className:"status-pending"
+    };
+
+  }
+
+  return {
+    label:"ACTIVE",
+    className:"status-active"
+  };
+
+}
+
+
+/* =========================================================
+   CREATE MEMBER CARD
+   ========================================================= */
+
+function createMemberCard(member){
+
+  const name =
+    member.name ||
+    "Member";
+
+  const plan =
+    planInfo[member.plan]?.name ||
+    "MEMBERSHIP";
+
+  const expiry =
+    getExpiryDate(
+      member.createdAt,
+      member.plan
+    );
+
+  const days =
+    getDaysLeft(
+      member.createdAt,
+      member.plan
+    );
+
+  const status =
+    getMemberStatus(member);
+
+  const first =
+    (
+      name.trim().charAt(0) ||
+      "M"
+    ).toUpperCase();
+
+  const joined =
+    member.createdAt
+      ? formatDate(
+          new Date(
+            member.createdAt
+          )
+        )
+      : "—";
+
+  return `
+
+    <article
+      class="member-card"
+      data-name="${escapeHTML(
+        name.toLowerCase()
+      )}"
+      data-plan="${escapeHTML(
+        plan.toLowerCase()
+      )}">
+
+      <div class="member-top">
+
+        <div class="member-avatar">
+          ${escapeHTML(first)}
+        </div>
+
+        <div class="member-status ${status.className}">
+          ${status.label}
+        </div>
+
+      </div>
+
+      <div class="member-name">
+        ${escapeHTML(name)}
+      </div>
+
+      <div class="member-plan">
+        ${escapeHTML(plan)}
+      </div>
+
+      <div class="member-days">
+
+        <strong>
+          ${days}
+        </strong>
+
+        <span>
+          Days<br>
+          Left
+        </span>
+
+      </div>
+
+      <div class="member-info">
+
+        <div class="info-row">
+          <span>Member ID</span>
+          <span>
+            ${escapeHTML(
+              member.memberId || "—"
+            )}
+          </span>
+        </div>
+
+        <div class="info-row">
+          <span>Joined</span>
+          <span>
+            ${escapeHTML(joined)}
+          </span>
+        </div>
+
+        <div class="info-row">
+          <span>Expires</span>
+          <span>
+            ${escapeHTML(
+              expiry
+                ? formatDate(expiry)
+                : "—"
+            )}
+          </span>
+        </div>
+
+        <div class="info-row">
+          <span>Goal</span>
+          <span>
+            ${escapeHTML(
+              member.goal || "—"
+            )}
+          </span>
+        </div>
+
+      </div>
+
+    </article>
+
+  `;
+
+}
+
+
+/* =========================================================
+   LOAD MEMBERS
+   ========================================================= */
+
+function loadMembers(){
+
+  const grid =
+    document.getElementById(
+      "membersGrid"
+    );
+
+  const empty =
+    document.getElementById(
+      "emptyMembers"
+    );
+
+  const count =
+    document.getElementById(
+      "memberCount"
+    );
+
+  let members = [];
+
+  try{
+
+    members =
+      JSON.parse(
+        localStorage.getItem(
+          MEMBERS_KEY
+        ) || "[]"
+      );
+
+    if(
+      !Array.isArray(members)
+    ){
+
+      members = [];
 
     }
 
+  }catch(error){
 
-    updateTrainingTime();
+    console.error(
+      "MEMBER LOAD ERROR:",
+      error
+    );
 
-    setInterval(updateTrainingTime, 30000);
+    members = [];
+
+  }
+
+  count.textContent =
+    members.length;
+
+  if(!members.length){
+
+    grid.innerHTML = "";
+
+    empty.style.display =
+      "block";
+
+    empty.querySelector(
+      "strong"
+    ).textContent =
+      "No Members Yet";
+
+    empty.querySelector(
+      "p"
+    ).textContent =
+      "Completed registrations saved on this device will appear here automatically.";
+
+    return;
+
+  }
+
+  empty.style.display =
+    "none";
+
+  grid.innerHTML =
+    members
+      .slice()
+      .reverse()
+      .map(createMemberCard)
+      .join("");
+
+}
 
 
-    /* =========================================
-       SCROLL REVEAL
-    ========================================= */
+/* Initial member load */
 
-    const revealElements =
-      document.querySelectorAll(".reveal");
+loadMembers();
 
-    const observer =
-      new IntersectionObserver(
-        (entries) => {
 
-          entries.forEach(entry => {
+/* =========================================================
+   MEMBER SEARCH
+   ========================================================= */
 
-            if (entry.isIntersecting) {
+document
+  .getElementById(
+    "memberSearch"
+  )
+  .addEventListener(
+    "input",
+    function(){
 
-              entry.target.classList.add("visible");
+      const query =
+        this.value
+          .trim()
+          .toLowerCase();
 
-              observer.unobserve(entry.target);
+      const cards =
+        document.querySelectorAll(
+          ".member-card"
+        );
 
-            }
+      const empty =
+        document.getElementById(
+          "emptyMembers"
+        );
 
-          });
+      let visible = 0;
 
-        },
-        {
-          threshold: .12
+      cards.forEach(card=>{
+
+        const match =
+          !query ||
+          card.dataset.name
+            .includes(query) ||
+          card.dataset.plan
+            .includes(query);
+
+        card.style.display =
+          match ? "" : "none";
+
+        if(match){
+          visible++;
         }
-      );
+
+      });
+
+      if(
+        cards.length &&
+        visible === 0
+      ){
+
+        empty.querySelector(
+          "strong"
+        ).textContent =
+          "No Match Found";
+
+        empty.querySelector(
+          "p"
+        ).textContent =
+          "Try another member name or membership plan.";
+
+        empty.style.display =
+          "block";
+
+      }else if(cards.length){
+
+        empty.style.display =
+          "none";
+
+      }
+
+    }
+  );
 
 
-    revealElements.forEach(element => {
-      observer.observe(element);
-    });
+/* =========================================================
+   UPDATE MEMBERS AUTOMATICALLY
+   ========================================================= */
+
+window.addEventListener(
+  "storage",
+  event=>{
+
+    if(
+      event.key === MEMBERS_KEY
+    ){
+
+      loadMembers();
+
+    }
+
+  }
+);
+
+setInterval(
+  loadMembers,
+  60000
+);
 
 
-    /* =========================================
-       ANIMATED COUNTERS
-    ========================================= */
+/* =========================================================
+   ACTIVE NAVIGATION
+   ========================================================= */
 
-    const counters =
-      document.querySelectorAll("[data-counter]");
+const sections =
+  document.querySelectorAll(
+    "section[id]"
+  );
 
-    let countersStarted = false;
+const navLinks =
+  document.querySelectorAll(
+    "nav a"
+  );
 
+const sectionObserver =
+  new IntersectionObserver(
+    entries=>{
 
-    function runCounters() {
+      entries.forEach(entry=>{
 
-      if (countersStarted) return;
+        if(
+          entry.isIntersecting
+        ){
 
-      countersStarted = true;
+          navLinks.forEach(link=>{
 
-
-      counters.forEach(counter => {
-
-        const target =
-          Number(counter.dataset.counter);
-
-        let current = 0;
-
-        const duration = 1100;
-
-        const startTime = performance.now();
-
-
-        function animateCounter(time) {
-
-          const progress =
-            Math.min(
-              (time - startTime) / duration,
-              1
+            link.classList.remove(
+              "active"
             );
 
-          const eased =
-            1 - Math.pow(1 - progress, 3);
+          });
 
-          current =
-            Math.floor(target * eased);
+          const active =
+            document.querySelector(
+              `nav a[href="#${entry.target.id}"]`
+            );
 
-          counter.textContent =
-            current + (target === 100 ? "%" : "");
+          if(active){
 
-          if (progress < 1) {
-            requestAnimationFrame(animateCounter);
-          } else {
-            counter.textContent =
-              target + (target === 100 ? "%" : "");
+            active.classList.add(
+              "active"
+            );
+
           }
 
         }
-
-
-        requestAnimationFrame(animateCounter);
 
       });
 
+    },
+    {
+      rootMargin:
+        "-35% 0px -55% 0px"
     }
+  );
+
+sections.forEach(section=>{
+
+  sectionObserver.observe(
+    section
+  );
+
+});
 
 
-    const statsSection =
-      document.querySelector(".stats-grid");
+/* =========================================================
+   NO OTP SYSTEM
+   =========================================================
 
+   There is intentionally NO:
 
-    const counterObserver =
-      new IntersectionObserver(
-        entries => {
+   - Twilio
+   - OTP
+   - SMS verification
+   - Login
+   - Mobile verification
+   - /api/send-otp
+   - /api/verify-otp
+   - verification modal
+   - returning-member gate
+   - OTP localStorage key
 
-          if (entries[0].isIntersecting) {
+   Membership buttons go directly
+   to order.html.
 
-            runCounters();
+========================================================= */
 
-            counterObserver.disconnect();
-
-          }
-
-        },
-        {
-          threshold: .3
-        }
-      );
-
-
-    counterObserver.observe(statsSection);
-
-
-    /* =========================================
-       CURSOR TILT EFFECT FOR FEATURE CARDS
-    ========================================= */
-
-    if (window.matchMedia("(pointer:fine)").matches) {
-
-      document
-        .querySelectorAll(".feature-card, .plan")
-        .forEach(card => {
-
-          card.addEventListener("mousemove", event => {
-
-            const rect =
-              card.getBoundingClientRect();
-
-            const x =
-              event.clientX - rect.left;
-
-            const y =
-              event.clientY - rect.top;
-
-            const rotateY =
-              ((x / rect.width) - .5) * 5;
-
-            const rotateX =
-              ((y / rect.height) - .5) * -5;
-
-            card.style.transform =
-              `translateY(-8px)
-               perspective(900px)
-               rotateX(${rotateX}deg)
-               rotateY(${rotateY}deg)`;
-
-          });
-
-
-          card.addEventListener("mouseleave", () => {
-
-            card.style.transform = "";
-
-          });
-
-        });
-
-    }
-
-
-    /* =========================================
-       YEAR
-    ========================================= */
-
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-
-  </script>
+</script>
 
 </body>
 </html>
