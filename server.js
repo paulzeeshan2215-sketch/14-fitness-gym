@@ -1,30 +1,18 @@
-[01-09-2026 11:53 AM] Paul Zeeshan: const express = require("express");
+const express = require("express");
 const path = require("path");
 const crypto = require("crypto");
 const fs = require("fs");
 
 const app = express();
 
-const PORT = process.env.PORT || 10000;
-const GYM_NAME = "14 FITNESS GYM";
-
 /*
 =========================================================
-ENVIRONMENT VARIABLES
+CONFIGURATION
 =========================================================
-
-Render में ये variables रखें:
-
-TWILIO_ACCOUNT_SID
-TWILIO_AUTH_TOKEN
-TWILIO_VERIFY_SERVICE_SID
-VERIFY_TOKEN_SECRET
-ADMIN_KEY
-
-IMPORTANT:
-Twilio Verify खुद OTP SMS का message/template संभालेगा.
-हम कोई custom SMS body नहीं भेजेंगे.
 */
+
+const PORT = Number(process.env.PORT) || 10000;
+const GYM_NAME = "14 FITNESS GYM";
 
 const TWILIO_ACCOUNT_SID =
   process.env.TWILIO_ACCOUNT_SID || "";
@@ -47,6 +35,8 @@ const ADMIN_KEY =
 MIDDLEWARE
 =========================================================
 */
+
+app.disable("x-powered-by");
 
 app.use(
   express.json({
@@ -90,7 +80,6 @@ const NEW_PLANS = {
   }
 };
 
-
 const RENEWAL_PLANS = {
   "700": {
     name: "1 MONTH RENEWAL",
@@ -133,7 +122,6 @@ MEMBER STORAGE
 const MEMBERS_FILE =
   path.join(__dirname, "members.json");
 
-
 function loadMembers() {
   try {
     if (!fs.existsSync(MEMBERS_FILE)) {
@@ -145,6 +133,10 @@ function loadMembers() {
         MEMBERS_FILE,
         "utf8"
       );
+
+    if (!raw.trim()) {
+      return {};
+    }
 
     const data =
       JSON.parse(raw);
@@ -158,7 +150,6 @@ function loadMembers() {
     }
 
     return {};
-
   } catch (error) {
     console.error(
       "[MEMBERS LOAD ERROR]",
@@ -169,15 +160,13 @@ function loadMembers() {
   }
 }
 
-
 let members = loadMembers();
 
-
 function saveMembers() {
-  try {
-    const tempFile =
-      MEMBERS_FILE + ".tmp";
+  const tempFile =
+    MEMBERS_FILE + ".tmp";
 
+  try {
     fs.writeFileSync(
       tempFile,
       JSON.stringify(
@@ -192,12 +181,17 @@ function saveMembers() {
       tempFile,
       MEMBERS_FILE
     );
-
   } catch (error) {
     console.error(
       "[MEMBERS SAVE ERROR]",
       error.message
     );
+
+    try {
+      if (fs.existsSync(tempFile)) {
+        fs.unlinkSync(tempFile);
+      }
+    } catch (_) {}
 
     throw error;
   }
@@ -210,7 +204,8 @@ OTP RATE LIMITING
 =========================================================
 */
 
-const otpRequests = new Map();
+const otpRequests =
+  new Map();
 
 const OTP_COOLDOWN_MS =
   60 * 1000;
@@ -261,7 +256,9 @@ function cleanName(value) {
     .trim()
     .replace(/\s+/g, " ");
 }
-[01-09-2026 11:53 AM] Paul Zeeshan: function validName(name) {
+
+
+function validName(name) {
   return /^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ .'-]{1,59}$/
     .test(name);
 }
@@ -275,6 +272,36 @@ function validAge(age) {
     Number.isInteger(n) &&
     n >= 12 &&
     n <= 90
+  );
+}
+
+
+function validGender(gender) {
+  const allowed = [
+    "Male",
+    "Female",
+    "Other"
+  ];
+
+  return allowed.includes(
+    String(gender || "")
+  );
+}
+
+
+function validGoal(goal) {
+  const allowed = [
+    "Weight Loss",
+    "Muscle Gain",
+    "General Fitness",
+    "Bodybuilding",
+    "Strength",
+    "Fat Loss",
+    "Fitness"
+  ];
+
+  return allowed.includes(
+    String(goal || "")
   );
 }
 
@@ -336,14 +363,103 @@ function twilioConfigured() {
 }
 
 
+function normalizeAmount(value) {
+  const amount =
+    Number(value);
+
+  if (
+    !Number.isFinite(amount) ||
+    amount < 0
+  ) {
+    return null;
+  }
+
+  return amount;
+}
+
+
+/*
+=========================================================
+DATE HELPERS
+=========================================================
+*/
+
+function addMonths(date, months) {
+  const result =
+    new Date(date);
+
+  const originalDay =
+    result.getDate();
+
+  result.setDate(1);
+
+  result.setMonth(
+    result.getMonth() + months
+  );
+
+  const lastDay =
+    new Date(
+      result.getFullYear(),
+      result.getMonth() + 1,
+      0
+    ).getDate();
+
+  result.setDate(
+    Math.min(
+      originalDay,
+      lastDay
+    )
+  );
+
+  return result;
+}
+
+
+function getMembershipStartDate(member) {
+  if (
+    member &&
+    member.expiresAt
+  ) {
+    const existingExpiry =
+      new Date(
+        member.expiresAt
+      );
+
+    if (
+      !Number.isNaN(
+        existingExpiry.getTime()
+      ) &&
+      existingExpiry.getTime() >
+        Date.now()
+    ) {
+      return existingExpiry;
+    }
+  }
+
+  return new Date();
+}
+
+
+function calculateExpiry(months, member) {
+  const start =
+    getMembershipStartDate(member);
+
+  return addMonths(
+    start,
+    months
+  ).toISOString();
+}
+
+
 /*
 =========================================================
 VERIFICATION TOKEN
 =========================================================
 
-Created only after Twilio confirms the OTP.
+Created only after Twilio approves OTP.
 
 Valid for 30 minutes.
+=========================================================
 */
 
 function createVerificationToken(phone) {
@@ -357,7 +473,7 @@ function createVerificationToken(phone) {
     Date.now().toString();
 
   const payload =
-    ${phone}.${timestamp};
+    `${phone}.${timestamp}`;
 
   const signature =
     crypto
@@ -414,7 +530,9 @@ function verifyVerificationToken(
     }
 
     const timestamp =
-      Number(decoded.timestamp);
+      Number(
+        decoded.timestamp
+      );
 
     if (
       !Number.isFinite(timestamp)
@@ -433,7 +551,7 @@ function verifyVerificationToken(
     }
 
     const payload =
-      ${decoded.phone}.${decoded.timestamp};
+      `${decoded.phone}.${decoded.timestamp}`;
 
     const expectedSignature =
       crypto
@@ -446,7 +564,9 @@ function verifyVerificationToken(
 
     const actual =
       Buffer.from(
-        String(decoded.signature),
+        String(
+          decoded.signature
+        ),
         "utf8"
       );
 
@@ -467,8 +587,7 @@ function verifyVerificationToken(
       actual,
       expected
     );
-
-  } catch (error) {
+  } catch (_) {
     return false;
   }
 }
@@ -493,10 +612,10 @@ function twilioBaseUrl() {
 function twilioAuthHeader() {
   const credentials =
     Buffer.from(
-      ${TWILIO_ACCOUNT_SID}:${TWILIO_AUTH_TOKEN}
+      `${TWILIO_ACCOUNT_SID}:${TWILIO_AUTH_TOKEN}`
     ).toString("base64");
 
-  return Basic ${credentials};
+  return `Basic ${credentials}`;
 }
 
 
@@ -504,11 +623,6 @@ function twilioAuthHeader() {
 =========================================================
 SEND OTP
 =========================================================
-
-IMPORTANT:
-No custom SMS body is sent here.
-
-Twilio Verify creates the verification message.
 */
 
 async function sendTwilioVerification(
@@ -529,10 +643,11 @@ async function sendTwilioVerification(
 
   const response =
     await fetch(
-      ${twilioBaseUrl()}/Verifications,
+      `${twilioBaseUrl()}/Verifications`,
       {
         method: "POST",
-[01-09-2026 11:53 AM] Paul Zeeshan: headers: {
+
+        headers: {
           Authorization:
             twilioAuthHeader(),
 
@@ -596,7 +711,7 @@ async function checkTwilioVerification(
 
   const response =
     await fetch(
-      ${twilioBaseUrl()}/VerificationCheck,
+      `${twilioBaseUrl()}/VerificationCheck`,
       {
         method: "POST",
 
@@ -670,7 +785,7 @@ function canSendOTP(phone) {
 
   if (
     now -
-    existing.firstRequest >
+      existing.firstRequest >
     OTP_WINDOW_MS
   ) {
     otpRequests.set(
@@ -743,6 +858,60 @@ function canSendOTP(phone) {
 
 /*
 =========================================================
+SAFE MEMBER RESPONSE
+=========================================================
+*/
+
+function safeMemberData(member) {
+  if (!member) {
+    return null;
+  }
+
+  return {
+    memberId:
+      member.memberId || null,
+
+    name:
+      member.name || null,
+
+    phone:
+      member.phone || null,
+
+    age:
+      member.age ?? null,
+
+    gender:
+      member.gender || null,
+
+    goal:
+      member.goal || null,
+
+    plan:
+      member.plan || null,
+
+    planName:
+      member.planName || null,
+
+    amount:
+      member.amount ?? null,
+
+    status:
+      member.status || null,
+
+    expiresAt:
+      member.expiresAt || null,
+
+    createdAt:
+      member.createdAt || null,
+
+    updatedAt:
+      member.updatedAt || null
+  };
+}
+
+
+/*
+=========================================================
 HEALTH CHECK
 =========================================================
 */
@@ -801,7 +970,8 @@ app.post(
         normalizeIndianPhone(
           req.body?.phone
         );
-[01-09-2026 11:53 AM] Paul Zeeshan: if (
+
+      if (
         !name ||
         !validName(name)
       ) {
@@ -809,6 +979,7 @@ app.post(
           .status(400)
           .json({
             success: false,
+
             message:
               "Please enter a valid full name."
           });
@@ -819,6 +990,7 @@ app.post(
           .status(400)
           .json({
             success: false,
+
             message:
               "Please enter a valid 10-digit Indian mobile number."
           });
@@ -833,6 +1005,7 @@ app.post(
           .status(503)
           .json({
             success: false,
+
             message:
               "SMS service is not configured on the server yet."
           });
@@ -847,6 +1020,7 @@ app.post(
           .status(503)
           .json({
             success: false,
+
             message:
               "Verification security is not configured on the server."
           });
@@ -862,7 +1036,7 @@ app.post(
             success: false,
 
             message:
-              Please wait ${rate.waitSeconds} seconds before requesting another OTP.,
+              `Please wait ${rate.waitSeconds} seconds before requesting another OTP.`,
 
             retryAfter:
               rate.waitSeconds
@@ -875,7 +1049,7 @@ app.post(
         );
 
       console.log(
-        [OTP SENT] ${phone} | ${result.status || "unknown"}
+        `[OTP SENT] ${phone} | ${result.status || "unknown"}`
       );
 
       return res.json({
@@ -884,26 +1058,23 @@ app.post(
         message:
           "OTP sent successfully."
       });
-
     } catch (error) {
       console.error(
-        "[TWILIO ERROR]",
+        "[TWILIO SEND ERROR]",
         {
           message:
             error?.message,
+
           status:
             error?.status,
+
           code:
             error?.twilio?.code,
+
           moreInfo:
             error?.twilio?.more_info
         }
       );
-
-      /*
-      Do not send Twilio credentials/details
-      to the frontend.
-      */
 
       return res
         .status(502)
@@ -953,6 +1124,7 @@ app.post(
           .status(400)
           .json({
             success: false,
+
             message:
               "Invalid name."
           });
@@ -963,6 +1135,7 @@ app.post(
           .status(400)
           .json({
             success: false,
+
             message:
               "Invalid mobile number."
           });
@@ -975,6 +1148,7 @@ app.post(
           .status(400)
           .json({
             success: false,
+
             message:
               "Please enter the OTP received by SMS."
           });
@@ -985,6 +1159,7 @@ app.post(
           .status(503)
           .json({
             success: false,
+
             message:
               "SMS verification is not configured on the server."
           });
@@ -995,6 +1170,7 @@ app.post(
           .status(503)
           .json({
             success: false,
+
             message:
               "Verification security is not configured on the server."
           });
@@ -1005,7 +1181,8 @@ app.post(
           phone,
           otp
         );
-[01-09-2026 11:53 AM] Paul Zeeshan: if (
+
+      if (
         result?.status !==
         "approved"
       ) {
@@ -1013,16 +1190,11 @@ app.post(
           .status(401)
           .json({
             success: false,
+
             message:
               "Invalid or expired OTP. Please request a new OTP."
           });
       }
-
-      /*
-      =====================================================
-      EXISTING MEMBER CHECK
-      =====================================================
-      */
 
       const existingMember =
         members[phone] || null;
@@ -1034,46 +1206,14 @@ app.post(
             "ACTIVE"
         );
 
-      /*
-      Create token only after
-      Twilio successfully approves OTP.
-      */
-
       const verificationToken =
         createVerificationToken(
           phone
         );
 
       console.log(
-        [OTP VERIFIED] ${phone} | Existing active member: ${isExistingMember}
+        `[OTP VERIFIED] ${phone} | Existing active member: ${isExistingMember}`
       );
-
-      const safeMember =
-        existingMember
-          ? {
-              memberId:
-                existingMember.memberId,
-
-              name:
-                existingMember.name,
-
-              plan:
-                existingMember.plan,
-
-              planName:
-                existingMember.planName,
-
-              status:
-                existingMember.status,
-
-              expiresAt:
-                existingMember.expiresAt ||
-                null,
-
-              createdAt:
-                existingMember.createdAt
-            }
-          : null;
 
       return res.json({
         success: true,
@@ -1084,19 +1224,22 @@ app.post(
         isExistingMember,
 
         member:
-          safeMember,
+          safeMemberData(
+            existingMember
+          ),
 
         verificationToken
       });
-
     } catch (error) {
       console.error(
         "[OTP VERIFY ERROR]",
         {
           message:
             error?.message,
+
           status:
             error?.status,
+
           code:
             error?.twilio?.code
         }
@@ -1155,6 +1298,7 @@ app.post(
           .status(400)
           .json({
             ok: false,
+
             error:
               "Invalid full name."
           });
@@ -1165,6 +1309,7 @@ app.post(
           .status(400)
           .json({
             ok: false,
+
             error:
               "Invalid mobile number."
           });
@@ -1175,21 +1320,31 @@ app.post(
           .status(400)
           .json({
             ok: false,
+
             error:
               "Invalid age."
           });
       }
 
-      if (
-        !gender ||
-        !goal
-      ) {
+      if (!validGender(gender)) {
         return res
           .status(400)
           .json({
             ok: false,
+
             error:
-              "Gender and fitness goal are required."
+              "Invalid gender."
+          });
+      }
+
+      if (!validGoal(goal)) {
+        return res
+          .status(400)
+          .json({
+            ok: false,
+
+            error:
+              "Invalid fitness goal."
           });
       }
 
@@ -1198,10 +1353,945 @@ app.post(
           .status(400)
           .json({
             ok: false,
+
             error:
               "Invalid membership plan."
           });
       }
 
       if (
-        Number(am
+        !verifyVerificationToken(
+          verificationToken,
+          phone
+        )
+      ) {
+        return res
+          .status(401)
+          .json({
+            ok: false,
+
+            error:
+              "Mobile verification expired or invalid. Please verify your mobile number again."
+          });
+      }
+
+      /*
+      -----------------------------------------------------
+      IMPORTANT:
+      Do not trust amount sent by frontend.
+      Use server-side plan amount.
+      -----------------------------------------------------
+      */
+
+      const serverAmount =
+        selectedPlan.amount;
+
+      const requestedAmount =
+        normalizeAmount(amount);
+
+      if (
+        requestedAmount !== null &&
+        requestedAmount !== serverAmount
+      ) {
+        console.warn(
+          `[MEMBERSHIP] Amount mismatch for ${phone}. Frontend: ${requestedAmount}, Server: ${serverAmount}`
+        );
+      }
+
+      /*
+      -----------------------------------------------------
+      Prevent duplicate active membership.
+      -----------------------------------------------------
+      */
+
+      const existing =
+        members[phone] || null;
+
+      if (
+        existing &&
+        existing.status === "ACTIVE"
+      ) {
+        return res
+          .status(409)
+          .json({
+            ok: false,
+
+            error:
+              "An active membership already exists for this mobile number. Please use renewal instead.",
+
+            member:
+              safeMemberData(
+                existing
+              )
+          });
+      }
+
+      const now =
+        new Date();
+
+      const memberId =
+        generateMemberId();
+
+      const expiresAt =
+        addMonths(
+          now,
+          selectedPlan.months
+        ).toISOString();
+
+      const member = {
+        memberId,
+
+        phone,
+
+        name:
+          cleanFullName,
+
+        age:
+          Number(age),
+
+        gender:
+          String(gender),
+
+        goal:
+          String(goal),
+
+        plan:
+          String(plan),
+
+        planName:
+          selectedPlan.name,
+
+        amount:
+          serverAmount,
+
+        months:
+          selectedPlan.months,
+
+        status:
+          "ACTIVE",
+
+        expiresAt,
+
+        createdAt:
+          now.toISOString(),
+
+        updatedAt:
+          now.toISOString(),
+
+        renewals:
+          []
+      };
+
+      members[phone] =
+        member;
+
+      saveMembers();
+
+      console.log(
+        `[NEW MEMBER] ${memberId} | ${phone} | ${selectedPlan.name}`
+      );
+
+      return res
+        .status(201)
+        .json({
+          ok: true,
+
+          message:
+            "Membership registered successfully.",
+
+          member:
+            safeMemberData(
+              member
+            )
+        });
+    } catch (error) {
+      console.error(
+        "[MEMBERSHIP ERROR]",
+        error
+      );
+
+      return res
+        .status(500)
+        .json({
+          ok: false,
+
+          error:
+            "Membership registration failed. Please try again."
+        });
+    }
+  }
+);
+
+
+/*
+=========================================================
+RENEW MEMBERSHIP
+=========================================================
+*/
+
+app.post(
+  "/api/renew",
+  (req, res) => {
+    try {
+      const {
+        phone: rawPhone,
+        plan,
+        amount,
+        verificationToken
+      } = req.body || {};
+
+      const phone =
+        normalizeIndianPhone(
+          rawPhone
+        );
+
+      const selectedPlan =
+        getRenewalPlan(plan);
+
+      if (!phone) {
+        return res
+          .status(400)
+          .json({
+            ok: false,
+
+            error:
+              "Invalid mobile number."
+          });
+      }
+
+      if (!selectedPlan) {
+        return res
+          .status(400)
+          .json({
+            ok: false,
+
+            error:
+              "Invalid renewal plan."
+          });
+      }
+
+      if (
+        !verifyVerificationToken(
+          verificationToken,
+          phone
+        )
+      ) {
+        return res
+          .status(401)
+          .json({
+            ok: false,
+
+            error:
+              "Mobile verification expired or invalid. Please verify your mobile number again."
+          });
+      }
+
+      const member =
+        members[phone] || null;
+
+      if (!member) {
+        return res
+          .status(404)
+          .json({
+            ok: false,
+
+            error:
+              "No membership found for this mobile number. Please register as a new member first."
+          });
+      }
+
+      const serverAmount =
+        selectedPlan.amount;
+
+      const requestedAmount =
+        normalizeAmount(amount);
+
+      if (
+        requestedAmount !== null &&
+        requestedAmount !== serverAmount
+      ) {
+        console.warn(
+          `[RENEWAL] Amount mismatch for ${phone}. Frontend: ${requestedAmount}, Server: ${serverAmount}`
+        );
+      }
+
+      const oldExpiry =
+        member.expiresAt
+          ? new Date(
+              member.expiresAt
+            )
+          : new Date();
+
+      const validOldExpiry =
+        !Number.isNaN(
+          oldExpiry.getTime()
+        ) &&
+        oldExpiry.getTime() >
+          Date.now();
+
+      const startDate =
+        validOldExpiry
+          ? oldExpiry
+          : new Date();
+
+      const newExpiry =
+        addMonths(
+          startDate,
+          selectedPlan.months
+        );
+
+      const renewalId =
+        generateRenewalId();
+
+      const renewal = {
+        renewalId,
+
+        plan:
+          String(plan),
+
+        planName:
+          selectedPlan.name,
+
+        months:
+          selectedPlan.months,
+
+        amount:
+          serverAmount,
+
+        previousExpiresAt:
+          member.expiresAt ||
+          null,
+
+        newExpiresAt:
+          newExpiry.toISOString(),
+
+        createdAt:
+          new Date().toISOString()
+      };
+
+      if (
+        !Array.isArray(
+          member.renewals
+        )
+      ) {
+        member.renewals =
+          [];
+      }
+
+      member.renewals.push(
+        renewal
+      );
+
+      member.status =
+        "ACTIVE";
+
+      member.expiresAt =
+        newExpiry.toISOString();
+
+      member.plan =
+        String(plan);
+
+      member.planName =
+        selectedPlan.name;
+
+      member.amount =
+        serverAmount;
+
+      member.updatedAt =
+        new Date().toISOString();
+
+      saveMembers();
+
+      console.log(
+        `[RENEWAL] ${renewalId} | ${phone} | ${selectedPlan.name}`
+      );
+
+      return res.json({
+        ok: true,
+
+        message:
+          "Membership renewed successfully.",
+
+        renewal,
+
+        member:
+          safeMemberData(
+            member
+          )
+      });
+    } catch (error) {
+      console.error(
+        "[RENEWAL ERROR]",
+        error
+      );
+
+      return res
+        .status(500)
+        .json({
+          ok: false,
+
+          error:
+            "Membership renewal failed. Please try again."
+        });
+    }
+  }
+);
+
+
+/*
+=========================================================
+GET MEMBER
+=========================================================
+*/
+
+app.get(
+  "/api/member",
+  (req, res) => {
+    try {
+      const phone =
+        normalizeIndianPhone(
+          req.query?.phone
+        );
+
+      if (!phone) {
+        return res
+          .status(400)
+          .json({
+            ok: false,
+
+            error:
+              "Invalid mobile number."
+          });
+      }
+
+      const member =
+        members[phone] || null;
+
+      if (!member) {
+        return res
+          .status(404)
+          .json({
+            ok: false,
+
+            error:
+              "Member not found."
+          });
+      }
+
+      return res.json({
+        ok: true,
+
+        member:
+          safeMemberData(
+            member
+          )
+      });
+    } catch (error) {
+      console.error(
+        "[GET MEMBER ERROR]",
+        error
+      );
+
+      return res
+        .status(500)
+        .json({
+          ok: false,
+
+          error:
+            "Could not retrieve member."
+        });
+    }
+  }
+);
+
+
+/*
+=========================================================
+ADMIN AUTHENTICATION
+=========================================================
+*/
+
+function requireAdmin(req, res, next) {
+  if (!ADMIN_KEY) {
+    return res
+      .status(503)
+      .json({
+        ok: false,
+
+        error:
+          "ADMIN_KEY is not configured on the server."
+      });
+  }
+
+  const providedKey =
+    req.headers["x-admin-key"] ||
+    req.body?.adminKey ||
+    req.query?.adminKey ||
+    "";
+
+  if (
+    typeof providedKey !== "string" ||
+    providedKey.length === 0
+  ) {
+    return res
+      .status(401)
+      .json({
+        ok: false,
+
+        error:
+          "Admin authentication required."
+      });
+  }
+
+  const actual =
+    Buffer.from(
+      String(providedKey),
+      "utf8"
+    );
+
+  const expected =
+    Buffer.from(
+      String(ADMIN_KEY),
+      "utf8"
+    );
+
+  if (
+    actual.length !==
+    expected.length
+  ) {
+    return res
+      .status(403)
+      .json({
+        ok: false,
+
+        error:
+          "Invalid admin credentials."
+      });
+  }
+
+  if (
+    !crypto.timingSafeEqual(
+      actual,
+      expected
+    )
+  ) {
+    return res
+      .status(403)
+      .json({
+        ok: false,
+
+        error:
+          "Invalid admin credentials."
+      });
+  }
+
+  next();
+}
+
+
+/*
+=========================================================
+ADMIN - ALL MEMBERS
+=========================================================
+*/
+
+app.get(
+  "/api/admin/members",
+  requireAdmin,
+  (req, res) => {
+    try {
+      const list =
+        Object.values(
+          members
+        ).map(
+          safeMemberData
+        );
+
+      return res.json({
+        ok: true,
+
+        count:
+          list.length,
+
+        members:
+          list
+      });
+    } catch (error) {
+      console.error(
+        "[ADMIN MEMBERS ERROR]",
+        error
+      );
+
+      return res
+        .status(500)
+        .json({
+          ok: false,
+
+          error:
+            "Could not load members."
+        });
+    }
+  }
+);
+
+
+/*
+=========================================================
+ADMIN - SINGLE MEMBER
+=========================================================
+*/
+
+app.get(
+  "/api/admin/member/:phone",
+  requireAdmin,
+  (req, res) => {
+    try {
+      const phone =
+        normalizeIndianPhone(
+          req.params.phone
+        );
+
+      if (!phone) {
+        return res
+          .status(400)
+          .json({
+            ok: false,
+
+            error:
+              "Invalid mobile number."
+          });
+      }
+
+      const member =
+        members[phone] || null;
+
+      if (!member) {
+        return res
+          .status(404)
+          .json({
+            ok: false,
+
+            error:
+              "Member not found."
+          });
+      }
+
+      return res.json({
+        ok: true,
+
+        member:
+          safeMemberData(
+            member
+          ),
+
+        renewals:
+          Array.isArray(
+            member.renewals
+          )
+            ? member.renewals
+            : []
+      });
+    } catch (error) {
+      console.error(
+        "[ADMIN MEMBER ERROR]",
+        error
+      );
+
+      return res
+        .status(500)
+        .json({
+          ok: false,
+
+          error:
+            "Could not load member."
+        });
+    }
+  }
+);
+
+
+/*
+=========================================================
+ADMIN - DELETE MEMBER
+=========================================================
+*/
+
+app.delete(
+  "/api/admin/member/:phone",
+  requireAdmin,
+  (req, res) => {
+    try {
+      const phone =
+        normalizeIndianPhone(
+          req.params.phone
+        );
+
+      if (!phone) {
+        return res
+          .status(400)
+          .json({
+            ok: false,
+
+            error:
+              "Invalid mobile number."
+          });
+      }
+
+      if (!members[phone]) {
+        return res
+          .status(404)
+          .json({
+            ok: false,
+
+            error:
+              "Member not found."
+          });
+      }
+
+      delete members[phone];
+
+      saveMembers();
+
+      console.log(
+        `[ADMIN DELETE] ${phone}`
+      );
+
+      return res.json({
+        ok: true,
+
+        message:
+          "Member deleted successfully."
+      });
+    } catch (error) {
+      console.error(
+        "[ADMIN DELETE ERROR]",
+        error
+      );
+
+      return res
+        .status(500)
+        .json({
+          ok: false,
+
+          error:
+            "Could not delete member."
+        });
+    }
+  }
+);
+
+
+/*
+=========================================================
+ADMIN - DASHBOARD STATS
+=========================================================
+*/
+
+app.get(
+  "/api/admin/stats",
+  requireAdmin,
+  (req, res) => {
+    try {
+      const allMembers =
+        Object.values(
+          members
+        );
+
+      const activeMembers =
+        allMembers.filter(
+          (member) =>
+            member.status ===
+            "ACTIVE"
+        );
+
+      const expiredMembers =
+        allMembers.filter(
+          (member) => {
+            if (
+              !member.expiresAt
+            ) {
+              return false;
+            }
+
+            const expiry =
+              new Date(
+                member.expiresAt
+              );
+
+            return (
+              !Number.isNaN(
+                expiry.getTime()
+              ) &&
+              expiry.getTime() <
+                Date.now()
+            );
+          }
+        );
+
+      let totalRevenue = 0;
+
+      for (
+        const member of allMembers
+      ) {
+        totalRevenue +=
+          Number(
+            member.amount || 0
+          );
+
+        if (
+          Array.isArray(
+            member.renewals
+          )
+        ) {
+          for (
+            const renewal of
+              member.renewals
+          ) {
+            totalRevenue +=
+              Number(
+                renewal.amount ||
+                  0
+              );
+          }
+        }
+      }
+
+      return res.json({
+        ok: true,
+
+        stats: {
+          totalMembers:
+            allMembers.length,
+
+          activeMembers:
+            activeMembers.length,
+
+          expiredMembers:
+            expiredMembers.length,
+
+          totalRevenue
+        }
+      });
+    } catch (error) {
+      console.error(
+        "[ADMIN STATS ERROR]",
+        error
+      );
+
+      return res
+        .status(500)
+        .json({
+          ok: false,
+
+          error:
+            "Could not calculate dashboard statistics."
+        });
+    }
+  }
+);
+
+
+/*
+=========================================================
+404 API HANDLER
+=========================================================
+*/
+
+app.use(
+  "/api",
+  (req, res) => {
+    res
+      .status(404)
+      .json({
+        ok: false,
+
+        error:
+          "API endpoint not found."
+      });
+  }
+);
+
+
+/*
+=========================================================
+GLOBAL ERROR HANDLER
+=========================================================
+*/
+
+app.use(
+  (
+    error,
+    req,
+    res,
+    next
+  ) => {
+    console.error(
+      "[GLOBAL ERROR]",
+      error
+    );
+
+    if (
+      res.headersSent
+    ) {
+      return next(error);
+    }
+
+    return res
+      .status(500)
+      .json({
+        ok: false,
+
+        error:
+          "Internal server error."
+      });
+  }
+);
+
+
+/*
+=========================================================
+START SERVER
+=========================================================
+*/
+
+app.listen(
+  PORT,
+  "0.0.0.0",
+  () => {
+    console.log(
+      "================================================="
+    );
+
+    console.log(
+      `${GYM_NAME} SERVER STARTED`
+    );
+
+    console.log(
+      `Port: ${PORT}`
+    );
+
+    console.log(
+      `Members: ${Object.keys(members).length}`
+    );
+
+    console.log(
+      `Twilio configured: ${twilioConfigured()}`
+    );
+
+    console.log(
+      `Verification secret configured: ${Boolean(
+        VERIFY_TOKEN_SECRET
+      )}`
+    );
+
+    console.log(
+      `Admin configured: ${Boolean(
+        ADMIN_KEY
+      )}`
+    );
+
+    console.log(
+      "================================================="
+    );
+  }
+);
